@@ -203,6 +203,7 @@
       if (e.keyCode == TABKEY) {
         updateTime();
          scoreMark();
+         document.getElementById("answer").focus();
         if (e.preventDefault) {
           e.preventDefault();
         }
@@ -231,7 +232,7 @@
 
         document.getElementById("counter").innerHTML =
         result + "<br/>" + speed_result;
-
+        document.getElementById("answer").focus();
     }
     function updateTime() {
       let end_time = new Date();
