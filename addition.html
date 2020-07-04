@@ -40,7 +40,7 @@
 
 
     <div>
-      <table id="KishoTable" border="1">
+      <table id="practicedResults" border="1">
         <tr>
           <th colspan="6">Result Table<br/>
             <div id="date_time">
@@ -97,6 +97,13 @@
       }
       document.getElementById("welcomeMessage").innerText=welcomeMessage;
       document.getElementById("main").style.visibility= 'visible' ;
+      let staleResults =  document.getElementById("practicedResults").rows.length;
+      if(staleResults>2) {
+        for(let i=0; i<staleResults-2; i++) {
+          document.getElementById("practicedResults").deleteRow(-1);
+        }
+      }
+
       let currentTime = new Date();      
       if(!priorPracticeDetails) {
         priorPracticeDetails=defaultDetails;
@@ -170,7 +177,7 @@
     }
 
     function insRow(numbers) {
-      let x = document.getElementById("KishoTable").insertRow(2);
+      let x = document.getElementById("practicedResults").insertRow(2);
       let firstNum = x.insertCell(0);
       let secondNum = x.insertCell(1);
       let answer = x.insertCell(2);
