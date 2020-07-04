@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Multiplication - Raghav</title>
+    <title>Addition - Prahalad</title>
   </head>
   <body>
     <div id="number">
@@ -32,7 +32,7 @@
 
 
     <div>
-      <table id="MultiplicationTable" border="1">
+      <table id="KishoTable" border="1">
         <tr>
           <th colspan="6">Result Table<br/>
             <div id="date_time">
@@ -84,7 +84,7 @@
       return randomValue;
     }
     function replenish() {
-      let randomNumber = getRandomInt(3, 20);
+      let randomNumber = getRandomInt(3, 40);
       document.getElementById("answer").value = "";
       document.getElementById("firstNumGen").value = randomNumber;
       let secondRandomNumber = getRandomInt(3, 20);
@@ -126,13 +126,14 @@
       let total =
         `${tens_multiplication} + ${ones_multiplication} = ` +
         (tens_multiplication + ones_multiplication);
-      return ones != 0
-        ? ones_string + "<br>" + tens_string + "<br>" + total
-        : tens_string + "<br>" + total;
+      // return ones != 0
+      //   ? ones_string + "<br>" + tens_string + "<br>" + total
+      //   : tens_string + "<br>" + total;
+        return "";
     }
 
     function insRow(numbers) {
-      let x = document.getElementById("MultiplicationTable").insertRow(2);
+      let x = document.getElementById("KishoTable").insertRow(2);
       let firstNum = x.insertCell(0);
       let secondNum = x.insertCell(1);
       let answer = x.insertCell(2);
@@ -141,10 +142,10 @@
       let result = x.insertCell(5);
       firstNum.innerHTML = numbers[0];
       secondNum.innerHTML = numbers[1];
-      answer.innerHTML = numbers[0] * numbers[1];
+      answer.innerHTML = numbers[0] + numbers[1];
       submission.innerHTML = numbers[2];
       details.innerHTML = explanation(numbers);
-      result.innerHTML = numbers[0] * numbers[1] == numbers[2];
+      result.innerHTML = numbers[0] + numbers[1] == numbers[2];
     }
 
     function tabHandler(e) {
@@ -160,9 +161,7 @@
     }
     function scoreMark() {
         //this.value += "    ";
-        let calculatedAnswer =
-          multiplicationForm.firstNumGen.value *
-          multiplicationForm.secondNumGen.value;
+        let calculatedAnswer = parseInt(multiplicationForm.firstNumGen.value,10) +        parseInt(multiplicationForm.secondNumGen.value,10);
         let answer = parseInt(multiplicationForm.answer.value, 10);
         if (calculatedAnswer === answer) {
           right++;
@@ -176,11 +175,7 @@
         ]);
         multiplicationForm.answer.value = "";
         replenish();
-        let error_ratio = (wrong/(right+wrong))*100
-        let result = "Your right :: ~~~> " + right + ", Wrong :: ~~~>" + wrong;
-        if(error_ratio > 0.001) {
-          result = result + ", Error ratio :: " + error_ratio.toFixed(2) +"%";
-        }
+        let result = "Your right :: ~~~> " + right + ": Wrong ::  :: ~~~>" + wrong;
         let speed = Math.floor(minutes_per_question/right);
         let speed_result = "<br/>Your speed in number of seconds per question is  " + speed;
 
