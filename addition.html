@@ -82,7 +82,6 @@
     let start_time= new Date();
     let welcomeMessage='';
     let minutes_per_question='';
-    document.getElementById("date_time").innerText =  start_time;
 
     function registerUser(studentId) {
       let defaultDetails = {
@@ -95,15 +94,7 @@
       } else {
         welcomeMessage = `${studentId}, you are courageous, 1000 miles journey begins with single step!`;
       }
-      document.getElementById("welcomeMessage").innerText=welcomeMessage;
-      document.getElementById("main").style.visibility= 'visible' ;
-      let staleResults =  document.getElementById("practicedResults").rows.length;
-      if(staleResults>2) {
-        for(let i=0; i<staleResults-2; i++) {
-          document.getElementById("practicedResults").deleteRow(-1);
-        }
-      }
-
+      startPractice();
       let currentTime = new Date();      
       if(!priorPracticeDetails) {
         priorPracticeDetails=defaultDetails;
@@ -147,6 +138,21 @@
     var answer = document.getElementById("answer");
     if (answer.addEventListener) {
       answer.addEventListener("keydown", this.tabHandler, false);
+    }
+    function startPractice() {
+      right=0;
+      wrong=0;
+      start_time= new Date();
+      document.getElementById("welcomeMessage").innerText=welcomeMessage;
+      document.getElementById("main").style.visibility= 'visible' ;
+      document.getElementById("date_time").innerText =  start_time;
+      document.getElementById("counter").innerHTML ="";
+      let staleResults =  document.getElementById("practicedResults").rows.length;
+      if(staleResults>2) {
+        for(let i=0; i<staleResults-2; i++) {
+          document.getElementById("practicedResults").deleteRow(-1);
+        }
+      }      
     }
 
     function explanation(ns) {
