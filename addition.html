@@ -10,7 +10,15 @@
     <div id="number">
       <br />
     </div>
-    <form id="multiplicationForm">
+      <label for="yourName">Name</label>&nbsp;&nbsp;&nbsp;
+      <input type="text" id="yourName" value="" />
+      <input type="button" id="submit_name" onclick="registerUser(document.getElementById('yourName').value)" value="Use Name"/>
+
+      <br/><br/>
+    <div id="main" style="visibility: hidden;">
+      <form id="multiplicationForm">
+        <b><label id="welcomeMessage"/></b>&nbsp;&nbsp;&nbsp;
+      <br/><br/>
       <label for="SquareMode">Square mode</label>&nbsp;&nbsp;&nbsp;
       <input type="checkbox" id="SquareMode" value="true" /><br />
       <label for="firstNumGen">First Number</label>&nbsp;&nbsp;&nbsp;
@@ -66,13 +74,42 @@
       href="#"
       >Link Back</a
     >
+  </div>
   </body>
   <script>
     let right = 0;
     let wrong = 0;
     let start_time= new Date();
+    let welcomeMessage='';
     let minutes_per_question='';
     document.getElementById("date_time").innerText =  start_time;
+
+    function registerUser(studentId) {
+      let defaultDetails = {
+        studentId,
+        sessions: []
+      }
+      let priorPracticeDetails = localStorage.getItem(studentId);
+      if(priorPracticeDetails) {
+        welcomeMessage = `${studentId} is amazing person, because ${studentId} practices like champion!`;
+      } else {
+        welcomeMessage = `${studentId}, you are courageous, 1000 miles journey begins with single step!`;
+      }
+      document.getElementById("welcomeMessage").innerText=welcomeMessage;
+      document.getElementById("main").style.visibility= 'visible' ;
+      let currentTime = new Date();      
+      if(!priorPracticeDetails) {
+        priorPracticeDetails=defaultDetails;
+      }else {
+        priorPracticeDetails =  JSON.parse(priorPracticeDetails);
+      }
+      priorPracticeDetails.sessions.push(currentTime);
+
+
+      let studentDetails = {sessions: priorPracticeDetails.sessions,studentId};
+      localStorage.setItem(studentDetails.studentId.toLowerCase(), JSON.stringify(studentDetails)); 
+    }
+
     function getRandomInt(min, max) {
       min = Math.ceil(min);
       max = Math.floor(max);
