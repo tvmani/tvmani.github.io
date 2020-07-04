@@ -144,6 +144,7 @@
       wrong=0;
       start_time= new Date();
       document.getElementById("welcomeMessage").innerText=welcomeMessage;
+      document.getElementById("counter").style.backgroundColor='#ccffdd'
       document.getElementById("main").style.visibility= 'visible' ;
       document.getElementById("date_time").innerText =  start_time;
       document.getElementById("counter").innerHTML ="";
@@ -232,8 +233,18 @@
 
         document.getElementById("counter").innerHTML =
         result + "<br/>" + speed_result;
-        document.getElementById("answer").focus();
+        finalizeSubmit();
     }
+    function finalizeSubmit() {
+      //"#ffccdd"/rgb(255, 204, 221) or "#ccffdd"/"rgb(204, 255, 221)
+      document.getElementById("answer").focus();      
+      if (document.getElementById('counter').style.backgroundColor === "rgb(204, 255, 221)") {
+        document.getElementById('counter').style.backgroundColor = "#ffccdd"        
+      } else {
+        document.getElementById('counter').style.backgroundColor = "#ccffdd"
+      }
+    }
+
     function updateTime() {
       let end_time = new Date();
       var diff = Math.abs(end_time - start_time);
