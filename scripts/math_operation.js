@@ -80,12 +80,14 @@ function answerKeyboardHandler() {
   var answer = document.getElementById("answer");
   if (answer && answer.addEventListener) {
     answer.addEventListener("keydown", this.tabHandler, false);
+    
   }
 }
 
 function tabHandler(e) {
-  var TABKEY = 9;
-  if (e.keyCode == TABKEY) {
+  var KEYCODE_TAB = 9;
+  var KEYCODE_ENTER = 13;
+  if (e.keyCode == KEYCODE_TAB || e.keyCode == KEYCODE_ENTER) {
     updateTime();
     scoreMark();
     document.getElementById("answer").focus();
@@ -208,7 +210,7 @@ function updateTime() {
 }
 window.addEventListener('load', (event) => {
   replenish();
-  answerKeyboardHandler()
+  answerKeyboardHandler();
 });
 
 function add(firstNumber, secondNumber) {
