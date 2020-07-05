@@ -4,8 +4,9 @@
 
 - [x] [Basic domain creation](https://dhinamorumurai.info/)
 - [x] [Hosting using gitub](https://dhinamorumurai.info/)
-- [] [Student name]()
-- [] [Indepdenent Javascript]()
+- [x] [Student name]()
+- [X] [Indepdenent Javascript]()
+- [X] [Allow multiple kids name]()
+- [] [Color code change based on result]()
 - [] [Generate diagrams]()
 - [] [Add additional kids learning games that are already build]()
-- [] [Allow multiple kids name]()
