@@ -155,9 +155,9 @@ function scoreMark() {
   multiplicationForm.answer.value = "";
   replenish();
   let error_ratio = (totalIncorrect/(totalCorrect+totalIncorrect))*100
-  let result = "Your total Correct :: ~~~> " + totalCorrect + ", total Incorrect :: ~~~>" + totalIncorrect;
+  let result = "Correct => " + totalCorrect + "<br/>Incorrect => " + totalIncorrect;
   if(error_ratio > 0.001) {
-    result = result + ", Error ratio :: " + error_ratio.toFixed(2) +"%";
+    result = result + "<br/>Error ratio :: " + error_ratio.toFixed(2) +"%";
   }
   let speed = Math.floor(minutes_per_question / totalCorrect);
   let speed_result =
