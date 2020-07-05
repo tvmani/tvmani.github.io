@@ -1,5 +1,5 @@
-let right = 0;
-let wrong = 0;
+let totalCorrect = 0;
+let totalIncorrect = 0;
 let start_time = new Date();
 let welcomeMessage = "";
 let minutes_per_question = "";
@@ -78,8 +78,8 @@ function tabHandler(e) {
 }
 
 function startPractice() {
-  right = 0;
-  wrong = 0;
+  totalCorrect = 0;
+  totalIncorrect = 0;
   start_time = new Date();
   document.getElementById("welcomeMessage").innerText = welcomeMessage;
   document.getElementById("summary").style.backgroundColor = "#ccffdd";
@@ -143,9 +143,9 @@ function scoreMark() {
     parseInt(multiplicationForm.secondNumGen.value, 10);
   let answer = parseInt(multiplicationForm.answer.value, 10);
   if (calculatedAnswer === answer) {
-    right++;
+    totalCorrect++;
   } else {
-    wrong++;
+    totalIncorrect++;
   }
   insRow([
     parseInt(multiplicationForm.firstNumGen.value, 10),
@@ -154,12 +154,12 @@ function scoreMark() {
   ]);
   multiplicationForm.answer.value = "";
   replenish();
-  let error_ratio = (wrong/(right+wrong))*100
-  let result = "Your right :: ~~~> " + right + ", Wrong :: ~~~>" + wrong;
+  let error_ratio = (totalIncorrect/(totalCorrect+totalIncorrect))*100
+  let result = "Your total Correct :: ~~~> " + totalCorrect + ", total Incorrect :: ~~~>" + totalIncorrect;
   if(error_ratio > 0.001) {
     result = result + ", Error ratio :: " + error_ratio.toFixed(2) +"%";
   }
-  let speed = Math.floor(minutes_per_question / right);
+  let speed = Math.floor(minutes_per_question / totalCorrect);
   let speed_result =
     "<br/>Your speed in number of seconds per question is  " + speed;
 
