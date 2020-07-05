@@ -103,10 +103,11 @@ function startPractice() {
   totalIncorrect = 0;
   start_time = new Date();
   document.getElementById("welcomeMessage").innerText = welcomeMessage;
-  document.getElementById("summary").style.backgroundColor = "#ccffdd";
+  //document.getElementById("summary").style.backgroundColor = "#ccffdd";
   document.getElementById("main").style.visibility = "visible";
   document.getElementById("date_time").innerText = start_time;
   document.getElementById("summary").innerHTML = "";
+  document.getElementById("totalQuestionsPracticed").innerHTML = "Total Questions Practiced:  0";
   let staleResults = document.getElementById("practicedResults").rows.length;
   if (staleResults > 2) {
     for (let i = 0; i < staleResults - 2; i++) {
@@ -186,6 +187,7 @@ function scoreMark() {
   let speed_result =
     "<br/>Your speed in number of seconds per question is  " + speed;
 
+  document.getElementById("totalQuestionsPracticed").innerHTML = "Total Questions Practiced:  " + (totalCorrect + totalIncorrect);
   document.getElementById("summary").innerHTML =
     result + "<br/>" + speed_result;
   finalizeSubmit();
@@ -193,14 +195,14 @@ function scoreMark() {
 function finalizeSubmit() {
   //"#ffccdd"/rgb(255, 204, 221) or "#ccffdd"/"rgb(204, 255, 221)
   document.getElementById("answer").focus();
-  if (
-    document.getElementById("summary").style.backgroundColor ===
-    "rgb(204, 255, 221)"
-  ) {
-    document.getElementById("summary").style.backgroundColor = "#ffccdd";
-  } else {
-    document.getElementById("summary").style.backgroundColor = "#ccffdd";
-  }
+  // if (
+  //   document.getElementById("summary").style.backgroundColor ===
+  //   "rgb(204, 255, 221)"
+  // ) {
+  //   document.getElementById("summary").style.backgroundColor = "#ffccdd";
+  // } else {
+  //   document.getElementById("summary").style.backgroundColor = "#ccffdd";
+  // }
 }
 
 function updateTime() {
