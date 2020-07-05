@@ -57,7 +57,10 @@ function getRandomInt(min, max) {
   return randomValue;
 }
 function replenish() {
-  let randomNumber = getRandomInt(3, 40);
+  let max_input=document.getElementById("max_input").value;
+  let max = parseInt(max_input, 10);
+
+  let randomNumber = getRandomInt(3, max);
   document.getElementById("answer").value = "";
   document.getElementById("firstNumGen").value = randomNumber;
   let secondRandomNumber = getRandomInt(3, 20);
