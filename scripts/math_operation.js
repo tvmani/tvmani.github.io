@@ -3,6 +3,21 @@ let totalIncorrect = 0;
 let start_time = new Date();
 let welcomeMessage = "";
 let minutes_per_question = "";
+let math_operations='';
+
+let operations = {
+  'addition': (a,b) => a+b,
+  'multiplication': (a,b) => a*b,
+  'subtraction': (a,b) => a-b,
+  'division': (a,b) => a/b,
+}
+
+let operations_explanations = {
+  'addition': () => "",
+  'multiplication': (a,b) => explanation(a,b),
+  'subtraction': () => "",
+  'division': () => "",
+}
 
 function registerUser(studentId) {
   let defaultDetails = {
@@ -46,6 +61,7 @@ function replenish() {
   document.getElementById("answer").value = "";
   document.getElementById("firstNumGen").value = randomNumber;
   let secondRandomNumber = getRandomInt(3, 20);
+  let math_operations = document.getElementById("operations").value;
   if (document.getElementById("SquareMode").checked) {
     let random_boolean = Math.random() >= 0.5;
     if (random_boolean) {
@@ -97,32 +113,35 @@ function startPractice() {
 function explanation(ns) {
   let numbers = [...ns];
   numbers.sort((a, b) => a - b);
-  if (numbers[1] > 10 && numbers[0] < 10) {
-    return explain(numbers);
-  } else if (numbers[1] > 10 && numbers[0] > 10) {
-    return explain([numbers[1], numbers[0]]);
+  let math_operations=document.getElementById("operations").value;
+  if(math_operations === 'multiplication') {
+    if (numbers[1] > 10 && numbers[0] < 10) {
+      return multiplication_explain(numbers);
+    } else if (numbers[1] > 10 && numbers[0] > 10) {
+      return multiplication_explain([numbers[1], numbers[0]]);
+    }  
   }
   return "";
 }
 
-function explain(numbers) {
-  let tens = Math.floor(numbers[1] / 10) * 10;
-  let ones = Math.floor(numbers[1] % 10);
-  let tens_multiplication = tens * numbers[0];
-  let ones_multiplication = ones * numbers[0];
-  let tens_string = `${tens} x ${numbers[0]} = ` + tens * numbers[0];
-  let ones_string = `${ones} x ${numbers[0]} = ` + ones * numbers[0];
+function multiplication_explain([a, b, ...rest]) {
+  let tens = Math.floor(b / 10) * 10;
+  let ones = Math.floor(b % 10);
+  let tens_multiplication = tens * a;
+  let ones_multiplication = ones * a;
+  let tens_string = `${tens} x ${a} = ` + tens * a;
+  let ones_string = `${ones} x ${a} = ` + ones * a;
   let total =
     `${tens_multiplication} + ${ones_multiplication} = ` +
     (tens_multiplication + ones_multiplication);
-  // return ones != 0
-  //   ? ones_string + "<br>" + tens_string + "<br>" + total
-  //   : tens_string + "<br>" + total;
-  return "";
+    return ones != 0
+    ? ones_string + "<br>" + tens_string + "<br>" + total
+    : tens_string + "<br>" + total;
 }
 
 function insRow(numbers) {
   let x = document.getElementById("practicedResults").insertRow(2);
+  let math_operations=document.getElementById("operations").value;
   let firstNum = x.insertCell(0);
   let secondNum = x.insertCell(1);
   let answer = x.insertCell(2);
@@ -130,29 +149,28 @@ function insRow(numbers) {
   let details = x.insertCell(4);
   let result = x.insertCell(5);
   firstNum.innerHTML = numbers[0];
-  secondNum.innerHTML = numbers[1];
-  answer.innerHTML = numbers[0] + numbers[1];
+  secondNum.innerHTML = numbers[1];  
+  answer.innerHTML = operations[math_operations](numbers[0], numbers[1]);
   submission.innerHTML = numbers[2];
   details.innerHTML = explanation(numbers);
-  result.innerHTML = numbers[0] + numbers[1] == numbers[2];
+  result.innerHTML = operations[math_operations](numbers[0], numbers[1]) == numbers[2];
 }
 function scoreMark() {
   //this.value += "    ";
-  let calculatedAnswer =
-    parseInt(multiplicationForm.firstNumGen.value, 10) +
-    parseInt(multiplicationForm.secondNumGen.value, 10);
-  let answer = parseInt(multiplicationForm.answer.value, 10);
+  let math_operations=document.getElementById("operations").value;
+  let calculatedAnswer = operations[math_operations](parseInt(formPractice.firstNumGen.value, 10), parseInt(formPractice.secondNumGen.value, 10));
+  let answer = parseInt(formPractice.answer.value, 10);
   if (calculatedAnswer === answer) {
     totalCorrect++;
   } else {
     totalIncorrect++;
   }
   insRow([
-    parseInt(multiplicationForm.firstNumGen.value, 10),
-    parseInt(multiplicationForm.secondNumGen.value, 10),
-    parseInt(multiplicationForm.answer.value, 10),
+    parseInt(formPractice.firstNumGen.value, 10),
+    parseInt(formPractice.secondNumGen.value, 10),
+    parseInt(formPractice.answer.value, 10),
   ]);
-  multiplicationForm.answer.value = "";
+  formPractice.answer.value = "";
   replenish();
   let error_ratio = (totalIncorrect/(totalCorrect+totalIncorrect))*100
   let result = "Correct => " + totalCorrect + "<br/>Incorrect => " + totalIncorrect;
@@ -194,4 +212,4 @@ function add(firstNumber, secondNumber) {
   return firstNumber + secondNumber;
 }
 
-module.exports = { add, replenish };
+//module.exports = { add, replenish };
