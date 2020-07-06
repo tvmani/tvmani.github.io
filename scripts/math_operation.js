@@ -3,18 +3,18 @@ let totalIncorrect = 0;
 let start_time = new Date();
 let welcomeMessage = "";
 let minutes_per_question = "";
-let math_operations='';
+let math_operations = '';
 
 let operations = {
-  'addition': (a,b) => a+b,
-  'multiplication': (a,b) => a*b,
-  'subtraction': (a,b) => a-b,
-  'division': (a,b) => a/b,
+  'addition': (a, b) => a + b,
+  'multiplication': (a, b) => a * b,
+  'subtraction': (a, b) => a - b,
+  'division': (a, b) => a / b,
 }
 
 let operations_explanations = {
   'addition': () => "",
-  'multiplication': (a,b) => explanation(a,b),
+  'multiplication': (a, b) => explanation(a, b),
   'subtraction': () => "",
   'division': () => "",
 }
@@ -46,6 +46,17 @@ function registerUser(studentId) {
   );
 }
 
+function yourNameKeyboardHandler() {
+  var input = document.getElementById("yourName");
+  input.addEventListener("keyup", function (event) {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      document.getElementById("submit_name").click();
+    }
+  });
+}
+
+
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -57,7 +68,7 @@ function getRandomInt(min, max) {
   return randomValue;
 }
 function replenish() {
-  let max_input=document.getElementById("max_input").value;
+  let max_input = document.getElementById("max_input").value;
   let max = parseInt(max_input, 10);
 
   let randomNumber = getRandomInt(3, max);
@@ -75,12 +86,21 @@ function replenish() {
   }
   document.getElementById("secondNumGen").value = secondRandomNumber;
 }
-
+function isNumber(evt) {
+  evt = (evt) ? evt : window.event;
+  var charCode = (evt.which) ? evt.which : evt.keyCode;
+  console.log(charCode);
+  if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+    return false;
+  }
+  return true;
+}
 function answerKeyboardHandler() {
   var answer = document.getElementById("answer");
   if (answer && answer.addEventListener) {
     answer.addEventListener("keydown", this.tabHandler, false);
-    
+    answer.addEventListener("keypress", this.isNumber, true);
+
   }
 }
 
@@ -119,13 +139,13 @@ function startPractice() {
 function explanation(ns) {
   let numbers = [...ns];
   numbers.sort((a, b) => a - b);
-  let math_operations=document.getElementById("operations").value;
-  if(math_operations === 'multiplication') {
+  let math_operations = document.getElementById("operations").value;
+  if (math_operations === 'multiplication') {
     if (numbers[1] > 10 && numbers[0] < 10) {
       return multiplication_explain(numbers);
     } else if (numbers[1] > 10 && numbers[0] > 10) {
       return multiplication_explain([numbers[1], numbers[0]]);
-    }  
+    }
   }
   return "";
 }
@@ -140,14 +160,14 @@ function multiplication_explain([a, b, ...rest]) {
   let total =
     `${tens_multiplication} + ${ones_multiplication} = ` +
     (tens_multiplication + ones_multiplication);
-    return ones != 0
+  return ones != 0
     ? ones_string + "<br>" + tens_string + "<br>" + total
     : tens_string + "<br>" + total;
 }
 
 function insRow(numbers) {
   let x = document.getElementById("practicedResults").insertRow(2);
-  let math_operations=document.getElementById("operations").value;
+  let math_operations = document.getElementById("operations").value;
   let firstNum = x.insertCell(0);
   let secondNum = x.insertCell(1);
   let answer = x.insertCell(2);
@@ -155,7 +175,7 @@ function insRow(numbers) {
   let details = x.insertCell(4);
   let result = x.insertCell(5);
   firstNum.innerHTML = numbers[0];
-  secondNum.innerHTML = numbers[1];  
+  secondNum.innerHTML = numbers[1];
   answer.innerHTML = operations[math_operations](numbers[0], numbers[1]);
   submission.innerHTML = numbers[2];
   details.innerHTML = explanation(numbers);
@@ -163,7 +183,7 @@ function insRow(numbers) {
 }
 function scoreMark() {
   //this.value += "    ";
-  let math_operations=document.getElementById("operations").value;
+  let math_operations = document.getElementById("operations").value;
   let calculatedAnswer = operations[math_operations](parseInt(formPractice.firstNumGen.value, 10), parseInt(formPractice.secondNumGen.value, 10));
   let answer = parseInt(formPractice.answer.value, 10);
   if (calculatedAnswer === answer) {
@@ -178,10 +198,10 @@ function scoreMark() {
   ]);
   formPractice.answer.value = "";
   replenish();
-  let error_ratio = (totalIncorrect/(totalCorrect+totalIncorrect))*100
+  let error_ratio = (totalIncorrect / (totalCorrect + totalIncorrect)) * 100
   let result = "Correct => " + totalCorrect + "<br/>Incorrect => " + totalIncorrect;
-  if(error_ratio > 0.001) {
-    result = result + "<br/>Error ratio :: " + error_ratio.toFixed(2) +"%";
+  if (error_ratio > 0.001) {
+    result = result + "<br/>Error ratio :: " + error_ratio.toFixed(2) + "%";
   }
   let speed = Math.floor(minutes_per_question / totalCorrect);
   let speed_result =
@@ -210,9 +230,13 @@ function updateTime() {
   var diff = Math.abs(end_time - start_time);
   minutes_per_question = Math.floor(diff / 1000);
 }
+
+
+
 window.addEventListener('load', (event) => {
   replenish();
   answerKeyboardHandler();
+  yourNameKeyboardHandler();
 });
 
 function add(firstNumber, secondNumber) {

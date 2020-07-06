@@ -31,7 +31,7 @@
       <label for="secondNumGen">Second Number</label>&nbsp;&nbsp;&nbsp;
       <input type="text" id="secondNumGen" value="" readonly="readonly" /><br />
       <label for="answer">Answer</label>&nbsp;&nbsp;&nbsp;
-      <input type="number" id="answer" value="" />
+      <input type="text" id="answer" value="" onkeypress="return isNumber(event)"/>
       <label for="submit_answer"><input type="button" id="submit_answer" onclick="scoreMark()" value="Submit Answer"/></label>&nbsp;&nbsp;&nbsp;
 
       <br /><br />
