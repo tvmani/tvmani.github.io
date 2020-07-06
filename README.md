@@ -14,5 +14,6 @@
   - [] [Message showing that "you own" moving around in screen]()
   - [] [Message showing that "you own" zooming big from small]()
   - [] [Celebration gold papers falling down in the screen]()
+    - [] [Falling papers](https://www.cssscript.com/demo/confetti-falling-animation/)
   - [] [Allow kids to change to color once they win something]()
   - [] [Show them number of gold-coins they saved]()
