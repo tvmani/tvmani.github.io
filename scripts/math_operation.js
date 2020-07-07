@@ -44,6 +44,8 @@ function registerUser(studentId) {
     studentDetails.studentId.toLowerCase(),
     JSON.stringify(studentDetails)
   );
+
+  document.getElementById("answer").focus();
 }
 
 function yourNameKeyboardHandler() {
