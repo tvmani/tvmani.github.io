@@ -89,12 +89,12 @@ function replenish() {
   document.getElementById("secondNumGen").value = secondRandomNumber;
 }
 function isNumber(evt) {
-  evt = (evt) ? evt : window.event;
-  var charCode = (evt.which) ? evt.which : evt.keyCode;
-  console.log(charCode);
-  if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-    return false;
-  }
+  // evt = (evt) ? evt : window.event;
+  // var charCode = (evt.which) ? evt.which : evt.keyCode;
+  // console.log(charCode);
+  // if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+  //   return false;
+  // }
   return true;
 }
 function answerKeyboardHandler() {
