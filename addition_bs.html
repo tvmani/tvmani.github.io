@@ -45,14 +45,12 @@
 
             <div class="form-group row">
 
-              <button id="firstNumGen" class="btn btn-outline-primary btn-lg" disabled></button>
-              <button id="operationSymbol" class="btn btn-lg" disabled>+</button>
-              <button id="secondNumGen" class="btn btn-outline-primary btn-lg" disabled></button>
-              <button id="equalTo" class="btn btn-lg" disabled>=</button>
+              <button id="firstNumGen" class="btn btn-outline-primary btn-sm" disabled></button>
+              <button id="operationSymbol" class="btn btn-sm" disabled>+</button>
+              <button id="secondNumGen" class="btn btn-outline-primary btn-sm" disabled></button>
+              <button id="equalTo" class="btn btn-sm" disabled>=</button>
               <input type="text" id="answer" value="" onkeypress="return isNumber(event)" />
-              <label id="emptyLabel">&nbsp;</label>
-
-              <input type="button" id="submit_answer" class="btn btn-outline-primary btn-lg" onclick="scoreMark()"
+              <input type="button" id="submit_answer" class="btn btn-outline-primary btn-sm" onclick="scoreMark()"
                 value="GO" />
             </div>
             <div id="studentPracticeSummary" class="form-group row">
