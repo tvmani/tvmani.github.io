@@ -13,7 +13,7 @@
 
   <style>
     input[type=text] {
-      width: 5%;
+      width: 30%;
     }
   </style>
 </head>
@@ -28,7 +28,7 @@
         <label for="yourName">Name</label>&nbsp;&nbsp;&nbsp;
         <input type="text" id="yourName" value="" />
         <input type="button" id="submit_name" onclick="registerUser(document.getElementById('yourName').value)"
-          value="Use Name" />
+          value="GO!" />
         <br /><br />
       </div>
       <div class="col-sm-12">
@@ -49,12 +49,11 @@
               <button id="operationSymbol" class="btn btn-lg" disabled>+</button>
               <button id="secondNumGen" class="btn btn-outline-primary btn-lg" disabled></button>
               <button id="equalTo" class="btn btn-lg" disabled>=</button>
-              <input type="text" id="answer" class="mw-5" value="" onkeypress="return isNumber(event)" />
+              <input type="text" id="answer" value="" onkeypress="return isNumber(event)" />
               <label id="emptyLabel">&nbsp;</label>
 
               <input type="button" id="submit_answer" class="btn btn-outline-primary btn-lg" onclick="scoreMark()"
-                value="GO" />
-              <label id="emptyLabel" class="w-100">&nbsp;</label>
+                value="GO" />              
             </div>
             <div id="studentPracticeSummary" class="form-group row">
               <label id="totalQuestionsPracticed">Total Questions Practiced: 0</label>
