@@ -24,7 +24,7 @@ function registerUser(studentId) {
     studentId,
     sessions: [],
   };
-  let priorPracticeDetails = localStorage.getItem(studentId);
+  let priorPracticeDetails = localStorage.getItem(studentId.toLowerCase());
   if (priorPracticeDetails) {
     welcomeMessage = `${studentId} is amazing person, because ${studentId} practices like champion!`;
   } else {
