@@ -27,9 +27,9 @@
       <div class="col-sm-12">
         <label for="yourName">Name</label>&nbsp;&nbsp;&nbsp;
         <input type="text" id="yourName" value="" />
-        <input type="button" id="submit_name" onclick="registerUser(document.getElementById('yourName').value)"
+        <input type="button" id="submit_name" class="btn btn-outline-primary btn-sm"
+        onclick="registerUser(document.getElementById('yourName').value)"
           value="GO!" />
-        <br /><br />
       </div>
       <div class="col-sm-12">
         <div id="main" style="visibility: hidden;">
@@ -39,18 +39,17 @@
             <input type="hidden" id="max_input" value="40" />
 
             <div id="level" style="visibility: hidden;">
-              <label for="SquareMode">Square mode</label>&nbsp;&nbsp;&nbsp;
+              <label for="SquareMode">Square mode</label>
               <input type="checkbox" id="SquareMode" value="true" />
             </div>
 
             <div class="form-group row">
-
-              <button id="firstNumGen" class="btn btn-outline-primary btn-sm" disabled></button>
-              <button id="operationSymbol" class="btn btn-sm" disabled>+</button>
-              <button id="secondNumGen" class="btn btn-outline-primary btn-sm" disabled></button>
-              <button id="equalTo" class="btn btn-sm" disabled>=</button>
-              <input type="text" id="answer" value="" onkeypress="return isNumber(event)" />
-              <input type="button" id="submit_answer" class="btn btn-outline-primary btn-sm" onclick="scoreMark()"
+              <button id="firstNumGen" class="btn btn-outline-primary btn-sm w-10" disabled></button>
+              <button id="operationSymbol" class="btn btn-sm w-10" disabled>+</button>
+              <button id="secondNumGen" class="btn btn-outline-primary btn-sm w-10" disabled></button>
+              <button id="equalTo" class="btn btn-sm w-10" disabled>=</button>
+              <input type="text" id="answer" class="w-10" value="" onkeypress="return isNumber(event)" />
+              <input type="button" id="submit_answer" class="btn btn-outline-primary btn-sm w-10" onclick="scoreMark()"
                 value="GO" />
             </div>
             <div id="studentPracticeSummary" class="form-group row">
