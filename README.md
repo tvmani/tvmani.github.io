@@ -1,5 +1,11 @@
 # tvmani.github.io
 
+## How to run test case
+```bash
+jest --watch --verbose false session.test.js
+jest --watch --verbose false random.test.js
+```
+
 ## List of tasks
 
 - [x] [Basic domain creation](https://dhinamorumurai.info/)
