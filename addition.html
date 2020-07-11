@@ -18,8 +18,10 @@
       <div class="col-sm-12">
         <label for="yourName">Name</label>&nbsp;&nbsp;&nbsp;
         <input type="text" id="yourName" value="" />
-        <input type="button" id="submit_name" onclick="registerUser(document.getElementById('yourName').value)"
-          value="Use Name" />
+        <input type="button" id="submit_name" onclick="App.uiOps.registerUser(document.getElementById('yourName').value)"
+          value="Start" />
+        <input type="button" id="end" onclick="App.uiOps.registerUser(document.getElementById('yourName').value)"
+          value="End" />
         <br /><br />
       </div>
       <div class="col-sm-12">
@@ -27,7 +29,7 @@
           <form id="formPractice">
             <b><label id="welcomeMessage" /></b>&nbsp;&nbsp;
             <input type="hidden" id="operations" value="addition" />
-            <input type="hidden" id="max_input" value="40" />
+            <input type="hidden" id="maxInput" value="40" />
 
             <div id="level" style="visibility: hidden;">
               <label for="SquareMode">Square mode</label>&nbsp;&nbsp;&nbsp;
@@ -38,9 +40,9 @@
             <label for="secondNumGen">Second Number</label>&nbsp;&nbsp;&nbsp;
             <input type="text" id="secondNumGen" value="" readonly="readonly" /><br />
             <label for="answer">Answer</label>&nbsp;&nbsp;&nbsp;
-            <input type="text" id="answer" value="" onkeypress="return isNumber(event)" />
-            <label for="submit_answer"><input type="button" id="submit_answer" onclick="scoreMark()"
-                value="Submit Answer" /></label>&nbsp;&nbsp;&nbsp;
+            <input type="text" id="answer" value="" onkeypress="return App.uiOps.isNumber(event);" />
+            <label for="submitAnswer">
+            <input type="button" id="submitAnswer" onclick="App.uiOps.scoreMark(App.uiOps.ui.createQuestion());" value="Submit Answer" /></label>&nbsp;
 
             <br /><br />
             <a
@@ -57,7 +59,7 @@
             <table id="practicedResults" border="1">
               <tr>
                 <th colspan="6">Result Table<br />
-                  <div id="date_time">
+                  <div id="dateTime">
 
                   </div>
                 </th>
@@ -93,6 +95,6 @@
   </div>
 
 </body>
-<script src="scripts/math_operation.js"></script>
+<script src="scripts/bundle.js"></script>
 
 </html>

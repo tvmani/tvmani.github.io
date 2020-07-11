@@ -1,24 +1,13 @@
-const { Random } = require('./random');
+import Evaluator from './model/Evaluator';
+import uiTools from './ui_tools';
+import Random from './random';
 
 const startTime = new Date();
 let totalCorrect = 0;
 let totalIncorrect = 0;
 let welcomeMessage = '';
 let lastSubmissionTime;
-
-const operations = {
-  addition: (a, b) => a + b,
-  multiplication: (a, b) => a * b,
-  subtraction: (a, b) => a - b,
-  division: (a, b) => a / b,
-};
-
-const operations_explanations = {
-  addition: () => '',
-  multiplication: (a, b) => explanation(a, b),
-  subtraction: () => '',
-  division: () => '',
-};
+let sid='';
 
 function yourNameKeyboardHandler() {
   const input = document.getElementById('yourName');
@@ -65,51 +54,6 @@ function startPractice() {
   }
 }
 
-function explanation(ns) {
-  const numbers = [...ns];
-  numbers.sort((a, b) => a - b);
-  const mathOperations = document.getElementById('operations').value;
-  if (mathOperations === 'multiplication') {
-    if (numbers[1] > 10 && numbers[0] < 10) {
-      return explainMultiplication(numbers);
-    } if (numbers[1] > 10 && numbers[0] > 10) {
-      return explainMultiplication([numbers[1], numbers[0]]);
-    }
-  }
-  return '';
-}
-
-function explainMultiplication([a, b, ...rest]) {
-  const tens = Math.floor(b / 10) * 10;
-  const ones = Math.floor(b % 10);
-  const tensMultiples = tens * a;
-  const onesMultiples = ones * a;
-  const tensString = `${tens} x ${a} = ${tens * a}`;
-  const onesString = `${ones} x ${a} = ${ones * a}`;
-  const total = `${tensMultiples} + ${onesMultiples} = ${
-    tensMultiples + onesMultiples}`;
-  return ones != 0
-    ? `${onesString}<br>${tensString}<br>${total}`
-    : `${tensString}<br>${total}`;
-}
-
-function insRow(numbers) {
-  const x = document.getElementById('practicedResults').insertRow(2);
-  const mathOperations = document.getElementById('operations').value;
-  const firstNum = x.insertCell(0);
-  const secondNum = x.insertCell(1);
-  const answer = x.insertCell(2);
-  const submission = x.insertCell(3);
-  const details = x.insertCell(4);
-  const result = x.insertCell(5);
-  firstNum.innerHTML = numbers[0];
-  secondNum.innerHTML = numbers[1];
-  answer.innerHTML = operations[mathOperations](numbers[0], numbers[1]);
-  submission.innerHTML = numbers[2];
-  details.innerHTML = explanation(numbers);
-  result.innerHTML = operations[mathOperations](numbers[0], numbers[1]) == numbers[2];
-}
-
 function finalizeSubmit() {
   document.getElementById('answer').focus();
 }
@@ -120,30 +64,25 @@ window.addEventListener('load', (_event) => {
   yourNameKeyboardHandler();
 });
 
-export function scoreMark() {
-  // this.value += "    ";
-  const mathOperations = document.getElementById('operations').value;
-  const calculatedAnswer = operations[mathOperations](
-    parseInt(formPractice.firstNumGen.value, 10),
-    parseInt(formPractice.secondNumGen.value, 10),
-  );
-  const answer = parseInt(formPractice.answer.value, 10);
-  if (calculatedAnswer === answer) {
+
+export { uiTools as ui };
+
+export function scoreMark(question) {
+  if (Evaluator.evaluateQuestion(question)) {
     totalCorrect++;
   } else {
     totalIncorrect++;
   }
-  insRow([
-    parseInt(formPractice.firstNumGen.value, 10),
-    parseInt(formPractice.secondNumGen.value, 10),
-    parseInt(formPractice.answer.value, 10),
-  ]);
-  formPractice.answer.value = '';
+  uiTools.appendResult(question);
   replenish();
   lastSubmissionTime = new Date();
   const diff = Math.abs(lastSubmissionTime - startTime);
   const elapsedTime = Math.floor(diff / 1000);
   const errorRatio = (totalIncorrect / (totalCorrect + totalIncorrect)) * 100;
+
+  const priorQuestion = JSON.parse(localStorage.getItem(sid));
+  localStorage.setItem(sid, JSON.stringify([question, ...priorQuestion]));
+
   let result = `Correct => ${totalCorrect}<br/>Incorrect => ${totalIncorrect}`;
   if (errorRatio > 0.001) {
     result = `${result}<br/>Error ratio :: ${errorRatio.toFixed(2)}%`;
@@ -164,22 +103,22 @@ export function registerUser(studentId) {
   };
   let priorPracticeDetails = localStorage.getItem(studentId.toLowerCase());
 
-  let sid = new Date().toISOString();
+  sid = new Date().toISOString();
   sid = `Practice_${studentId}@${sid}`;
 
   if (priorPracticeDetails) {
-    welcomeMessage = `${studentId} is amazing person! ${studentId} practices like champion!`;
+    welcomeMessage = `${studentId} is amazing person! ${studentId} practices like champion! - ${sid}`;
   } else {
-    welcomeMessage = `Hi! ${studentId}, you are courageous! 1000 miles journey begins with single step!`;
+    welcomeMessage = `Hi! ${studentId}, you are courageous! 1000 miles journey begins with single step! - ${sid}`;
   }
   startPractice();
-  const currentTime = new Date();
   if (!priorPracticeDetails) {
     priorPracticeDetails = defaultDetails;
   } else {
     priorPracticeDetails = JSON.parse(priorPracticeDetails);
   }
-  priorPracticeDetails.sessions.push(currentTime);
+  priorPracticeDetails.sessions.push(sid);
+  localStorage.setItem(sid, JSON.stringify([]));
 
   const studentDetails = { sessions: priorPracticeDetails.sessions, studentId };
   localStorage.setItem(
@@ -191,13 +130,10 @@ export function registerUser(studentId) {
 }
 
 export function replenish() {
-  const maxInput = document.getElementById('maxInput').value;
-  const max = parseInt(maxInput, 10);
-  const randomNumber = Random.getRandomIntInclusive(3, max);
-  document.getElementById('answer').value = '';
-  document.getElementById('firstNumGen').value = randomNumber;
-  const secondRandomNumber = Random.getRandomIntInclusive(3, 20);
-  document.getElementById('secondNumGen').value = secondRandomNumber;
+  const max = parseInt(document.getElementById('maxInput').value, 10);
+  const randomNumber = Random.getRandomIntInclusiveWithExceptions(3, max, [10]);
+  const secondRandomNumber = Random.getRandomIntInclusive(3, 20, [10]);
+  uiTools.populateNewQuestion(randomNumber, secondRandomNumber);
 }
 
 export function isNumber(event) {
