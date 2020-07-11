@@ -130,7 +130,7 @@ export function registerUser(studentId) {
 export function replenish() {
   const max = parseInt(document.getElementById('maxInput').value, 10);
   const randomNumber = Random.getRandomIntInclusiveWithExceptions(3, max, [10]);
-  const secondRandomNumber = Random.getRandomIntInclusive(3, 20, [10]);
+  const secondRandomNumber = Random.getRandomIntInclusive(3, max, [10]);
   uiTools.populateNewQuestion(randomNumber, secondRandomNumber);
 }
 

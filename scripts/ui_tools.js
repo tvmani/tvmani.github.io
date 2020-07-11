@@ -31,6 +31,13 @@ export function populateNewQuestion(randomNumber, secondRandomNumber) {
     document.getElementById('secondNumGen').value = input[0];
     return;
   }
+  if(document.getElementById('operations').value == 'division') {
+    const input = [randomNumber, secondRandomNumber];
+    input.sort((a,b) => (a-b));
+    document.getElementById('firstNumGen').value = input[1] * input[0];
+    document.getElementById('secondNumGen').value = input[0];
+    return;
+  }
   document.getElementById('answer').value = '';
   document.getElementById('firstNumGen').value = randomNumber;
   document.getElementById('secondNumGen').value = secondRandomNumber;
