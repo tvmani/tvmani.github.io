@@ -1,9 +1,9 @@
 <html>
 
 <head>
-  <title>Multiplication - Practice - Daily</title>
-  <meta charset="utf-8">
+  <title>Addition - Practice - Daily</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -16,61 +16,56 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
-        <label for="yourName">Name</label>
+        <label for="yourName">Name</label>&nbsp;&nbsp;&nbsp;
         <input type="text" id="yourName" value="" />
         <input type="button" id="submit_name" onclick="App.uiOps.registerUser(document.getElementById('yourName').value)"
           value="Start" />
         <input type="button" id="end" onclick="App.uiOps.registerUser(document.getElementById('yourName').value)"
           value="End" />
+        <br /><br />
       </div>
       <div class="col-sm-12">
         <div id="main" style="visibility: hidden;">
           <form id="formPractice">
-            <b><label id="welcomeMessage" /></b>
+            <div><label id="welcomeMessage" /></div>
+            <div><label id="totalQuestionsPracticed">Total Questions Practiced: 0</label></div>
             <input type="hidden" id="operations" value="multiplication" />
-            <input type="hidden" id="maxInput" value="21" />
-            <br/>
-            <label for="firstNumGen">First Number</label>
+            <input type="hidden" id="maxInput" value="40" />
+
+            <div id="level" style="visibility: hidden;">
+              <label for="SquareMode">Square mode</label>&nbsp;&nbsp;&nbsp;
+              <input type="checkbox" id="SquareMode" value="true" />
+            </div>
+            <label for="firstNumGen">First Number</label>&nbsp;&nbsp;&nbsp;
             <input type="text" id="firstNumGen" value="" readonly="readonly" /><br />
-            <label for="secondNumGen">Second Number</label>
+            <label for="secondNumGen">Second Number</label>&nbsp;&nbsp;&nbsp;
             <input type="text" id="secondNumGen" value="" readonly="readonly" /><br />
-            <label for="answer">Answer</label>&nbsp;
+            <label for="answer">Answer</label>&nbsp;&nbsp;&nbsp;
             <input type="text" id="answer" value="" onkeypress="return App.uiOps.isNumber(event);" />
             <label for="submitAnswer">
-            <input type="button" id="submitAnswer" onclick="App.uiOps.scoreMark(App.uiOps.ui.createQuestion());" value="Submit Answer" /></label>&nbsp;
+            <input type="button"  autofocus  id="submitAnswer"onclick="App.uiOps.scoreMark(App.uiOps.ui.createQuestion());" value="Submit Answer" /></label>&nbsp;
+
             <div id="studentPracticeSummary">
-              <label id="totalQuestionsPracticed">Total Questions Practiced: 0</label>
-              <br></br>
               <label id="summary">Summary</label>&nbsp;&nbsp;&nbsp;
             </div>
-
           </form>
-
-
           <div>
             <table id="practicedResults" border="1">
               <tr>
-                <th colspan="6">Result Table<br />
-                  <div id="dateTime">
-
-                  </div>
-                </th>
-              </tr>
-              <tr>
                 <th>
-                  FirstNum
+                  Number
                 </th>
                 <th>
-                  SecondNum
+                  Number
                 </th>
                 <th>
-                  Answer
+                  Your Answer
                 </th>
                 <th>
-                  Submission
+                  Correct
                 </th>
                 <th>
-                  Explanation
+                  Clue
                 </th>
                 <th>
                   Result
@@ -78,17 +73,20 @@
               </tr>
             </table>
           </div>
-          <a href="addition.html">Addition</a>&nbsp;&nbsp;&nbsp;
+          <a href="multiplication.html">Multiplication</a>&nbsp;&nbsp;&nbsp;
           <a href="subtraction.html">Subtraction</a>
-          <br /><br />
           <a
-            href="https://thumbs.dreamstime.com/z/x-multiplication-table-vector-illustration-students-multiplication-table-x-98833796.jpg">
-            Table Reference<br /><br />
-          </a>          
+          href="https://thumbs.dreamstime.com/z/x-multiplication-table-vector-illustration-students-multiplication-table-x-98833796.jpg">
+          Table Reference<br /><br />
+        </a>
+
         </div>
       </div>
+
     </div>
   </div>
+
 </body>
 <script src="scripts/bundle.js"></script>
+
 </html>

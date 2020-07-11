@@ -13,7 +13,7 @@ function createQuestion() {
 }
 
 function appendResult(question) {
-  const x = document.getElementById('practicedResults').insertRow(2);
+  const x = document.getElementById('practicedResults').insertRow(1);
   x.insertCell(0).innerHTML = question.firstNum;
   x.insertCell(1).innerHTML = question.secondNum;
   x.insertCell(2).innerHTML = Evaluator.answer(question);
@@ -24,6 +24,13 @@ function appendResult(question) {
 }
 
 export function populateNewQuestion(randomNumber, secondRandomNumber) {
+  if(document.getElementById('operations').value == 'subtraction') {
+    const input = [randomNumber, secondRandomNumber];
+    input.sort((a,b) => (a-b));
+    document.getElementById('firstNumGen').value = input[1];
+    document.getElementById('secondNumGen').value = input[0];
+    return;
+  }
   document.getElementById('answer').value = '';
   document.getElementById('firstNumGen').value = randomNumber;
   document.getElementById('secondNumGen').value = secondRandomNumber;
