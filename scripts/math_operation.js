@@ -22,40 +22,38 @@ function yourNameKeyboardHandler() {
 function answerKeyboardHandler() {
   const answer = document.getElementById('answer');
   if (answer && answer.addEventListener) {
-    answer.addEventListener('keydown', tabHandler, false);
+    answer.addEventListener('keydown', tabAndEnterHandler, false);
     answer.addEventListener('keypress', isNumber, true);
   }
 }
 
-function tabHandler(e) {
+function tabAndEnterHandler(e) {
   const KEYCODE_TAB = 9;
   const KEYCODE_ENTER = 13;
   if (e.keyCode == KEYCODE_TAB || e.keyCode == KEYCODE_ENTER) {
-    scoreMark();
-    document.getElementById('answer').focus();
-    if (e.preventDefault) {
-      e.preventDefault();
-    }
+    event.preventDefault();
+    document.getElementById('submitAnswer').click();
   }
 }
 
 function startPractice() {
-  document.getElementById('welcomeMessage').innerText = welcomeMessage;
+  document.getElementById('welcomeMessage').innerHTML = welcomeMessage;
   document.getElementById('main').style.visibility = 'visible';
-  document.getElementById('dateTime').innerText = startTime;
   document.getElementById('summary').innerHTML = '';
   document.getElementById('totalQuestionsPracticed').innerHTML = 'Total Questions Practiced:  0';
   /* If someone doesn't cloes this window, but still using it! */
   const staleResults = document.getElementById('practicedResults').rows.length;
-  if (staleResults > 2) {
-    for (let i = 0; i < staleResults - 2; i++) {
+  if (staleResults > 1) {
+    for (let i = 0; i < staleResults - 1; i++) {
       document.getElementById('practicedResults').deleteRow(-1);
     }
   }
 }
 
 function finalizeSubmit() {
+  document.getElementById('answer').click();
   document.getElementById('answer').focus();
+  //document.getElementById('answer').scrollIntoView();
 }
 
 window.addEventListener('load', (_event) => {
@@ -89,7 +87,7 @@ export function scoreMark(question) {
   }
   lastSubmissionTime= new Date();
   const speed = Math.floor(elapsedTime / totalCorrect);
-  const speedResult = `<br/>Speed = seconds/questions is  ${speed}. Lower the better!`;
+  const speedResult = `<br/>Speed = ${speed}, Number of seconds per question. Lower the better!`;
 
   document.getElementById('totalQuestionsPracticed').innerHTML = `Total Questions Practiced:  ${totalCorrect + totalIncorrect}`;
   document.getElementById('summary').innerHTML = `${result}<br/>${speedResult}`;
@@ -107,9 +105,9 @@ export function registerUser(studentId) {
   sid = `Practice_${studentId}@${sid}`;
 
   if (priorPracticeDetails) {
-    welcomeMessage = `${studentId} is amazing person! ${studentId} practices like champion! - ${sid}`;
+    welcomeMessage = `<b>${studentId} is amazing person!</b> ${studentId} practices like champion!<br/>Identifier - ${sid}`;
   } else {
-    welcomeMessage = `Hi! ${studentId}, you are courageous! 1000 miles journey begins with single step! - ${sid}`;
+    welcomeMessage = `<b>Hi! ${studentId}, you are courageous!</b> 1000 miles journey begins with single step!<br/>Identifier - ${sid}`;
   }
   startPractice();
   if (!priorPracticeDetails) {
@@ -137,8 +135,12 @@ export function replenish() {
 }
 
 export function isNumber(event) {
+  const TAB_KEY=9;
   const evt = event || window.event;
-  const charCode = evt.which ? evt.which : evt.keyCode;
+  const charCode = event.which ? event.which : event.keyCode;
+  if (event.keyCode === TAB_KEY) {
+    return tabHandler(event);
+  }
   if (charCode > 31 && (charCode < 48 || charCode > 57)) {
     return false;
   }
