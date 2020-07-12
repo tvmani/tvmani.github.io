@@ -1,0 +1,13 @@
+
+
+img {
+  border: 0px solid blue;
+  border-radius: 4px;
+  padding: 5px;
+  width: 40px;
+  height: 40px;
+}
+
+input[type=text] {
+  width: 30%;
+}

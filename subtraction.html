@@ -8,12 +8,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-
-  <style>
-    input[type=text] {
-      width: 30%;
-    }
-  </style>
+  <link rel="stylesheet" href="ui_styles.css">
 </head>
 <body>
   <div class="jumbotron text-center">
@@ -34,9 +29,7 @@
         <div id="main" style="visibility: hidden;">
           <form id="formPractice">
             <div><label id="welcomeMessage" /></div>
-            <div><label id="totalQuestionsPracticed">Total Questions Practiced: 0</label></div>
-            <input type="hidden" id="operations" value="subtraction" />
-            <input type="hidden" id="maxInput" value="40" />
+            
 <!-- 
             <div id="level" style="visibility: hidden;">
               <label for="SquareMode">Square mode</label>&nbsp;&nbsp;&nbsp;
@@ -44,12 +37,15 @@
             </div> -->
             <div class="form-group row">
               <button id="firstNumGen" class="btn btn-outline-primary btn-sm" disabled></button>
-              <button id="operationSymbol" class="btn btn-sm" disabled>-</button>
+              <img src="images/subtraction.jpg" alt="Mathematics - Subtraction Symbol - ">
               <button id="secondNumGen" class="btn btn-outline-primary btn-sm" disabled></button>
               <button id="equalTo" class="btn btn-sm" disabled>=</button>
               <input type="text" id="answer" value="" onkeypress="return App.uiOps.isNumber(event);" />
               <input type="button" class="btn btn-outline-primary btn-sm" autofocus  id="submitAnswer"onclick="App.uiOps.scoreMark(App.uiOps.ui.createQuestion());" value="Go" />
             </div>
+            <div><label id="totalQuestionsPracticed">Total Questions Practiced: 0</label></div>
+            <input type="hidden" id="operations" value="subtraction" />
+            <input type="hidden" id="maxInput" value="40" />
 
             <div id="studentPracticeSummary">
               <label id="summary">Summary</label>&nbsp;&nbsp;&nbsp;

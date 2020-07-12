@@ -15,6 +15,13 @@
     input[type=text] {
       width: 30%;
     }
+
+    img {
+      border: 10px solid red;
+      border-radius: 4px;
+      padding: 5px;
+      width: 75px;
+    }
   </style>
 </head>
 
@@ -28,8 +35,7 @@
         <label for="yourName">Name</label>&nbsp;&nbsp;&nbsp;
         <input type="text" id="yourName" value="" class="w-10" />
         <input type="button" id="submit_name" class="btn btn-outline-primary btn-sm"
-        onclick="registerUser(document.getElementById('yourName').value)"
-          value="GO!" />
+          onclick="registerUser(document.getElementById('yourName').value)" value="GO!" />
       </div>
       <div class="col-sm-12">
         <div id="main" style="visibility: hidden;">

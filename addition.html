@@ -8,13 +8,14 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-
+  <link rel="stylesheet" href="ui_styles.css">
   <style>
-    input[type=text] {
-      width: 30%;
-    }
+   
+
+
   </style>
 </head>
+
 <body>
   <div class="jumbotron text-center">
     <h3>Addition (+) Practice</h3>
@@ -24,29 +25,28 @@
       <div class="col-sm-12">
         <label for="yourName">Name</label>&nbsp;&nbsp;&nbsp;
         <input type="text" id="yourName" value="" />
-        <input type="button" id="submit_name" class="btn btn-outline-primary btn-sm" onclick="App.uiOps.registerUser(document.getElementById('yourName').value)"
-          value="Start" />
-        <input type="button" id="end" class="btn btn-outline-primary btn-sm" onclick="App.uiOps.registerUser(document.getElementById('yourName').value)"
-          value="End" />
+        <input type="button" id="submit_name" class="btn btn-outline-primary btn-sm"
+          onclick="App.uiOps.registerUser(document.getElementById('yourName').value)" value="Start" />
+        <input type="button" id="end" class="btn btn-outline-primary btn-sm"
+          onclick="App.uiOps.registerUser(document.getElementById('yourName').value)" value="End" />
         <br /><br />
       </div>
       <div class="col-sm-12">
         <div id="main" style="visibility: hidden;">
           <form id="formPractice">
             <div><label id="welcomeMessage" /></div>
-            <div><label id="totalQuestionsPracticed">Total Questions Practiced: 0</label></div>
-            <input type="hidden" id="operations" value="addition" />
-            <input type="hidden" id="maxInput" value="40" />
-
-
             <div class="form-group row">
               <button id="firstNumGen" class="btn btn-outline-primary btn-sm" disabled></button>
-              <button id="operationSymbol" class="btn btn-sm" disabled>+</button>
+              <img src="images/addition.jpg" alt="Mathematics - Addition Symbol + ">
               <button id="secondNumGen" class="btn btn-outline-primary btn-sm" disabled></button>
               <button id="equalTo" class="btn btn-sm" disabled>=</button>
               <input type="text" id="answer" value="" onkeypress="return App.uiOps.isNumber(event);" />
-              <input type="button" class="btn btn-outline-primary btn-sm" autofocus  id="submitAnswer"onclick="App.uiOps.scoreMark(App.uiOps.ui.createQuestion());" value="GO!" /></label>
+              <input type="button" class="btn btn-outline-primary btn-sm" autofocus id="submitAnswer"
+                onclick="App.uiOps.scoreMark(App.uiOps.ui.createQuestion());" value="GO!" /></label>
             </div>
+            <div><label id="totalQuestionsPracticed">Total Questions Practiced: 0</label></div>
+            <input type="hidden" id="operations" value="addition" />
+            <input type="hidden" id="maxInput" value="40" />
             <div id="studentPracticeSummary">
               <label id="summary">Summary</label>&nbsp;&nbsp;&nbsp;
             </div>
@@ -80,9 +80,9 @@
           <a href="multiplication.html">Multiplication</a>
           <a href="division.html">Division</a>
           <a
-          href="https://thumbs.dreamstime.com/z/x-multiplication-table-vector-illustration-students-multiplication-table-x-98833796.jpg">
-          Table Reference<br /><br />
-        </a>
+            href="https://thumbs.dreamstime.com/z/x-multiplication-table-vector-illustration-students-multiplication-table-x-98833796.jpg">
+            Table Reference<br /><br />
+          </a>
 
         </div>
       </div>
