@@ -8,6 +8,12 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+  <style>
+    input[type=text] {
+      width: 30%;
+    }
+  </style>
 </head>
 <body>
   <div class="jumbotron text-center">
@@ -18,9 +24,9 @@
       <div class="col-sm-12">
         <label for="yourName">Name</label>&nbsp;&nbsp;&nbsp;
         <input type="text" id="yourName" value="" />
-        <input type="button" id="submit_name" onclick="App.uiOps.registerUser(document.getElementById('yourName').value)"
+        <input type="button" id="submit_name" class="btn btn-outline-primary btn-sm" onclick="App.uiOps.registerUser(document.getElementById('yourName').value)"
           value="Start" />
-        <input type="button" id="end" onclick="App.uiOps.registerUser(document.getElementById('yourName').value)"
+        <input type="button" id="end" class="btn btn-outline-primary btn-sm" onclick="App.uiOps.registerUser(document.getElementById('yourName').value)"
           value="End" />
         <br /><br />
       </div>
@@ -39,7 +45,7 @@
               <button id="secondNumGen" class="btn btn-outline-primary btn-sm" disabled></button>
               <button id="equalTo" class="btn btn-sm" disabled>=</button>
               <input type="text" id="answer" value="" onkeypress="return App.uiOps.isNumber(event);" />
-              <input type="button" class="btn btn-outline-primary btn-sm" autofocus  id="submitAnswer"onclick="App.uiOps.scoreMark(App.uiOps.ui.createQuestion());" value="Submit Answer" /></label>
+              <input type="button" class="btn btn-outline-primary btn-sm" autofocus  id="submitAnswer"onclick="App.uiOps.scoreMark(App.uiOps.ui.createQuestion());" value="GO!" /></label>
             </div>
             <div id="studentPracticeSummary">
               <label id="summary">Summary</label>&nbsp;&nbsp;&nbsp;
