@@ -11,6 +11,7 @@ let sid='';
 
 function yourNameKeyboardHandler() {
   const input = document.getElementById('yourName');
+  input.focus();
   input.addEventListener('keyup', (event) => {
     if (event.keyCode === 13) {
       event.preventDefault();
@@ -101,13 +102,13 @@ export function registerUser(studentId) {
   };
   let priorPracticeDetails = localStorage.getItem(studentId.toLowerCase());
 
-  sid = new Date().toISOString();
-  sid = `Practice_${studentId}@${sid}`;
+  let sessionTime = new Date().toISOString();
+  sid = `Practice_${studentId}@${sessionTime}`;
 
   if (priorPracticeDetails) {
-    welcomeMessage = `<b>${studentId} is amazing person!</b> ${studentId} practices like champion!<br/>Identifier - ${sid}`;
+    welcomeMessage = `<b>${studentId} is amazing person!</b> ${studentId} practices like champion!<br/>Start time : ${sessionTime}`;
   } else {
-    welcomeMessage = `<b>Hi! ${studentId}, you are courageous!</b> 1000 miles journey begins with single step!<br/>Identifier - ${sid}`;
+    welcomeMessage = `<b>Hi! ${studentId}, you are courageous!</b> 1000 miles journey begins with single step!<br/>Start time : ${sessionTime}`;
   }
   startPractice();
   if (!priorPracticeDetails) {
