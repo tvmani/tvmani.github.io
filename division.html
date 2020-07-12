@@ -18,7 +18,7 @@
     <div class="row">
       <div class="col-sm-12">
         <label for="yourName">Name</label>&nbsp;&nbsp;&nbsp;
-        <input type="text" id="yourName" value="" />
+        <input type="text" id="yourName" value="" class="input-name"/>
         <input type="button" id="submit_name" class="btn btn-outline-primary btn-sm" onclick="App.uiOps.registerUser(document.getElementById('yourName').value)"
           value="Start" />
         <input type="button" id="end" class="btn btn-outline-primary btn-sm" onclick="App.uiOps.registerUser(document.getElementById('yourName').value)"
@@ -39,7 +39,7 @@
               <img src="images/division.jpg" alt="Mathematics - division Symbol + ">
               <label id="secondNumGen" class="label label-medium"></label>
               <button id="equalTo" class="btn btn-sm" disabled>=</button>
-              <input type="text" id="answer" value="" onkeypress="return App.uiOps.isNumber(event);" />
+              <input type="text" id="answer" value="" class="input-answer" onkeypress="return App.uiOps.isNumber(event);" />
               <input type="button" class="btn btn-outline-primary btn-sm" autofocus  id="submitAnswer"onclick="App.uiOps.scoreMark(App.uiOps.ui.createQuestion());" value="Go" />
             </div>
             <div><label id="totalQuestionsPracticed">Total Questions Practiced: 0</label></div>
