@@ -17,7 +17,7 @@ input[type=text] {
 }
 
 .label {
-  margin: 15px;
+  margin: 10px;
   border-style: solid;
   border-color: blue;
   padding-top: 10px;
