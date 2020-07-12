@@ -15,6 +15,15 @@ input[type=text] {
   width: 30%;
 }
 
+.label-noborder {
+  margin: 10px;
+  border-style: solid;    
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: hidden;
+}
+
 .label {
   margin: 10px;
   border-style: solid;
