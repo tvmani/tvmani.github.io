@@ -2,11 +2,11 @@
 
 img {
   border: 0px solid blue;
-  border-radius: 4px;  
-  width: 40px;
-  height: 40px;
+  border-radius: 4px;
+  width: 20px;
+  height: 20px;
   vertical-align: middle;
-   padding-top: 10px;
+   padding-top: 4px;
   /* padding-right: 10px;
   padding-bottom: 10px;
   padding-left: 10px;   */
@@ -18,12 +18,12 @@ input[type=text] {
 
 .label {
   margin: 15px;
-  border-style: solid;  
+  border-style: solid;
   border-color: blue;
   padding-top: 10px;
   padding-right: 10px;
   padding-bottom: 10px;
-  padding-left: 10px; 
+  padding-left: 10px;
 }
 
 .label-xsmall {
@@ -51,7 +51,7 @@ input[type=text] {
   font-size: x-large;
 }
 
-.label-large-large-extra {  
+.label-large-large-extra {
   font-size: xx-large;
 }
 
