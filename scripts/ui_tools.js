@@ -3,9 +3,13 @@ import Evaluator from './model/Evaluator';
 import explanation from './model/AnswerTips';
 
 function createQuestion() {
+
+  const firstNum = document.getElementById("firstNumGen").innerHTML;
+  const secondNum = document.getElementById("secondNumGen").innerHTML;
+
   return new Question(
-    parseInt(formPractice.firstNumGen.value, 10),
-    parseInt(formPractice.secondNumGen.value, 10),
+    parseInt(firstNum, 10),
+    parseInt(secondNum, 10),
     document.getElementById('operations').value,
     parseInt(formPractice.answer.value, 10),
     new Date()
@@ -27,20 +31,20 @@ export function populateNewQuestion(randomNumber, secondRandomNumber) {
   if(document.getElementById('operations').value == 'subtraction') {
     const input = [randomNumber, secondRandomNumber];
     input.sort((a,b) => (a-b));
-    document.getElementById('firstNumGen').value = input[1];
-    document.getElementById('secondNumGen').value = input[0];
+    document.getElementById('firstNumGen').innerHTML = input[1];
+    document.getElementById('secondNumGen').innerHTML = input[0];
     return;
   }
   if(document.getElementById('operations').value == 'division') {
     const input = [randomNumber, secondRandomNumber];
     input.sort((a,b) => (a-b));
-    document.getElementById('firstNumGen').value = input[1] * input[0];
-    document.getElementById('secondNumGen').value = input[0];
+    document.getElementById('firstNumGen').innerHTML = input[1] * input[0];
+    document.getElementById('secondNumGen').innerHTML = input[0];
     return;
   }
   document.getElementById('answer').value = '';
-  document.getElementById('firstNumGen').value = randomNumber;
-  document.getElementById('secondNumGen').value = secondRandomNumber;
+  document.getElementById('firstNumGen').innerHTML = randomNumber;
+  document.getElementById('secondNumGen').innerHTML = secondRandomNumber;
 }
 
 function populateEmptyResult() {

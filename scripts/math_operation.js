@@ -14,7 +14,7 @@ function yourNameKeyboardHandler() {
   input.addEventListener('keyup', (event) => {
     if (event.keyCode === 13) {
       event.preventDefault();
-      document.getElementById('submitName').click();
+      document.getElementById('submit_name').click();
     }
   });
 }
