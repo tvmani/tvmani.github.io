@@ -11,7 +11,11 @@ img {
   padding-left: 10px;   */
 }
 
-input[type=text] {
+.input-name {
+  width: 32%;
+}
+
+.input-answer {
   width: 16%;
 }
 
