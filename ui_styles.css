@@ -3,10 +3,9 @@
 img {
   border: 0px solid blue;
   border-radius: 4px;
-  width: 20px;
-  height: 20px;
-  vertical-align: middle;
-   padding-top: 4px;
+  width: 24px;
+  height: 56px;  
+   padding-top: 16px;
   /* padding-right: 10px;
   padding-bottom: 10px;
   padding-left: 10px;   */
