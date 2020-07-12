@@ -32,18 +32,18 @@
             <input type="hidden" id="operations" value="multiplication" />
             <input type="hidden" id="maxInput" value="22" />
 
-            <div id="level" style="visibility: hidden;">
+            <!-- <div id="level" style="visibility: hidden;">
               <label for="SquareMode">Square mode</label>&nbsp;&nbsp;&nbsp;
               <input type="checkbox" id="SquareMode" value="true" />
+            </div> -->
+            <div class="form-group row">
+              <button id="firstNumGen" class="btn btn-outline-primary btn-sm" disabled></button>
+              <button id="operationSymbol" class="btn btn-sm" disabled>*</button>
+              <button id="secondNumGen" class="btn btn-outline-primary btn-sm" disabled></button>
+              <button id="equalTo" class="btn btn-sm" disabled>=</button>
+              <input type="text" id="answer" value="" onkeypress="return App.uiOps.isNumber(event);" />
+              <input type="button" class="btn btn-outline-primary btn-sm" autofocus  id="submitAnswer"onclick="App.uiOps.scoreMark(App.uiOps.ui.createQuestion());" value="Submit Answer" /></label>
             </div>
-            <label for="firstNumGen">First Number</label>&nbsp;&nbsp;&nbsp;
-            <input type="text" id="firstNumGen" value="" readonly="readonly" /><br />
-            <label for="secondNumGen">Second Number</label>&nbsp;&nbsp;&nbsp;
-            <input type="text" id="secondNumGen" value="" readonly="readonly" /><br />
-            <label for="answer">Answer</label>&nbsp;&nbsp;&nbsp;
-            <input type="text" id="answer" value="" onkeypress="return App.uiOps.isNumber(event);" />
-            <label for="submitAnswer">
-            <input type="button"  autofocus  id="submitAnswer"onclick="App.uiOps.scoreMark(App.uiOps.ui.createQuestion());" value="Submit Answer" /></label>&nbsp;
 
             <div id="studentPracticeSummary">
               <label id="summary">Summary</label>&nbsp;&nbsp;&nbsp;
