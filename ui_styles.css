@@ -11,3 +11,45 @@ img {
 input[type=text] {
   width: 30%;
 }
+
+.label {
+  border-style: solid;  
+  border-color: blue;
+  padding-top: 10;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+}
+
+/* .label-xsmall {
+  vertical-align: super;
+  font-size: x-small;
+}
+
+.label-small {
+  vertical-align: super;
+  font-size: small;
+}
+
+.label-medium {
+  vertical-align: super;
+  font-size: medium;
+}
+
+.label-large {
+  vertical-align: super;
+  font-size: large;
+}
+
+.label-large-extra {
+  vertical-align: super;
+  font-size: x-large;
+}
+
+.label-large-large-extra {  
+  font-size: xx-large;
+}
+
+.label-bs {
+  vertical-align: super;
+} */
