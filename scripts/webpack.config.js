@@ -15,4 +15,18 @@ module.exports = {
     compress: false,
     port: 9000,
   },
+  module: {
+    rules: [
+      { test: /\.css$/, use: 'css-loader' },
+      { test: /\.ts$/, use: 'ts-loader' },
+      {
+        test: /\.js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: { presets: ['@babel/preset-env'] },
+        },
+      },
+    ],
+  },
 };
