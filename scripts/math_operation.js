@@ -32,7 +32,7 @@ function tabAndEnterHandler(e) {
   const KEYCODE_TAB = 9;
   const KEYCODE_ENTER = 13;
   if (e.keyCode === KEYCODE_TAB || e.keyCode === KEYCODE_ENTER) {
-    if (document.getElementById('answer').value && document.getElementById('answer').value.length > 1) {
+    if (document.getElementById('answer').value && document.getElementById('answer').value.length >= 1) {
       e.preventDefault();
       document.getElementById('submitAnswer').click();
     } else {
