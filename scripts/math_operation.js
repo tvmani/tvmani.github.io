@@ -72,7 +72,7 @@ window.addEventListener('load', (_event) => {
 export { uiTools as ui };
 
 export function scoreMark(question) {
-  if (document.getElementById('answer').value && document.getElementById('answer').value.length > 1) {
+  if (document.getElementById('answer').value && document.getElementById('answer').value.length >= 1) {
     //do nothing..
   } else {
     console.log('enter usage without input!');
