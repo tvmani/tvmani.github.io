@@ -16,6 +16,7 @@
     "@babel/preset-env": "7.10.4",
     "babel-jest": "26.1.0",
     "babel-loader": "8.1.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "6.26.2",
     "eslint": "7.4.0",
     "eslint-config-airbnb": "18.2.0",
     "eslint-plugin-import": "2.22.0",
@@ -28,6 +29,7 @@
     "webpack-cli": "3.3.12"
   },
   "dependencies": {
-    "core-js": "3.6.5"
+    "core-js": "3.6.5",
+    "lodash": "4.17.19"
   }
 }
