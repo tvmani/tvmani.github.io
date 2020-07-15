@@ -46,12 +46,13 @@ import * as fc from "fast-check";
 
 test("Random number should be within boundry", () => {
   fc.assert(
-    fc.property( fc.tuple(fc.integer(1, 12), fc.integer(1, 12)), (data) => {
+    fc.property( fc.tuple(fc.integer(2, 7), fc.integer(8, 12)), (data) => {
       const inputs = [data[0], data[1]];
       inputs.sort((x, y) => x - y);
-      const answer = Random.getRandomIntInclusiveWithExceptions(inputs[0], inputs[1], [10, 6]);
+      const answer = Random.getRandomIntInclusiveWithExceptions(inputs[0], inputs[1], [10]);
       console.log(`Inputs: ${inputs}, Generate number is ${answer}`);
       expect(answer).not.toBe(10);
+      expect(answer).toBeGreaterThan(1);
     })
   );
 });

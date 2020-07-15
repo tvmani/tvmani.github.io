@@ -1,5 +1,13 @@
-//import { shuffle } from 'lodash/fp/shuffle';
-const shuffle = require('lodash/fp/shuffle');
+//import { shuffle } from 'lodash/shuffle';
+const shuffle = require("lodash/shuffle");
+
+function distort(i) {
+  if (Math.random() > 0.5) {
+    return i + 1;
+  } else {
+    return i - 1;
+  }
+}
 
 export default class Random {
   /**
@@ -13,12 +21,20 @@ export default class Random {
     return Math.floor(Math.random() * (max - min + 1)) + min; // The maximum is inclusive and the minimum is inclusive
   }
 
-  suffle
+  suffle;
 
   static getRandomIntInclusiveWithExceptions(min, max, ...excludes) {
-    let generated = Array.from(Array(max - min).keys()).map(i => i + min).filter(i => excludes.indexOf(i)!=-1);
-    let unique = new Set(generated);
-    excludes.forEach(k => unique.delete(k));
+    let generated = Array.from(Array(max - min).keys())
+      .map(i => i + min)
+      .map(i => {
+        if (excludes.indexOf(i) != -1) {
+          return distort(i);
+        } else {
+          return i;
+        }
+      });
+    const unique = new Set(generated);
+    excludes.forEach((k) => unique.delete(k));
     return shuffle(Array.from(unique))[0];
   }
 }
