@@ -47,6 +47,8 @@ function startPractice() {
   document.getElementById('main').style.visibility = 'visible';
   document.getElementById('summary').innerHTML = '';
   document.getElementById('totalQuestionsPracticed').innerHTML = 'Total Questions Practiced:  0';
+  totalCorrect = 0;
+  totalIncorrect = 0;
   /* If someone doesn't cloes this window, but still using it! */
   const staleResults = document.getElementById('practicedResults').rows.length;
   if (staleResults > 1) {
