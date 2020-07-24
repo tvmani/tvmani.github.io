@@ -19,7 +19,7 @@ import * as fc from "fast-check";
 //   },
 // });
 
-// test("Random number should be within boundry", () => {
+// test("Random number should be within boundry of 3 and 7", () => {
 //   expect(Random.getRandomIntInclusive(3, 7)).toBeWithinRange(3, 7);
 // });
 
@@ -36,23 +36,20 @@ import * as fc from "fast-check";
 
 // test("Random number should not be out of boundry", () => {
 //   fc.assert(
-//     fc.property(fc.integer(1,12), fc.integer(1,12), (a, b) => {
-//       const answer = Random.getRandomIntInclusiveWithExceptions(a, b, [10]);
+//     fc.property(fc.integer(1,7), fc.integer(9,15), (a, b) => {
+//       const answer = Random.getRandomIntInclusiveWithExceptions(a, b, [ parseInt(10, 10) ]);
 //       expect(answer).not.toBe(100);
-
 //     })
 //   );
 // });
 
 test("Random number should be within boundry", () => {
   fc.assert(
-    fc.property( fc.tuple(fc.integer(2, 7), fc.integer(8, 12)), (data) => {
-      const inputs = [data[0], data[1]];
+    fc.property( fc.tuple(fc.integer(2, 7), fc.integer(8, 15)), (inputs) => {
       inputs.sort((x, y) => x - y);
-      const answer = Random.getRandomIntInclusiveWithExceptions(inputs[0], inputs[1], [10]);
-      console.log(`Inputs: ${inputs}, Generate number is ${answer}`);
+      const answer = Random.getRandomIntInclusiveWithExceptions(inputs[0], inputs[1], [10, 12]);
       expect(answer).not.toBe(10);
       expect(answer).toBeGreaterThan(1);
     })
-  );
+  , {verbose: true});
 });

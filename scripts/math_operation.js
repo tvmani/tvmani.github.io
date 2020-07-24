@@ -143,8 +143,10 @@ export function registerUser(studentId) {
 
 export function replenish() {
   const max = parseInt(document.getElementById('maxInput').value, 10);
-  const randomNumber = Random.getRandomIntInclusiveWithExceptions(3, max, [10]);
-  const secondRandomNumber = Random.getRandomIntInclusive(3, max);
+  const min = parseInt(document.getElementById('minInput').value, 10);
+  const excludes = ("10,"+ document.getElementById('excludes').value ).split(",").filter(i => i !== "").map(i => parseInt(i,10))  
+  const randomNumber = Random.getRandomIntInclusiveWithExceptions(min, max, excludes);
+  const secondRandomNumber = Random.getRandomIntInclusive(min, max);
   uiTools.populateNewQuestion(randomNumber, secondRandomNumber);
 }
 

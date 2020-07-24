@@ -1,5 +1,6 @@
 //import { shuffle } from 'lodash/shuffle';
-const shuffle = require("lodash/shuffle");
+const shuffle = require('lodash/shuffle');
+const difference = require('lodash/difference');
 
 function distort(i) {
   if (Math.random() > 0.5) {
@@ -20,21 +21,18 @@ export default class Random {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min; // The maximum is inclusive and the minimum is inclusive
   }
-
-  suffle;
+  
 
   static getRandomIntInclusiveWithExceptions(min, max, ...excludes) {
-    let generated = Array.from(Array(max - min).keys())
-      .map(i => i + min)
-      .map(i => {
-        if (excludes.indexOf(i) != -1) {
-          return distort(i);
-        } else {
-          return i;
-        }
-      });
-    const unique = new Set(generated);
-    excludes.forEach((k) => unique.delete(k));
-    return shuffle(Array.from(unique))[0];
+    const _excludes = excludes.map(x => ''+x);
+
+    // eslint-disable-next-line arrow-parens
+    const sequence = Array.from(Array(max - min).keys()).map(i => i + min).map(i => ''+i)
+        .filter( i => _excludes.indexOf(i) < 0 ).filter( i => _excludes.indexOf(+i) < 0 ) 
+        .filter( i => excludes.indexOf(i) < 0 ).filter( i => excludes.indexOf(+i) < 0 );
+    const generated = difference(sequence, excludes);
+    const answer = shuffle(Array.from(generated))[0];
+    console.log(`Excludes: ${excludes}, (Min, max): (${min}, ${max}), Sequence: ${sequence},  Generated: ${generated}, Answer - ${answer}`);
+    return parseInt(answer, 10);
   }
 }

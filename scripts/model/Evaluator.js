@@ -1,3 +1,7 @@
+/* eslint-disable arrow-parens */
+const partition = require("lodash/fp/partition");
+const groupBy = require("lodash/fp/groupBy");
+
 function countBy(input) {
   const a = input.reduce((acc, curr) => {
     if (typeof acc[curr] === 'undefined') {
@@ -31,6 +35,17 @@ export default class Evaluator {
   static evaluateQuestion(question) {
     const func = operations[question.operation];
     return func(question.firstNum, question.secondNum) === question.submittedAnswer;
+  }
+
+  static analyze([...questions]) {
+    questions.forEach((q) => {
+      // eslint-disable-next-line no-param-reassign
+      q.result = operations[q.operation](q.firstNum, q.secondNum) === q.submittedAnswer;
+    });
+    let groupByOperations = groupBy(q => q.operation, questions);
+    console.log('1......' + JSON.stringify(groupByOperations));
+    let groupByOperationsNumbers =groupByOperations.map(results => partition(q => q.result, results));
+    return groupByOperationsNumbers;
   }
 
   static evaluate([...questions]) {
