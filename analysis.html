@@ -1,7 +1,7 @@
 <html>
 
 <head>
-  <title>Addition - Practice - Daily</title>
+  <title>Practice - Analysis</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="UTF-8" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -13,7 +13,7 @@
 
 <body>
   <div class="jumbotron text-center">
-    <h3>Multiplication (X) Practice</h3>
+    <h3>Practice - Analysis</h3>
   </div>
   <div class="container">
     <div class="row">
@@ -30,19 +30,7 @@
         <div id="main" style="visibility: hidden;">
           <form id="formPractice">
             <div><label id="welcomeMessage" /></div>
-            <!-- <div id="level" style="visibility: hidden;">
-              <label for="SquareMode">Square mode</label>&nbsp;&nbsp;&nbsp;
-              <input type="checkbox" id="SquareMode" value="true" />
-            </div> -->
-            <div class="form-group row">
-              <label id="firstNumGen" class="label label-medium"></label>
-              <img src="images/multiplication.jpg" alt="Mathematics - Multiplication Symbol + ">
-              <label id="secondNumGen" class="label label-medium"></label>
-              <button id="equalTo" class="btn btn-sm" disabled>=</button>
-              <input type="text" id="answer" value="" class="input-answer" onkeypress="return App.uiOps.isNumber(event);" />
-              <input type="button" class="btn btn-outline-primary btn-sm" autofocus id="submitAnswer"
-                onclick="App.uiOps.scoreMark(App.uiOps.ui.createQuestion());" value="Go" />
-            </div>
+           
             <div><label id="totalQuestionsPracticed">Total Questions Practiced: 0</label></div>
             <input type="hidden" id="operations" value="multiplication" />
             <input type="hidden" id="maxInput" value="22" />
@@ -50,30 +38,7 @@
               <label id="summary">Summary</label>&nbsp;&nbsp;&nbsp;
             </div>
           </form>
-          <div>
-            <table id="practicedResults" border="1">
-              <tr>
-                <th>
-                  Number
-                </th>
-                <th>
-                  Number
-                </th>
-                <th>
-                  Your Answer
-                </th>
-                <th>
-                  Correct
-                </th>
-                <th>
-                  Clue
-                </th>
-                <th>
-                  Result
-                </th>
-              </tr>
-            </table>
-          </div>
+         
           <a href="addition.html">Addition</a>
           <a href="subtraction.html">Subtraction</a>
           <a href="multiplication.html">Multiplication</a>
