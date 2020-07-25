@@ -23,16 +23,16 @@ export default class Random {
   }
   
 
-  static getRandomIntInclusiveWithExceptions(min, max, ...excludes) {
-    const _excludes = excludes.map(x => ''+x);
+  static getRandomIntInclusiveWithExceptions(min, max, excludes) {
+    const _excludes = excludes;
 
     // eslint-disable-next-line arrow-parens
     const sequence = Array.from(Array(max - min).keys()).map(i => i + min).map(i => ''+i)
         .filter( i => _excludes.indexOf(i) < 0 ).filter( i => _excludes.indexOf(+i) < 0 ) 
-        .filter( i => excludes.indexOf(i) < 0 ).filter( i => excludes.indexOf(+i) < 0 );
-    const generated = difference(sequence, excludes);
+        .filter( i => _excludes.indexOf(i) < 0 ).filter( i => _excludes.indexOf(+i) < 0 );
+    const generated = difference(sequence, _excludes);
     const answer = shuffle(Array.from(generated))[0];
-    console.log(`Excludes: ${excludes}, (Min, max): (${min}, ${max}), Sequence: ${sequence},  Generated: ${generated}, Answer - ${answer}`);
+    console.log(`Excludes: ${_excludes}, (Min, max): (${min}, ${max}), Sequence: ${sequence},  Generated: ${generated}, Answer - ${answer}`);
     return parseInt(answer, 10);
   }
 }
