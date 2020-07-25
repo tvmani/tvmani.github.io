@@ -53,6 +53,43 @@ function populateEmptyResult() {
   }
 }
 
-const uiTools = { createQuestion, appendResult, populateNewQuestion };
+function showDetails(data, el) {
+  let newTable = document.createElement('table');
+  el.appendChild(newTable);
+  showConsolidatedSummary(data, newTable)
+}
+
+export function showConsolidatedSummary(summary, table) {
+  
+  Object.entries(summary)
+  .filter(keyValue => keyValue[0].indexOf('_')!=0)
+  .filter(keyValue => typeof keyValue[1] !== 'object')
+  .forEach(keyValue => {
+    const row = table.insertRow(0);
+    const cell = row.insertCell(0);
+    debugger;
+    cell.innerHTML = `<b>${keyValue[0]}</b>`;
+    const cell2 = row.insertCell(1);
+    if( Array.isArray(keyValue[1]) ) {
+      cell2.innerHTML = `<i>${keyValue[1].length}</i>`;
+    } else if( keyValue[1] !== null) {
+      cell2.innerHTML = `<i>${keyValue[1]}</i>`;
+    }
+    
+  });
+
+  Object.entries(summary)
+  .filter(keyValue => keyValue[0].indexOf('_')!=0)
+  .filter(keyValue => !Array.isArray(keyValue[1]))
+  .filter(keyValue => typeof keyValue[1] === 'object' && keyValue[1] !== null)
+  .forEach(keyValue =>   { 
+    const row = table.insertRow(0);
+    const cell = row.insertCell(0);
+    const cell2 = row.insertCell(1);
+    cell.innerHTML = `<b>${keyValue[0]}</b>`;
+    showDetails(keyValue[1], cell2); });
+}
+
+const uiTools = { createQuestion, appendResult, populateNewQuestion, showConsolidatedSummary };
 
 export default uiTools;

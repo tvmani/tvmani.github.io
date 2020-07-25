@@ -1,7 +1,7 @@
-import Evaluator from './model/Evaluator';
 import uiTools from './ui_tools';
 import Random from './random';
 import extractSessions from './analyze';
+import Evaluator from './model/Evaluator';
 
 const startTime = new Date();
 let totalCorrect = 0;
@@ -163,6 +163,8 @@ export function analyzeUserPracticeSessions(studentId) {
 
   let appreciation = extractSessions(studentId, localStorage);
   welcomeMessage = `<b>${studentId}</b>, you have completed ${appreciation.totalPracticeSessions} number of practice sessions`;
+  console.log(appreciation);
+  return appreciation;
   
 }
 export function replenish() {
