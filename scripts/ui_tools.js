@@ -67,7 +67,6 @@ export function showConsolidatedSummary(summary, table) {
   .forEach(keyValue => {
     const row = table.insertRow(0);
     const cell = row.insertCell(0);
-    debugger;
     cell.innerHTML = `<b>${keyValue[0]}</b>`;
     const cell2 = row.insertCell(1);
     if( Array.isArray(keyValue[1]) ) {
