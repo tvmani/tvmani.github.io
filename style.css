@@ -141,3 +141,6 @@ img {
   transform: translateY(-50px);
 }
 
+.jumbotron {
+  padding: 1rem 1rem;
+}
