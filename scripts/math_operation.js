@@ -47,7 +47,6 @@ function startPractice() {
   document.getElementById('welcomeMessage').innerHTML = welcomeMessage;
   document.getElementById('main').style.visibility = 'visible';
   document.getElementById('summary').innerHTML = '';
-  document.getElementById('totalQuestionsPracticed').innerHTML = 'Total Questions Practiced:  0';
   totalCorrect = 0;
   totalIncorrect = 0;
   /* If someone doesn't cloes this window, but still using it! */
@@ -91,20 +90,20 @@ export function scoreMark(question) {
   lastSubmissionTime = new Date();
   const diff = Math.abs(lastSubmissionTime - startTime);
   const elapsedTime = Math.floor(diff / 1000);
-  const errorRatio = (totalIncorrect / (totalCorrect + totalIncorrect)) * 100;
+  const total = totalCorrect + totalIncorrect;
+  const errorRatio = (totalIncorrect / total) * 100;
 
   const priorQuestion = JSON.parse(localStorage.getItem(sid));
   localStorage.setItem(sid, JSON.stringify([question, ...priorQuestion]));
 
-  let result = `Correct => ${totalCorrect}<br/>Incorrect => ${totalIncorrect}`;
-  if (errorRatio > 0.001) {
-    result = `${result}<br/>Error ratio :: ${errorRatio.toFixed(2)}%`;
-  }
-  lastSubmissionTime= new Date();
-  const speed = Math.floor(elapsedTime / totalCorrect);
-  const speedResult = `<br/>Speed = ${speed}, Number of seconds per question. Lower the better!`;
+  let result = `(Total, Correct, Incorrect)  => (${total}, <b>${totalCorrect}</b>, ${totalIncorrect})`;
 
-  document.getElementById('totalQuestionsPracticed').innerHTML = `Total Questions Practiced:  ${totalCorrect + totalIncorrect}`;
+  const speed = Math.floor(elapsedTime / totalCorrect);
+  let speedResult = `Speed =>  ${speed}. Lower the better!`;
+  if (totalIncorrect > 0) {
+    speedResult = `(Speed, Error Ratio) =>  (${speed}, ${errorRatio.toFixed(2)}%). Lower the better!`;
+  }
+
   document.getElementById('summary').innerHTML = `${result}<br/>${speedResult}`;
   finalizeSubmit();
 }
@@ -116,13 +115,14 @@ export function registerUser(studentId) {
   };
   let priorPracticeDetails = localStorage.getItem(studentId.toLowerCase());
 
-  let sessionTime = new Date().toISOString();
+  let startTime = new Date();
+  let sessionTime = startTime.toISOString();
   sid = `Practice_${studentId}@${sessionTime}`;
 
   if (priorPracticeDetails) {
-    welcomeMessage = `<b>${studentId} is amazing person!</b> ${studentId} practices like champion!<br/>Start time : ${sessionTime}`;
+    welcomeMessage = `<b>${studentId} is amazing person!</b> ${studentId} practices like champion!<br/>Start time : ${startTime.toString()}`;
   } else {
-    welcomeMessage = `<b>Hi! ${studentId}, you are courageous!</b> 1000 miles journey begins with single step!<br/>Start time : ${sessionTime}`;
+    welcomeMessage = `<b>Hi! ${studentId}, you are courageous!</b> 1000 miles journey begins with single step!<br/>Start time : ${startTime.toString()}`;
   }
   startPractice();
   if (!priorPracticeDetails) {

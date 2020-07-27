@@ -29,7 +29,6 @@ export default class Random {
         .filter( i => excludes.indexOf(i) < 0 ).filter( i => excludes.indexOf(+i) < 0 );
     const generated = difference(sequence, excludes);
     const answer = shuffle(Array.from(generated))[0];
-    console.log(`Excludes: ${excludes}, (Min, max): (${min}, ${max}), Sequence: ${sequence},  Generated: ${generated}, Answer - ${answer}`);
     return parseInt(answer, 10);
   }
 }
