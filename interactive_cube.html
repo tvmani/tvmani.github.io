@@ -1,0 +1,136 @@
+<html>
+
+<head>
+  <title>Multiplication - Practice - Daily</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="ui_styles.css">
+  <link rel="stylesheet" href="geometry.css">
+</head>
+
+<body>
+  <div class="jumbotron text-center">
+    <h3>Cube and Square Practice</h3>
+  </div>
+
+  <form>
+    <label id="x1_label" for="x1"> </label> <input id="x1" type="range" value="100" min="0" max="250" onchange="updateTextInput(this);"><br/>
+    <label id="x2_label" for="x2_label" for="x2"> </label> <input id="x2" type="range" value="250" min="0" max="500" onchange="updateTextInput(this);"><br/>
+    <label id="y_label" for="y_label" for="y"> </label> <input id="y" type="range" value="250" min="0" max="500" onchange="updateTextInput(this);"><br/>
+    <input id="color" type="color" value="#ff8d4b"><br/>
+    <label id="result"></label>
+  </form>
+    
+  <div class="container">
+  </div>
+
+</body>
+<script src="scripts/bundle.js"></script>
+<script lang="javascript">
+  // Set up our canvas
+  //Credit : https://codepen.io/AshKyd/pen/JYXEpL
+var canvas = document.createElement('canvas');
+canvas.width = (window.innerWidth * 0.80);
+canvas.height = (window.innerWidth * 0.80);
+document.body.appendChild(canvas);
+var ctx = canvas.getContext('2d');
+
+// Pick out the form elements for easy access later
+var x1 = document.querySelector('#x1');
+var x2 = document.querySelector('#x2');
+var y = document.querySelector('#y');
+var color = document.querySelector('#color');
+
+// Animation function
+function draw(){
+  // clear the canvas
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  
+  // Wobble the cube using a sine wave
+  var wobble = Math.sin(Date.now()/250)*(window.innerWidth * 0.80)/50;
+  
+  // draw the cube
+  drawCube(
+    window.innerWidth/2,
+    window.innerHeight/3 + wobble + y.value/2,
+    Number(x1.value),
+    Number(x2.value),
+    Number(y.value),
+    color.value
+  );
+  
+  requestAnimationFrame(draw);
+}
+draw();
+
+// Colour adjustment function
+// Nicked from http://stackoverflow.com/questions/5560248
+function shadeColor(color, percent) {
+  color = color.substr(1);
+  var num = parseInt(color, 16),
+    amt = Math.round(2.55 * percent),
+    R = (num >> 16) + amt,
+    G = (num >> 8 & 0x00FF) + amt,
+    B = (num & 0x0000FF) + amt;
+  return '#' + (0x1000000 + (R < 255 ? R < 1 ? 0 : R : 255) * 0x10000 + (G < 255 ? G < 1 ? 0 : G : 255) * 0x100 + (B < 255 ? B < 1 ? 0 : B : 255)).toString(16).slice(1);
+}
+
+// Draw a cube to the specified specs
+function drawCube(x, y, wx, wy, h, color) {
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    ctx.lineTo(x - wx, y - wx * 0.5);
+    ctx.lineTo(x - wx, y - h - wx * 0.5);
+    ctx.lineTo(x, y - h * 1);
+    ctx.closePath();
+    ctx.fillStyle = shadeColor(color, -10);
+    ctx.strokeStyle = color;
+    ctx.stroke();
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    ctx.lineTo(x + wy, y - wy * 0.5);
+    ctx.lineTo(x + wy, y - h - wy * 0.5);
+    ctx.lineTo(x, y - h * 1);
+    ctx.closePath();
+    ctx.fillStyle = shadeColor(color, 10);
+    ctx.strokeStyle = shadeColor(color, 50);
+    ctx.stroke();
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.moveTo(x, y - h);
+    ctx.lineTo(x - wx, y - h - wx * 0.5);
+    ctx.lineTo(x - wx + wy, y - h - (wx * 0.5 + wy * 0.5));
+    ctx.lineTo(x + wy, y - h - wy * 0.5);
+    ctx.closePath();
+    ctx.fillStyle = shadeColor(color, 20);
+    ctx.strokeStyle = shadeColor(color, 60);
+    ctx.stroke();
+    ctx.fill();
+  }
+  function updateTextInput(element) {
+    console.log(element);
+    let label = element.id +"_label";
+    document.getElementById(label).innerText=element.value; 
+
+    let topSquare = 'Area of the top Rectangle  :: ' + (document.getElementById('x1').value * document.getElementById('x2').value) +'<br/>'; 
+    if(document.getElementById('x1').value == document.getElementById('x2').value) {
+      topSquare = 'Area of the top Square  :: ' + (document.getElementById('x1').value * document.getElementById('x2').value) +'<br/>'; 
+    }
+    let sideSquare = 'Area of the Side Rectangle  :: ' + (document.getElementById('x1').value * document.getElementById('x2').value) +'<br/>'; 
+    if(document.getElementById('x1').value == document.getElementById('y').value) {
+      sideSquare = 'Area of the Side Square  :: ' + (document.getElementById('x1').value * document.getElementById('y').value) +'<br/>'; 
+    }
+    let cube = 'Volume of the Cuboid   :: ' + (document.getElementById('x1').value * document.getElementById('x2').value * document.getElementById('y').value ) +'<br/>'; 
+    
+    document.getElementById('result').innerHTML = "<b>" + topSquare + sideSquare + cube + "</b>"
+  }  
+</script>
+
+</html>    
