@@ -5,8 +5,12 @@
 jest --watch --verbose false session.test.js
 jest --watch --verbose false random.test.js
 jest --watch --verbose false analyzer.test.js
-
+jest --watch --verbose false model\AnswerTips.test.js
 ```
+
+### Sample links
+* [Interactive Cube](https://github.com/tvmani/tvmani.github.io/blob/master/interactive_cube.html)
+* [Interactive Cube](https://htmlpreview.github.io/?https://github.com/tvmani/tvmani.github.io/blob/master/interactive_cube.html)
 
 ## List of tasks
 

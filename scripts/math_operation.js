@@ -1,5 +1,6 @@
 import uiTools from './ui_tools';
 import Random from './random';
+import Generator from './generator';
 import extractSessions from './analyze';
 import Evaluator from './model/Evaluator';
 
@@ -170,10 +171,14 @@ export function analyzeUserPracticeSessions(studentId) {
 export function replenish() {
   const max = parseInt(document.getElementById('maxInput').value, 10);
   const min = parseInt(document.getElementById('minInput').value, 10);
-  const excludes = ("10,"+ document.getElementById('excludes').value ).split(",").filter(i => i !== "").map(i => parseInt(i,10))  
-  const randomNumber = Random.getRandomIntInclusiveWithExceptions(min, max, excludes);
-  const secondRandomNumber = Random.getRandomIntInclusive(min, max);
-  uiTools.populateNewQuestion(randomNumber, secondRandomNumber);
+  const generatorFunction = document.getElementById('generatorFunction') && document.getElementById('generatorFunction').value
+  
+  const excludes = ('10,'+ document.getElementById('excludes').value ).split(',').filter(i => i !== '').map(i => parseInt(i,10))  
+  let randomNumbers = Generator.getTwoNumbers(min, max, excludes);
+  if( 'getCommonBase10sComplement'.startsWith(generatorFunction)) {
+    randomNumbers = Generator.getCommonBase10sComplement(min, max, excludes)
+  }
+  uiTools.populateNewQuestion(randomNumbers[0], randomNumbers[1]);
 }
 
 export function isNumber(event) {

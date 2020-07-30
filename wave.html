@@ -1,21 +1,33 @@
-<!DOCTYPE html>
 <html>
 
 <head>
-    <title>Sine Wave</title>
-    <script type="text/javascript">
-
-    </script>
+  <title>Wave - Play - Visualize - Think - Understand</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="ui_styles.css">
+  <link rel="stylesheet" href="geometry.css">
 </head>
 
+<body>
+  <div class="jumbotron text-center">
+    <h3>Sine Wave </h3>
+  </div>
+
 <body onload="init()">
-    <h3>Oscillating Sine Wave</h3>
-    <div id="result-container">
-        <label id='result'> </label>
+    <div class="container">
+        <h3>Oscillating Sine Wave</h3>
+        <div id="result-container">
+            <label id='result'> </label>
+        </div>
+        <div id="canvas-container" style="width: 800px; height: 300px;">
+            <canvas id="sineCanvas" style="width: 800px; height: 300px;" width="800" height="300"></canvas>
+        </div>
     </div>
-    <div id="canvas-container" style="width: 800px; height: 300px;">
-        <canvas id="sineCanvas" style="width: 800px; height: 300px;" width="800" height="300"></canvas>
-    </div>
+  
 </body>
 <b>Inspiration: https://jsfiddle.net/hashem/Lw41nwx7/</b>
 <script src="scripts/wave.js"></script>
