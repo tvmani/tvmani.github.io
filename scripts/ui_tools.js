@@ -2,7 +2,6 @@ import Question from './model/Question';
 import Evaluator from './model/Evaluator';
 import explanation from './model/AnswerTips';
 import Random from './random';
-import chunck from 'lodash/chunk';
 import chunk from 'lodash/chunk';
 
 function createQuestion() {
@@ -43,11 +42,11 @@ function getFirstOperand(number) {
   console.log(`input to partition ${number}`)
   const image = getRandomImage();
   if(isLessThanOr3(number)) {
-    const rows = Array.from(Array(number).keys()).map(i => `<td align="center" valign="top"><img src="/~media/svg/${image}.svg" width="50" height="50"  style="margin: 1px;"></td>`);  
+    const rows = Array.from(Array(number).keys()).map(i => `<td align="center" valign="top"><img src="media/svg/${image}.svg" width="50" height="50"  style="margin: 1px;"></td>`);  
     return '<tr>' + rows.join('') + '</tr>';  
   }
   const chunkSize = getChunkSize(number);  
-  const rows = Array.from(Array(number).keys()).map(i => `<td align="center" valign="top"><img src="/~media/svg/${image}.svg" width="50" height="50"  style="margin: 1px;"></td>`);  
+  const rows = Array.from(Array(number).keys()).map(i => `<td align="center" valign="top"><img src="media/svg/${image}.svg" width="50" height="50"  style="margin: 1px;"></td>`);  
   const partition = chunk(rows, chunkSize);
   return '<tr>' + partition.map(group => group.join('')).join('</tr><tr>') + '</tr>';  
 }
