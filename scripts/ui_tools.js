@@ -16,6 +16,30 @@ function createQuestion() {
   );
 }
 
+function getFirstOperand(number) {
+  return '<td align="center" valign="top"><img src="/~media/svg/mp.svg" width="50" height="50"  style="margin: 1px;"></td>';
+}
+
+function getSecondOperand(number) {
+  return `<tr>
+  <td align="center" valign="top"><img
+          src="/~media/svg/mp.svg" width="50" height="50"
+          style="margin: 1px;"></td>
+  <td align="center" valign="top"><img
+          src="/~media/svg/mp.svg" width="50" height="50"
+          style="margin: 1px;"></td>
+</tr>
+<tr>
+  <td align="center" valign="top"><img
+      src="/~media/svg/mp.svg" width="50" height="50"
+      style="margin: 1px;"></td>
+<td align="center" valign="top"><img
+      src="/~media/svg/mp.svg" width="50" height="50"
+      style="margin: 1px;"></td>
+</tr>`;
+}
+
+
 function appendResult(question) {
   const x = document.getElementById('practicedResults').insertRow(1);
   x.insertCell(0).innerHTML = question.firstNum;
@@ -41,6 +65,15 @@ export function populateNewQuestion(randomNumber, secondRandomNumber) {
     document.getElementById('firstNumGen').innerHTML = input[1] * input[0];
     document.getElementById('secondNumGen').innerHTML = input[0];
     return;
+  }
+  if(document.getElementById('operations').value == 'junior_addition') {
+    const input = [randomNumber, secondRandomNumber];
+    input.sort((a,b) => (a-b));
+    document.getElementById('firstNumGraph').innerHTML = getFirstOperand(randomNumber);
+    document.getElementById('secondNumGraph').innerHTML = getFirstOperand(secondRandomNumber);
+    document.getElementById('firstNumGen').innerHTML = randomNumber;
+    document.getElementById('secondNumGen').innerHTML = secondRandomNumber;
+      return;
   }
   document.getElementById('answer').value = '';
   document.getElementById('firstNumGen').innerHTML = randomNumber;
