@@ -1,6 +1,8 @@
 import Question from './model/Question';
 import Evaluator from './model/Evaluator';
 import explanation from './model/AnswerTips';
+import chunck from 'lodash/chunk';
+import chunk from 'lodash/chunk';
 
 function createQuestion() {
 
@@ -16,25 +18,43 @@ function createQuestion() {
   );
 }
 
+function isLessThanOr3(number) {
+  return (number <= 3 );
+}
+
+function isOddOrDivisibleBy3(number) {
+  return (number <= 3 ) ||  (number % 2 === 1)  || (number % 3 === 0);
+}
+
 function getFirstOperand(number) {
-  return '<td align="center" valign="top"><img src="/~media/svg/mp.svg" width="50" height="50"  style="margin: 1px;"></td>';
+  console.log(`input to partition ${number}`)
+  if(isLessThanOr3(number)) {
+    const rows = Array.from(Array(number).keys()).map(i => '<td align="center" valign="top"><img src="/~media/svg/kuthirai.svg" width="50" height="50"  style="margin: 1px;"></td>');  
+    return '<tr>' + rows.join('') + '</tr>';  
+  }
+  const chunkSize = isOddOrDivisibleBy3(number) ? 3 : 2;  
+  const rows = Array.from(Array(number).keys()).map(i => '<td align="center" valign="top"><img src="/~media/svg/kuthirai.svg" width="50" height="50"  style="margin: 1px;"></td>');  
+  const partition = chunk(rows, chunkSize);
+  return '<tr>' + partition.map(group => group.join('')).join('</tr><tr>') + '</tr>';
+  
+
 }
 
 function getSecondOperand(number) {
   return `<tr>
   <td align="center" valign="top"><img
-          src="/~media/svg/mp.svg" width="50" height="50"
+          src="/~media/svg/puli.svg" width="50" height="50"
           style="margin: 1px;"></td>
   <td align="center" valign="top"><img
-          src="/~media/svg/mp.svg" width="50" height="50"
+          src="/~media/svg/puli.svg" width="50" height="50"
           style="margin: 1px;"></td>
 </tr>
 <tr>
   <td align="center" valign="top"><img
-      src="/~media/svg/mp.svg" width="50" height="50"
+      src="/~media/svg/puli.svg" width="50" height="50"
       style="margin: 1px;"></td>
 <td align="center" valign="top"><img
-      src="/~media/svg/mp.svg" width="50" height="50"
+      src="/~media/svg/puli.svg" width="50" height="50"
       style="margin: 1px;"></td>
 </tr>`;
 }
