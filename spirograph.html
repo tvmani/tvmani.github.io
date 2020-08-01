@@ -1,0 +1,35 @@
+<html>
+
+<head>
+  <title>Wave - Play - Visualize - Think - Understand</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="ui_styles.css">
+  <link rel="stylesheet" href="geometry.css">
+</head>
+
+<body>
+  <div class="jumbotron text-center">
+    <h3>Sprio Graph</h3>
+  </div>
+
+<body>
+    <div class="container">
+        <h3>Sprio Graph</h3>
+        <div id="result-container">
+            <label id='result'> </label>
+        </div>
+        <div id="canvas-container" style="width: 800px; height: 300px;">
+          <div class="figure__range"><label>θ = 0</label> <input id="range" type="range" value="0" min="0" max="1" step="0.0001"> <label>θ = 2π</label></div>          
+            <canvas id="spriograph" style="width: 800px; height: 300px;" width="800" height="300"></canvas>
+        </div>
+    </div>
+  
+</body>
+<b>Inspiration: https://www.maissan.net/articles/javascript-spirograph</b>
+<script src="scripts/spriograph.js"></script>
+</html>
