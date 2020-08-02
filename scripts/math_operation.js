@@ -177,6 +177,9 @@ export function replenish() {
   let randomNumbers = Generator.getTwoNumbers(min, max, excludes);
   if( 'getCommonBase10sComplement'.startsWith(generatorFunction)) {
     randomNumbers = Generator.getCommonBase10sComplement(min, max, excludes)
+  } 
+  if( 'getNumberEndsWith5'.startsWith(generatorFunction)) {
+    randomNumbers = Generator.getNumberEndsWith5(min, max, excludes)
   }
   uiTools.populateNewQuestion(randomNumbers[0], randomNumbers[1]);
 }

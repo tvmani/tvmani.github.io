@@ -82,3 +82,8 @@ img {
 .label-bs {
   vertical-align: super;
 }
+
+.jumbotron {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}

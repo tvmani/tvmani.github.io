@@ -20,6 +20,14 @@ export default class Generator {
     return ((firstOnes + secondOnes) % 10 == 0) && (firstTens === secondTens);
   }
 
+
+  static isEndsIn5(inputs) {
+    let [firstNum, secondNum, ..._] = inputs;
+    let firstOnes = firstNum % 10;
+    let secondOnes = secondNum % 10;
+    return (firstOnes === secondOnes) && (firstOnes === 5);
+  }  
+
   static getCommonBase10sComplement(min, max, excludes) {
     let firstNum = Random.getRandomIntInclusiveWithExceptions(min, max, excludes);
     let ones = firstNum % 10;
@@ -28,4 +36,11 @@ export default class Generator {
     let secondNum = base + tensComplement;
     return [firstNum, secondNum];
   }
+
+  static getNumberEndsWith5(min, max, excludes) {
+    const firstNum = Random.getRandomIntInclusiveWithExceptions(min, max, excludes);
+    const secondNum = Random.getRandomIntInclusiveWithExceptions(min, max, [firstNum, ...excludes]);
+    return [(firstNum * 10) + 5, (secondNum * 10) + 5];
+  }
+
 }
