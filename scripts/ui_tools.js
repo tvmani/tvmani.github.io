@@ -18,8 +18,9 @@ function createQuestion() {
   );
 }
 
-function getRandomImage() {
-  const images = ['kuthirai', 'karadi', 'puli'];
+function getRandomImage() {  
+  //TODO: karadi_01 not working
+  const images = ['dragon_01', 'kuthirai_01', 'mudalai_01', 'pattampoochi_01', 'puli_01', 'vaaththu_01'];
   const selectedImage =  images[Random.getRandomIntInclusive(0,images.length-1)];
   console.log('Selected image ' + selectedImage);
   return selectedImage;
