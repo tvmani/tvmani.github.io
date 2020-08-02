@@ -19,7 +19,7 @@ function createQuestion() {
 }
 
 function getRandomImage() {
-  const images = ['kuthirai', 'kuthirai', 'kuthirai'];
+  const images = ['kuthirai', 'karadi', 'puli'];
   const selectedImage =  images[Random.getRandomIntInclusive(0,images.length-1)];
   console.log('Selected image ' + selectedImage);
   return selectedImage;
