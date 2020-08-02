@@ -71,21 +71,21 @@ function appendResult(question) {
 }
 
 export function populateNewQuestion(randomNumber, secondRandomNumber) {
-  if(document.getElementById('operations').value == 'subtraction') {
+  if(document.getElementById('operations').value === 'subtraction') {
     const input = [randomNumber, secondRandomNumber];
     input.sort((a,b) => (a-b));
     document.getElementById('firstNumGen').innerHTML = input[1];
     document.getElementById('secondNumGen').innerHTML = input[0];
     return;
   }
-  if(document.getElementById('operations').value == 'division') {
+  if(document.getElementById('operations').value === 'division') {
     const input = [randomNumber, secondRandomNumber];
     input.sort((a,b) => (a-b));
     document.getElementById('firstNumGen').innerHTML = input[1] * input[0];
     document.getElementById('secondNumGen').innerHTML = input[0];
     return;
   }
-  if(document.getElementById('operations').value == 'junior_addition') {
+  if(document.getElementById('operations').value === 'junior_addition') {
     const input = [randomNumber, secondRandomNumber];
     input.sort((a,b) => (a-b));
     const image = getRandomImage();
@@ -95,7 +95,7 @@ export function populateNewQuestion(randomNumber, secondRandomNumber) {
     document.getElementById('secondNumGen').innerHTML = secondRandomNumber;
       return;
   }
-  if(document.getElementById('operations').value == 'junior_multiplication') {
+  if(document.getElementById('operations').value === 'junior_multiplication') {
     const input = [randomNumber, secondRandomNumber];
     input.sort((a,b) => (a-b));
     const image = getRandomImage();
@@ -104,6 +104,19 @@ export function populateNewQuestion(randomNumber, secondRandomNumber) {
     document.getElementById('firstNumGen').innerHTML = randomNumber;
     document.getElementById('secondNumGen').innerHTML = secondRandomNumber;
       return;
+  }
+  if(document.getElementById('operations').value === 'junior_subtraction') {
+    const input = [randomNumber, secondRandomNumber];
+    const firstNum = input[0] >= input[1] ? input[0]:input[1];
+    const secondNum = input[0] < input[1] ? input[0]:input[1];
+    // document.getElementById('firstNumGen').innerHTML = firstNum;
+    // document.getElementById('secondNumGen').innerHTML = secondNum;
+    const image = getRandomImage();
+    document.getElementById('firstNumGraph').innerHTML = getFirstOperand(firstNum, image);
+    document.getElementById('secondNumGraph').innerHTML = getFirstOperand(secondNum, image);
+    document.getElementById('firstNumGen').innerHTML = firstNum;
+    document.getElementById('secondNumGen').innerHTML = secondNum;
+    return;
   }
 
   document.getElementById('answer').value = '';

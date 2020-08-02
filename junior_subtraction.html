@@ -1,0 +1,144 @@
+<html>
+
+<head>
+  <title>Junior Subtraction - Practice - Daily</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="ui_styles.css">
+</head>
+
+<body>
+  <div class="jumbotron text-center">
+    <h3>Junior Subtraction <img src="images/subtraction.jpg"> Practice</h3>
+  </div>
+  <div class="container">
+    <div class="row row-content">
+      <div class="col-sm-12">
+        <label for="yourName">Name</label>&nbsp;&nbsp;&nbsp;
+        <input type="text" id="yourName" value="" class="input-name"/>
+        <input type="button" id="submit_name" class="btn btn-outline-primary btn-sm"
+          onclick="App.uiOps.registerUser(document.getElementById('yourName').value)" value="Start" />
+        <input type="button" id="end" class="btn btn-outline-primary btn-sm"
+          onclick="App.uiOps.registerUser(document.getElementById('yourName').value)" value="Reset" />
+        <br /><br />
+      </div>
+      <div class="col-sm-12">
+        <div id="main" style="visibility: hidden;">
+          <form id="formPractice">
+            <div><label id="welcomeMessage" /></div>
+            <div class="form-group row">
+                <div class="col-sm-12">
+    
+    
+                    <table border='0' style="display: inline; opacity: 1; color: rgb(32, 32, 32);">
+                        <tbody>
+                            <tr>
+                                <td valign="bottom" align="center">
+                                    <div id="firstOperand"
+                                        style="margin: 5px; border: 2px solid rgb(204, 204, 204); border-radius: 4px; display: inline-block;">
+                                        <table  border='0'>
+                                            <tbody>
+                                                <tr>
+                                                    <td style="padding: 6px;">
+                                                        <table>
+                                                            <tbody id="firstNumGraph">
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </td>
+    
+                                <td nowrap="" width="30"></td>
+                                <td valign="bottom">
+                                    <div id="secondOperand"
+                                        style="margin: 5px; border: 2px solid rgb(204, 204, 204); border-radius: 4px; display: inline-block;">
+                                        <table  border='0'>
+                                            <tbody>
+                                                <tr>
+                                                    <td style="padding: 6px;">
+                                                        <table  border='0'>
+                                                            <tbody id="secondNumGraph">
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </td>
+    
+                            </tr>
+    
+                            <tr style="font-size: 100%; line-height: normal;">
+                                <td align="center"><label id="firstNumGen" class="label label-medium"></label></td>
+                                <td width="30" nowrap="" align="center">-</td>
+                                <td align="center"><label id="secondNumGen" class="label label-medium"></label></td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </div>
+              <button id="equalTo" class="btn btn-sm" disabled>=</button>
+              <input type="text" id="answer" value="" class="input-answer" onkeypress="return App.uiOps.isNumber(event);" />
+              <input type="button" class="btn btn-outline-primary btn-sm" autofocus id="submitAnswer"
+                onclick="App.uiOps.scoreMark(App.uiOps.ui.createQuestion());" value="GO!" /></label>
+            </div>
+            <input type="hidden" id="operations" value="junior_subtraction" />
+            <input type="hidden" id="maxInput" value="5" />
+            <input type="hidden" id="minInput" value="1" />
+      			<input type="hidden" id="excludes" value="0" />
+            <div id="studentPracticeSummary">
+              <label id="summary">Summary</label>&nbsp;&nbsp;&nbsp;
+            </div>
+          </form>
+          <div>
+            <table id="practicedResults" border="1">
+              <tr>
+                <th>
+                  Number
+                </th>
+                <th>
+                  Number
+                </th>
+                <th>
+                  Your Answer
+                </th>
+                <th>
+                  Correct
+                </th>
+                <th>
+                  Clue
+                </th>
+                <th>
+                  Result
+                </th>
+              </tr>
+            </table>
+          </div>
+          <a href="addition.html">Addition</a>
+          <a href="subtraction.html">Subtraction</a>
+          <a href="multiplication.html">Multiplication</a>
+          <a href="division.html">Division</a>
+          <br/><a href="analysis.html">Analysis</a>
+
+          <a
+            href="https://thumbs.dreamstime.com/z/x-multiplication-table-vector-illustration-students-multiplication-table-x-98833796.jpg">
+            Table Reference<br /><br />
+          </a>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+<script src="scripts/bundle.js"></script>
+
+</html>
