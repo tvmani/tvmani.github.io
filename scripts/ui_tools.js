@@ -39,9 +39,9 @@ function getChunkSize(number) {
   return isOddOrDivisibleBy3(number) ? 3 : 2;
 }
 
-function getFirstOperand(number) {
+function getFirstOperand(number, image) {
   console.log(`input to partition ${number}`)
-  const image = getRandomImage();
+  
   if(isLessThanOr3(number)) {
     const rows = Array.from(Array(number).keys()).map(i => `<td align="center" valign="top"><img src="media/svg/${image}.svg" width="50" height="50"  style="margin: 1px;"></td>`);  
     return '<tr>' + rows.join('') + '</tr>';  
@@ -52,10 +52,10 @@ function getFirstOperand(number) {
   return '<tr>' + partition.map(group => group.join('')).join('</tr><tr>') + '</tr>';  
 }
 
-function getMultiplicationOperand(number, number2) {
+function getMultiplicationOperand(number, number2, image) {
   let colSpan = getChunkSize(number);
 
-  return Array.from(Array(number2).keys()).map(i => getFirstOperand(number)+`<tr><td colspan="${colSpan}"><hr/></td></tr>`).join('');
+  return Array.from(Array(number2).keys()).map(i => getFirstOperand(number, image)+`<tr><td colspan="${colSpan}"><hr/></td></tr>`).join('');
 }
 
 
@@ -88,8 +88,9 @@ export function populateNewQuestion(randomNumber, secondRandomNumber) {
   if(document.getElementById('operations').value == 'junior_addition') {
     const input = [randomNumber, secondRandomNumber];
     input.sort((a,b) => (a-b));
-    document.getElementById('firstNumGraph').innerHTML = getFirstOperand(randomNumber);
-    document.getElementById('secondNumGraph').innerHTML = getFirstOperand(secondRandomNumber);
+    const image = getRandomImage();
+    document.getElementById('firstNumGraph').innerHTML = getFirstOperand(randomNumber, image);
+    document.getElementById('secondNumGraph').innerHTML = getFirstOperand(secondRandomNumber, image);
     document.getElementById('firstNumGen').innerHTML = randomNumber;
     document.getElementById('secondNumGen').innerHTML = secondRandomNumber;
       return;
@@ -97,7 +98,8 @@ export function populateNewQuestion(randomNumber, secondRandomNumber) {
   if(document.getElementById('operations').value == 'junior_multiplication') {
     const input = [randomNumber, secondRandomNumber];
     input.sort((a,b) => (a-b));
-    document.getElementById('firstNumGraph').innerHTML = getMultiplicationOperand(randomNumber, secondRandomNumber);
+    const image = getRandomImage();
+    document.getElementById('firstNumGraph').innerHTML = getMultiplicationOperand(randomNumber, secondRandomNumber, image);
     //document.getElementById('secondNumGraph').innerHTML = getFirstOperand(secondRandomNumber);
     document.getElementById('firstNumGen').innerHTML = randomNumber;
     document.getElementById('secondNumGen').innerHTML = secondRandomNumber;
