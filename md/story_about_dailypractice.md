@@ -8,7 +8,7 @@ Now both of us experimenting idea that is fusion between Atomic-Habits + Maths +
 
 ## What is our objective?
 
-* Every kids has to get equal and quality education for free. 
+* Every kids has to get equal and quality education for free.
 
 
 ## What are our opinion?
@@ -41,3 +41,5 @@ Now both of us experimenting idea that is fusion between Atomic-Habits + Maths +
 * Mix and match
   * Anyone who wants to spend 2 minutes to cheerup some unknow kid can join the other group! Still their kids can be part of SSP1-Dailypractice!
   * Whatever we could come up with!
+  * Spin-off the concept among your friends and family circle!
+  * Anyone can create new group and run with it! We are more than happy to help you!
