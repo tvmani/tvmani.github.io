@@ -43,3 +43,4 @@ Now both of us experimenting idea that is fusion between Atomic-Habits + Maths +
   * Whatever we could come up with!
   * Spin-off the concept among your friends and family circle!
   * Anyone can create new group and run with it! We are more than happy to help you!
+* Just ignore the noise of the group, use the [https://dailypractice.info](https://dailypractice.info) as per kids convenience!
