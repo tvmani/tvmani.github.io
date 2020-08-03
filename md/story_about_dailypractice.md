@@ -14,11 +14,11 @@ Now both of us experimenting idea that is fusion between Atomic-Habits + Maths +
 ## What is our opinion?
 
 * We are opinionated that **parents** are the one who play major role here than school!
-* Unfortunately few parents are sole bread-winners or less educated! We have to support them somehow!
-* It should be Mathematics centered. Kids have to learn to understand the only universal language that is applicable for everyone under the sun!
-* Here dopamine comes from parents appreciation (everyone has to care for everybody, sometime unknown, you may be appreciating a kid who has lots of disadvantage mentally/physically/economically)
+* Unfortunately, few parents are sole bread-winners or less educated! We have to support them somehow!
+* It should be Mathematics centred. Kids have to learn to understand the only universal language that is applicable for everyone under the sun!
+* Here dopamine comes from parent’s appreciation (everyone has to care for everybody, sometime unknown, you may be appreciating a kid who has lots of disadvantage mentally/physically/economically)
 * Open service = Open source + Social Service
-* With daily practice, every kid is better two weeks from now than two-weeks younger version of himself! No other comparisions!
+* With daily practice, every kid is better two weeks from now than two-weeks younger version of himself! No other comparisons!
 * Piece of software alone doesn't work well! We need cheerleaders! Kids like appreciation!
 
 
