@@ -87,3 +87,12 @@ img {
   padding-top: 10px !important;
   padding-bottom: 10px !important;
 }
+
+.days21 {
+  text-align: center;
+  color: #b9b18e;
+  font-size: 22px;
+  line-height: 28px;
+  height: 48px;
+  background-color: black;
+}

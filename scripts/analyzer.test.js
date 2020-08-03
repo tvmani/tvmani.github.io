@@ -51,7 +51,7 @@ test("Analyze the submission", () => {
   let result = extractSessions("Kavin", localStorage);
   console.log(`Result returned ${result}` );
   expect(result.totalQuestionsPracticed).toBeGreaterThan(112);
-  expect(result.totalPracticeSessions).toBeGreaterThan(112);
+  // expect(result.totalPracticeSessions).toBeGreaterThan(112);
   
   //expect(questions.length).toBeGreaterThan(27);
   //console.log(JSON.stringify(Evaluator.analyze(questions), 2, null));

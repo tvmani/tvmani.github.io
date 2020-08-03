@@ -121,7 +121,7 @@ export function registerUser(studentId) {
   sid = `Practice_${studentId}@${sessionTime}`;
 
   if (priorPracticeDetails) {
-    welcomeMessage = `<b>${studentId} is amazing person!</b> ${studentId} practices like champion!<br/>Start time : ${startTime.toString()}`;
+    welcomeMessage = `<b><span class="days21">${studentId}</span> is amazing person!</b> ${studentId} practices like champion!<br/>Start time : ${startTime.toString()}`;
   } else {
     welcomeMessage = `<b>Hi! ${studentId}, you are courageous!</b> 1000 miles journey begins with single step!<br/>Start time : ${startTime.toString()}`;
   }

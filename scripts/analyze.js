@@ -26,9 +26,9 @@ export default function extractSessions(name, localStorage) {
 
   const appreciation = {};
   appreciation.daysOfPractice = daysOfPractice;
-  appreciation._failedQuestions = failedQuestions;
-  appreciation._sucessfulQuestions = sucessfulQuestions;
-  appreciation._allAttemptedQuestions = allAttemptedQuestions;
+  appreciation.failedQuestions = failedQuestions;
+  appreciation.sucessfulQuestions = sucessfulQuestions;
+  appreciation.allAttemptedQuestions = allAttemptedQuestions;
   appreciation.masteredNumbers = sortBy(entries(masteredNumbers), b => b[1]).reverse().join(': ');
   appreciation.practiceRequiredNumbers = sortBy(entries(practiceRequiredNumbers), b => b[1]).reverse().join(': ');
   appreciation.totalQuestionsPracticed = allAttemptedQuestions.length;
