@@ -34,6 +34,7 @@ Now both of us experimenting idea that is fusion between Atomic-Habits + Maths +
 * We can have dedicated group only for our kids for SSP1
   * Someday we can align with what is required for school, but it is deviating from the original goal (dailypractice is for knowledge! not for marks!)
   * We can customize about how we opreate!
+  * From our operating experience, it takes time and effort even to run group!
 * They can compete with kids across global (Predominantly from India, Many of them are from poor background)!
   * You can help some unknown kid from Bangladesh/India/Singapore just by acting like cheer leader!
   * Group is already mature, so we can learn from their experience
