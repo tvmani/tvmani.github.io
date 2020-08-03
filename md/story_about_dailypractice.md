@@ -29,7 +29,7 @@ Now both of us experimenting idea that is fusion between Atomic-Habits + Maths +
 * Every parent can measure and appreciate their kids daily!
 
 
-## We have two option for SSP1
+## We have few options for SSP2
 
 * We can have dedicated group only for our kids for SSP1
   * Someday we can align with what is required for school, but it is deviating from the original goal (dailypractice is for knowledge! not for marks!)
