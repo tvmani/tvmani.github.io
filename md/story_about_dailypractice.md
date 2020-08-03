@@ -6,9 +6,14 @@ At the same time, being myself grew up in slum/very-poor area, I have been cravi
 
 Now both of us experimenting idea that is fusion between Atomic-Habits + Maths + Social Service. Oveall we term it as "Open service", people who wants to gain and/or serve for better future.
 
-## What is our goal?
+## What is our objective?
 
-* Every kids has to get equal and quality education for free. We are opinionated that Parents are the one who play major role here than school!
+* Every kids has to get equal and quality education for free. 
+
+
+## What are our opinion?
+
+* We are opinionated that Parents are the one who play major role here than school!
 * Unfortunately not every parents would realize, for few earning bread for their kid is dailypractice, we have to support them somehow!
 * It should be Mathematics centered. Kids have to learn to understand the only universal language that is applicable for everyone under the sun!
 * Here dopamine comes from parents appreciation (everyone has to care for everybody, sometime unknown, you may be appreciating a kid who has lots of disadvantage mentally/physically/economically)
@@ -35,4 +40,3 @@ Now both of us experimenting idea that is fusion between Atomic-Habits + Maths +
 * Mix and match
   * Anyone who wants to spend 2 minutes to cheerup some unknow kid can join the other group! Still their kids can be part of SSP1-Dailypractice!
   * Whatever we could come up with!
-
