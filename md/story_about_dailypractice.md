@@ -13,7 +13,7 @@ Now both of us experimenting idea that is fusion between Atomic-Habits + Maths +
 
 ## What are our opinion?
 
-* We are opinionated that Parents are the one who play major role here than school!
+* We are opinionated that **parents** are the one who play major role here than school!
 * Unfortunately not every parents would realize, for few earning bread for their kid is dailypractice, we have to support them somehow!
 * It should be Mathematics centered. Kids have to learn to understand the only universal language that is applicable for everyone under the sun!
 * Here dopamine comes from parents appreciation (everyone has to care for everybody, sometime unknown, you may be appreciating a kid who has lots of disadvantage mentally/physically/economically)
