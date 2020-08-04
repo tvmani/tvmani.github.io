@@ -9,7 +9,7 @@ let totalCorrect = 0;
 let totalIncorrect = 0;
 let welcomeMessage = '';
 let lastSubmissionTime;
-let sid='';
+let sid = '';
 
 function yourNameKeyboardHandler() {
   const input = document.getElementById('yourName');
@@ -71,10 +71,21 @@ window.addEventListener('load', (_event) => {
   yourNameKeyboardHandler();
 });
 
+function getImageForCorrectIncorrect(latestSubmittedAnswer) {
+
+  if (latestSubmittedAnswer === undefined) {
+    return "";
+  } else if (latestSubmittedAnswer === true) {
+    return `<img src="images/tick_mark_svg.png" alt="">`;
+  }
+  return `<img src="images/x_mark_svg.png" alt="">`;
+}
 
 export { uiTools as ui };
 
+
 export function scoreMark(question) {
+  let latestSubmittedAnswer = undefined;
   if (document.getElementById('answer').value && document.getElementById('answer').value.length >= 1) {
     //do nothing..
   } else {
@@ -82,8 +93,10 @@ export function scoreMark(question) {
     return false;
   }
   if (Evaluator.evaluateQuestion(question)) {
+    latestSubmittedAnswer = true;
     totalCorrect++;
   } else {
+    latestSubmittedAnswer = false;
     totalIncorrect++;
   }
   uiTools.appendResult(question);
@@ -104,8 +117,8 @@ export function scoreMark(question) {
   if (totalIncorrect > 0) {
     speedResult = `(Speed, Error Ratio) =>  (${speed}, ${errorRatio.toFixed(2)}%). Lower the better!`;
   }
-
-  document.getElementById('summary').innerHTML = `${result}<br/>${speedResult}`;
+  const userFeeback = getImageForCorrectIncorrect(latestSubmittedAnswer);
+  document.getElementById('summary').innerHTML = `${result}&nbsp;&nbsp;${userFeeback}<br/>${speedResult}`;
   finalizeSubmit();
 }
 
@@ -166,29 +179,29 @@ export function analyzeUserPracticeSessions(studentId) {
   welcomeMessage = `<b>${studentId}</b>, you have completed ${appreciation.totalPracticeSessions} number of practice sessions`;
   console.log(appreciation);
   return appreciation;
-  
+
 }
 export function replenish() {
   const max = parseInt(document.getElementById('maxInput').value, 10);
   const min = parseInt(document.getElementById('minInput').value, 10);
   const generatorFunction = document.getElementById('generatorFunction') && document.getElementById('generatorFunction').value
-  
-  const excludes = ('10,'+ document.getElementById('excludes').value ).split(',').filter(i => i !== '').map(i => parseInt(i,10))  
+
+  const excludes = ('10,' + document.getElementById('excludes').value).split(',').filter(i => i !== '').map(i => parseInt(i, 10))
   let randomNumbers = Generator.getTwoNumbers(min, max, excludes);
-  if( 'getCommonBase10sComplement'.startsWith(generatorFunction)) {
+  if ('getCommonBase10sComplement'.startsWith(generatorFunction)) {
     randomNumbers = Generator.getCommonBase10sComplement(min, max, excludes)
-  } 
-  if( 'getNumberEndsWith5'.startsWith(generatorFunction)) {
+  }
+  if ('getNumberEndsWith5'.startsWith(generatorFunction)) {
     randomNumbers = Generator.getNumberEndsWith5(min, max, excludes)
   }
-  if( 'getSameTens'.startsWith(generatorFunction)) {
+  if ('getSameTens'.startsWith(generatorFunction)) {
     randomNumbers = Generator.getSameTens(min, max, excludes)
   }
   uiTools.populateNewQuestion(randomNumbers[0], randomNumbers[1]);
 }
 
 export function isNumber(event) {
-  const TAB_KEY=9;
+  const TAB_KEY = 9;
   const evt = event || window.event;
   const charCode = event.which ? event.which : event.keyCode;
   if (event.keyCode === TAB_KEY) {
