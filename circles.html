@@ -1,0 +1,96 @@
+<html>
+
+    <head>
+      <title>Wave - Play - Visualize - Think - Understand</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta charset="UTF-8" />
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="http://jsxgraph.uni-bayreuth.de/distrib/jsxgraph.css" />
+      <script type="text/javascript" src="http://jsxgraph.uni-bayreuth.de/distrib/jsxgraphcore.js"></script>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="ui_styles.css">
+    </head>
+    
+    <body>
+      <div class="jumbotron text-center">
+        <h3>Interactive Circle</h3>
+      </div>
+    
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            <div class="col-sm-12">
+                <h3>Interactive formula for circle</h3>
+            </div>
+            <div class="col-sm-12">
+              <div id="jxgbox" class="jxgbox" style="width:500px; height:500px;"></div>
+            <label id="circle"></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<script>
+(function () {
+var brd = JXG.JSXGraph.initBoard('jxgbox',{axis:true,boundingbox:[-10,10,10,-10],keepaspectratio:true});
+
+var p = brd.create('point', [0,0]);
+var q = brd.create('point', [3,3]);
+var circ = brd.create('circle', [p, q]);
+
+function round(n, p) {
+  return Math.round(n * 10^p) / 10^p
+}
+
+// Create an empty curve
+var ticks = brd.create('curve', [[0], [0]], 
+             {strokeWidth: 1, 
+              strokeColor: 'blue',
+              strokeOpacity: 0.5});
+
+// Make ticks out of the curve 
+ticks.updateDataArray = function() {
+    var cx = circ.center.X(),
+        cy = circ.center.Y(),
+        r = circ.Radius(),
+        i, 
+        ticklen = 0.3,           // Length of ticks in user space coordinates
+        steps = 20,              // Number of ticks
+        d = ticklen * 0.5,
+        alpha = 2 * Math.PI / steps;
+
+        let pcx = Math.abs(round(cx,2))
+        let pcy = Math.abs(round(cy,2))
+        let pr = round(r,2)
+
+        let xsymbol = cx < 0 ? ' + ' : '-';
+        let ysymbol = cy < 0 ? ' + ' : '-';
+
+        document.getElementById('circle').innerHTML = `<b>(x ${xsymbol} ${pcx})<sup>2</sup>, (y ${ysymbol} ${pcy})<sup>2</sup>) = ${pr}<sup>2</sup></b><br>
+        circumference = 2 x π x pr =  2 x π x ${pr} = ${2 * pr * 3.14}<br>
+        Area = π x r <sup>2</sup> =  π x ${pr} x ${pr} = ${pr * pr * 3.14}<br>
+        `
+
+
+    this.dataX = [];
+    this.dataY = [];
+    for (i = 0; i < steps; i++) {
+        // Start of a tick
+        this.dataX.push( cx + (r - d)* Math.cos(i * alpha) );
+        this.dataY.push( cy + (r - d) * Math.sin(i * alpha) );
+        // End of tick
+        this.dataX.push( cx + (r + d) * Math.cos(i * alpha) );
+        this.dataY.push( cy + (r + d) * Math.sin(i * alpha) );
+        // Interrupt the curve
+        this.dataX.push( NaN );
+        this.dataY.push( NaN );
+    }
+};
+brd.update();
+})()  
+
+</script>
+</body>
+</html>
