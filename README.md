@@ -4,6 +4,7 @@
 ```bash
 jest --watch --verbose false session.test.js
 jest --watch --verbose false random.test.js
+jest --watch --verbose false generator.test.js
 jest --watch --verbose false analyzer.test.js
 jest --watch --verbose false model\AnswerTips.test.js
 ```

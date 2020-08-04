@@ -20,6 +20,15 @@ export default class Generator {
     return ((firstOnes + secondOnes) % 10 == 0) && (firstTens === secondTens);
   }
 
+  static isSameTens(inputs) {
+    let [firstNum, secondNum, ..._] = inputs;
+    let firstOnes = firstNum % 10;
+    let secondOnes = secondNum % 10;
+    let firstTens = Math.floor(firstNum / 10);
+    let secondTens = Math.floor(secondNum / 10);
+    return ((firstOnes + secondOnes) % 10 !== 0) && (firstTens === secondTens);
+  }
+
 
   static isEndsIn5(inputs) {
     let [firstNum, secondNum, ..._] = inputs;
@@ -37,10 +46,22 @@ export default class Generator {
     return [firstNum, secondNum];
   }
 
+  static getSameTens(min, max, excludes) {
+    const firstNum = Random.getRandomIntInclusiveWithExceptions(min, max, excludes);
+    const ones = Random.getRandomIntInclusive(1, 9);
+    const base = Math.floor(firstNum / 10);
+    const secondNum = (base * 10) + ones;
+    return [firstNum, secondNum];
+  }
+
+  
+
   static getNumberEndsWith5(min, max, excludes) {
     const firstNum = Random.getRandomIntInclusiveWithExceptions(min, max, excludes);
     const secondNum = Random.getRandomIntInclusiveWithExceptions(min, max, [firstNum, ...excludes]);
     return [(firstNum * 10) + 5, (secondNum * 10) + 5];
   }
+
+
 
 }

@@ -30,10 +30,29 @@ function explainMultiplicationForCommonBase(inputs) {
   return total;
 }
 
-function explainNumberEndsWith5(inputs) {
+function padWithLeadingZero(number, n) {
+  if(n === null || n === undefined) return (number + '').padStart(2, 0);
+  return (number + '').padStart(n, 0);
+}
+
+function explainMultiplicationForSameTens(inputs) {
   const [firstNum, secondNum, ..._] = inputs;
   const firstOnes = firstNum % 10;
   const secondOnes = secondNum % 10;
+  const firstTens = Math.floor(firstNum / 10) * 10;
+  const secondTens = (Math.floor(firstNum / 10) * 10) + (firstOnes + secondOnes);
+  const tensMultiple = firstTens * secondTens;
+  const onesMultiple = firstOnes * secondOnes;
+  const tensString = `${firstTens} x ${secondTens} = ${tensMultiple}`;
+  const onesString = `${padWithLeadingZero(firstOnes)} x ${padWithLeadingZero(secondOnes)} = ${onesMultiple}`;
+  const total = `${tensString}<br/>${onesString}<br> ${tensMultiple} + ${onesMultiple} = ${
+    inputs[0] * inputs[1]
+  }`;
+  return total;
+}
+
+function explainNumberEndsWith5(inputs) {
+  const [firstNum, secondNum, ..._] = inputs;
   const firstTens = Math.floor(firstNum / 10);
   const secondTens = Math.floor(secondNum / 10);
   const carryOver = Math.floor((firstTens + secondTens) / 2);
@@ -45,7 +64,6 @@ function explainNumberEndsWith5(inputs) {
     leastSigPart = "75";
     supportString = `(${firstTens} + ${secondTens}) is Odd, hence 75<br/>`;
   }
-
 
   const tensString = `(${firstTens} x ${secondTens}) + (${firstTens} + ${secondTens})/2 = ${mostSigPart}<br>
   ${supportString}
@@ -62,7 +80,11 @@ export default function explanation(mathOperations, inputs) {
   if (mathOperations === "multiplication") {
     if (Generator.isCommonBase(inputs)) {
       return explainMultiplicationForCommonBase(numbers);
-    } if (Generator.isEndsIn5(inputs)) {
+    } 
+    if (Generator.isSameTens(inputs)) {
+      return explainMultiplicationForSameTens(numbers);
+    }
+    if (Generator.isEndsIn5(inputs)) {
       return explainNumberEndsWith5(numbers);
     }
     if (numbers[1] > 10 && numbers[0] < 10) {

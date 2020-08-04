@@ -181,6 +181,9 @@ export function replenish() {
   if( 'getNumberEndsWith5'.startsWith(generatorFunction)) {
     randomNumbers = Generator.getNumberEndsWith5(min, max, excludes)
   }
+  if( 'getSameTens'.startsWith(generatorFunction)) {
+    randomNumbers = Generator.getSameTens(min, max, excludes)
+  }
   uiTools.populateNewQuestion(randomNumbers[0], randomNumbers[1]);
 }
 

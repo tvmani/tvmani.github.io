@@ -43,34 +43,47 @@ import * as fc from "fast-check";
 //   );
 // });
 
-test("getCommonBase10sComplement one's position should complement", () => {
+test("getSameTens should produce commonBase", () => {
   fc.assert(
-    fc.property( fc.tuple(fc.integer(11, 53), fc.integer(55, 59)), (inputs) => {
+    fc.property( fc.tuple(fc.integer(11, 53), fc.integer(55, 99)), (inputs) => {
       inputs.sort((x, y) => x - y);
       console.log(`inputs - ${inputs}`)
-      const answer = Generator.getCommonBase10sComplement(inputs[0], inputs[1], [10, 12]);
+      const answer = Generator.getSameTens(inputs[0], inputs[1], [10, 12]);
       answer.sort((x,y) => x-y)
       expect(answer[1]).toBeGreaterThanOrEqual(answer[0]);
+      expect(Math.floor(answer[1] / 10)).toBe(Math.floor(answer[1] / 10));
     })
   , {verbose: true});
 });
 
-test("Should generate two numbers", () => {
-  fc.assert(
-    fc.property( fc.tuple(fc.integer(11, 53), fc.integer(55, 59)), (inputs) => {
-      inputs.sort((x, y) => x - y);
-      //console.log(`inputs - ${inputs}`)
-      const answer = Generator.getTwoNumbers(inputs[0], inputs[1], [10, 12]);
-      answer.sort((x,y) => x-y)
-      expect(answer[1]).toBeGreaterThanOrEqual(answer[0]);
-    })
-  , {verbose: true});
-});
+// test("getCommonBase10sComplement one's position should complement", () => {
+//   fc.assert(
+//     fc.property( fc.tuple(fc.integer(11, 53), fc.integer(55, 59)), (inputs) => {
+//       inputs.sort((x, y) => x - y);
+//       console.log(`inputs - ${inputs}`)
+//       const answer = Generator.getCommonBase10sComplement(inputs[0], inputs[1], [10, 12]);
+//       answer.sort((x,y) => x-y)
+//       expect(answer[1]).toBeGreaterThanOrEqual(answer[0]);
+//     })
+//   , {verbose: true});
+// });
+
+// test("Should generate two numbers", () => {
+//   fc.assert(
+//     fc.property( fc.tuple(fc.integer(11, 53), fc.integer(55, 59)), (inputs) => {
+//       inputs.sort((x, y) => x - y);
+//       //console.log(`inputs - ${inputs}`)
+//       const answer = Generator.getTwoNumbers(inputs[0], inputs[1], [10, 12]);
+//       answer.sort((x,y) => x-y)
+//       expect(answer[1]).toBeGreaterThanOrEqual(answer[0]);
+//     })
+//   , {verbose: true});
+// });
 
 
-test("Should generate two numbers", () => {
-  expect(Generator.isCommonBase([55,55])).toBe(true);
-  expect(Generator.isCommonBase([58,52])).toBe(true);
-  expect(Generator.isCommonBase([23,27])).toBe(true);
-  expect(Generator.isCommonBase([23,26])).toBe(false);
-});
+// test("Should generate two numbers", () => {
+//   expect(Generator.isCommonBase([55,55])).toBe(true);
+//   expect(Generator.isCommonBase([58,52])).toBe(true);
+//   expect(Generator.isCommonBase([23,27])).toBe(true);
+//   expect(Generator.isCommonBase([23,26])).toBe(false);
+// });
