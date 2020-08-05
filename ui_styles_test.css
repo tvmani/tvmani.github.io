@@ -4,11 +4,8 @@ img {
   border: 0px solid blue;
   border-radius: 4px;
   width: 24px;
-  /* height: 24px;   */
-   padding-top: 8px;
-  /* padding-right: 10px;
-  padding-bottom: 10px;
-  padding-left: 10px;   */
+  height: 24px;
+  padding-bottom: 0px;
 }
 
 .img-symbols {
@@ -26,8 +23,7 @@ img {
   border: 0px solid blue;
   border-radius: 4px;
   width: 16px;
-  height: 16px;
-  /* height: 24px;   */
+  height: 16px;  
    padding-top: 8px;
   /* padding-right: 10px;
   padding-bottom: 10px;
