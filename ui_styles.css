@@ -17,6 +17,15 @@ img {
   padding-left: 10px;   */
 }
 
+.img-symbols-junior {
+  border: 0px solid blue;
+  border-radius: 4px;
+  width: 24px;
+  height: 32px;
+  padding-top: 0px;
+  padding-bottom: 0px;  
+}
+
 
 .img-subtraction {
   border: 0px solid blue;

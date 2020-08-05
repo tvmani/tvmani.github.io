@@ -32,8 +32,8 @@
             <div><label id="welcomeMessage" /></div>
             <div class="form-group row">
                 <div class="col-sm-12">
-    
-    
+
+
                     <table border='0' style="display: inline; opacity: 1; color: rgb(32, 32, 32);">
                         <tbody>
                             <tr>
@@ -54,7 +54,7 @@
                                         </table>
                                     </div>
                                 </td>
-    
+
                                 <td nowrap="" width="30"></td>
                                 <td valign="bottom">
                                     <div id="secondOperand"
@@ -73,18 +73,19 @@
                                         </table>
                                     </div>
                                 </td>
-    
+
                             </tr>
-    
+
                             <tr style="font-size: 100%; line-height: normal;">
                                 <td align="center"><label id="firstNumGen" class="label label-medium"></label></td>
-                                <td width="30" nowrap="" align="center">+</td>
+                                <td width="30" nowrap="" align="center"><img src="images/img_addition_01.png" alt="+"></td>
                                 <td align="center"><label id="secondNumGen" class="label label-medium"></label></td>
                             </tr>
                         </tbody>
                     </table>
-            </div>              
-              <button id="equalTo" class="btn btn-sm" disabled>=</button>
+            </div>
+              <!-- <button id="equalTo" class="btn btn-sm" disabled>=</button> -->
+              <img id="equalTo" src="images/equal_symbol_01.png" class="img-symbols-junior">&nbsp;&nbsp;
               <input type="text" id="answer" value="" class="input-answer" onkeypress="return App.uiOps.isNumber(event);" />
               <input type="button" class="btn btn-outline-primary btn-sm" autofocus id="submitAnswer"
                 onclick="App.uiOps.scoreMark(App.uiOps.ui.createQuestion());" value="GO!" /></label>
