@@ -13,7 +13,7 @@
 
 <body>
   <div class="jumbotron text-center">
-    <h3>Multiplication <img src="images/multiplication.jpg"> Practice</h3>
+    <h3>Multiplication <img src="images/img_multiplication_01.png" class="img-symbol"> Practice</h3>
   </div>
   <div class="container">
     <div class="row">
@@ -36,11 +36,11 @@
             </div> -->
             <div class="form-group row">
               <label id="firstNumGen" class="label label-medium"></label>
-              <img src="images/multiplication.jpg" alt="Mathematics - Multiplication Symbol + ">
+              <img src="images/img_multiplication_01.png" alt="*" class="img-symbols">
               <label id="secondNumGen" class="label label-medium"></label>
               <!-- <button id="equalTo" class="btn btn-sm" disabled>=</button> -->
-              <img id="equalTo" src="images/equal_symbol_01.png" alt="=" width="60" height="60">
-              <input type="text" id="answer" value="" class="input-answer" onkeypress="return App.uiOps.isNumber(event);" />
+              <img id="equalTo" src="images/equal_symbol_01.png" class="img-symbols">
+              &nbsp;&nbsp;<input type="text" id="answer" value="" class="input-answer" onkeypress="return App.uiOps.isNumber(event);" />
               <input type="button" class="btn btn-outline-primary btn-sm" autofocus id="submitAnswer"
                 onclick="App.uiOps.scoreMark(App.uiOps.ui.createQuestion());" value="Go" />
             </div>
