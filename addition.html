@@ -13,7 +13,7 @@
 
 <body>
   <div class="jumbotron text-center">
-    <h3>Addition <img src="images/addition.jpg"> Practice</h3>
+    <h3>Addition <img src="images/img_addition_01.png"> Practice</h3>
   </div>
   <div class="container">
     <div class="row row-content">
@@ -32,9 +32,10 @@
             <div><label id="welcomeMessage" /></div>
             <div class="form-group row">
               <label id="firstNumGen" class="label label-medium"></label>
-              <img src="images/addition.jpg" alt="Mathematics - Addition Symbol + ">
+              <img class="img-symbols" src="images/img_addition_01.png" alt="Mathematics - Addition Symbol + ">
               <label id="secondNumGen" class="label label-medium"></label>
-              <button id="equalTo" class="btn btn-sm" disabled>=</button>
+              <!-- <button id="equalTo" class="btn btn-sm" disabled>=</button> -->
+              <img id="equalTo" src="images/equal_symbol_01.png" class="img-symbols">
               <input type="text" id="answer" value="" class="input-answer" onkeypress="return App.uiOps.isNumber(event);" />
               <input type="button" class="btn btn-outline-primary btn-sm" autofocus id="submitAnswer"
                 onclick="App.uiOps.scoreMark(App.uiOps.ui.createQuestion());" value="GO!" /></label>
