@@ -3,6 +3,7 @@ import Evaluator from './model/Evaluator';
 import explanation from './model/AnswerTips';
 import Random from './random';
 import chunk from 'lodash/chunk';
+import { sum } from 'lodash';
 
 function createQuestion() {
 
@@ -136,7 +137,15 @@ function showDetails(data, el) {
   showConsolidatedSummary(data, newTable)
 }
 
+function showSessionDetails(sessionName) {
+  let practicedSession = localStorage.getItem(sessionName);
+  console.log(JSON.parse(practicedSession));  
+}
+
+
 export function showConsolidatedSummary(summary, table) {
+  
+  console.log(Object.keys(summary))
   
   Object.entries(summary)
   .filter(keyValue => keyValue[0].indexOf('_')!=0)
@@ -164,8 +173,18 @@ export function showConsolidatedSummary(summary, table) {
     const cell2 = row.insertCell(1);
     cell.innerHTML = `<b>${keyValue[0]}</b>`;
     showDetails(keyValue[1], cell2); });
+
+    if(summary.recentSessions) {
+      const recentRow = table.insertRow(0);
+      const cell = recentRow.insertCell(0);
+      cell.innerHTML = `<b>recentSessions</b>`;
+      let html = summary.recentSessions.map(e => `<a href=javascript:App.uiOps.ui.showSessionDetails('${e.trim()}');> ${e} </a>`).join('<br/>');
+      console.log(`html - ${html}`);
+      recentRow.insertCell(1).innerHTML =  html;  
+    }
+
 }
 
-const uiTools = { createQuestion, appendResult, populateNewQuestion, showConsolidatedSummary };
+const uiTools = { createQuestion, appendResult, populateNewQuestion, showConsolidatedSummary, showSessionDetails };
 
 export default uiTools;

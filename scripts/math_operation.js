@@ -157,23 +157,10 @@ export function registerUser(studentId) {
 }
 
 export function analyzeUserPracticeSessions(studentId) {
-  const defaultDetails = {
-    studentId,
-    sessions: [],
-  };
-  let priorPracticeDetails = localStorage.getItem(studentId.toLowerCase());
 
   let sessionTime = new Date().toISOString();
   sid = `Practice_${studentId}@${sessionTime}`;
 
-  // if (priorPracticeDetails) {
-  //   welcomeMessage = `<b>${studentId} is amazing person!</b> ${studentId} practices like champion!<br/>Start time : ${sessionTime}`;
-  // } else {
-  //   welcomeMessage = `<b>Hi! ${studentId}, you are courageous!</b> 1000 miles journey begins with single step!<br/>Start time : ${sessionTime}`;
-  // }
-
-  //1. Access the local storage
-  //2. Print the total count of sessions in welcomeMessage
 
   let appreciation = extractSessions(studentId, localStorage);
   welcomeMessage = `<b>${studentId}</b>, you have completed ${appreciation.totalPracticeSessions} number of practice sessions`;
