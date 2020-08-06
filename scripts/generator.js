@@ -46,6 +46,11 @@ export default class Generator {
     return [firstNum, secondNum];
   }
 
+  static getJunior5s(min, max, excludes) {
+    return [5, Random.getRandomIntInclusive(1, 9)];
+  }
+
+
   static getSameTens(min, max, excludes) {
     const firstNum = Random.getRandomIntInclusiveWithExceptions(min, max, excludes);
     const ones = Random.getRandomIntInclusive(1, 9);

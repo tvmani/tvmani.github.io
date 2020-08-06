@@ -4,8 +4,11 @@ const countBy = require('lodash/countBy');
 const sortBy = require('lodash/sortBy');
 const entries = require('lodash/entries');
 
+
 export default function extractSessions(name, localStorage) {
   const sessions = Object.keys(localStorage).filter((i) => i.indexOf(`Practice_${name}@`) != -1);
+  sessions.sort((a,b) => new Date(b.split('@')[1]) - new Date(a.split('@')[1]) );
+  console.log(`sessions names - ${sessions}`);
   // console.log(`Sessions ${sessions}`)
   const pastSessions = sessions.map((t) => t.split('@'));
 
@@ -26,9 +29,9 @@ export default function extractSessions(name, localStorage) {
 
   const appreciation = {};
   appreciation.daysOfPractice = daysOfPractice;
-  appreciation._failedQuestions = failedQuestions;
-  appreciation._sucessfulQuestions = sucessfulQuestions;
-  appreciation._allAttemptedQuestions = allAttemptedQuestions;
+  appreciation.failedQuestions = failedQuestions;
+  appreciation.sucessfulQuestions = sucessfulQuestions;
+  appreciation.allAttemptedQuestions = allAttemptedQuestions;
   appreciation.masteredNumbers = sortBy(entries(masteredNumbers), b => b[1]).reverse().join(': ');
   appreciation.practiceRequiredNumbers = sortBy(entries(practiceRequiredNumbers), b => b[1]).reverse().join(': ');
   appreciation.totalQuestionsPracticed = allAttemptedQuestions.length;
@@ -38,6 +41,7 @@ export default function extractSessions(name, localStorage) {
   appreciation.failedByOperation = countBy(failedQuestions, 'operation');
   appreciation.successByOperation = countBy(sucessfulQuestions, 'operation');
   appreciation.operationsBy = countBy(allAttemptedQuestions, 'operation');
+  appreciation.recentSessions = sessions.slice(0,10);
 
   return appreciation;
 }

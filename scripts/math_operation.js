@@ -197,6 +197,9 @@ export function replenish() {
   if ('getSameTens'.startsWith(generatorFunction)) {
     randomNumbers = Generator.getSameTens(min, max, excludes)
   }
+  if ('getJunior5s'.startsWith(generatorFunction)) {
+    randomNumbers = Generator.getJunior5s(min, max, excludes)
+  }
   uiTools.populateNewQuestion(randomNumbers[0], randomNumbers[1]);
 }
 
