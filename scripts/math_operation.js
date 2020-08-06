@@ -134,9 +134,9 @@ export function registerUser(studentId) {
   sid = `Practice_${studentId}@${sessionTime}`;
 
   if (priorPracticeDetails) {
-    welcomeMessage = `<b>${studentId} is amazing person!</b> ${studentId} practices like champion!<br/>Start time : ${startTime.toString()}`;
+    welcomeMessage = `<b>${studentId} is amazing person!</b> ${studentId}, <b>becoming a champion begins with daily practice!</b><br/>Start time : ${startTime.toString()}`;
   } else {
-    welcomeMessage = `<b>Hi! ${studentId}, you are courageous!</b> 1000 miles journey begins with single step!<br/>Start time : ${startTime.toString()}`;
+    welcomeMessage = `<b>Hi! ${studentId}, you are courageous!</b> A journey of a 1000 miles begins with a single step!<br/>Start time : ${startTime.toString()}`;
   }
   startPractice();
   if (!priorPracticeDetails) {

@@ -1,15 +1,31 @@
-
-
 img {
   border: 0px solid blue;
   border-radius: 4px;
   width: 24px;
-  /* height: 24px;   */
-   padding-top: 8px;
+  height: 24px;
+  padding-bottom: 0px;
+}
+
+.img-symbols {
+  border: 0px solid blue;
+  border-radius: 4px;
+  width: 24px;
+  height: 56px;
+  padding-top: 16px;
+  padding-bottom: 0px;
   /* padding-right: 10px;
-  padding-bottom: 10px;
   padding-left: 10px;   */
 }
+
+.img-symbols-junior {
+  border: 0px solid blue;
+  border-radius: 4px;
+  width: 24px;
+  height: 32px;
+  padding-top: 0px;
+  padding-bottom: 0px;  
+}
+
 
 .img-subtraction {
   border: 0px solid blue;
