@@ -137,9 +137,16 @@ function showDetails(data, el) {
   showConsolidatedSummary(data, newTable)
 }
 
-function showSessionDetails(sessionName) {
-  let practicedSession = localStorage.getItem(sessionName);
-  console.log(JSON.parse(practicedSession));  
+function showSessionDetails(sessionName, elementId) {
+  let practicedSession = JSON.parse(localStorage.getItem(sessionName));
+  const failed = practicedSession.filter(q => !Evaluator.evaluateQuestion(q));
+  failed.forEach(q => { q.expected = Evaluator.answer(q); });
+  failed.sort((a,b) =>  (a.firstNum * a.secondNum) - (b.firstNum * b.secondNum));
+  console.log(`failed  - ${failed}`);
+  const result = failed.map( q => `${q.firstNum} ${q.operation} ${q.secondNum} = ${q.expected} --> <strike>${q.submittedAnswer}</strike>`).join('<br/>');
+  document.getElementById(elementId).innerHTML = result;
+  event.preventDefault();
+  return result;
 }
 
 
@@ -178,9 +185,9 @@ export function showConsolidatedSummary(summary, table) {
       const recentRow = table.insertRow(0);
       const cell = recentRow.insertCell(0);
       cell.innerHTML = `<b>recentSessions</b>`;
-      let html = summary.recentSessions.map(e => `<a href=javascript:App.uiOps.ui.showSessionDetails('${e.trim()}');> ${e} </a>`).join('<br/>');
+      let html = summary.recentSessions.map((e,i) => `<label id='failure_${i}' /><a href='#' onclick=javascript:App.uiOps.ui.showSessionDetails('${e.trim()}','failure_${i}');> ${e} </a>`).join('<br/>');
       console.log(`html - ${html}`);
-      recentRow.insertCell(1).innerHTML =  html;  
+      recentRow.insertCell(1).innerHTML =  html;
     }
 
 }
