@@ -3,7 +3,6 @@ import Evaluator from './model/Evaluator';
 import explanation from './model/AnswerTips';
 import Random from './random';
 import chunk from 'lodash/chunk';
-import { sum } from 'lodash';
 
 function createQuestion() {
 
@@ -151,9 +150,7 @@ function showSessionDetails(sessionName, elementId) {
 
 
 export function showConsolidatedSummary(summary, table) {
-  
-  console.log(Object.keys(summary))
-  
+    
   Object.entries(summary)
   .filter(keyValue => keyValue[0].indexOf('_')!=0)
   .filter(keyValue => typeof keyValue[1] !== 'object')

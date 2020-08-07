@@ -9,6 +9,12 @@ jest --watch --verbose false analyzer.test.js
 jest --watch --verbose false model\AnswerTips.test.js
 ```
 
+## Git commands used before commit
+```
+git diff origin/master  --name-only
+git diff origin/master  -- scripts/generator.js 
+```
+
 ### Sample links
 * [Interactive Cube](https://github.com/tvmani/tvmani.github.io/blob/master/interactive_cube.html)
 * [Interactive Cube](https://htmlpreview.github.io/?https://github.com/tvmani/tvmani.github.io/blob/master/interactive_cube.html)
