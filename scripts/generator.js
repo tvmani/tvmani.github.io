@@ -5,6 +5,15 @@ const difference = require('lodash/difference');
 
 export default class Generator {
 
+  static getShuffledRange(min, max, excludes, steps) {
+    const range = max - min;
+    const generated = Array.from(Array(range).keys())
+    .filter(i => i+min)
+    .filter(i => excludes.indexOf(+i) < 0);
+    return shuffle(generated);
+  }
+
+
   static getTwoNumbers(min, max, excludes) {
     const firstNum = Random.getRandomIntInclusiveWithExceptions(min, max, excludes);
     const secondNum = Random.getRandomIntInclusiveWithExceptions(min, max, excludes);

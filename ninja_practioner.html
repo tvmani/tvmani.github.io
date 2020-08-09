@@ -34,20 +34,18 @@
               <div>
                 <label for="multipleOfN">Choose your level</label>
                 <input type="range" id="multipleOfN" name="multipleOfN" 
-                       min="3" max="48" value="3" step="1" oninput="targetted.value = multipleOfN.value">
-                <output name="targetted" id="targetted">3</output>
+                       min="3" max="48" value="20" step="1" oninput="targetted.value = multipleOfN.value">
+                <output name="targetted" id="targetted">20</output>
                 <label>Multiples</label>
               </div>
               <div>
                 <label for="maxRange">Choose your maximum range</label>
                 <input type="range" id="maxRange" name="maxRange" 
-                       min="3" max="48" value="10" step="1" oninput="maxInput.value = maxRange.value">
-                <output name="maxInput" id="maxInput">3</output>
-                <label>Maxium</label>
-              </div>        
+                       min="3" max="48" value="20" step="1" oninput="maxInput.value = maxRange.value">
+                <output name="maxInput" id="maxInput">20</output>
+                <label>Maximum</label>
+              </div>
             </div>
-      
-
             <div class="form-group row">
               <label id="firstNumGen" class="label label-medium"></label>
               <img class="img-symbols" src="images/img_multiplication_01.png" alt="Mathematics - Multiplication Symbol + ">
@@ -59,6 +57,8 @@
                 onclick="App.uiOps.scoreMark(App.uiOps.ui.createQuestion());" value="Go" />
             </div>
             <input type="hidden" id="operations" value="multiplication" />
+            <input type="hidden" id="shuffledNumber" />
+            <input type="hidden" id="replenishType" value='SHUFFLE' />
             <input type="hidden" id="minInput" value="1" />
       			<input type="hidden" id="excludes" value="0" />
             <!-- <input type="hidden" id="maxInput" value="11" /> -->

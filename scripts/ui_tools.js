@@ -70,6 +70,19 @@ function appendResult(question) {
   populateEmptyResult();
 }
 
+export function shuffleNewQuestion(targetted, newShuffledNumber) {
+    let shuffledNumber = newShuffledNumber;
+    if(document.getElementById('shuffledNumber') && document.getElementById('shuffledNumber').value) {
+      shuffledNumber = document.getElementById('shuffledNumber').value.split(',');
+    }
+  const [first, ...rest]  = [...shuffledNumber];
+  const input = [targetted, first];
+  document.getElementById('firstNumGen').innerHTML = input[1];
+  document.getElementById('secondNumGen').innerHTML = input[0];
+  document.getElementById('shuffledNumber').value = [rest, first].join(',');
+  return;  
+}
+
 export function populateNewQuestion(randomNumber, secondRandomNumber) {
   if(document.getElementById('operations').value === 'subtraction') {
     const input = [randomNumber, secondRandomNumber];
@@ -189,6 +202,6 @@ export function showConsolidatedSummary(summary, table) {
 
 }
 
-const uiTools = { createQuestion, appendResult, populateNewQuestion, showConsolidatedSummary, showSessionDetails };
+const uiTools = { createQuestion, appendResult, populateNewQuestion, showConsolidatedSummary, showSessionDetails, shuffleNewQuestion };
 
 export default uiTools;

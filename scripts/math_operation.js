@@ -11,6 +11,12 @@ let welcomeMessage = '';
 let lastSubmissionTime;
 let sid = '';
 
+window.addEventListener('load', (_event) => {
+  replenish();
+  answerKeyboardHandler();
+  yourNameKeyboardHandler();
+});
+
 function yourNameKeyboardHandler() {
   const input = document.getElementById('yourName');
   input.focus();
@@ -38,7 +44,6 @@ function tabAndEnterHandler(e) {
       e.preventDefault();
       document.getElementById('submitAnswer').click();
     } else {
-      console.log('Tab usage without input!');
       e.preventDefault();
     }
   }
@@ -66,12 +71,6 @@ function finalizeSubmit() {
   document.getElementById('answer').focus();
   //document.getElementById('answer').scrollIntoView();
 }
-
-window.addEventListener('load', (_event) => {
-  replenish();
-  answerKeyboardHandler();
-  yourNameKeyboardHandler();
-});
 
 function getImageForCorrectIncorrect(latestSubmittedAnswer) {
 
@@ -175,6 +174,12 @@ export function replenish() {
   const min = parseInt(document.getElementById('minInput').value, 10);
   const generatorFunction = document.getElementById('generatorFunction') && document.getElementById('generatorFunction').value;
   const targetted = document.getElementById('targetted') && parseInt(document.getElementById('targetted').value, 10);
+
+  if(document.getElementById('replenishType') && 'SHUFFLE'.toUpperCase() === (document.getElementById('replenishType').value)) {
+    let shuffledNumber =  Generator.getShuffledRange(min, max, [0,1]);
+    uiTools.shuffleNewQuestion(targetted, shuffledNumber);
+    return;
+  } 
 
   const excludes = ('10,' + document.getElementById('excludes').value).split(',').filter(i => i !== '').map(i => parseInt(i, 10))
   let randomNumbers = Generator.getTwoNumbers(min, max, excludes);
