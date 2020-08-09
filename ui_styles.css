@@ -6,6 +6,11 @@ img {
   padding-bottom: 0px;
 }
 
+divTest {
+  border-style: solid;
+  border-width: 0.5px;
+}
+
 .img-symbols {
   border: 0px solid blue;
   border-radius: 4px;
