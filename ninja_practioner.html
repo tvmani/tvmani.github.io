@@ -1,0 +1,113 @@
+<html>
+
+<head>
+  <title>Multiplication - Practice - Daily</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="ui_styles.css">
+</head>
+
+<body>
+  <div class="jumbotron text-center">
+    <h3>Ninja practioner - Multiplication Level <img src="images/img_multiplication_01.png"> Practice</h3>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <label for="yourName">Name</label>&nbsp;&nbsp;&nbsp;
+        <input type="text" id="yourName" value="" class="input-name" />
+        <input type="button" id="submit_name" class="btn btn-outline-primary btn-sm"
+          onclick="App.uiOps.registerUser(document.getElementById('yourName').value)" value="Start" />
+        <input type="button" id="end" class="btn btn-outline-primary btn-sm"
+          onclick="App.uiOps.registerUser(document.getElementById('yourName').value)" value="Reset" />
+        <br /><br />
+
+      </div>
+      <div class="col-sm-12">
+        <div id="main" style="visibility: hidden;">
+          <form id="formPractice">
+            <div class="col-sm-6">
+              <div>
+                <label for="multipleOfN">Choose your level</label>
+                <input type="range" id="multipleOfN" name="multipleOfN" 
+                       min="3" max="48" value="3" step="1" oninput="targetted.value = multipleOfN.value">
+                <output name="targetted" id="targetted">3</output>
+                <label>Multiples</label>
+              </div>
+              <div>
+                <label for="maxRange">Choose your maximum range</label>
+                <input type="range" id="maxRange" name="maxRange" 
+                       min="3" max="48" value="10" step="1" oninput="maxInput.value = maxRange.value">
+                <output name="maxInput" id="maxInput">3</output>
+                <label>Maxium</label>
+              </div>        
+            </div>
+      
+
+            <div class="form-group row">
+              <label id="firstNumGen" class="label label-medium"></label>
+              <img class="img-symbols" src="images/img_multiplication_01.png" alt="Mathematics - Multiplication Symbol + ">
+              <label id="secondNumGen" class="label label-medium"></label>
+              <!-- <button id="equalTo" class="btn btn-sm" disabled>=</button> -->
+              <img id="equalTo" src="images/equal_symbol_01.png" class="img-symbols">&nbsp;&nbsp;
+              <input type="text" id="answer" value="" class="input-answer" onkeypress="return App.uiOps.isNumber(event);" />
+              <input type="button" class="btn btn-outline-primary btn-sm" autofocus id="submitAnswer"
+                onclick="App.uiOps.scoreMark(App.uiOps.ui.createQuestion());" value="Go" />
+            </div>
+            <input type="hidden" id="operations" value="multiplication" />
+            <input type="hidden" id="minInput" value="1" />
+      			<input type="hidden" id="excludes" value="0" />
+            <!-- <input type="hidden" id="maxInput" value="11" /> -->
+            <div id="studentPracticeSummary">
+              <label id="summary">Summary</label>&nbsp;&nbsp;&nbsp;
+            </div>
+          </form>
+          <div>
+            <table id="practicedResults" border="1">
+              <tr>
+                <th>
+                  Number
+                </th>
+                <th>
+                  Number
+                </th>
+                <th>
+                  Your Answer
+                </th>
+                <th>
+                  Correct
+                </th>
+                <th>
+                  Clue
+                </th>
+                <th>
+                  Result
+                </th>
+              </tr>
+            </table>
+          </div>
+          <a href="addition.html">Addition</a>
+          <a href="subtraction.html">Subtraction</a>
+          <a href="multiplication.html">Multiplication</a>
+          <a href="division.html">Division</a>
+          <a
+            href="https://thumbs.dreamstime.com/z/x-multiplication-table-vector-illustration-students-multiplication-table-x-98833796.jpg">
+            Table Reference<br /><br />
+
+          </a>
+
+        </div>
+      </div>
+
+    </div>
+    
+  </div>
+
+</body>
+<script src="scripts/bundle.js"></script>
+
+</html>
