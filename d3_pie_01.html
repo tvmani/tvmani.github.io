@@ -1,0 +1,64 @@
+<html>
+
+<head>
+  <title>D3 - Pie - Chart 0 1</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.min.js"
+    integrity="sha512-FHsFVKQ/T1KWJDGSbrUhTJyS1ph3eRrxI228ND0EGaEp6v4a/vGwPWd3Dtd/+9cI7ccofZvl/wulICEurHN1pg=="
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="ui_styles_test.css">
+</head>
+
+<body>
+  <div class="jumbotron text-center">
+    <h3>Practice Analysis</h3>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <svg width="300" height="200"> </svg>
+        <script>
+          var data = [2, 4, 8, 10];
+
+          var svg = d3.select("svg"),
+            width = svg.attr("width"),
+            height = svg.attr("height"),
+            radius = Math.min(width, height) / 2,
+            g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+          var color = d3.scaleOrdinal(['#4daf4a', '#377eb8', '#ff7f00', '#984ea3', '#e41a1c']);
+
+          // Generate the pie
+          var pie = d3.pie();
+
+          // Generate the arcs
+          var arc = d3.arc()
+            .innerRadius(0)
+            .outerRadius(radius);
+
+          //Generate groups
+          var arcs = g.selectAll("arc")
+            .data(pie(data))
+            .enter()
+            .append("g")
+            .attr("class", "arc")
+
+          //Draw arc paths
+          arcs.append("path")
+            .attr("fill", function (d, i) {
+              return color(i);
+            })
+            .attr("d", arc);
+        </script>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="scripts/bundle.js"></script>
+
+</html>
