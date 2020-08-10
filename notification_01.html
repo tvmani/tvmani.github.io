@@ -21,21 +21,28 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
-        <svg width="300" height="200"> </svg>
+
+        <label for="yourName">Name</label>&nbsp;&nbsp;&nbsp;
+        <input type="text" id="yourName" value="" class="input-name" />
+        <input type="button" id="submit_name" class="btn btn-outline-primary btn-sm" onclick="requestNotificationPermission();" value="Start" />
         <script>
-          //alert(window.Notification.permission)//default is denied
-          if (window.Notification && Notification.permission !== "denied") {
-            Notification.requestPermission((status) => {
-              // status is "granted", if accepted by user
-              var n = new Notification('Title', {
-                body: 'I am the body text!',
-                icon: 'images/notification/390px_virat_kohli.jpg' // optional
+          //permission can be requested only in response to user action
+          function requestNotificationPermission() {
+            alert(window.Notification.permission)//default is denied
+            if (window.Notification && Notification.permission !== "denied") {
+              Notification.requestPermission((status) => {
+                // status is "granted", if accepted by user
+                var n = new Notification('Title', {
+                  body: 'I am the body text!',
+                  icon: 'images/notification/390px_virat_kohli.jpg' // optional
+                })
               })
-            })
+            }
           }
         </script>
       </div>
     </div>
   </div>
 </body>
+
 </html>
