@@ -37,7 +37,12 @@
             else if (Notification.permission === "granted") {
               alert("I am in notification")
               // If it's okay let's create a notification
-              var notification = new Notification("Hi there!");
+              //var notification = new Notification("Hi there!");
+
+              var n = new Notification('Title', {
+                  body: 'I am the body text!',
+                  icon: 'images/notification/390px_virat_kohli.jpg' // optional
+                });
               
             }
 
