@@ -8,6 +8,11 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://jsxgraph.uni-bayreuth.de/distrib/jsxgraph.css" />
+  <script type="text/javascript" src="https://jsxgraph.uni-bayreuth.de/distrib/jsxgraphcore.js"></script>
+
+    
   <link rel="stylesheet" href="ui_styles.css">
 </head>
 
@@ -32,44 +37,33 @@
       <div class="col-sm-12">
         <div id="main" style="visibility: hidden;">
           <form id="formPractice">
-            <div class="col-sm-6">
-              <div>
-                <label for="multipleOfN">Choose table</label>
-                <input type="range" id="multipleOfN" name="multipleOfN" 
-                       min="3" max="48" value="16" step="1" 
-                       oninput="javascript:onSlide('multipleOfN', 'targetted');">
-                <output name="targetted" id="targetted">16</output>
-                <label>multiplication table</label>
-              </div>
-              <div>
-                <label for="maxRange">Choose random range</label>
-                <input type="range" id="maxRange" name="maxRange" 
-                       min="3" max="48" value="20" step="1" oninput="javascript:onSlide('maxRange', 'maxInput');">
-                       [1 - 
-                <output name="maxInput" id="maxInput">20</output>
-                <label>]</label>
-              </div>
-            </div>
             <div class="form-group row">
               <label id="firstNumGen" class="label label-medium"></label>
-              <img class="img-symbols" src="images/img_multiplication_01.png" alt="Mathematics - Multiplication Symbol + ">
+              <img class="img-symbols" src="images/img_addition_01.png" alt="Mathematics - Addition Symbol + ">
               <label id="secondNumGen" class="label label-medium"></label>
               <img id="equalTo" src="images/equal_symbol_01.png" class="img-symbols">&nbsp;&nbsp;
               <input type="text" id="answer" value="" class="input-answer" onkeypress="return App.uiOps.isNumber(event);" />
               <input type="button" class="btn btn-outline-primary btn-sm" autofocus id="submitAnswer"
-                onclick="App.uiOps.scoreMark(App.uiOps.ui.createQuestion());" value="Go" />
+                onclick="updateGraph();" value="Go" />
             </div>
-            <input type="hidden" id="operations" value="multiplication" />
+            <input type="hidden" id="operations" value="addition" />
             <input type="hidden" id="shuffledNumber" />
-            <input type="hidden" id="generatorFunction" value="shuffledNumber" />
+            <input type="hidden" id="maxInput" value="999" />
             <input type="hidden" id="minInput" value="1" />
-      			<input type="hidden" id="excludes" value="0" />
+            <input type="hidden" id="excludes" value="0" />
+            <input type="hidden" id="generatorFunction" value="fibonacci" />
+            
             <!-- <input type="hidden" id="maxInput" value="11" /> -->
           </form>
         </div>
       </div>
     </div>
         <div class="row">
+          <div class="col-sm-12" style="visibility: visible;">
+            <div id="jxgbox" class="jxgbox" style="width:500px; height:500px;"></div>
+          <label id="circle"></label>
+          </div>
+      
           <div class="col-sm-12" id="studentPracticeSummary">
             <label id="summary">Summary</label>&nbsp;&nbsp;&nbsp;
           </div>
@@ -99,17 +93,49 @@
           </div>
         </div>
     </div>
-    
+  
+      
   
 </body>
 <script src="scripts/bundle.js"></script>
 
 <script language="Javascript">
-  function onSlide(input, output) {
-    document.getElementById(output).value = document.getElementById(input).value;
-    document.getElementById('shuffledNumber').value = '';
-    App.uiOps.replenish();
+
+  let board = null;;
+  let count = 1;
+  let xs = [];
+  let ys = [];
+
+  function updateGraph() {
+    const firstNum = document.getElementById('firstNumGen') && parseInt(document.getElementById('firstNumGen').innerHTML, 10);
+    const secondNum = document.getElementById('secondNumGen') &&  parseInt(document.getElementById('secondNumGen').innerHTML, 10);
+    // board.create('point', [firstNum, secondNum])
+    count++;
+    xs.push(count);
+    ys.push(secondNum/firstNum);
+    console.log(`${xs} - ${ys}`)
+    board.create('curve', [xs, ys],  {curveType: 'polar'})
+    App.uiOps.scoreMark(App.uiOps.ui.createQuestion());
   }
+
+
+  
+(function () {
+var brd = JXG.JSXGraph.initBoard('jxgbox',{axis:true,grid:true, boundingbox:[-10,2.4, 80,-2.4],keepaspectratio:false});
+board  = brd;
+var p = brd.create('point', [0,0]);
+var q = brd.create('point', [3,3]);
+// var circ = brd.create('circle', [p, q]);
+
+function round(n, p) {
+  let tens = 10^p;
+  return (Math.round(n * tens) / tens);
+}
+
+brd.update();
+})()  
+
+
 </script>
 
 </html>
