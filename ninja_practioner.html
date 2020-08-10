@@ -36,14 +36,15 @@
               <div>
                 <label for="multipleOfN">Choose table</label>
                 <input type="range" id="multipleOfN" name="multipleOfN" 
-                       min="3" max="48" value="16" step="1" oninput="targetted.value = multipleOfN.value">
+                       min="3" max="48" value="16" step="1" 
+                       oninput="javascript:onSlide('multipleOfN', 'targetted');">
                 <output name="targetted" id="targetted">16</output>
                 <label>multiplication table</label>
               </div>
               <div>
-                <label for="maxRange">Choose maximum range</label>
+                <label for="maxRange">Choose random range</label>
                 <input type="range" id="maxRange" name="maxRange" 
-                       min="3" max="48" value="20" step="1" oninput="maxInput.value = maxRange.value">
+                       min="3" max="48" value="20" step="1" oninput="javascript:onSlide('maxRange', 'maxInput');">
                        [1 - 
                 <output name="maxInput" id="maxInput">20</output>
                 <label>]</label>
@@ -102,5 +103,13 @@
   
 </body>
 <script src="scripts/bundle.js"></script>
+
+<script language="Javascript">
+  function onSlide(input, output) {
+    document.getElementById(output).value = document.getElementById(input).value;
+    document.getElementById('shuffledNumber').value = '';
+    App.uiOps.replenish();
+  }
+</script>
 
 </html>
