@@ -77,8 +77,8 @@ export function shuffleNewQuestion(targetted, newShuffledNumber) {
     }
   const [first, ...rest]  = [...shuffledNumber];
   const input = [targetted, first];
-  document.getElementById('firstNumGen').innerHTML = input[1];
-  document.getElementById('secondNumGen').innerHTML = input[0];
+  document.getElementById('firstNumGen').innerHTML = input[0];
+  document.getElementById('secondNumGen').innerHTML = input[1];
   document.getElementById('shuffledNumber').value = [rest, first].join(',');
   return;  
 }

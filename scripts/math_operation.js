@@ -172,19 +172,28 @@ export function analyzeUserPracticeSessions(studentId) {
 export function replenish() {
   const max = parseInt(document.getElementById('maxInput').value, 10);
   const min = parseInt(document.getElementById('minInput').value, 10);
+  const firstNum = document.getElementById('firstNumGen') && parseInt(document.getElementById('firstNumGen').innerHTML, 10);
+  const secondNum = document.getElementById('secondNumGen') &&  parseInt(document.getElementById('secondNumGen').innerHTML, 10);
+
   const generatorFunction = document.getElementById('generatorFunction') && document.getElementById('generatorFunction').value;
   const targetted = document.getElementById('targetted') && parseInt(document.getElementById('targetted').value, 10);
 
-  if(document.getElementById('replenishType') && 'SHUFFLE'.toUpperCase() === (document.getElementById('replenishType').value)) {
+  if(generatorFunction && 'shuffledNumber' === generatorFunction) {
     let shuffledNumber =  Generator.getShuffledRange(min, max, [0,1]);
     uiTools.shuffleNewQuestion(targetted, shuffledNumber);
     return;
   } 
 
   const excludes = ('10,' + document.getElementById('excludes').value).split(',').filter(i => i !== '').map(i => parseInt(i, 10))
-  let randomNumbers = Generator.getTwoNumbers(min, max, excludes);
+  let randomNumbers = undefined;
   if ('getCommonBase10sComplement'.startsWith(generatorFunction)) {
     randomNumbers = Generator.getCommonBase10sComplement(min, max, excludes)
+  }
+  if ('fibonacci'.startsWith(generatorFunction)) {
+    if(isNaN(secondNum) || isNaN(firstNum) )
+      randomNumbers = [1, 1];
+    else
+      randomNumbers = [secondNum, firstNum+secondNum];
   }
   if ('getNumberEndsWith5'.startsWith(generatorFunction)) {
     randomNumbers = Generator.getNumberEndsWith5(min, max, excludes)
@@ -195,9 +204,8 @@ export function replenish() {
   if ('getJunior5s'.startsWith(generatorFunction)) {
     randomNumbers = Generator.getJunior5s(min, max, excludes)
   }
-  if(targetted && targetted > 0) {
-    uiTools.populateNewQuestion(targetted, randomNumbers[1]);
-    return;
+  if(!randomNumbers) {
+    randomNumbers = Generator.getTwoNumbers(min, max, excludes);
   }
   uiTools.populateNewQuestion(randomNumbers[0], randomNumbers[1]);
 }

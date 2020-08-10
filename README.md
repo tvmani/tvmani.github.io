@@ -11,8 +11,11 @@ jest --watch --verbose false model\AnswerTips.test.js
 
 ## Git commands used before commit
 ```
+git checkout origin/master
 git diff origin/master  --name-only
-git diff origin/master  -- scripts/generator.js 
+git diff origin/master  -- scripts/generator.js
+git diff origin/master  -- scripts/math_operation.js
+git diff origin/master  -- scripts/ui_tools.js
 ```
 
 ### Sample links
