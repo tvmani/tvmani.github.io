@@ -1,0 +1,213 @@
+  
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    /* simple reset */
+    html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed,  figure, figcaption, footer, header, hgroup,  menu, nav, output, ruby, section, summary, time, mark, audio, video {  
+      margin: 0;  
+      padding: 0;  
+      border: 0;  
+      font-size: 100%;  
+      font: inherit;  
+      vertical-align: baseline; 
+    }
+
+    #slider {
+      text-align: center;
+      margin: 20px;
+      font-family: sans-serif;
+      font-size: 10px;
+      line-height: 2;
+    }
+
+    #sales-range {
+      vertical-align: bottom;
+    }
+
+    #viz {
+      width: 100%;
+      text-align: center;
+    }
+
+/* AXES */
+/* ticks */
+.axis line{
+stroke: #706f6f;
+stroke-width: 0.5;
+shape-rendering: crispEdges;
+}
+
+/* axis contour */
+.axis path {
+stroke: #706f6f;
+stroke-width: 0.7;
+shape-rendering: crispEdges;
+}
+
+/* axis text */
+.axis text {
+fill: #2b2929;
+font-family: Georgia;
+font-size: 120%;
+}
+
+/* LINE CHART */
+path.line-0 {
+    fill: none;
+    stroke: #ed3700;
+}
+
+path.line-1 {
+    fill: none;
+    stroke: #2b2929;
+    stroke-dasharray: 2;
+}
+
+path.line-2 {
+    fill: none;
+    stroke: #9c9c9c;
+    stroke-dasharray: 6;
+}
+
+.serie_label {
+  fill: #2b2929;
+  font-family: Georgia;
+  font-size: 80%;
+}
+
+/* LINE CHART */
+path {
+fill: none;
+stroke: #ed3700;
+}
+
+  </style>
+</head>
+<script src="https://d3js.org/d3.v5.js"></script>
+
+<body>
+  <div id="slider">
+    <span>all</span>
+    <input type="range" id="sales-range" value="0" />
+    <span>best sellers</span>
+  </div>
+  <div id="viz"></div>
+
+  <script>
+
+  let margin = {top: 30, left: 30, bottom: 150, right: 30};
+  let fullWidth = 960;
+  let fullHeight = 500;
+  let width = fullWidth - margin.left - margin.right;
+  let height = fullHeight - margin.top - margin.bottom;
+  let padding = 5;
+
+  let svg =  d3.select('body').append('svg').attr('width', fullWidth ).attr('height', fullHeight);
+  var gSvg = svg.append('g').attr('transform', `translate(${margin.left}, ${margin.top})`);
+
+  svg.style("padding", padding)
+     .attr("preserveAspectRatio", "xMinYMin meet")
+     .style("margin", margin)
+     .classed("svg-content", true);
+
+  const timeConv = d3.timeParse("%d-%b-%Y");
+  const dataset = d3.csv("data.csv");
+  dataset.then(data => {
+      const slices = data.columns.slice(1).map(function(id) {
+          return {
+              id: id,
+              values: data.map(function(d){
+                  return {
+                      date: timeConv(d.date),
+                      measurement: +d[id]
+                  };
+              })
+          };
+      });
+
+
+      console.log("Column headers", data.columns);
+console.log("Column headers without date", data.columns.slice(1));
+// returns the sliced dataset
+console.log("Slices",slices);  
+// returns the first slice
+console.log("First slice",slices[0]);
+// returns the array in the first slice
+console.log("A array",slices[0].values);   
+// returns the date of the first row in the first slice
+console.log("Date element",slices[0].values[0].date);  
+// returns the array's length
+console.log("Array length",(slices[0].values).length);
+
+const xScale = d3.scaleTime().range([0,width]);
+const yScale = d3.scaleLinear().rangeRound([height, 0]);
+xScale.domain(d3.extent(data, function(d){
+    return timeConv(d.date)}));
+yScale.domain([(0), d3.max(slices, function(c) {
+    return d3.max(c.values, function(d) {
+        return d.measurement + 4; });
+        })
+    ]);
+
+const yaxis = d3.axisLeft()
+    .ticks((slices[0].values).length)
+    .scale(yScale);
+
+const xaxis = d3
+    .axisBottom()
+    .ticks(d3.timeDay.every(1))
+    .tickFormat(d3.timeFormat('%b %d'))
+    .scale(xScale);
+
+svg.append("g")
+    .attr("class", "axis")
+    .attr('transform',`translate(0, ${height})`)
+    .call(xaxis);
+
+svg.append("g")
+    .attr("class", "axis")
+    .call(yaxis);
+
+//this you had
+svg.append("g")
+    .attr("class", "axis")
+    .call(yaxis)
+//this you append
+    .append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("dy", ".75em")
+    .attr("y", 6)
+    .style("text-anchor", "end")
+    .text("Frequency");
+    
+const line = d3.line()
+    .x(function(d) { return xScale(d.date); })
+    .y(function(d) { return yScale(d.measurement); });    
+
+const lines = svg.selectAll("lines")
+    .data(slices)
+    .enter()
+    .append("g");
+
+    lines.append("path")
+    .attr("d", function(d) { return line(d.values); });    
+
+    lines.append("text")
+    .attr("class","serie_label")
+    .datum(function(d) {
+        return {
+            id: d.id,
+            value: d.values[d.values.length - 1]}; })
+    .attr("transform", function(d) {
+            return "translate(" + (xScale(d.value.date) + 10)  
+            + "," + (yScale(d.value.measurement) + 5 ) + ")";})
+    .attr("x", 5)
+    .text(function(d) { return ("Serie ") + d.id; });    
+
+  }) // end of call back
+
+  </script>
+</body>
+
+</html>
