@@ -158,11 +158,6 @@ export function registerUser(studentId) {
 }
 
 export function analyzeUserPracticeSessions(studentId) {
-
-  let sessionTime = new Date().toISOString();
-  sid = `Practice_${studentId}@${sessionTime}`;
-
-
   let appreciation = extractSessions(studentId, localStorage);
   welcomeMessage = `<b>${studentId}</b>, you have completed ${appreciation.totalPracticeSessions} number of practice sessions`;
   console.log(appreciation);

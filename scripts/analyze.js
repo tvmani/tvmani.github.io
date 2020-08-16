@@ -3,9 +3,34 @@ import Evaluator from './model/Evaluator';
 const countBy = require('lodash/countBy');
 const sortBy = require('lodash/sortBy');
 const entries = require('lodash/entries');
+const groupBy = require('lodash/groupBy');
 
-export default function extractSessions(name, localStorage) {
-  const sessions = Object.keys(localStorage).filter((i) => i.indexOf(`Practice_${name}@`) != -1);
+
+export function getResult(day, application, localStorage) {
+  
+
+  const sessions = application.recentSessions.filter((i) => i.indexOf(day) != -1);
+  const allAttemptedQuestions = sessions.map((session) =>  JSON.parse(localStorage[session])).flat();
+
+  const results = groupBy(allAttemptedQuestions, q => q.operation);
+  const summary = {};
+  summary['date'] = day;
+  Object.keys(results).forEach( (operations) => {
+    summary[operations] = {};
+    summary[operations].valid = results[operations].filter(q => Evaluator.evaluateQuestion(q) === true).length;
+    summary[operations].inValid = results[operations].filter(q => Evaluator.evaluateQuestion(q) !== true).length;
+  });
+
+  return summary;
+}
+
+export default function extractSessions(name, localStorage, recentDays=30) {
+  let sessions = Object.keys(localStorage).filter((i) => i.indexOf(`Practice_${name}@`) != -1);
+  const today = (new Date()).getTime();
+  const oneDay = 1000 * 3600 * 24;
+  const daysDifference = oneDay * recentDays;
+
+  sessions = sessions.filter((a) => (today - (new Date(a.split('@')[1])).getTime()) <= daysDifference )
   sessions.sort((a,b) => new Date(b.split('@')[1]) - new Date(a.split('@')[1]) );
 
   const pastSessions = sessions.map((t) => t.split('@'));
@@ -39,7 +64,7 @@ export default function extractSessions(name, localStorage) {
   appreciation.failedByOperation = countBy(failedQuestions, 'operation');
   appreciation.successByOperation = countBy(sucessfulQuestions, 'operation');
   appreciation.operationsBy = countBy(allAttemptedQuestions, 'operation');
-  appreciation.recentSessions = sessions.slice(0, 10);
+  appreciation.recentSessions = sessions; // sessions.slice(0, recentDays);
   appreciation.studentId = name;
 
   return appreciation;

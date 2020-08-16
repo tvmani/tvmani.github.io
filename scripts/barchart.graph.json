@@ -1,0 +1,82 @@
+[
+  {
+    "date": "2020-07-17",
+    "multiplication": {
+      "valid": 108,
+      "inValid": 6
+    }
+  },
+  {
+    "date": "2020-07-19",
+    "division": {
+      "valid": 52,
+      "inValid": 21
+    },
+    "multiplication": {
+      "valid": 198,
+      "inValid": 8
+    }
+  },
+  {
+    "date": "2020-07-20",
+    "division": {
+      "valid": 141,
+      "inValid": 22
+    },
+    "multiplication": {
+      "valid": 132,
+      "inValid": 4
+    }
+  },
+  {
+    "date": "2020-07-21",
+    "division": {
+      "valid": 185,
+      "inValid": 26
+    },
+    "multiplication": {
+      "valid": 157,
+      "inValid": 2
+    }
+  },
+  {
+    "date": "2020-07-23",
+    "division": {
+      "valid": 71,
+      "inValid": 5
+    },
+    "multiplication": {
+      "valid": 106,
+      "inValid": 0
+    }
+  },
+  {
+    "date": "2020-07-24",
+    "division": {
+      "valid": 75,
+      "inValid": 17
+    },
+    "multiplication": {
+      "valid": 110,
+      "inValid": 1
+    }
+  },
+  {
+    "date": "2020-07-25",
+    "division": {
+      "valid": 61,
+      "inValid": 9
+    },
+    "multiplication": {
+      "valid": 155,
+      "inValid": 11
+    }
+  },
+  {
+    "date": "2020-08-16",
+    "division": {
+      "valid": 2,
+      "inValid": 3
+    }
+  }
+]
