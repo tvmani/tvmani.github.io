@@ -1,101 +1,93 @@
-<html>
+<!DOCTYPE html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+      /* simple reset */
+      html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed,  figure, figcaption, footer, header, hgroup,  menu, nav, output, ruby, section, summary, time, mark, audio, video {  
+        margin: 0;  
+        padding: 0;  
+        border: 0;  
+        font-size: 100%;  
+        font: inherit;  
+        vertical-align: baseline; 
+      }
 
-<head>
-  <title>Multiplication - Practice - Daily</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta charset="UTF-8" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="ui_styles_test.css">
-</head>
+      #slider {
+        text-align: center;
+        margin: 20px;
+        font-family: sans-serif;
+        font-size: 10px;
+        line-height: 2;
+      }
 
-<body>
-  <div class="jumbotron text-center">
-    <h3>Multiplication <img src="images/img_multiplication_01.png" class="img-symbol"> Practice</h3>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12">
-        <label for="yourName">Name</label>&nbsp;&nbsp;&nbsp;
-        <input type="text" id="yourName" value="" class="input-name" />
-        <input type="button" id="submit_name" class="btn btn-outline-primary btn-sm"
-          onclick="App.uiOps.registerUser(document.getElementById('yourName').value)" value="Start" />
-        <input type="button" id="end" class="btn btn-outline-primary btn-sm"
-          onclick="App.uiOps.registerUser(document.getElementById('yourName').value)" value="Reset" />
-        <br /><br />
-      </div>
-      <div class="col-sm-12">
-        <div id="main" style="visibility: hidden;">
-          <form id="formPractice">
-            <div><label id="welcomeMessage" /></div>
-            <!-- <div id="level" style="visibility: hidden;">
-              <label for="SquareMode">Square mode</label>&nbsp;&nbsp;&nbsp;
-              <input type="checkbox" id="SquareMode" value="true" />
-            </div> -->
-            <div class="form-group row">
-              <label id="firstNumGen" class="label label-medium"></label>
-              <img src="images/img_multiplication_01.png" alt="*" class="img-symbols">
-              <label id="secondNumGen" class="label label-medium"></label>
-              <!-- <button id="equalTo" class="btn btn-sm" disabled>=</button> -->
-              <img id="equalTo" src="images/equal_symbol_01.png" class="img-symbols">
-              &nbsp;&nbsp;<input type="text" id="answer" value="" class="input-answer" onkeypress="return App.uiOps.isNumber(event);" />
-              <input type="button" class="btn btn-outline-primary btn-sm" autofocus id="submitAnswer"
-                onclick="App.uiOps.scoreMark(App.uiOps.ui.createQuestion());" value="Go" />
-            </div>
-            <input type="hidden" id="operations" value="multiplication" />
-            <input type="hidden" id="maxInput" value="22" />
-            <input type="hidden" id="minInput" value="3" />
-      			<input type="hidden" id="excludes" value="5,10,20" />
+      #sales-range {
+        vertical-align: bottom;
+      }
 
-            <div id="studentPracticeSummary">
-              <label id="summary">Summary</label>&nbsp;&nbsp;&nbsp;
-            </div>
-          </form>
-          <div>
-            <table id="practicedResults" border="1">
-              <tr>
-                <th>
-                  Number
-                </th>
-                <th>
-                  Number
-                </th>
-                <th>
-                  Your Answer
-                </th>
-                <th>
-                  Correct
-                </th>
-                <th>
-                  Clue
-                </th>
-                <th>
-                  Result
-                </th>
-              </tr>
-            </table>
-          </div>
-          <a href="addition.html">Addition</a>
-          <a href="subtraction.html">Subtraction</a>
-          <a href="multiplication.html">Multiplication</a>
-          <a href="division.html">Division</a>
-          <br/><a href="analysis.html">Analysis</a>
-  
-          <a
-            href="https://thumbs.dreamstime.com/z/x-multiplication-table-vector-illustration-students-multiplication-table-x-98833796.jpg">
-            Table Reference<br /><br />
+      #viz {
+        width: 100%;
+        text-align: center;
+      }
 
-          </a>
-
-        </div>
-      </div>
-
+    </style>
+  </head>
+  <script src="https://d3js.org/d3.v5.js"></script>
+  <body>
+    <div id="slider">
+      <span>all</span>
+      <input type="range" id="sales-range" value="0" />
+      <span>best sellers</span>
     </div>
-  </div>
+    <div id="viz"></div>
+  
+    <script>
 
-</body>
-<script src="scripts/bundle.js"></script>
+      let margin = {top: 30, right: 30, left: 30, bottom: 150 };
+      let fullWidth = 960;
+      let fullHeight = 500;
+      let width = fullWidth - margin.left - margin.right;
+      let height = fullHeight - margin.top - margin.bottom;
+      let dataUrl = 'test.csv'
+      data = (await d3.csv(dataURL, d3.autoType))
+      series = d3.stack().keys(data.columns.slice(1))(data)
+
+      const xScale = d3.scaleBand()
+        .domain(data.map(function(d){return d.category;}))
+        .range([0, width])
+        .padding(0.1);
+      
+      const yScale = d3.scaleLinear()
+        .domain([0,d3.max(series, d => d3.max(d, d=> d[1]))])
+        .range([height,0]);
+ 
+        const color = d3.scaleOrdinal(d3.schemeCategory10);
+      
+      const rects = gSvg.selectAll("g").data(series).enter()
+        .append("g")
+        .attr("fill", d => color(d.key)); //Color is assigned here because you want everyone for the series to be the same color
+      
+      rects.selectAll("rect")
+        .data(d => d)
+        .join("rect")
+        .attr("x", (d, i) => xScale(d.data.category))
+        .attr("y", d=> yScale(d[1]))
+        .attr("height", d=> yScale(d[0]) - yScale(d[1]))
+        .attr("width", xScale.bandwidth())
+        /*.on("mouseover", function(){d3.select(this).attr("fill", "purple")})
+        .on("mouseout", function(){d3.select(this).attr("fill", color(series.key))})*/;
+      
+      const xAxis = gSvg.append("g")
+        .attr("id", "xAxis")
+        .attr("transform", "translate(0,"+height+")")
+        .call(d3.axisBottom(xScale));
+      
+      const yAxis = gSvg.append("g")
+        .attr("id", "yAxis")
+        .call(d3.axisLeft(yScale));
+      
+      return svg.node();
+
+    </script>
+  </body>
 
 </html>

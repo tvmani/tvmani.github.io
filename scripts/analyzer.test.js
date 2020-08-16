@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import Evaluator from "./model/Evaluator";
-import extractSessions from './analyze';
+import extractSessions, {getResult} from './analyze';
 
 // expect.extend({
 //   toBeWithinRange(received, floor, ceiling) {
@@ -49,11 +49,24 @@ test("Analyze the submission", () => {
   const string = fs.readFileSync('sample_questions.json').toString();
   let localStorage = JSON.parse(string);
   let result = extractSessions("Kavin", localStorage);
-  console.log(`Result returned ${result}` );
+  // console.log(`Result returned ${result}` );
+  expect(result.uniqueDaysOfPractice).toBe("2020-07-17, 2020-07-19, 2020-07-20, 2020-07-21, 2020-07-23, 2020-07-24, 2020-07-25, 2020-08-16");
   expect(result.totalQuestionsPracticed).toBeGreaterThan(112);
-  expect(result.totalPracticeSessions).toBeGreaterThan(112);
-  
-  //expect(questions.length).toBeGreaterThan(27);
-  //console.log(JSON.stringify(Evaluator.analyze(questions), 2, null));
+  let expectedResult = {
+    "date": "2020-07-20",
+    "division": {
+      "valid": 141,
+      "inValid": 22
+    },
+    "multiplication": {
+      "valid": 132,
+      "inValid": 4
+    }
+  }
+
+  expect(getResult('2020-07-20', result, localStorage)).toStrictEqual(expectedResult);
+  let state = result.uniqueDaysOfPractice.split(', ').map(date => getResult(date, result, localStorage));
+  console.log(`state - ${JSON.stringify(state,null,2)}`);
+
 
 });
