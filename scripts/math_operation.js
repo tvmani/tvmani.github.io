@@ -1,7 +1,7 @@
 import uiTools from './ui_tools';
 import Random from './random';
 import Generator from './generator';
-import extractSessions from './analyze';
+import extractSessions, {getResult}  from './analyze';
 import Evaluator from './model/Evaluator';
 
 const startTime = new Date();
@@ -162,8 +162,14 @@ export function analyzeUserPracticeSessions(studentId) {
   welcomeMessage = `<b>${studentId}</b>, you have completed ${appreciation.totalPracticeSessions} number of practice sessions`;
   console.log(appreciation);
   return appreciation;
-
 }
+
+export function getAnalysisResult(studentId) {
+  const appreciation = extractSessions(studentId, localStorage, 30);
+  const analysisResult = appreciation.uniqueDaysOfPractice.split(', ').map(date => getResult(date, appreciation, localStorage));
+  return analysisResult;
+}
+
 export function replenish() {
   const max = parseInt(document.getElementById('maxInput').value, 10);
   const min = parseInt(document.getElementById('minInput').value, 10);

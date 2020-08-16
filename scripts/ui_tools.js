@@ -196,7 +196,6 @@ export function showConsolidatedSummary(summary, table) {
       const cell = recentRow.insertCell(0);
       cell.innerHTML = `<b>recentSessions</b>`;
       let html = summary.recentSessions.map((e,i) => `<label id='failure_${i}' /><a href='#' onclick=javascript:App.uiOps.ui.showSessionDetails('${e.trim()}','failure_${i}');> ${e} </a>`).join('<br/>');
-      console.log(`html - ${html}`);
       recentRow.insertCell(1).innerHTML = html;
     }
 
