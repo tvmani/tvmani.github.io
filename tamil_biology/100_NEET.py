@@ -55,7 +55,7 @@ def get_cell_indexes(tableRange):
     return (start_row_index, end_row_index)
 
 
-def create_slide(quizRecord, prs):
+def create_slide(quizRecord, prs, isQuestion=True):
 
     blank_slide_layout = prs.slide_layouts[6]
 
@@ -75,11 +75,11 @@ def create_slide(quizRecord, prs):
 
     p = shape.text_frame.paragraphs[0]
     run = p.add_run()
-    run.text = 'Lession 1 - Biology - 11th?'
+    run.text = '11th Std - Questions'
 
     font = run.font
     font.name = 'Calibri'
-    font.size = Pt(32)
+    font.size = Pt(24)
     font.bold = True
     font.italic = None  # cause value to be inherited from theme
     #font.color.theme_color = MSO_THEME_COLOR.ACCENT_1
@@ -94,15 +94,16 @@ def create_slide(quizRecord, prs):
 
     left = Inches(0.5)
     top = Inches(1.5)
-    width = Inches(9.5)
+    width = Inches(8)
     height = Inches(4)
 
     text_box = slide.shapes.add_textbox(left, top, width, height)
 
     tb = text_box.text_frame
-
+    tb.word_wrap = True
     currentQuiz = quizRecord
-    tb.text = "Q - " + str(currentQuiz.question_no) + "  " + currentQuiz.question
+    tb.text = "Q - " + str(currentQuiz.question_no) + \
+        "  " + currentQuiz.question
 
     # font = text_box.font
     # font.name = 'Calibri'
@@ -112,19 +113,28 @@ def create_slide(quizRecord, prs):
     prg = tb.add_paragraph()
     prg.text = ""
 
-    prg = tb.add_paragraph()
-    prg.text = "அ) " + currentQuiz.option_1
+    if isQuestion == True:
+        prg = tb.add_paragraph()
+        prg.text = "அ) " + currentQuiz.option_1
 
-    prg = tb.add_paragraph()
-    prg.text = "ஆ) " + currentQuiz.option_2
+        prg = tb.add_paragraph()
+        prg.text = "ஆ) " + currentQuiz.option_2
 
-    prg = tb.add_paragraph()
-    prg.text = "இ) " + currentQuiz.option_3
+        prg = tb.add_paragraph()
+        prg.text = "இ) " + currentQuiz.option_3
 
-    prg = tb.add_paragraph()
-    prg.text = "ஈ) " + currentQuiz.option_4
-
-    
+        prg = tb.add_paragraph()
+        prg.text = "ஈ) " + currentQuiz.option_4
+    else:
+        prg = tb.add_paragraph()
+        if quizRecord.correct_answer == 1:
+            prg.text = "அ) " + currentQuiz.option_1
+        elif quizRecord.correct_answer == 2:
+            prg.text = "ஆ) " + currentQuiz.option_2
+        elif quizRecord.correct_answer == 3:
+            prg.text = "இ) " + currentQuiz.option_3
+        elif quizRecord.correct_answer == 4:
+            prg.text = "ஈ) " + currentQuiz.option_4
 
 print(getTotalRecords(table_cell_range))
 print(get_cell_identifier(table_cell_range))
@@ -158,7 +168,8 @@ prs = Presentation()
 
 for quizRecord in QuizRecordsDb:
     # print(x)
-    create_slide(quizRecord, prs)
+    create_slide(quizRecord, prs, True)
+    create_slide(quizRecord, prs, False)
 
 prs.save('NEET_BIOLOGY_001.pptx')
 
