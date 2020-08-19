@@ -3,6 +3,21 @@ from openpyxl.worksheet.table import Table, TableStyleInfo
 from openpyxl import load_workbook
 import collections as col
 import string
+import numpy as np
+import pandas as pd
+import plotly.graph_objects as go
+import datetime
+from pptx.util import Inches
+from pptx.chart.data import ChartData
+from pptx.enum.chart import XL_CHART_TYPE
+from pptx.chart.data import CategoryChartData
+from pptx import Presentation
+from pptx.enum.shapes import MSO_SHAPE
+from pptx.dml.color import RGBColor
+from pptx.util import Inches, Pt
+from pptx.enum.dml import MSO_THEME_COLOR
+from pptx import Presentation
+from pptx.util import Inches
 
 
 wb = load_workbook(filename=r"002_NEET_Questions.xlsx")
@@ -50,7 +65,7 @@ excel_A_to_Z = list(string.ascii_uppercase)
 
 # question_no	question	exams_already_asked	year	option_1	option_2	option_3	option_4	correct_answer
 
-QuizRecord = col.namedtuple('QuizRecord', 'question_no, exams_already_asked, year, option_1, \
+QuizRecord = col.namedtuple('QuizRecord', 'question_no, question, exams_already_asked, year, option_1, \
                             option_2, option_3, option_4, correct_answer')
 QuizRecordsDb = []
 
@@ -63,9 +78,77 @@ for row in range(start_row_index, end_row_index, 1):
                             sheet_ranges['E' + str(row + 1)].value,
                             sheet_ranges['F' + str(row + 1)].value,
                             sheet_ranges['G' + str(row + 1)].value,
-                            sheet_ranges['H' + str(row + 1)].value
+                            sheet_ranges['H' + str(row + 1)].value,
+                            sheet_ranges['I' + str(row + 1)].value,
                             )
     QuizRecordsDb.append(quizRecord)
 
 for x in QuizRecordsDb:
     print(x)
+
+
+def create_ppt(quizRecords):
+    prs = Presentation()
+    blank_slide_layout = prs.slide_layouts[6]
+
+    # Page 1
+    # -----------------------------------------------------------------------------------------------------------------------
+    slide = prs.slides.add_slide(blank_slide_layout)
+
+    left = top = width = height = Inches(1.0)
+
+    shape = slide.shapes.add_shape(
+        MSO_SHAPE.RECTANGLE, 0, Inches(0.5), Inches(10), Inches(0.5)
+    )
+    shape.shadow.inherit = False
+    fill = shape.fill
+    fill.solid()
+    fill.fore_color.rgb = RGBColor(255, 0, 0)
+
+    p = shape.text_frame.paragraphs[0]
+    run = p.add_run()
+    run.text = 'Lession 1 - Biology - 11th?'
+
+    font = run.font
+    font.name = 'Calibri'
+    font.size = Pt(32)
+    font.bold = True
+    font.italic = None  # cause value to be inherited from theme
+    #font.color.theme_color = MSO_THEME_COLOR.ACCENT_1
+
+    line = shape.line
+    line.color.rgb = RGBColor(255, 0, 0)
+
+    # logo1 = slide.shapes.add_picture(pylogo, Inches(
+    #     14.5), Inches(0.4), height=Inches(0.5), width=Inches(0.5))
+    # logo2 = slide.shapes.add_picture(pptlogo, Inches(
+    #     15.0), Inches(0.4), height=Inches(0.5), width=Inches(0.5))
+
+    left = Inches(0.5)
+    top = Inches(1.5)
+    width = Inches(9.5)
+    height = Inches(4)
+
+    text_box = slide.shapes.add_textbox(left, top, width, height)
+
+    tb = text_box.text_frame
+    currentQuiz = quizRecords[0]
+    tb.text = currentQuiz.question
+
+    prg = tb.add_paragraph()
+    prg.text = currentQuiz.option_1
+
+    prg = tb.add_paragraph()
+    prg.text = currentQuiz.option_2
+
+    prg = tb.add_paragraph()
+    prg.text = currentQuiz.option_3
+
+    prg = tb.add_paragraph()
+    prg.text = currentQuiz.option_4
+
+    prs.save('NEET_BIOLOGY_001.pptx')
+
+create_ppt(QuizRecordsDb)
+
+print("PPT created")
