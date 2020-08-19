@@ -55,40 +55,8 @@ def get_cell_indexes(tableRange):
     return (start_row_index, end_row_index)
 
 
-print(getTotalRecords(table_cell_range))
-print(get_cell_identifier(table_cell_range))
-print(get_cell_indexes(table_cell_range))
-excel_A_to_Z = list(string.ascii_uppercase)
+def create_slide(quizRecord, prs):
 
-(start_row_index, end_row_index) = get_cell_indexes(table_cell_range)
-(start_row_id, end_row_id) = get_cell_identifier(table_cell_range)
-
-# question_no	question	exams_already_asked	year	option_1	option_2	option_3	option_4	correct_answer
-
-QuizRecord = col.namedtuple('QuizRecord', 'question_no, question, exams_already_asked, year, option_1, \
-                            option_2, option_3, option_4, correct_answer')
-QuizRecordsDb = []
-
-for row in range(start_row_index, end_row_index, 1):
-    print("processing row " + str(start_row_index))
-    quizRecord = QuizRecord(sheet_ranges['A' + str(row + 1)].value,
-                            sheet_ranges['B' + str(row + 1)].value,
-                            sheet_ranges['C' + str(row + 1)].value,
-                            sheet_ranges['D' + str(row + 1)].value,
-                            sheet_ranges['E' + str(row + 1)].value,
-                            sheet_ranges['F' + str(row + 1)].value,
-                            sheet_ranges['G' + str(row + 1)].value,
-                            sheet_ranges['H' + str(row + 1)].value,
-                            sheet_ranges['I' + str(row + 1)].value,
-                            )
-    QuizRecordsDb.append(quizRecord)
-
-for x in QuizRecordsDb:
-    print(x)
-
-
-def create_ppt(quizRecords):
-    prs = Presentation()
     blank_slide_layout = prs.slide_layouts[6]
 
     # Page 1
@@ -132,23 +100,66 @@ def create_ppt(quizRecords):
     text_box = slide.shapes.add_textbox(left, top, width, height)
 
     tb = text_box.text_frame
-    currentQuiz = quizRecords[0]
-    tb.text = currentQuiz.question
+
+    currentQuiz = quizRecord
+    tb.text = "Q - " + str(currentQuiz.question_no) + "  " + currentQuiz.question
+
+    # font = text_box.font
+    # font.name = 'Calibri'
+    # font.size = Pt(24)
+    # font.bold = True
 
     prg = tb.add_paragraph()
-    prg.text = currentQuiz.option_1
+    prg.text = ""
 
     prg = tb.add_paragraph()
-    prg.text = currentQuiz.option_2
+    prg.text = "அ) " + currentQuiz.option_1
 
     prg = tb.add_paragraph()
-    prg.text = currentQuiz.option_3
+    prg.text = "ஆ) " + currentQuiz.option_2
 
     prg = tb.add_paragraph()
-    prg.text = currentQuiz.option_4
+    prg.text = "இ) " + currentQuiz.option_3
 
-    prs.save('NEET_BIOLOGY_001.pptx')
+    prg = tb.add_paragraph()
+    prg.text = "ஈ) " + currentQuiz.option_4
 
-create_ppt(QuizRecordsDb)
+    
+
+print(getTotalRecords(table_cell_range))
+print(get_cell_identifier(table_cell_range))
+print(get_cell_indexes(table_cell_range))
+excel_A_to_Z = list(string.ascii_uppercase)
+
+(start_row_index, end_row_index) = get_cell_indexes(table_cell_range)
+(start_row_id, end_row_id) = get_cell_identifier(table_cell_range)
+
+# question_no	question	exams_already_asked	year	option_1	option_2	option_3	option_4	correct_answer
+
+QuizRecord = col.namedtuple('QuizRecord', 'question_no, question, exams_already_asked, year, option_1, \
+                            option_2, option_3, option_4, correct_answer')
+QuizRecordsDb = []
+
+for row in range(start_row_index, end_row_index, 1):
+    print("processing row " + str(start_row_index))
+    quizRecord = QuizRecord(sheet_ranges['A' + str(row + 1)].value,
+                            sheet_ranges['B' + str(row + 1)].value,
+                            sheet_ranges['C' + str(row + 1)].value,
+                            sheet_ranges['D' + str(row + 1)].value,
+                            sheet_ranges['E' + str(row + 1)].value,
+                            sheet_ranges['F' + str(row + 1)].value,
+                            sheet_ranges['G' + str(row + 1)].value,
+                            sheet_ranges['H' + str(row + 1)].value,
+                            sheet_ranges['I' + str(row + 1)].value,
+                            )
+    QuizRecordsDb.append(quizRecord)
+
+prs = Presentation()
+
+for quizRecord in QuizRecordsDb:
+    # print(x)
+    create_slide(quizRecord, prs)
+
+prs.save('NEET_BIOLOGY_001.pptx')
 
 print("PPT created")
