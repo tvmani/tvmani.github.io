@@ -1,0 +1,84 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+		<title>Flash Cards</title>
+		<link href="common.css" rel="stylesheet" />
+		<link href="index.css" rel="stylesheet" />
+	</head>
+	<body>
+		<div class="warnings"></div>
+		<div class="content">
+			<span class="navigation">
+				<div id="categoryComponent" class="component">
+					<ul class="categoryList">
+					</ul>
+
+					<div class="addMoreSection">
+						<a href="addEditList.html">Add more...</a>
+					</div>
+				</div>
+				<div class="component">
+					<canvas id="cnvTimer" width="150" height="150"></canvas>
+					<div class="timeRemaining">1:00</div>
+					<select class="languageSelector"  value="ta-IN">
+						<option value="ta-IN" selected="selected">Tamil</option>
+						<option value="id-ID">Bahasa Indonesia</option>
+						<option value="ms-MY">Bahasa Melayu</option>
+						<option value="en-AU">English - Australia</option>
+						<option value="en-CA">English - Canada</option>
+						<option value="en-IN">English - India</option>
+						<option value="en-GB">English - United Kingdom</option>
+						<option value="en-US">English - United States</option>
+						<option value="ko-KR">한국어</option>
+						<option value="ja-JP">日本語</option>
+					</select>
+					<div class="controls">
+						<button title="Please select a category" class="startButton disabled">Start</button>
+					</div>
+
+				</div>
+			</span>
+			<span class="problemArea">
+				<div class="component instructions" id="firstInstructions">
+					Which category would like to see problems for?
+					<img src="arrow.png" class="leftArrow" />
+				</div>
+
+				<div class="component instructions hidden" id="secondInstructions">
+					You will have 60 seconds to get as many correct as you can.  When you click "Start" the browser will ask you for permission to use the microphone.  Once cards start appearing, say the answers out loud.  A new problem won't given until either you say "skip" or get the problem right.
+				</div>
+
+				<div class="component scores hidden">
+					<span class="currentScore">
+						Score: <span id="currentScoreValue"></span>
+					</span>
+					<span class="highScore">
+						High Score: <span id="highScoreValue"></span>
+					</span>
+				</div>
+
+				<div class="card component hidden">
+					<div class="problem"></div>
+				</div>
+				<div class="iHeard component hidden">
+					<span class="iHeardLabel">I think I heard you say:</span> <span id="iHeardText"></span>
+					<div class="skipHint">
+						If you get stuck, say "skip"...
+					</div>
+				</div>
+			</span>
+		</div>
+
+		<div class="footer">
+			<div>Created by Brandon Nicholls</div>
+		</div>
+
+		<script src="handlebars-runtime.js"></script>
+		<script src="categories.js"></script>
+		<script src="common.js"></script>
+		<script src="sampleProblems.js"></script>
+		<script src="main.js"></script>
+
+	</body>
+</html>
