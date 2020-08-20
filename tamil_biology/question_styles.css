@@ -17,6 +17,12 @@
   -webkit-border-radius: 50px;
   border-radius: 20px;
 }
+
+qid {
+    left: 0;
+    top: 0;
+}
+
 label.btn {
     padding: 18px 60px;
     white-space: normal;
