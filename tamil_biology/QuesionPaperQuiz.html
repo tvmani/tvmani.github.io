@@ -31,8 +31,8 @@
             </div>
             <div id="qprompt1" class="qprompt" style="display: none;" />
                 <span id="qalert1" class="qalert">&nbsp;</span>
-                <span id="qans1" class="qans">2. <em>பசுங்கணிகம்</em></span>
-              </div>            
+                <h1><span id="qans1" class="qans">2. <em>பசுங்கணிகம்</em></span></h1>
+            </div>
         </div>
     </div>
 </div>
@@ -53,65 +53,58 @@
             </div>
             <div id="qprompt2" class="qprompt" style="display: none;" />
                 <span id="qalert2" class="qalert">&nbsp;</span>
-                <span id="qans2" class="qans">4. <em>கிரானம்</em></span>
-              </div>            
+                <h1><span id="qans2" class="qans">4. <em>கிரானம்</em></span></h1>
+            </div>            
         </div>
     </div>
 </div>
-<div class="jumbotron text-center">
-Answers
+<div class="modal-header">
+    <h3><span id='correct'></h3>
+    <h3><span id='wrong'></h3>
 </div>
-<div class="modal-header text-muted">
-    <h6><span class="label label-warning" id="qid">7</span>குவான்டோசோம் இவற்றில் காணப்படுகிறது?</h6>
-    <b><span id="answer">2</span></b></br>
-    <span id="answer">பசுங்கணிகம்</span>
-</div>
-<div class="modal-header text-muted">
-    <h6><span class="label label-warning" id="qid">8</span>சைட்டோகுரோம் ஆக்ஸிடேஸ் என்ற நொதி மைட்டோகாண்டிரியாவில் காணப்படும் இடம்?</h6>
-    <b><span id="answer">2</span></b></br>
-    <span id="answer">மைட்டோகாண்டிரியாவின் உட்சவ்வு </span>
-</div>
-<div class="modal-header text-muted">
-    <h6><span class="label label-warning" id="qid">9</span>சுரக்கும் செல்கள் அதிகளவில் காணக்கூடிய செல் நுண்ணுறுப்பு எது?</h6>
-    <b><span id="answer">4</span></b></br>
-    <span id="answer">டிக்டியோசோம்கள் </span>
-</div>
-<div class="modal-header text-muted">
-    <h6><span class="label label-warning" id="qid">10</span>லிப்பிடுகள் அதிகளவில் உற்பத்தியாகும் இடம்?</h6>
-    <b><span id="answer">2</span></b></br>
-    <span id="answer">வழவழப்பான  எண்டோபிளாச வலை </span>
-</div>
-<div class="modal-header text-muted">
-    <h6><span class="label label-warning" id="qid">11</span>கோல்கை உடலங்கள் இதில் முக்கிய பங்காற்றுகின்றன?</h6>
-    <b><span id="answer">2</span></b></br>
-    <span id="answer">புரதங்களை மொழிபெயர்த்தல்</span>
-</div>
+
+
 </body>
 <script>
 window.addEventListener('load', (_event) => {
     let questions = document.getElementsByClassName('qid')
+    let correct = 0;
+    let wrong = 0;
+
+    function removeElement(element) {
+        var elem = document.getElementById(id);
+        return elem.parentNode.removeChild(elem);
+    }
 
     var quizHandler = function(element) {
         console.dir(element)
         let [qid, option_id] = element.target.getAttribute('id').match(/(\d+)/g);
         let valid = element.target.getAttribute('data-target');
-        debugger;
         if(valid === null) {
             // document.getElementById('qprompt'+qid).style.backgroundColor = "red";
-            document.getElementById('qalert'+qid).innerHTML = "<strong>You were wrong!</strong>";
+            document.getElementById('qalert'+qid).innerHTML = "<strong>You were wrong!</strong><br>";
             document.getElementById('qalert'+qid).style.backgroundColor = "red";
             element.target.parentNode.style.minHeight = '25px';
-            element.target.parentNode.innerHTML = '<br/>'
+            correct++;
         } else {
             document.getElementById('qalert'+qid).innerHTML = "<strong>You were correct!</strong>";
             document.getElementById('qalert'+qid).style.backgroundColor = "green";
             //element.target.parentNode.style.display = 'none'
             element.target.parentNode.style.minHeight = '25px';
-            element.target.parentNode.innerHTML = '<br/>'
-            document.getElementById('qprompt'+qid).style.backgroundColor = "green";
+            wrong++;
         }
+        let elem = element.target.parentNode.parentNode;
+        elem.parentNode.removeChild(elem);
+        debugger;
+
         document.getElementById('qprompt'+qid).style.display = 'block'
 
+        if(wrong >0) {
+            document.getElementById('wrong').innerHTML = `<b>Number of correct = ${wrong}</b>`
+        }
+        if(correct >0) {
+            document.getElementById('correct').innerHTML = `<b>Number of wrong = ${correct}</b>`
+        }
 
         // var attribute = this.getAttribute("data-myattribute");
         // alert(attribute);
