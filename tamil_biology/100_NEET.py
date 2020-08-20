@@ -82,7 +82,7 @@ def create_slide(quizRecord, prs, isQuestion=True):
     font.size = Pt(24)
     font.bold = True
     font.italic = None  # cause value to be inherited from theme
-    #font.color.theme_color = MSO_THEME_COLOR.ACCENT_1
+    # font.color.theme_color = MSO_THEME_COLOR.ACCENT_1
 
     line = shape.line
     line.color.rgb = RGBColor(255, 0, 0)
@@ -101,6 +101,7 @@ def create_slide(quizRecord, prs, isQuestion=True):
 
     tb = text_box.text_frame
     tb.word_wrap = True
+
     currentQuiz = quizRecord
     tb.text = "Q - " + str(currentQuiz.question_no) + \
         "  " + currentQuiz.question
@@ -116,17 +117,31 @@ def create_slide(quizRecord, prs, isQuestion=True):
     if isQuestion == True:
         prg = tb.add_paragraph()
         prg.text = "அ) " + currentQuiz.option_1
+        prg = tb.add_paragraph()
+        prg.text = ""
 
         prg = tb.add_paragraph()
         prg.text = "ஆ) " + currentQuiz.option_2
+        prg = tb.add_paragraph()
+        prg.text = ""
 
         prg = tb.add_paragraph()
         prg.text = "இ) " + currentQuiz.option_3
+        prg = tb.add_paragraph()
+        prg.text = ""
 
         prg = tb.add_paragraph()
         prg.text = "ஈ) " + currentQuiz.option_4
     else:
         prg = tb.add_paragraph()
+
+        font = prg.font
+        font.name = 'Calibri'
+        font.size = Pt(24)
+        font.bold = True
+        font.italic = None  # cause value to be inherited from theme
+        font.color.rgb = RGBColor(0, 255, 0)
+
         if quizRecord.correct_answer == 1:
             prg.text = "அ) " + currentQuiz.option_1
         elif quizRecord.correct_answer == 2:
