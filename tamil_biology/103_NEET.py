@@ -18,9 +18,13 @@ from pptx.util import Inches, Pt
 from pptx.enum.dml import MSO_THEME_COLOR
 from pptx import Presentation
 from pptx.util import Inches
+import os
+
 
 # todo: filename should be passed in commandline for function
-wb = load_workbook(filename=r"L-05.xlsx")
+filename = "L-05.xlsx"
+
+wb = load_workbook(filename)
 
 sheet_ranges = wb.worksheets[0]
 
@@ -71,7 +75,8 @@ def create_slide(quizRecord, prs, isQuestion=True):
     shape.shadow.inherit = False
     fill = shape.fill
     fill.solid()
-    fill.fore_color.rgb = RGBColor(255, 0, 0)
+    #fill.fore_color.rgb = RGBColor(255, 0, 0) # RED
+    fill.fore_color.rgb = RGBColor(0, 191, 255) # RED
 
     p = shape.text_frame.paragraphs[0]
     run = p.add_run()
@@ -85,7 +90,8 @@ def create_slide(quizRecord, prs, isQuestion=True):
     # font.color.theme_color = MSO_THEME_COLOR.ACCENT_1
 
     line = shape.line
-    line.color.rgb = RGBColor(255, 0, 0)
+    # line.color.rgb = RGBColor(255, 0, 0) # RED
+    line.color.rgb = RGBColor(0,191,255) # deep sky blue    
 
     # logo1 = slide.shapes.add_picture(pylogo, Inches(
     #     14.5), Inches(0.4), height=Inches(0.5), width=Inches(0.5))
@@ -111,29 +117,39 @@ def create_slide(quizRecord, prs, isQuestion=True):
     # font.size = Pt(24)
     # font.bold = True
 
-    prg = tb.add_paragraph()
+    left = Inches(0.5)
+    top = Inches(1.5)
+    width = Inches(8)
+    height = Inches(4)
+
+    text_box_options = slide.shapes.add_textbox(left, top, width, height)
+
+    tbOptions = text_box_options.text_frame
+    tbOptions.word_wrap = True
+
+    prg = tbOptions.add_paragraph()
     prg.text = ""
 
     if isQuestion == True:
-        prg = tb.add_paragraph()
+        prg = tbOptions.add_paragraph()
         prg.text = "அ) " + currentQuiz.option_1
-        prg = tb.add_paragraph()
+        prg = tbOptions.add_paragraph()
         prg.text = ""
 
-        prg = tb.add_paragraph()
+        prg = tbOptions.add_paragraph()
         prg.text = "ஆ) " + currentQuiz.option_2
-        prg = tb.add_paragraph()
+        prg = tbOptions.add_paragraph()
         prg.text = ""
 
-        prg = tb.add_paragraph()
+        prg = tbOptions.add_paragraph()
         prg.text = "இ) " + currentQuiz.option_3
-        prg = tb.add_paragraph()
+        prg = tbOptions.add_paragraph()
         prg.text = ""
 
-        prg = tb.add_paragraph()
+        prg = tbOptions.add_paragraph()
         prg.text = "ஈ) " + currentQuiz.option_4
     else:
-        prg = tb.add_paragraph()
+        prg = tbOptions.add_paragraph()
 
         font = prg.font
         font.name = 'Calibri'
@@ -150,6 +166,18 @@ def create_slide(quizRecord, prs, isQuestion=True):
             prg.text = "இ) " + currentQuiz.option_3
         elif quizRecord.correct_answer == 4:
             prg.text = "ஈ) " + currentQuiz.option_4
+
+    left = Inches(0.5)
+    top = Inches(7.0)
+    width = Inches(4)
+    height = Inches(0.5)
+
+    text_box = slide.shapes.add_textbox(left, top, width, height)
+
+    tb = text_box.text_frame
+    tb.word_wrap = True
+
+    tb.text = "https://dailypractice.info/neet"
 
 print(getTotalRecords(table_cell_range))
 print(get_cell_identifier(table_cell_range))
@@ -186,6 +214,10 @@ for quizRecord in QuizRecordsDb:
     create_slide(quizRecord, prs, True)
     create_slide(quizRecord, prs, False)
 
-prs.save('NEET_BIOLOGY_001.pptx')
+(filenameWithoutExtn, fileExtn) = filename.split(".")
 
-print("PPT created")
+print(filenameWithoutExtn)
+pptFilename = filenameWithoutExtn + ".pptx"
+prs.save(pptFilename)
+
+print("Created: " + pptFilename)
