@@ -247,7 +247,6 @@ window.addEventListener('load', (_event) => {
         let [qid, option_id] = element.target.getAttribute('id').match(/(\d+)/g);
         let valid = element.target.getAttribute('data-target');
         if(valid === null) {
-            // document.getElementById('qprompt'+qid).style.backgroundColor = "red";
             document.getElementById('qalert'+qid).innerHTML = "<strong>You were wrong!</strong><br>";
             document.getElementById('qalert'+qid).style.backgroundColor = "red";
             element.target.parentNode.style.minHeight = '25px';
@@ -269,9 +268,6 @@ window.addEventListener('load', (_event) => {
         if(correct >0) {
             document.getElementById('correct').innerHTML = '<b>Number of correct = '+ correct + '</b>'
         }
-
-        // var attribute = this.getAttribute("data-myattribute");
-        // alert(attribute);
     }
 
     for (var i = 0; i < questions.length; i++) {
