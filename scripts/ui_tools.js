@@ -162,7 +162,13 @@ function showSessionDetails(sessionName, elementId) {
 }
 
 
-export function showConsolidatedSummary(summary, table) {
+export function showConsolidatedSummary(summary, _tbody) {
+  let containerTable = _tbody.parentNode;
+  let id = _tbody.id
+
+  containerTable.removeChild(_tbody);
+  var table = document.createElement('tbody');
+  table.id = id;
     
   Object.entries(summary)
   .filter(keyValue => keyValue[0].indexOf('_')!=0)
@@ -199,6 +205,7 @@ export function showConsolidatedSummary(summary, table) {
       recentRow.insertCell(1).innerHTML = html;
     }
 
+    containerTable.appendChild(table);
 }
 
 const uiTools = { createQuestion, appendResult, populateNewQuestion, showConsolidatedSummary, showSessionDetails, shuffleNewQuestion };
