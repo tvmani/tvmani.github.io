@@ -1,245 +1,168 @@
 <html>
-<!-- https://datawanderings.com/2019/10/28/tutorial-making-a-line-chart-in-d3-js-v-5/ -->
-<head>
-  <title>Analysis - Achievements </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta charset="UTF-8" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-  <script src="https://d3js.org/d3.v5.js"></script>
-  <link rel="stylesheet" href="ui_styles.css">
-  <link rel="stylesheet" href="linegraph.css">
-</head>
-<body>
-  <div class="jumbotron text-center">
-    <h3>Analysis Achievements</h3>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12">
-        <label for="yourName">Name</label>&nbsp;&nbsp;&nbsp;
-        <input type="text" id="yourName" value="" class="input-name"/>
-        <input type="button" id="submit_name" class="btn btn-outline-primary btn-sm" 
-        onclick="javacript:onAnalysis();"
-          value="Start" />
-        <input type="button" id="end" class="btn btn-outline-primary btn-sm" onclick="App.uiOps.registerUser(document.getElementById('yourName').value)"
-          value="Reset" />
-        <br /><br />
-      </div>
-      <div class="col-sm-12">
-        <div id="main" style="visibility: visible;">
-          <form id="formPractice">
-            <div><label id="welcomeMessage" /></div>
+  <!-- https://datawanderings.com/2019/10/28/tutorial-making-a-line-chart-in-d3-js-v-5/ -->
+  <head>
+    <title>Analysis - Achievements</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://d3js.org/d3.v5.js"></script>
+    <link rel="stylesheet" href="ui_styles.css" />
+    <link rel="stylesheet" href="linegraph.css" />
+  </head>
+  <body>
+    <div class="jumbotron text-center">
+      <h3>Analysis Achievements</h3>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <label for="yourName">Name</label>&nbsp;&nbsp;&nbsp;
+          <input type="text" id="yourName" value="" class="input-name" />
+          <input
+            type="button"
+            id="submit_name"
+            class="btn btn-outline-primary btn-sm"
+            onclick="javacript:onAnalysis();"
+            value="Start"
+          />
+          <input
+            type="button"
+            id="end"
+            class="btn btn-outline-primary btn-sm"
+            onclick="App.uiOps.registerUser(document.getElementById('yourName').value)"
+            value="Reset"
+          />
+          <br /><br />
+        </div>
+        <div class="col-sm-12">
+          <div id="main" style="visibility: visible;">
+            <form id="formPractice">
+              <div><label id="welcomeMessage" /></div>
 
-            <!-- <div id="level" style="visibility: hidden;">
+              <!-- <div id="level" style="visibility: hidden;">
               <label for="SquareMode">Square mode</label>&nbsp;&nbsp;&nbsp;
               <input type="checkbox" id="SquareMode" value="true" />
             </div> -->
-            <div style="visibility: hidden;">
-              <label id="firstNumGen" class="label label-medium"></label>
-              <img class="img-symbols" src="images/img_division_01.png" alt="Mathematics - division Symbol + ">
-              <label id="secondNumGen" class="label label-medium"></label>
-              <!-- <button id="equalTo" class="btn btn-sm" disabled>=</button> -->
-              <img id="equalTo" src="images/equal_symbol_01.png" class="img-symbols">
-              <input type="text" id="answer" value="" class="input-answer" onkeypress="return App.uiOps.isNumber(event);" />
-              <input type="button" class="btn btn-outline-primary btn-sm" autofocus  id="submitAnswer"onclick="App.uiOps.scoreMark(App.uiOps.ui.createQuestion());" value="Go" />
+              <div style="visibility: hidden;">
+                <label id="firstNumGen" class="label label-medium"></label>
+                <img
+                  class="img-symbols"
+                  src="images/img_division_01.png"
+                  alt="Mathematics - division Symbol + "
+                />
+                <label id="secondNumGen" class="label label-medium"></label>
+                <!-- <button id="equalTo" class="btn btn-sm" disabled>=</button> -->
+                <img
+                  id="equalTo"
+                  src="images/equal_symbol_01.png"
+                  class="img-symbols"
+                />
+                <input
+                  type="text"
+                  id="answer"
+                  value=""
+                  class="input-answer"
+                  onkeypress="return App.uiOps.isNumber(event);"
+                />
+                <input
+                  type="button"
+                  class="btn btn-outline-primary btn-sm"
+                  autofocus
+                  id="submitAnswer"
+                  onclick="App.uiOps.scoreMark(App.uiOps.ui.createQuestion());"
+                  value="Go"
+                />
+              </div>
+              <input type="hidden" id="operations" value="division" />
+              <input type="hidden" id="maxInput" value="22" />
+              <input type="hidden" id="minInput" value="3" />
+              <input type="hidden" id="excludes" value="5,10,20" />
+
+              <div id="studentPracticeSummary" style="visibility: hidden;">
+                <label id="summary">Summary</label>&nbsp;&nbsp;&nbsp;
+              </div>
+            </form>
+            <div id="svg"></div>
+            <div>
+              <table id="practicedResults" border="1"></table>
             </div>
-            <input type="hidden" id="operations" value="division" />
-            <input type="hidden" id="maxInput" value="22" />
-            <input type="hidden" id="minInput" value="3" />
-      			<input type="hidden" id="excludes" value="5,10,20" />
-
-
-
-            <div id="studentPracticeSummary" style="visibility: hidden;">
-              <label id="summary">Summary</label>&nbsp;&nbsp;&nbsp;
+            <div>
+              <table id="analysisResults" border="1">
+                <tbody id="analysisResultsBody"></tbody>
+              </table>
             </div>
-          </form>
-          <div>
-            <table id="practicedResults" border="1">
-            </table>
-          </div>
-          <div>
-            <table id="analysisResults" border="1" />
-          </div>
-          <div id="svg"></div>
-          <a href="addition.html">Addition</a>
-          <a href="subtraction.html">Subtraction</a>
-          <a href="multiplication.html">Multiplication</a>
-          <a href="division.html">Division</a>
-          <br/><a href="analysis.html">Analysis</a>
 
-          <a
-          href="https://thumbs.dreamstime.com/z/x-multiplication-table-vector-illustration-students-multiplication-table-x-98833796.jpg">
-          Table Reference<br /><br />
-        </a>
-
+            <a
+              href="https://thumbs.dreamstime.com/z/x-multiplication-table-vector-illustration-students-multiplication-table-x-98833796.jpg"
+            >
+              Table Reference<br /><br />
+            </a>
+          </div>
         </div>
       </div>
-
     </div>
-  </div>
+  </body>
+  <script src="scripts/bundle.js"></script>
+  <script>
+    function onAnalysis() {
+      const studentName = document.getElementById("yourName").value;
+      App.uiOps.ui.showConsolidatedSummary(
+        App.uiOps.analyzeUserPracticeSessions(
+          studentName
+        ),
+        document.getElementById("analysisResultsBody")
+      );
+      let margin = { top: 30, left: 30, bottom: 150, right: 30 };
+      let fullWidth = 960;
+      let fullHeight = 500;
+      let width = fullWidth - margin.left - margin.right;
+      let height = fullHeight - margin.top - margin.bottom;
+      let layout = { width, height, margin, fullWidth, fullHeight };
+      let padding = 5;
+      const adj = 30;
 
-</body>
-<script src="scripts/bundle.js"></script>
-<script>
-
-function onAnalysis() {
-
-  App.uiOps.ui.showConsolidatedSummary(App.uiOps.analyzeUserPracticeSessions(document.getElementById('yourName').value), document.getElementById('analysisResults'));
-  debugger;
-  let margin = {top: 30, left: 30, bottom: 150, right: 30};
-  let fullWidth = 960;
-  let fullHeight = 500;
-  let width = fullWidth - margin.left - margin.right;
-  let height = fullHeight - margin.top - margin.bottom;
-  let padding = 5;
-  const adj = 30;
-
-  let svg =  d3.select('div#svg').append('svg').attr('width', fullWidth ).attr('height', fullHeight);
-  
-  svg.style("padding", padding)
-     .attr("preserveAspectRatio", "xMinYMin meet")
-     .attr("viewBox", "-"
-          + adj + " -"
-          + adj + " "
-          + (width + adj *3) + " "
-          + (height + adj*3))          
-     .style("margin", margin)
-     .classed("svg-content", true);
-
-  const timeConv = d3.timeParse("%Y-%m-%d");
-  const csvDataset = d3.csv("data.csv");
-  const operation = 'multiplication'
-  const parseTime = d3.timeParse('%Y-%m-%d');
-
-  const jsonDataset = d3.json("barchart.graph.json");
-
-  let appreciation  = App.uiOps.getAnalysisResult(document.getElementById('yourName').value);
-  console.log(appreciation);
-  debugger;
-
-  
-    const datas = appreciation.filter(data => !!data[operation]);
-
-    datas.forEach(data => {
-      data['date'] = parseTime(data['date']); 
-      if(data[operation]) {
-        data['valid'] = data[operation].valid;
-        data['inValid'] = data[operation].inValid;
-        data['total'] = data[operation].valid + data[operation].inValid;
+      let svgContainer = d3.select("div#svg");
+      if (
+        document.getElementById("svg").childNodes &&
+        document.getElementById("svg").childNodes[0]
+      ) {
+        document
+          .getElementById("svg")
+          .childNodes[0].parent.remove(
+            document.getElementById("svg").childNodes[0]
+          );
       }
-    })
-      
-    debugger;
+      let svg = svgContainer
+        .append("svg")
+        .attr("width", fullWidth)
+        .attr("height", fullHeight);
+      svg.id = "analysis";
 
-    let data = datas
-    data.forEach(data => delete data['division']);
-    data.forEach(data => delete data['multiplication']);
-    const columns = ['date', 'inValid', 'valid', 'total']
-    
-    console.log(data)
-      const slices = columns.slice(1).map(function(id) {
-          return {
-              id: id,
-              values: data.map(function(d){
-                  return {
-                      date: d.date,
-                      measurement: +d[id]
-                  };
-              })
-          };
-      });
+      svg
+        .style("padding", padding)
+        .attr("preserveAspectRatio", "xMinYMin meet")
+        .attr(
+          "viewBox",
+          "-" +
+            adj +
+            " -" +
+            adj +
+            " " +
+            (width + adj * 3) +
+            " " +
+            (height + adj * 3)
+        )
+        .style("margin", margin)
+        .classed("svg-content", true);
 
-
-      console.log("Column headers", columns);
-console.log("Column headers without date", columns.slice(1));
-// returns the sliced dataset
-console.log("Slices",slices);  
-// returns the first slice
-console.log("First slice",slices[0]);
-// returns the array in the first slice
-console.log("A array",slices[0].values);   
-// returns the date of the first row in the first slice
-console.log("Date element",slices[0].values[0].date);  
-// returns the array's length
-console.log("Array length",(slices[0].values).length);
-
-const xScale = d3.scaleTime().range([0,width]);
-const yScale = d3.scaleLinear().rangeRound([height, 0]);
-xScale.domain(d3.extent(data, function(d){return d.date}));
-yScale.domain([0,250]);
-// yScale.domain([(0), d3.max(slices, function(c) {
-//     return d3.max(c.values, function(d) {
-//         return d.measurement + 4; });
-//         })
-//     ]);
-
-const yaxis = d3.axisLeft()
-    .ticks((slices[0].values).length)
-    .scale(yScale);
-
-const xaxis = d3
-    .axisBottom()
-    .ticks(d3.timeDay.every(1))
-    .tickFormat(d3.timeFormat('%Y-%m-%d'))
-    .scale(xScale);
-
-svg.append("g")
-    .attr("class", "axis")
-    .attr('transform',`translate(0, ${height})`)
-    .call(xaxis)
-    .selectAll("text")
-    .attr("y", 0)
-    .attr("x", 9)
-    .attr("dy", ".35em")
-    .attr("transform", "rotate(90)")
-    .style("text-anchor", "start");
-    ;
-
-svg.append("g")
-    .attr("class", "axis")
-    .call(yaxis)
-    .append("text")
-    .attr("transform", "rotate(-90)")
-    .attr("dy", ".75em")
-    .attr("y", 6)
-    .style("text-anchor", "end")
-    .text("Frequency");    
-
-    
-const line = d3.line()
-    .x(function(d) { return xScale(d.date); })
-    .y(function(d) { return yScale(d.measurement); });    
-
-const lines = svg.selectAll("lines")
-    .data(slices)
-    .enter()
-    .append("g");
-
-    lines.append("path")
-    .attr("d", function(d) { return line(d.values); });    
-
-    lines.append("text")
-    .attr("class","serie_label")
-    .datum(function(d) {
-        return {
-            id: d.id,
-            value: d.values[d.values.length - 1]}; })
-    .attr("transform", function(d) {
-            return "translate(" + (xScale(d.value.date) + 10)  
-            + "," + (yScale(d.value.measurement) + 5 ) + ")";})
-    .attr("x", 5)
-    .text(d => d.id);    
-
-   // end of call back
-
-}
-
-
-
+      const appreciation = App.uiOps.getAnalysisResult(studentName);
+      App.uiOps.plotGraph(layout, svg, appreciation);
+    }
   </script>
-
 </html>

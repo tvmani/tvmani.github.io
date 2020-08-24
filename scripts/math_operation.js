@@ -3,6 +3,7 @@ import Random from './random';
 import Generator from './generator';
 import extractSessions, {getResult}  from './analyze';
 import Evaluator from './model/Evaluator';
+import plotGraph from './lineGraph';
 
 const startTime = new Date();
 let totalCorrect = 0;
@@ -83,6 +84,7 @@ function getImageForCorrectIncorrect(latestSubmittedAnswer) {
 }
 
 export { uiTools as ui };
+export { plotGraph };
 
 
 export function scoreMark(question) {
