@@ -60,6 +60,13 @@ def get_cell_indexes(tableRange):
     end_row_index = int(upper_cell[1:])
     return (start_row_index, end_row_index)
 
+def getOptionAsString(optionInput):
+    result = ""
+    if optionInput is None:
+        result = ""
+    else:
+        result = str(optionInput)
+    return result
 
 def create_cover_slide(titleText, subtitleText, prs, isQuestion=True):
     lyt = prs.slide_layouts[0]  # choosing a slide layout
@@ -147,7 +154,11 @@ def create_slide(quizRecord, prs, isQuestion=True):
 
     prg = tb.add_paragraph()
     prg.text = ""
-
+    prg = tb.add_paragraph()
+    prg.text = getOptionAsString(currentQuiz.exams_already_asked) + " - " + getOptionAsString(currentQuiz.year)
+    prg = tb.add_paragraph()
+    prg.text = ""
+    
     if isQuestion == True:
         prg = tb.add_paragraph()
         prg.text = "அ) " + currentQuiz.option_1
