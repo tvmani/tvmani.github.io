@@ -6,16 +6,33 @@ import chunk from 'lodash/chunk';
 
 function createQuestion() {
 
-  const firstNum = document.getElementById("firstNumGen").innerHTML;
-  const secondNum = document.getElementById("secondNumGen").innerHTML;
+  let firstNum = document.getElementById("firstNumGen").innerHTML;
+  let secondNum = document.getElementById("secondNumGen").innerHTML;
 
-  return new Question(
+  /*
+  * During subtraction we are sure higher number always comes first
+  * During diviion it is not sure
+  */
+  // if(  document.getElementById("generatorFunction") && document.getElementById("generatorFunction").value ==='puzzle') {
+  //   if(document.getElementById("operation")  === 'subtraction' || document.getElementById("operation")  === 'division'  ) {
+  //     let inputs = [firstNum, secondNum];
+  //     inputs.sort((a,b) => (a-b));
+  //     firstNum = inputs[1];
+  //     secondNum = inputs[0];
+  //   }
+  //   debugger;
+  // }
+  const question = new Question(
     parseInt(firstNum, 10),
     parseInt(secondNum, 10),
     document.getElementById('operations').value,
     parseInt(formPractice.answer.value, 10),
     new Date()
   );
+
+  console.log(' Question ---> ' + JSON.stringify(question, null, 2));
+
+  return question;
 }
 
 function getRandomImage() {  
@@ -97,7 +114,8 @@ export function populateNewQuestion(randomNumber, secondRandomNumber) {
     document.getElementById('firstNumGen').innerHTML = input[1] * input[0];
     document.getElementById('secondNumGen').innerHTML = input[0];
     return;
-  }
+  }  
+
   if(document.getElementById('operations').value === 'junior_addition') {
     const input = [randomNumber, secondRandomNumber];
     input.sort((a,b) => (a-b));
