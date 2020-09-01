@@ -17,6 +17,7 @@ function countBy(input) {
 
 const operations = {
   junior_addition: (a, b) => a + b,
+  junior_counting: (a, b) => a,
   junior_subtraction: (a, b) => a - b,
   junior_multiplication: (a, b) => a * b,
   addition: (a, b) => a + b,
