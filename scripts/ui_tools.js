@@ -59,6 +59,9 @@ function getChunkSize(number) {
 function getFirstOperand(number, image) {
   console.log(`input to partition ${number}`)
   
+  if(number === 0) {
+    return '<tr><td align="center" colspan="2" valign="top" width="50" height="50"></td></tr>';
+  }
   if(isLessThanOr3(number)) {
     const rows = Array.from(Array(number).keys()).map(i => `<td align="center" valign="top"><img src="media/svg/${image}.svg" width="50" height="50"  style="margin: 1px;"></td>`);  
     return '<tr>' + rows.join('') + '</tr>';  
@@ -126,6 +129,17 @@ export function populateNewQuestion(randomNumber, secondRandomNumber) {
     document.getElementById('secondNumGen').innerHTML = secondRandomNumber;
       return;
   }
+  if(document.getElementById('operations').value === 'junior_counting') {
+    const input = [randomNumber, secondRandomNumber];
+    input.sort((a,b) => (a-b));
+    const image = getRandomImage();
+    document.getElementById('firstNumGraph').innerHTML = getFirstOperand(randomNumber, image);
+    document.getElementById('secondNumGraph').innerHTML = getFirstOperand(0, image);
+    document.getElementById('firstNumGen').innerHTML = randomNumber;
+    document.getElementById('secondNumGen').innerHTML = 0;
+      return;
+  }
+
   if(document.getElementById('operations').value === 'junior_multiplication') {
     const input = [randomNumber, secondRandomNumber];
     input.sort((a,b) => (a-b));
