@@ -35,7 +35,7 @@ function createQuestion() {
   return question;
 }
 
-function getRandomImage() {  
+function getRandomImage() {
   //TODO: karadi_01 not working
   const images = ['dragon_01', 'kuthirai_01', 'mudalai_01', 'pattampoochi_01', 'puli_01', 'vaaththu_01'];
   const selectedImage =  images[Random.getRandomIntInclusive(0,images.length-1)];
@@ -56,20 +56,20 @@ function getChunkSize(number) {
   return isOddOrDivisibleBy3(number) ? 3 : 2;
 }
 
-function getFirstOperand(number, image) {
+function getFirstOperand(number, image, dimension=50) {
   console.log(`input to partition ${number}`)
-  
+
   if(number === 0) {
-    return '<tr><td align="center" colspan="2" valign="top" width="50" height="50"></td></tr>';
+    return '<tr><td align="center" colspan="2" valign="top" width="10" height="10"></td></tr>';
   }
   if(isLessThanOr3(number)) {
-    const rows = Array.from(Array(number).keys()).map(i => `<td align="center" valign="top"><img src="media/svg/${image}.svg" width="50" height="50"  style="margin: 1px;"></td>`);  
-    return '<tr>' + rows.join('') + '</tr>';  
+    const rows = Array.from(Array(number).keys()).map(i => `<td align="center" valign="top"><img class="kids" src="media/svg/${image}.svg" width="${dimension}" height="${dimension}"  style="margin: 1px;"></td>`);
+    return '<tr>' + rows.join('') + '</tr>';
   }
-  const chunkSize = getChunkSize(number);  
-  const rows = Array.from(Array(number).keys()).map(i => `<td align="center" valign="top"><img src="media/svg/${image}.svg" width="50" height="50"  style="margin: 1px;"></td>`);  
+  const chunkSize = getChunkSize(number);
+  const rows = Array.from(Array(number).keys()).map(i => `<td align="center" valign="top"><img class="kids" src="media/svg/${image}.svg" width="${dimension}" height="${dimension}"  style="margin: 1px;"></td>`);
   const partition = chunk(rows, chunkSize);
-  return '<tr>' + partition.map(group => group.join('')).join('</tr><tr>') + '</tr>';  
+  return '<tr>' + partition.map(group => group.join('')).join('</tr><tr>') + '</tr>';
 }
 
 function getMultiplicationOperand(number, number2, image) {
@@ -100,7 +100,7 @@ export function shuffleNewQuestion(targetted, newShuffledNumber) {
   document.getElementById('firstNumGen').innerHTML = input[0];
   document.getElementById('secondNumGen').innerHTML = input[1];
   document.getElementById('shuffledNumber').value = [rest, first].join(',');
-  return;  
+  return;
 }
 
 export function populateNewQuestion(randomNumber, secondRandomNumber) {
@@ -117,7 +117,7 @@ export function populateNewQuestion(randomNumber, secondRandomNumber) {
     document.getElementById('firstNumGen').innerHTML = input[1] * input[0];
     document.getElementById('secondNumGen').innerHTML = input[0];
     return;
-  }  
+  }
 
   if(document.getElementById('operations').value === 'junior_addition') {
     const input = [randomNumber, secondRandomNumber];
@@ -133,7 +133,7 @@ export function populateNewQuestion(randomNumber, secondRandomNumber) {
     const input = [randomNumber, secondRandomNumber];
     input.sort((a,b) => (a-b));
     const image = getRandomImage();
-    document.getElementById('firstNumGraph').innerHTML = getFirstOperand(randomNumber, image);
+    document.getElementById('firstNumGraph').innerHTML = getFirstOperand(randomNumber, image, 75);
     document.getElementById('secondNumGraph').innerHTML = getFirstOperand(0, image);
     document.getElementById('firstNumGen').innerHTML = randomNumber;
     document.getElementById('secondNumGen').innerHTML = 0;
@@ -201,7 +201,7 @@ export function showConsolidatedSummary(summary, _tbody) {
   containerTable.removeChild(_tbody);
   var table = document.createElement('tbody');
   table.id = id;
-    
+
   Object.entries(summary)
   .filter(keyValue => keyValue[0].indexOf('_')!=0)
   .filter(keyValue => typeof keyValue[1] !== 'object')
@@ -215,14 +215,14 @@ export function showConsolidatedSummary(summary, _tbody) {
     } else if( keyValue[1] !== null) {
       cell2.innerHTML = `<i>${keyValue[1]}</i>`;
     }
-    
+
   });
 
   Object.entries(summary)
   .filter(keyValue => keyValue[0].indexOf('_')!=0)
   .filter(keyValue => !Array.isArray(keyValue[1]))
   .filter(keyValue => typeof keyValue[1] === 'object' && keyValue[1] !== null)
-  .forEach(keyValue =>   { 
+  .forEach(keyValue =>   {
     const row = table.insertRow(0);
     const cell = row.insertCell(0);
     const cell2 = row.insertCell(1);
