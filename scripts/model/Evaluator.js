@@ -24,6 +24,10 @@ const operations = {
   multiplication: (a, b) => a * b,
   subtraction: (a, b) => a - b,
   division: (a, b) => a / b,
+  square: (a) => a * a,
+  cube: (a) => a * a * a,
+  squareroot: (a) => Math.sqrt(a),
+  cuberoot: (a) => Math.cbrt(a),
 };
 
 export default class Evaluator {
@@ -38,7 +42,7 @@ export default class Evaluator {
 
   static evaluateQuestion(question) {
     const func = operations[question.operation];
-    return func(question.firstNum, question.secondNum) === question.submittedAnswer;
+    return Math.abs(func(question.firstNum, question.secondNum) - question.submittedAnswer) < 0.1;
   }
 
   static analyze([...questions]) {

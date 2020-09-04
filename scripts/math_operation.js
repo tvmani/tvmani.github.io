@@ -213,6 +213,19 @@ export function replenish() {
   uiTools.populateNewQuestion(randomNumbers[0], randomNumbers[1]);
 }
 
+export function isDecimalNumber(event) {
+  return isDot(event) || isNumber(event);
+}
+
+export function isDot(event) {
+  const evt = event || window.event;
+  const charCode = event.which ? event.which : event.keyCode;
+  if (event.keyCode === 46) {
+    return true;
+  }
+  return false;
+}
+
 export function isNumber(event) {
   const TAB_KEY = 9;
   const evt = event || window.event;
