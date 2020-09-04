@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Square/Cube Table - Choose a Table and Practice</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="ui_styles.css">
+</head>
+
+<body>
+  <div class="jumbotron text-center">
+    <h3>Ninja practioner - Square/Cube Level <img src="images/img_multiplication_01.png"> Practice</h3>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <label for="yourName">Name</label>&nbsp;&nbsp;&nbsp;
+        <input type="text" id="yourName" value="" class="input-name" />
+        <input type="button" id="submit_name" class="btn btn-outline-primary btn-sm"
+          onclick="App.uiOps.registerUser(document.getElementById('yourName').value)" value="Start" />
+        <input type="button" id="end" class="btn btn-outline-primary btn-sm"
+          onclick="App.uiOps.registerUser(document.getElementById('yourName').value)" value="Reset" />
+        <br /><br />
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div id="main" style="visibility: visible;">
+          <form id="formPractice">
+            <div class="col-sm-6">
+              <div>
+                <label for="multipleOfN">Choose table</label>
+                <input type="range" id="inputOperations" name="inputOperations" 
+                       min="1" max="4" value="2" step="1" 
+                       oninput="javascript:onSlideOperations('inputOperations', 'targetted');">
+                <output name="targetted" id="targetted">cube</output>
+              </div>
+              <div>
+                <label for="maxRange">Choose random range</label>
+                <input type="range" id="maxRange" name="maxRange" 
+                       min="3" max="48" value="20" step="1" oninput="javascript:onSlide('maxRange', 'maxInput');">
+                       [1 - 
+                <output name="maxInput" id="maxInput">20</output>
+                <label>]</label>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label id="firstNumGen" style='visibility: hidden;' class="label label-medium"></label>
+              <p id="secondNumGen">
+                \({}\)
+              </p>
+              <img id="equalTo" src="images/equal_symbol_01.png" class="img-symbols">&nbsp;&nbsp;
+              <input type="text" id="answer" value="" class="input-answer" onkeypress="return App.uiOps.isDecimalNumber(event);" />
+              <input type="button" class="btn btn-outline-primary btn-sm" autofocus id="submitAnswer"
+                onclick="App.uiOps.scoreMark(App.uiOps.ui.createQuestion());" value="Go" />
+            </div>
+            <input type="hidden" id="operations" value="cube" />
+            <input type="hidden" id="generatorFunction" value="shuffledNumber" />
+            <input type="hidden" id="shuffledNumber" />
+            <input type="hidden" id="minInput" value="1" />
+      			<input type="hidden" id="excludes" value="0" />
+            <div id="studentPracticeSummary">
+              <label id="summary">Summary</label>&nbsp;&nbsp;&nbsp;
+            </div>
+
+            <!-- <input type="hidden" id="maxInput" value="11" /> -->
+          </form>
+          <div>
+            <table id="practicedResults" border="1">
+              <tr>
+                <th>
+                  Number
+                </th>
+                <th>
+                  Number
+                </th>
+                <th>
+                  Your Answer
+                </th>
+                <th>
+                  Correct
+                </th>
+                <th>
+                  Clue
+                </th>
+                <th>
+                  Result
+                </th>
+              </tr>
+            </table>
+          </div>          
+        </div>
+      </div>
+
+
+    </div>
+    </div>
+    
+  
+</body>
+<script src="scripts/bundle.js"></script>
+
+<script language="Javascript">
+  let ops = {
+    "1": "square", "2": "cube", "3": "squareroot", "4": "cuberoot"
+  }
+  function onSlide(input, output) {
+    document.getElementById(output).value = document.getElementById(input).value;
+    document.getElementById('shuffledNumber').value = '';
+    App.uiOps.replenish();
+  }  
+  function onSlideOperations(input, output) {
+    console.log(ops[document.getElementById(input).value]);
+    document.getElementById(output).value = ops[document.getElementById(input).value];
+    document.getElementById('operations').value = ops[document.getElementById(input).value];
+    document.getElementById('shuffledNumber').value = '';
+    App.uiOps.replenish();
+  }
+</script>
+
+</html>
