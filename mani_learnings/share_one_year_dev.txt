@@ -1,0 +1,11 @@
+1. Get started with Git
+    https://www.freecodecamp.org/news/the-beginners-guide-to-git-github/
+    
+    GIT BASH
+
+2. https://www.youtube.com/watch?v=4XpnKHJAok8
+
+3. VS Code - Walkthrough - Better at text editing
+
+4. Unix commands
+
