@@ -148,7 +148,16 @@ export function shuffleNewQuestion(targetted, newShuffledNumber) {
 
     document.getElementById("firstNumGen").innerHTML = input[1];
 
-    katex.render(str, document.getElementById("secondNumGen"), {
+    renderMathExpression(str,"secondNumGen");
+
+  return;
+  }
+}
+
+export function renderMathExpression(value, elementId) {
+  console.log("Expression " + value);
+
+  katex.render(value, document.getElementById(elementId), {
       displayMode: true,
       leqno: false,
       fleqn: false,
@@ -160,10 +169,6 @@ export function shuffleNewQuestion(targetted, newShuffledNumber) {
       macros: { "\\f": "f(#1)" },
     });
 
-    console.log("Expression " + str);
-  }
-
-  return;
 }
 
 export function populateNewQuestion(randomNumber, secondRandomNumber) {
@@ -366,6 +371,7 @@ const uiTools = {
   showConsolidatedSummary,
   showSessionDetails,
   shuffleNewQuestion,
+  renderMathExpression,
 };
 
 export default uiTools;
