@@ -36,11 +36,10 @@
               <label id="secondNumGen" class="label label-medium"></label>
               <!-- <button id="equalTo" class="btn btn-sm" disabled>=</button> -->
               <img id="equalTo" src="images/equal_symbol_01.png" class="img-symbols">&nbsp;&nbsp;
-              <input type="text" id="answer" value="" class="input-answer" 
-              inputmode="numeric"
-              pattern="[0-9]*"
-              autocomplete="one-time-code" 
-              onkeypress="return App.uiOps.isNumber(event);" />
+              <input type="text" id="answer" value="" class="input-answer"
+                inputmode="numeric"
+                pattern="[0-9]*"
+              />
               <input type="button" class="btn btn-outline-primary btn-sm" autofocus id="submitAnswer"
                 onclick="App.uiOps.scoreMark(App.uiOps.ui.createQuestion());" value="GO!" /></label>
             </div>
