@@ -33,9 +33,13 @@
             <div class="form-group row">
               <label id="secondNumGen" class="label label-medium"></label>
               <img class="img-symbols" src="images/img_addition_01.png" alt="Mathematics - Addition Symbol + ">
-              <input type="text" id="answer" value="?" class="input-answer label label-medium"" 
-              onfocus="if(this.value == '?') {this.value=''}" 
-              onkeypress="return App.uiOps.isNumber(event);" />
+              <input type="text" id="answer" value="?" class="input-answer label label-medium""
+                inputmode="numeric"
+                pattern="[0-9]*"
+                onfocus="if(this.value == '?') {this.value=''}"
+                onkeypress="return App.uiOps.isNumber(event);"
+
+              />
               <img id="equalTo" src="images/equal_symbol_01.png" class="img-symbols">&nbsp;&nbsp;
               <label id="firstNumGen" class="label label-medium"></label>
               <input type="button" class="btn btn-outline-primary btn-sm" autofocus id="submitAnswer"
