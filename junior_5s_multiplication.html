@@ -47,6 +47,7 @@
                       <input type="text" id="answer" value="" class="input-answer"
                         inputmode="numeric"
                         pattern="[0-9]*"
+                        onkeypress="return App.uiOps.isNumber(event);"
                       />
                       <input type="button" class="btn btn-outline-primary btn-sm" autofocus id="submitAnswer"
                         onclick="App.uiOps.scoreMark(App.uiOps.ui.createQuestion());" value="GO!" /></label>
