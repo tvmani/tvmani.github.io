@@ -87,6 +87,46 @@ export { uiTools as ui };
 export { plotGraph };
 
 
+export function scoreMarkFib(question) {
+  let latestSubmittedAnswer = undefined;
+  if (document.getElementById('answer').value && document.getElementById('answer').value.length >= 1) {
+    //do nothing..
+  } else {
+    console.log('enter usage without input!');
+    return false;
+  }
+  if (Evaluator.evaluateQuestion(question)) {
+    latestSubmittedAnswer = true;
+    totalCorrect++;
+    replenish();
+  } else {
+    latestSubmittedAnswer = false;
+    totalIncorrect++;
+  }
+  uiTools.appendResult(question);
+  lastSubmissionTime = new Date();
+  const diff = Math.abs(lastSubmissionTime - startTime);
+  const elapsedTime = Math.floor(diff / 1000);
+  const total = totalCorrect + totalIncorrect;
+  const errorRatio = (totalIncorrect / total) * 100;
+
+  const priorQuestion = JSON.parse(localStorage.getItem(sid));
+  localStorage.setItem(sid, JSON.stringify([question, ...priorQuestion]));
+
+  let result = `(Total, Correct, Incorrect)  => (${total}, <b>${totalCorrect}</b>, ${totalIncorrect})`;
+
+  const speed = Math.floor(elapsedTime / totalCorrect);
+  let speedResult = `Speed =>  ${speed}. Lower the better!`;
+  if (totalIncorrect > 0) {
+    speedResult = `(Speed, Error Ratio) =>  (${speed}, ${errorRatio.toFixed(2)}%). Lower the better!`;
+  }
+  const userFeeback = getImageForCorrectIncorrect(latestSubmittedAnswer);
+  document.getElementById('summary').innerHTML = `${result}&nbsp;&nbsp;${userFeeback}<br/>${speedResult}`;
+  if (Evaluator.evaluateQuestion(question)) {
+    finalizeSubmit();
+  }
+}
+
 export function scoreMark(question) {
   let latestSubmittedAnswer = undefined;
   if (document.getElementById('answer').value && document.getElementById('answer').value.length >= 1) {

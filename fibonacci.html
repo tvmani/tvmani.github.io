@@ -1,7 +1,7 @@
 <html>
 
 <head>
-  <title>Fibonacci - Ration and Practice</title>
+  <title>Fibonacci - Ratio and Practice</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="UTF-8" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -18,7 +18,7 @@
 
 <body>
   <div class="jumbotron text-center">
-    <h3>Ninja practioner - Multiplication Level <img src="images/img_multiplication_01.png"> Practice</h3>
+    <h3>Fibonacci - Ratio Practice</h3>
   </div>
   <div class="container">
     <div class="row">
@@ -109,13 +109,14 @@
   function updateGraph() {
     const firstNum = document.getElementById('firstNumGen') && parseInt(document.getElementById('firstNumGen').innerHTML, 10);
     const secondNum = document.getElementById('secondNumGen') &&  parseInt(document.getElementById('secondNumGen').innerHTML, 10);
+    const answer = document.getElementById('answer') &&  parseInt(document.getElementById('answer').value, 10);
     // board.create('point', [firstNum, secondNum])
     count++;
     xs.push(count);
     ys.push(secondNum/firstNum);
     console.log(`${xs} - ${ys}`)
     board.create('curve', [xs, ys],  {curveType: 'polar'})
-    App.uiOps.scoreMark(App.uiOps.ui.createQuestion());
+    App.uiOps.scoreMarkFib(App.uiOps.ui.createQuestion());
   }
 
 

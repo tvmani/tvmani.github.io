@@ -16,6 +16,12 @@ function countBy(input) {
 
 
 const operations = {
+  '+': (a, b) => {
+  let answer =  a + b;
+    console.log(`Lambda answer ${answer}`)
+    return answer
+  },
+  'x': (a, b) => a * b,
   junior_addition: (a, b) => a + b,
   junior_counting: (a, b) => a,
   junior_subtraction: (a, b) => a - b,
