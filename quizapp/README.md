@@ -20,3 +20,16 @@ yarn start
 To see more details on making a contribution, please see `CONTRIBUTING.md`.
 
 We are tracking and organizing these questions in the issues on this repository. Please go there to see what progress is being made and where you can help out if you are interested in helping.
+
+## Build and Run
+
+```bash
+
+    npm run build
+
+    # After build is successful
+    yarn global add serve
+
+    # serve the files through local web server
+    serve -s build
+```

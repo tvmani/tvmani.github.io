@@ -7,10 +7,12 @@
 
 import week_1 from './01';
 import week_2 from './02';
+import week_3 from './03';
 
 const challenges = [
 	week_1,
 	week_2,
+	week_3,
 ];
 
 /* This doesn't cover everything but serves as a basic verification that
