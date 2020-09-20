@@ -8,13 +8,13 @@ import { mapScreenSizeToProps } from '../utils/helpers';
 /* Header Component */
 const renderHeader = (isDesktop) => (
 	<div className='header'>
-		<span>App Time!📲 Lessons</span>
+		<span>To Learn, Retrieve from your neuron (brain) network</span>
 			{isDesktop && <a
 				target="_blank"
 				rel="noopener noreferrer"
 				className="contributeLink"
-				href="https://github.com/bonham000/app-time-lessons">
-				View Source <i className='fa fa-github'></i>
+				href="https://www.google.com/search?q=daily+practice+quotes&newwindow=1">
+				Daily Practice Quotes 
 		</a>}
 	</div>
 );

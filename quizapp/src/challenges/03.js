@@ -8,7 +8,7 @@ const end = `</code></pre>`;
  *********************************** */
 
 const FUNCTION_PARAMETERS = {
-snippet:`
+	snippet: `
 ${start}function add(a, b) {
 	return a + b;
 };
@@ -16,7 +16,7 @@ ${end}`
 };
 
 const GREETING = {
-snippet:`
+	snippet: `
 ${start}function sayHello(name) {
 	return "Hello, " + name + "!";
 };
@@ -26,7 +26,7 @@ ${end}`
 };
 
 const FUNC = {
-snippet:`
+	snippet: `
 ${start}function performMath(firstValue, secondValue) {
 	var multiplier = 10;
 
@@ -35,13 +35,14 @@ ${start}function performMath(firstValue, secondValue) {
 	
 performMath(3, 4);
 ${end}`,
-choices: [
-"<code>7</code>",
-"<code>12</code>",
-"<code>17</code>",
-"<code>70</code>",
-"<code>170</code>",
-]};
+	choices: [
+		"<code>7</code>",
+		"<code>12</code>",
+		"<code>17</code>",
+		"<code>70</code>",
+		"<code>170</code>",
+	]
+};
 
 /***********************************
 * Export Challenge Array
@@ -52,46 +53,46 @@ export default {
 	category: "JavaScript and Basic Data Structures",
 	challenges: [
 		{
-    	title: `Which JavaScript type represents an "empty" or "absent" value?`,
-    	subtitle: `JavaScript Data Types`,
-    	choices: [
+			title: `Which JavaScript type represents an "empty" or "absent" value?`,
+			subtitle: `JavaScript Data Types`,
+			choices: [
 				"none",
 				"empty",
 				"nonce",
 				"nothing",
-    		"null/undefined",
-    	],
-    	solution: `4`,
-    	explanation: `
+				"null/undefined",
+			],
+			solution: `4`,
+			explanation: `
 				In JavaScript <code>null</code> and <code>undefined</code> are both types to represent
 				values which are "absent" or "not defined yet". Each has a specific meaning and usage,
 				but in general they represent types where the value is missing or not present yet.`
-    },
-    {
-    	title: `In the following function, <code>a</code> and <code>b</code> are referred to as: ${FUNCTION_PARAMETERS.snippet}`,
-    	subtitle: `JavaScript Programming Styles`,
-    	choices: [
+		},
+		{
+			title: `In the following function, <code>a</code> and <code>b</code> are referred to as: ${FUNCTION_PARAMETERS.snippet}`,
+			subtitle: `JavaScript Programming Styles`,
+			choices: [
 				"Letters",
 				"Arguments/Parameters",
 				"Keywords",
 				"Types",
-    	],
-    	solution: `1`,
+			],
+			solution: `1`,
 			explanation: `
 				In the above function, <code>a</code> and <code>b</code> are function arguments. These are
 				passed into the function when it is called, and generally they are referred to as
 				"arguments" or "parameters".`
 		},
 		{
-    	title: `In the following function, what will be the output of the line <code>sayHello("Ryan")</code>? ${GREETING.snippet}`,
-    	subtitle: `Function return`,
-    	choices: [
+			title: `In the following function, what will be the output of the line <code>sayHello("Ryan")</code>? ${GREETING.snippet}`,
+			subtitle: `Function return`,
+			choices: [
 				"Ryan",
 				"Hello, Ryan",
 				"Hello, Ryan!",
 				"undefined",
-    	],
-    	solution: `2`,
+			],
+			solution: `2`,
 			explanation: `
 				The function takes the argument <code>name</code> and concatenates it with "Hello " and an
 				exclamation mark <code>"!"</code>. The line <code>sayHello("Ryan")</code> calls the <code>sayHello</code>
@@ -99,15 +100,15 @@ export default {
 				the <code>name</code> argument of the function, which then outputs the string <code>"Hello, Ryan!"</code>.`
 		},
 		{
-    	title: `JavaScript, like other languages have special reserved words, like <code>function</code>, <code>return</code>, <code>true</code>. What is the name for these special reserved words?`,
-    	subtitle: `Language keywords`,
-    	choices: [
+			title: `JavaScript, like other languages have special reserved words, like <code>function</code>, <code>return</code>, <code>true</code>. What is the name for these special reserved words?`,
+			subtitle: `Language keywords`,
+			choices: [
 				"Keywords",
 				"Specials",
 				"Reserved Words",
 				"They do not have a special name.",
-    	],
-    	solution: `0`,
+			],
+			solution: `0`,
 			explanation: `
 				These words are called "keywords" and they are reserved by the language to have special meaning.
 				For instance, <code>function</code> denotes a function definition, and <code>return</code> is a keyword
@@ -116,10 +117,10 @@ export default {
 				that many keywords in a language.`
 		},
 		{
-    	title: `In the following function, what will be the output of the line <code>performMath(3, 4)</code>? ${FUNC.snippet}`,
-    	subtitle: `Perform math`,
-    	choices: FUNC.choices,
-    	solution: `3`,
+			title: `In the following function, what will be the output of the line <code>performMath(3, 4)</code>? ${FUNC.snippet}`,
+			subtitle: `Perform math`,
+			choices: FUNC.choices,
+			solution: `3`,
 			explanation: `
 				This function uses a new keyword we have not learned yet called <code>var</code>! This keyword
 				stands for "variable" and allows you to assign values. In this case, the value <code>10</code>
@@ -129,6 +130,22 @@ export default {
 				and <code>secondValue</code> together, and then multiple the result by the <code>multiplier</code>
 				variable, <code>10</code>, to get <code>70</code>!<br /><br />Don't worry, you do not have to be
 				good at math to learning programming 😉`
-    },
+		},
+		{
+			title: `xxxx-mani <img src="/assets/001_02_select_output_1.png">`,
+			subtitle: `mani questions`,
+			choices: [
+					`"none"<img src="/assets/001_02_select_output_1.png">`,
+					`"empty"<img src="/assets/001_02_select_output_1.png">`,
+					`"nonce"<img src="/assets/001_02_select_output_1.png">`,
+					`"nothing"<img src="/assets/001_02_select_output_1.png">`,
+					`"null/undefined"<img src="/assets/001_02_select_output_1.png">`,
+			],
+			solution: `4`,
+			explanation: `
+					In JavaScript <code>null</code> and <code>undefined</code> are both types to represent
+					values which are "absent" or "not defined yet". Each has a specific meaning and usage,
+					but in general they represent types where the value is missing or not present yet. <img src="/assets/001_02_select_output_1.png">`
+		},
 	]
 };

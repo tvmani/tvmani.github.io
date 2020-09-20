@@ -31,7 +31,7 @@ class About extends React.Component {
             </span>}
           </div>
           <div className='about'>
-            <h1>App Time!™ Practice Lessons 🤹‍♂️</h1>
+            <h1>Practice Lessons 🤹‍♂️</h1>
             <p>These are weekly review quizzes for the content we cover in class.</p>
             <p>The questions should be simply and easy but enough to keep the concepts fresh in your mind.</p>
             <p>Spaced repetition is the key to learning. 😃
