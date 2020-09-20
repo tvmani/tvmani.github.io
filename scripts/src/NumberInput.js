@@ -54,6 +54,7 @@ export default function NumberInput(props) {
       <TextField
         label=""
         value={value}
+        autoFocus 
         onKeyDown={e => handleTab(e, callback)}
         onChange={handleChange}
         name="numberformat"
