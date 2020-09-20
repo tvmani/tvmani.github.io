@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
@@ -12,6 +12,9 @@ import PracticeSummary from './PracticeSummary';
 import Question, {QuestionWithAnswer} from './model/Question'
 import Evaluator from "./model/Evaluator";
 import Generator from "./tools/generator";
+import StudentSession from './StudentSession';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Avatar from '@material-ui/core/Avatar';
 
 function Copyright() {
   return (
@@ -96,6 +99,28 @@ export default function Checkout() {
     setActiveStep(activeStep - 1);
   };
 
+  const initialSession = { name: "", sid: "" }
+  const [session, setSession] = React.useState(initialSession);
+
+  const onNameChange = (event) => {
+    setSession({
+      ...session,
+      [event.target.name]: event.target.value,
+    });
+  };
+  
+  const sessionHandler = (e) => {
+    let sessionTime = (new Date()).toISOString();
+    const sid = `Practice_${session.name}@${sessionTime}`;
+    setSession({
+      ...session,
+      sid
+    });
+    setQuestions([])
+  }
+
+  useEffect(() => {console.log(session.sid)}, [session]);
+
   return (
     <React.Fragment>
       <CssBaseline />
@@ -108,9 +133,15 @@ export default function Checkout() {
       </AppBar>
       <main className={classes.layout}>
         <Paper className={classes.paper}>
-          <Typography component="h3" variant="h6" align="center">
-            Your earned icon 
-          </Typography>
+        <StudentSession value={session.name} callback={sessionHandler} handleChange={onNameChange}/>
+
+        { session.sid.length > 10  &&
+          <Typography component="h3" variant="h6" align="center">             
+              <FormControlLabel        control={<Avatar alt={session.name} src="/icon/1.png" />}
+                label= {"Welcome ! - " + session.name}
+              />
+         </Typography>
+        }        
           <React.Fragment>
               <React.Fragment>
                 {getStepContent(activeStep, submissionHandler)}

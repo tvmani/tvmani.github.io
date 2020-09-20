@@ -25,13 +25,13 @@ export default function PracticeSummary(props) {
         <TableHead>
           <TableRow>
             <TableCell>Time</TableCell>
+            <TableCell align="right">Result</TableCell>
             <TableCell align="right">input</TableCell>
             <TableCell align="right">input</TableCell>
             <TableCell align="right">operation</TableCell>
             <TableCell align="right">Your Answer</TableCell>
             <TableCell align="right">Expected Answer</TableCell>
             <TableCell align="right">Clue</TableCell>
-            <TableCell align="right">Result</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -40,13 +40,13 @@ export default function PracticeSummary(props) {
               <TableCell component="th" scope="row">
                 {new Date(row.submissionTime).toLocaleTimeString()}
               </TableCell>
+              <TableCell align="right">{row.result ? "Correct!" : "Wrong"}</TableCell>
               <TableCell align="right">{row.firstNum}</TableCell>
               <TableCell align="right">{row.secondNum}</TableCell>
               <TableCell align="right">{row.operation}</TableCell>
               <TableCell align="right">{row.submittedAnswer}</TableCell>
               <TableCell align="right">{row.expectedAnswer}</TableCell>
               <TableCell align="right">{row.operation}</TableCell>
-              <TableCell align="right">{row.result + ""}</TableCell>
             </TableRow>
           ))}
         </TableBody>
