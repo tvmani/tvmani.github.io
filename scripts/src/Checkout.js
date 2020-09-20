@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
@@ -15,6 +15,7 @@ import Generator from "./tools/generator";
 import StudentSession from './StudentSession';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Avatar from '@material-ui/core/Avatar';
+import { InputLabel } from '@material-ui/core';
 
 function Copyright() {
   return (
@@ -68,23 +69,15 @@ const useStyles = makeStyles((theme) => ({
 
 const steps = ['Question', 'Question', 'Review your order'];
 
-function getStepContent(step, submissionHandler) {
-  const generatedNumbers = Generator.getTwoNumbers(3,40,[10,5]);
-  switch (step) {
-    case 0:
-      return <QuestionForm submissionHandler={submissionHandler} firstInput={generatedNumbers[0]} secondInput={generatedNumbers[1]} operation='+'/>;
-    case 1:
-      return <QuestionForm submissionHandler={submissionHandler} firstInput={generatedNumbers[0]} secondInput={generatedNumbers[1]} operation='x'/>;
-    default:
-      throw new Error('Unknown step');
-  }
-}
 
 export default function Checkout() {
+  console.log('Checkout - ReRender')
+
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(1);
   const [questions, setQuestions] = React.useState([]);
-
+  const generatedNumbers = Generator.getTwoNumbers(3,40,[10,5]);
+  
   const submissionHandler = (question) => {
     let questionWithResult = Question.questionWithResult(question, Evaluator.answer(question), Evaluator.evaluateQuestion(question))
     const newQuestions = [questionWithResult , ...questions]
@@ -106,6 +99,7 @@ export default function Checkout() {
     setSession({
       ...session,
       [event.target.name]: event.target.value,
+      sid: ''
     });
   };
   
@@ -119,7 +113,7 @@ export default function Checkout() {
     setQuestions([])
   }
 
-  useEffect(() => {console.log(session.sid)}, [session]);
+
 
   return (
     <React.Fragment>
@@ -136,35 +130,30 @@ export default function Checkout() {
         <StudentSession value={session.name} callback={sessionHandler} handleChange={onNameChange}/>
 
         { session.sid.length > 10  &&
-          <Typography component="h3" variant="h6" align="center">             
-              <FormControlLabel        control={<Avatar alt={session.name} src="/icon/1.png" />}
-                label= {"Welcome ! - " + session.name}
-              />
-         </Typography>
-        }        
           <React.Fragment>
-              <React.Fragment>
-                {getStepContent(activeStep, submissionHandler)}
-                
-                <PracticeSummary questions={questions}/>
-
-                <div className={classes.buttons}>
-                  {activeStep !== 0 && (
-                    <Button onClick={handleBack} className={classes.button}>
-                      Back
-                    </Button>
-                  )}
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={handleNext}
-                    className={classes.button}
-                  >
-                    {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
-                  </Button>
-                </div>
-              </React.Fragment>
+              <Typography component="h3" variant="h6" align="center">             
+                  <FormControlLabel        control={<Avatar alt={session.name} src="/icon/1.png" />}
+                    label= {"Welcome ! - " + session.name}/>
+            </Typography>
+              <QuestionForm submissionHandler={submissionHandler} firstInput={generatedNumbers[0]} secondInput={generatedNumbers[1]} operation='+'/>              
+              <PracticeSummary questions={questions}/>
+            <div className={classes.buttons}>
+              {activeStep !== 0 && (
+                <Button onClick={handleBack} className={classes.button}>
+                  Back
+                </Button>
+              )}
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={handleNext}
+                className={classes.button}
+              >
+                {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
+              </Button>
+            </div>
           </React.Fragment>
+        }
         </Paper>
         <Copyright />
       </main>

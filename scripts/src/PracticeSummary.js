@@ -18,8 +18,41 @@ const useStyles = makeStyles({
 export default function PracticeSummary(props) {
   const classes = useStyles();
   const rows = props.questions || [];
+  const incorrect = rows.filter(q => !q.result).length;
+
+  function caclulateSpeed() {
+    if(rows.length>0) {
+      let speedInMillis = (rows[0].submissionTime - rows[rows.length-1].submissionTime + 2)/rows.filter(q => q.result).length
+      return (speedInMillis/1000).toFixed(2);
+    }
+    return 9999999999;
+  }
 
   return (
+    <React.Fragment>
+    <TableContainer component={Paper}>
+      <Table className={classes.table} size="small" aria-label="simple table">
+        <TableHead>
+          <TableRow key='summaryHeader'>
+          <TableCell align="right">Speed</TableCell>
+            <TableCell align="right">Total</TableCell>
+            <TableCell align="right">InCorrect</TableCell>
+            <TableCell align="right">Correct</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          
+            <TableRow key='summary'>
+              <TableCell align="right">{caclulateSpeed()}</TableCell>
+              <TableCell align="right">{rows.length}</TableCell>
+              <TableCell align="right">{incorrect}</TableCell>
+              <TableCell align="right">{rows.length - incorrect}</TableCell>
+            </TableRow>
+          
+        </TableBody>
+      </Table>
+    </TableContainer>
+
     <TableContainer component={Paper}>
       <Table className={classes.table} size="small" aria-label="simple table">
         <TableHead>
@@ -28,9 +61,9 @@ export default function PracticeSummary(props) {
             <TableCell align="right">Result</TableCell>
             <TableCell align="right">input</TableCell>
             <TableCell align="right">input</TableCell>
-            <TableCell align="right">operation</TableCell>
             <TableCell align="right">Your Answer</TableCell>
             <TableCell align="right">Expected Answer</TableCell>
+            <TableCell align="right">operation</TableCell>
             <TableCell align="right">Clue</TableCell>
           </TableRow>
         </TableHead>
@@ -43,14 +76,15 @@ export default function PracticeSummary(props) {
               <TableCell align="right">{row.result ? "Correct!" : "Wrong"}</TableCell>
               <TableCell align="right">{row.firstNum}</TableCell>
               <TableCell align="right">{row.secondNum}</TableCell>
-              <TableCell align="right">{row.operation}</TableCell>
               <TableCell align="right">{row.submittedAnswer}</TableCell>
               <TableCell align="right">{row.expectedAnswer}</TableCell>
+              <TableCell align="right">{row.operation}</TableCell>
               <TableCell align="right">{row.operation}</TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
     </TableContainer>
+    </React.Fragment>
   );
 }

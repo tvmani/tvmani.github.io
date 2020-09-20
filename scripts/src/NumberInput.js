@@ -34,10 +34,19 @@ NumberFormatCustom.propTypes = {
 };
 
 
-
-export default function NumberInput(props) {
+const NumberInput = React.forwardRef((props, ref) => {
 
   const { value, handleChange, callback } = props;
+
+  const setInputFocus = () => {
+    let el = document.getElementById("formatted-numberformat-input");
+    if(el!=null) {
+      el.focus()
+      el.select();  
+    }
+  }
+
+  window.requestAnimationFrame(setInputFocus);
 
   const handleTab = (e, callback) => {
     const KEYCODE_TAB = 9;
@@ -47,7 +56,11 @@ export default function NumberInput(props) {
         callback(e)
       }
     }
-  }    
+  }
+  
+  const submit = (e) => {
+    handleChange(e)
+  }
 
   return (
     <React.Fragment>
@@ -56,12 +69,17 @@ export default function NumberInput(props) {
         value={value}
         autoFocus 
         onKeyDown={e => handleTab(e, callback)}
-        onChange={handleChange}
+        onChange={submit}
         name="numberformat"
+        size="medium"
         id="formatted-numberformat-input"
+        inputProps={{}} 
         InputProps={{
           inputComponent: NumberFormatCustom,
+          style: {fontSize: '30px'}
         }}
     />
   </React.Fragment>);
-}
+})
+
+export default NumberInput

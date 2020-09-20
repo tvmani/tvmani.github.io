@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useRef} from "react";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -8,12 +8,19 @@ import { ButtonGroup } from "@material-ui/core";
 import Question from "./model/Question";
 import NumberInput from "./NumberInput";
 
+const useFocus = () => {
+  const htmlElRef = useRef(null)
+  const setFocus = () => {htmlElRef.current &&  htmlElRef.current.focus()}
 
+  return [ htmlElRef, setFocus ] 
+}
 
-export default function QuestionForm(props) {
+const QuestionForm = React.forwardRef((props, ref) => {
+
   const initialState = { numberformat: "" }
   const { firstInput, secondInput, operation, submissionHandler } = props;
   const [values, setValues] = React.useState(initialState);
+  const [inputRef, setInputFocus] = useFocus()
 
   const onChange = (event) => {
     setValues({
@@ -34,10 +41,13 @@ export default function QuestionForm(props) {
     );
     setValues(initialState)
     callback(question)
+    setInputFocus()
+
   };
 
   const questionHandler = handleGo(submissionHandler);
-
+  console.log('QuestionForm - ReRender')
+  window.requestAnimationFrame(setInputFocus);
 
   return (
     <React.Fragment>
@@ -104,7 +114,7 @@ export default function QuestionForm(props) {
             color="primary"
             aria-label="outlined primary button group"
           >
-            <NumberInput value={values.numberformat} callback={questionHandler} handleChange={onChange}/>
+            <NumberInput value={values.numberformat} ref={inputRef} callback={questionHandler} handleChange={onChange}/>
             <Button
               label="Button"
               size="large"
@@ -122,4 +132,6 @@ export default function QuestionForm(props) {
       </Grid>
     </React.Fragment>
   );
-}
+})
+
+export default QuestionForm;

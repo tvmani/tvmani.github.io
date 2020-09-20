@@ -38,7 +38,9 @@ export default function StudentSession(props) {
           <TextField
             id="outlined-basic" label="name" variant="outlined" size="medium"
             name="name"
-            value={value}  onKeyDown={e => handleTab(e, callback)} onChange={handleChange}
+            value={value}
+            autoFocus
+            onKeyDown={e => handleTab(e, callback)} onChange={handleChange}
           />
           <Button
             label="Start"
