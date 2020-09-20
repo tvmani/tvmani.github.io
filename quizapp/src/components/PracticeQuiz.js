@@ -275,8 +275,8 @@ export default class Quiz extends React.Component {
 								<a
 									target="_blank"
 									rel="noopener noreferrer"
-									href="https://www.facebook.com/sharer/sharer.php?u=http://fcc-quiz.surge.sh/">
-									Share on Facebook
+									href="https://wa.me/?text=Hello%20world!" >
+									Share on whatsapp
 								</a>
 							</button>
 						</div>}
