@@ -76,6 +76,4 @@ export default class Generator {
     return [(firstNum * 10) + 5, (secondNum * 10) + 5];
   }
 
-
-
 }

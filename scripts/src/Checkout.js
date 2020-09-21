@@ -69,6 +69,39 @@ const useStyles = makeStyles((theme) => ({
 
 const steps = ['Question', 'Question', 'Review your order'];
 
+function getGeneratorFor(operation) {    
+  const min = mathOperation[operation].min , max = mathOperation[operation].max, excludes = [1,2];
+
+  const randomNumbers = Generator.getTwoNumbers(min, max, excludes);
+
+  if ('onesSumTo10'.startsWith(operation)) {
+    return Generator.getCommonBase10sComplement(min, max, excludes)
+  } else if ('getNumberEndsWith5'.startsWith(operation)) {
+    return Generator.getNumberEndsWith5(min, max, excludes)
+  } else if ('sameTens'.startsWith(operation)) {
+    return  Generator.getSameTens(min, max, excludes)
+  } else if ('subtraction'.startsWith(operation)) {    
+    randomNumbers.sort((a, b) => b - a);
+    return randomNumbers;
+  }  else if ('division'.startsWith(operation)) {    
+    randomNumbers.sort((a, b) => b - a);
+    return [randomNumbers[1]*randomNumbers[0], randomNumbers[0]];
+  }
+
+
+  return randomNumbers;        
+}
+
+const mathOperation = {
+  'onesSumTo10' : { operation: 'X',    min: 20,    max: 40 },
+  'sameTens' : { operation: 'X',    min: 20,    max: 50 },
+  'getNumberEndsWith5' : { operation: 'X',    min: 20,    max: 40 },
+  'multiplication': { operation: 'X',    min: 20,    max: 40 },
+  'addition' : { operation: 'X',    min: 20,    max: 40 },
+  'division' : { operation: '/',    min: 2,    max: 40 },
+  'subtraction' : { operation: '-',    min: 2,    max: 40 },
+}
+
 
 export default function Checkout() {
   console.log('Checkout - ReRender')
@@ -76,7 +109,6 @@ export default function Checkout() {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(1);
   const [questions, setQuestions] = React.useState([]);
-  const generatedNumbers = Generator.getTwoNumbers(3,40,[10,5]);
   
   const submissionHandler = (question) => {
     let questionWithResult = Question.questionWithResult(question, Evaluator.answer(question), Evaluator.evaluateQuestion(question))
@@ -92,7 +124,7 @@ export default function Checkout() {
     setActiveStep(activeStep - 1);
   };
 
-  const initialSession = { name: "", sid: "" }
+  const initialSession = { name: "", sid: "", operation: "addition" }
   const [session, setSession] = React.useState(initialSession);
 
   const onNameChange = (event) => {
@@ -103,17 +135,18 @@ export default function Checkout() {
     });
   };
   
-  const sessionHandler = (e) => {
+  const sessionHandler = (localSession) => {
     let sessionTime = (new Date()).toISOString();
-    const sid = `Practice_${session.name}@${sessionTime}`;
+    const sid = `Practice_${localSession.name}@${sessionTime}`;
+    console.dir(localSession)
     setSession({
-      ...session,
+      ...localSession,
       sid
     });
     setQuestions([])
   }
 
-
+  const generatedNumbers = getGeneratorFor(session.operation);
 
   return (
     <React.Fragment>
@@ -127,7 +160,7 @@ export default function Checkout() {
       </AppBar>
       <main className={classes.layout}>
         <Paper className={classes.paper}>
-        <StudentSession value={session.name} callback={sessionHandler} handleChange={onNameChange}/>
+        <StudentSession callback={sessionHandler} />
 
         { session.sid.length > 10  &&
           <React.Fragment>
@@ -135,7 +168,8 @@ export default function Checkout() {
                   <FormControlLabel        control={<Avatar alt={session.name} src="/icon/1.png" />}
                     label= {"Welcome ! - " + session.name}/>
             </Typography>
-              <QuestionForm submissionHandler={submissionHandler} firstInput={generatedNumbers[0]} secondInput={generatedNumbers[1]} operation='+'/>              
+              <QuestionForm submissionHandler={submissionHandler} firstInput={generatedNumbers[0]} 
+                secondInput={generatedNumbers[1]} operation={mathOperation[session.operation].operation}/>              
               <PracticeSummary questions={questions}/>
             <div className={classes.buttons}>
               {activeStep !== 0 && (
