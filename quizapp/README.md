@@ -33,3 +33,10 @@ We are tracking and organizing these questions in the issues on this repository.
     # serve the files through local web server
     serve -s build
 ```
+
+## Todo list
+
+- [] Save the quiz result for the user in local storage
+- [] prompt user name?
+  * There might be multiple users doing quiz from same system or mobile
+- [] quiz index page - school/programmer/developer/general/tamil/english categories?

@@ -132,14 +132,14 @@ export default {
 				good at math to learning programming 😉`
 		},
 		{
-			title: `xxxx-mani <img src="/assets/001_02_select_output_1.png">`,
+			title: `xxxx-mani <img src="/quizapp/assets/001_02_select_output_1.png">`,
 			subtitle: `mani questions`,
 			choices: [
-					`"none"<img src="/assets/001_02_select_output_1.png">`,
-					`"empty"<img src="/assets/001_02_select_output_1.png">`,
-					`"nonce"<img src="/assets/001_02_select_output_1.png">`,
-					`"nothing"<img src="/assets/001_02_select_output_1.png">`,
-					`"null/undefined"<img src="/assets/001_02_select_output_1.png">`,
+					`"none"<img src="/quizapp/assets/001_02_select_output_1.png">`,
+					`"empty"<img src="/quizapp/assets/001_02_select_output_1.png">`,
+					`"nonce"<img src="/quizapp/assets/001_02_select_output_1.png">`,
+					`"nothing"<img src="/quizapp/assets/001_02_select_output_1.png">`,
+					`"null/undefined"<img src="/quizapp/assets/001_02_select_output_1.png">`,
 			],
 			solution: `4`,
 			explanation: `
