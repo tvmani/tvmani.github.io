@@ -43,7 +43,7 @@ export default function PracticeSummary(props) {
         <TableBody>
           
             <TableRow key='summary'>
-              <TableCell align="right">{caclulateSpeed()}</TableCell>
+              <TableCell align="right"><b>{caclulateSpeed()}</b></TableCell>
               <TableCell align="right">{rows.length}</TableCell>
               <TableCell align="right">{incorrect}</TableCell>
               <TableCell align="right">{rows.length - incorrect}</TableCell>
