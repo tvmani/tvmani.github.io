@@ -30,7 +30,7 @@ export default function StudentSession(props) {
     [event.target.name]: event.target.value
   });
 
-  const { callback } = props;
+  const { callback, operations } = props;
 
   const handleTab = (e, callback) => {
     const KEYCODE_TAB = 9;
@@ -40,7 +40,11 @@ export default function StudentSession(props) {
         callback(localSession)
       }
     }
-  }   
+  }
+  
+  
+  const listItems = Object.entries(operations).map( operation => <FormControlLabel value={operation[0]} control={<Radio />} label={operation[1].name} /> )
+  
 
   return (
     <React.Fragment>
@@ -49,13 +53,8 @@ export default function StudentSession(props) {
 
           <FormControl component="fieldset">
             <FormLabel component="legend">Exercise</FormLabel>
-            <RadioGroup row  aria-label="gender" name="operation" value={localSession.operation} onChange={handleOperation}>
-              <FormControlLabel value="addition" control={<Radio />} label="Addition (+)" />
-              <FormControlLabel value="subtraction" control={<Radio />} label="Subtraction (-)" />
-              <FormControlLabel value="multiplication" control={<Radio />} label="Multiplication (x)" />
-              <FormControlLabel value="division" control={<Radio />} label="Division 	&divide;" />
-              <FormControlLabel value="onesSumTo10" control={<Radio />} label="Common Base (x)" />
-              <FormControlLabel value="sameTens" control={<Radio />} label="Same Tens (x)" />
+            <RadioGroup row  aria-label="operation" name="operation" value={localSession.operation} onChange={handleOperation}>
+            {listItems}
             </RadioGroup>
           </FormControl>          
       </Grid>

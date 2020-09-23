@@ -69,8 +69,10 @@ const useStyles = makeStyles((theme) => ({
 
 const steps = ['Question', 'Question', 'Review your order'];
 
-function getGeneratorFor(operation) {    
-  const min = mathOperation[operation].min , max = mathOperation[operation].max, excludes = [1,2];
+
+
+function getGeneratorFor(operation) {
+  const min = mathOperation[operation].min , max = mathOperation[operation].max, excludes = mathOperation[operation].excludes;
 
   const randomNumbers = Generator.getTwoNumbers(min, max, excludes);
 
@@ -93,15 +95,15 @@ function getGeneratorFor(operation) {
 }
 
 const mathOperation = {
-  'onesSumTo10' : { operation: 'X',    min: 20,    max: 40 },
-  'sameTens' : { operation: 'X',    min: 20,    max: 50 },
-  'getNumberEndsWith5' : { operation: 'X',    min: 20,    max: 40 },
-  'multiplication': { operation: 'X',    min: 20,    max: 40 },
-  'addition' : { operation: 'X',    min: 20,    max: 40 },
-  'division' : { operation: '/',    min: 2,    max: 40 },
-  'subtraction' : { operation: '-',    min: 2,    max: 40 },
+  'onesSumTo10' : { name: 'Ones Sum To 10 (x) - 4', operation: 'X',    min: 20,    max: 40, excludes: [5,10,15,11,20]  },
+  'sameTens' : { name: 'SameTens (x) - 5', operation: 'X',    min: 11,    max: 100, excludes: [5,10,15,11,20] },
+  'getNumberEndsWith5' : { name: 'Number 5`s (x) - 3', operation: 'X',    min: 2,    max: 20, excludes: [0] },
+  'multiplication': { name: 'Multiplication (x) - 2', operation: 'X',    min: 9,    max: 21, excludes: [5,10] },
+  'multiplication': { name: 'Multiplication (x) - 1', operation: 'X',    min: 2,    max: 11, excludes: [5,10] },
+  'addition' : { name: 'Addition (+)', operation: '+',    min: 20,    max: 40, excludes: [5,10] },
+  'division' : { name: 'Division &divide;', operation: '/',    min: 2,    max: 20, excludes: [5,10] },
+  'subtraction' : { name: 'Subtraction (-)', operation: '-',    min: 2,    max: 40, excludes: [5,10] },
 }
-
 
 export default function Checkout() {
   console.log('Checkout - ReRender')
@@ -160,7 +162,7 @@ export default function Checkout() {
       </AppBar>
       <main className={classes.layout}>
         <Paper className={classes.paper}>
-        <StudentSession callback={sessionHandler} />
+        <StudentSession operations={mathOperation} callback={sessionHandler} />
 
         { session.sid.length > 10  &&
           <React.Fragment>
