@@ -7,6 +7,8 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import CheckIcon from '@material-ui/icons/Check';
+import CloseIcon from '@material-ui/icons/Close';
 
 const useStyles = makeStyles({
   table: {
@@ -27,6 +29,9 @@ export default function PracticeSummary(props) {
     }
     return 9999999999;
   }
+
+  const lastResult = rows && rows[rows.length-1] && rows[rows.length-1].result;
+  debugger;
 
   return (
     <React.Fragment>
@@ -73,7 +78,7 @@ export default function PracticeSummary(props) {
               <TableCell component="th" scope="row">
                 {new Date(row.submissionTime).toLocaleTimeString()}
               </TableCell>
-              <TableCell align="right">{row.result ? "Correct!" : "Wrong"}</TableCell>
+              <TableCell align="right">{row.result ? <CheckIcon /> : <CloseIcon />}</TableCell>              
               <TableCell align="right">{row.firstNum}</TableCell>
               <TableCell align="right">{row.secondNum}</TableCell>
               <TableCell align="right">{row.submittedAnswer}</TableCell>

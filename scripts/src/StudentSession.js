@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 export default function StudentSession(props) {
   const classes = useStyles();
 
-  const [localSession, setLocalSession] = React.useState({operation: 'mulitiplication', name: ''});
+  const [localSession, setLocalSession] = React.useState({operation: 'addition', name: ''});
 
   const handleOperation = (event) =>  setLocalSession({
     ...localSession,
@@ -36,14 +36,14 @@ export default function StudentSession(props) {
     const KEYCODE_TAB = 9;
     const KEYCODE_ENTER = 13;
     if (e.keyCode === KEYCODE_TAB || e.keyCode === KEYCODE_ENTER) {
-      if (value.length >= 1) {
+      if (localSession.name && localSession.name.length >= 1) {
         callback(localSession)
       }
     }
   }
   
   
-  const listItems = Object.entries(operations).map( operation => <FormControlLabel value={operation[0]} control={<Radio />} label={operation[1].name} /> )
+  const listItems = Object.entries(operations).sort( (a,b) => a[1].level - b[1].level).map( operation => <FormControlLabel value={operation[0]} control={<Radio />} label={operation[1].name} /> )
   
 
   return (
@@ -69,14 +69,14 @@ export default function StudentSession(props) {
           />
           <Button
             label="Start"
-            size="small" variant="outlined" color="primary"
+            size="small" variant="contained" color="primary"
             onClick={e => callback(localSession)}
             style={{
               fontSize: 25,
             }}
           >
             Start
-          </Button>
+          </Button>      
         </form>
       </Grid>
       </Grid>

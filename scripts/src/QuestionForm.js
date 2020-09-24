@@ -8,6 +8,7 @@ import { ButtonGroup } from "@material-ui/core";
 import Question from "./model/Question";
 import NumberInput from "./NumberInput";
 
+
 const useFocus = () => {
   const htmlElRef = useRef(null)
   const setFocus = () => {htmlElRef.current &&  htmlElRef.current.focus()}
