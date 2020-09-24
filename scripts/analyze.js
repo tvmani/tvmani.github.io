@@ -24,7 +24,7 @@ export function getResult(day, application, localStorage) {
   return summary;
 }
 
-export default function extractSessions(name, localStorage, recentDays=30) {
+export default function extractSessions(name, localStorage, recentDays=60) {
   let sessions = Object.keys(localStorage).filter((i) => i.indexOf(`Practice_${name}@`) != -1);
   const today = (new Date()).getTime();
   const oneDay = 1000 * 3600 * 24;

@@ -2,7 +2,8 @@
 const shuffle = require('lodash/shuffle');
 const difference = require('lodash/difference');
 
-function distort(i) {
+/* exported distort */
+export function distort(i) {
   if (Math.random() > 0.5) {
     return i + 1;
   } else {

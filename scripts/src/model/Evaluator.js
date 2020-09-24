@@ -68,7 +68,7 @@ export default class Evaluator {
   static evaluate([...questions]) {
     const filteredWins = questions
       .filter((q) => q.operation === 'multiplication')
-      .filter((q) => q.firstNum * q.secondNum == q.submittedAnswer)
+      .filter((q) => q.firstNum * q.secondNum === q.submittedAnswer)
       .map((q) => [q.firstNum, q.secondNum]);
 
     const wins = (typeof filteredWins !== 'undefined') ? [].concat.apply([], filteredWins) : [];

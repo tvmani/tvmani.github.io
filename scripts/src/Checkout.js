@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect  } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
@@ -9,17 +9,13 @@ import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 import QuestionForm from './QuestionForm';
 import PracticeSummary from './PracticeSummary';
-import Question, {QuestionWithAnswer} from './model/Question'
+import Question from './model/Question'
 import Evaluator from "./model/Evaluator";
 import Generator from "./tools/generator";
 import StudentSession from './StudentSession';
 import Grid from "@material-ui/core/Grid";
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Avatar from '@material-ui/core/Avatar';
-import { InputLabel } from '@material-ui/core';
-import CardMedia from '@material-ui/core/CardMedia';
 
 function Copyright() {
   return (
@@ -74,7 +70,6 @@ const useStyles = makeStyles((theme) => ({
 const steps = ['Question', 'Question', 'Review your order'];
 
 
-
 function getGeneratorFor(operation) {
   console.log('getGeneratorFor' + operation);
   const min = mathOperation[operation].min , max = mathOperation[operation].max, excludes = mathOperation[operation].excludes;
@@ -111,28 +106,18 @@ const mathOperation = {
 }
 
 export default function Checkout() {
-  console.log('Checkout - ReRender')
+  const initialSession = { name: "", sid: "", operation: "onesSumTo10" }
 
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(1);
   const [questions, setQuestions] = React.useState([]);
+  const [session, setSession] = React.useState(initialSession);
   
   const submissionHandler = (question) => {
     let questionWithResult = Question.questionWithResult(question, Evaluator.answer(question), Evaluator.evaluateQuestion(question))
     const newQuestions = [questionWithResult , ...questions]
     setQuestions(newQuestions);
-  };
-
-  const handleNext = () => {
-    setActiveStep(activeStep + 1);
-  };
-
-  const handleBack = () => {
-    setActiveStep(activeStep - 1);
-  };
-
-  const initialSession = { name: "", sid: "", operation: "addition" }
-  const [session, setSession] = React.useState(initialSession);
+  };   
 
   const onNameChange = (event) => {
     setSession({
@@ -141,11 +126,17 @@ export default function Checkout() {
       sid: ''
     });
   };
+
+  useEffect(() => {
+    if(questions && questions.length>4 && session.sid.length > 2) {
+      localStorage.setItem(session.sid, JSON.stringify(questions));
+    }
+  }, [questions]);
   
   const sessionHandler = (localSession) => {
     let sessionTime = (new Date()).toISOString();
-    const sid = `Practice_${localSession.name}@${sessionTime}`;
-    console.dir(localSession)
+    const sid = `Practice_${localSession.name}@${sessionTime}~${localSession.operation}`;
+    console.dir(`Local session from session handler - ${localSession}`)
     setSession({
       ...localSession,
       sid
@@ -198,23 +189,8 @@ export default function Checkout() {
                       
             
               <QuestionForm submissionHandler={submissionHandler} firstInput={generatedNumbers[0]} 
-                secondInput={generatedNumbers[1]} operation={mathOperation[session.operation].operation}/>              
+                secondInput={generatedNumbers[1]} operation={mathOperation[session.operation].operation} />              
               <PracticeSummary questions={questions}/>
-            <div className={classes.buttons}>
-              {activeStep !== 0 && (
-                <Button onClick={handleBack} className={classes.button}>
-                  Back
-                </Button>
-              )}
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={handleNext}
-                className={classes.button}
-              >
-                {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
-              </Button>
-            </div>
           </React.Fragment>
         }
         </Paper>

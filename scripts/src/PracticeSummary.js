@@ -30,9 +30,6 @@ export default function PracticeSummary(props) {
     return 9999999999;
   }
 
-  const lastResult = rows && rows[rows.length-1] && rows[rows.length-1].result;
-  debugger;
-
   return (
     <React.Fragment>
     <TableContainer component={Paper}>

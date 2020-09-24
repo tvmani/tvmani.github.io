@@ -1,8 +1,6 @@
 import React,{useRef} from "react";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
 import { Button } from "@material-ui/core";
 import { ButtonGroup } from "@material-ui/core";
 import Question from "./model/Question";

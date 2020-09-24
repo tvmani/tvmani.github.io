@@ -1,7 +1,6 @@
 import Random from "./random";
 //import { shuffle } from 'lodash/shuffle';
 const shuffle = require('lodash/shuffle');
-const difference = require('lodash/difference');
 
 export default class Generator {
 
@@ -21,16 +20,16 @@ export default class Generator {
   }
 
   static isCommonBase(inputs) {
-    let [firstNum, secondNum, ..._] = inputs;
+    let [firstNum, secondNum] = inputs;
     let firstOnes = firstNum % 10;
     let secondOnes = secondNum % 10;
     let firstTens = Math.floor(firstNum / 10);
     let secondTens = Math.floor(secondNum / 10);
-    return ((firstOnes + secondOnes) % 10 == 0) && (firstTens === secondTens);
+    return ((firstOnes + secondOnes) % 10 === 0) && (firstTens === secondTens);
   }
 
   static isSameTens(inputs) {
-    let [firstNum, secondNum, ..._] = inputs;
+    let [firstNum, secondNum] = inputs;
     let firstOnes = firstNum % 10;
     let secondOnes = secondNum % 10;
     let firstTens = Math.floor(firstNum / 10);
@@ -40,7 +39,7 @@ export default class Generator {
 
 
   static isEndsIn5(inputs) {
-    let [firstNum, secondNum, ..._] = inputs;
+    let [firstNum, secondNum] = inputs;
     let firstOnes = firstNum % 10;
     let secondOnes = secondNum % 10;
     return (firstOnes === secondOnes) && (firstOnes === 5);

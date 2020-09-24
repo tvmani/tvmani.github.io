@@ -1,10 +1,7 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
 import { Button, TextField } from "@material-ui/core";
-import { ButtonGroup } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -36,7 +33,7 @@ export default function StudentSession(props) {
     const KEYCODE_TAB = 9;
     const KEYCODE_ENTER = 13;
     if (e.keyCode === KEYCODE_TAB || e.keyCode === KEYCODE_ENTER) {
-      if (localSession.name && localSession.name.length >= 1) {
+      if (localSession.name && localSession.name.length >= 2) {
         callback(localSession)
       }
     }
@@ -53,7 +50,7 @@ export default function StudentSession(props) {
 
           <FormControl component="fieldset">
             <FormLabel component="legend">Exercise</FormLabel>
-            <RadioGroup row  aria-label="operation" name="operation" value={localSession.operation} onChange={handleOperation}>
+              <RadioGroup row  aria-label="operation" name="operation" value={localSession.operation} onChange={handleOperation}>
             {listItems}
             </RadioGroup>
           </FormControl>          
