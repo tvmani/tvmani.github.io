@@ -7,19 +7,9 @@ import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 import datetime
-from pptx.util import Inches
-from pptx.chart.data import ChartData
-from pptx.enum.chart import XL_CHART_TYPE
-from pptx.chart.data import CategoryChartData
-from pptx import Presentation
-from pptx.enum.shapes import MSO_SHAPE
-from pptx.dml.color import RGBColor
-from pptx.util import Inches, Pt
-from pptx.enum.dml import MSO_THEME_COLOR
-from pptx import Presentation
-from pptx.util import Inches
 import os
 from os.path import basename, splitext
+from string import Template
 
 # todo: filename should be passed in commandline for function
 filename = "12th_Bio_Botany_Tamil_U02_01.xlsx"
@@ -44,6 +34,7 @@ def getTotalRecords(tableRange):
     end_row = int(upper_cell[1:])
     return end_row - start_row
 
+
 def get_cell_identifier(tableRange):
     # A1:C5
     (lower_cell, upper_cell) = tableRange.split(":")
@@ -51,12 +42,14 @@ def get_cell_identifier(tableRange):
     end_row_id = upper_cell[0]
     return (start_row_id, end_row_id)
 
+
 def get_cell_indexes(tableRange):
     # A1:C5
     (lower_cell, upper_cell) = tableRange.split(":")
     start_row_index = int(lower_cell[1:])
     end_row_index = int(upper_cell[1:]) - 1
     return (start_row_index, end_row_index)
+
 
 def getOptionAsString(optionInput):
     result = ""
@@ -66,40 +59,58 @@ def getOptionAsString(optionInput):
         result = str(optionInput)
     return result
 
-def createQuizFile():
-    quizContent = """export default {
+
+def getQuizAsJSObject(quizRecord):
+    print(quizRecord.question)
+    quizAsJSObject = """{{
+title: "{0}",
+subtitle: `JavaScript Data Types`,
+choices: [
+    "none",
+    "empty",
+    "nonce",
+    "nothing",
+    "null/undefined",
+],
+solution: `4`,
+explanation: `
+    In JavaScript <code>null</code> and <code>undefined</code> are both types to represent
+    values which are "absent" or "not defined yet". Each has a specific meaning and usage,
+    but in general they represent types where the value is missing or not present yet.`
+}}
+""".format(quizRecord.question)
+
+    return quizAsJSObject
+
+
+def createQuizFile(quizRecord):
+    quizContentHeader = """export default {
 	title: "Week 4 Quiz",
 	category: "JavaScript and Basic Data Structures",
 	challenges: [
-		{
-			title: `Which JavaScript type represents an "empty" or "absent" value?`,
-			subtitle: `JavaScript Data Types`,
-			choices: [
-				"none",
-				"empty",
-				"nonce",
-				"nothing",
-				"null/undefined",
-			],
-			solution: `4`,
-			explanation: `
-				In JavaScript <code>null</code> and <code>undefined</code> are both types to represent
-				values which are "absent" or "not defined yet". Each has a specific meaning and usage,
-				but in general they represent types where the value is missing or not present yet.`
-		},
-    ]
+    """
+
+    quizContentFooter = """]
     };
     """
-    return quizContent
+
+    quizAsJSFileContent = quizContentHeader + \
+        getQuizAsJSObject(quizRecord) + \
+        quizContentFooter
+
+    return quizAsJSFileContent.encode('utf8')
+
 
 def getQuizFilename(csvFilename):
     filenameWithoutExtn = splitext(basename(csvFilename))[0]
     return filenameWithoutExtn + "." + "js"
 
+
 def writeToFile(quizRecord, filename):
-    f = open(filename, "w")
-    f.write(createQuizFile())
+    f = open(filename, "wb")
+    f.write(createQuizFile(quizRecord))
     f.close()
+
 
 print(getTotalRecords(table_cell_range))
 print(get_cell_identifier(table_cell_range))
@@ -136,5 +147,3 @@ for quizRecord in QuizRecordsDb:
     writeToFile(quizRecord, quizFilename)
 
 print("Completed creation of quiz js")
-
-
