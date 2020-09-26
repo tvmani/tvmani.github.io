@@ -22,10 +22,13 @@ export default function StudentSession(props) {
 
   const [localSession, setLocalSession] = React.useState({operation: 'addition', name: ''});
 
-  const handleOperation = (event) =>  setLocalSession({
-    ...localSession,
-    [event.target.name]: event.target.value
-  });
+  const handleOperation = (event) => {
+    console.log(`Selected operation :: ${event.target.value}`)
+    setLocalSession({
+      ...localSession,
+      [event.target.name]: event.target.value
+    })
+  };
 
   const { callback, operations } = props;
 

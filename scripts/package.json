@@ -20,6 +20,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "fast-check": "2.3.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-number-format": "4.4.1",
@@ -31,7 +32,8 @@
     "js-xlsx": "0.8.22",
     "katex": "0.12.0",
     "lodash": "4.17.19",
-    "mathjax": "3.1.0"
+    "mathjax": "3.1.0",
+    "react-katex": "2.0.2"
   },
   "browserslist": {
     "production": [

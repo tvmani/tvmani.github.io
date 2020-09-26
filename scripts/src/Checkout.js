@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 import QuestionForm from './QuestionForm';
+import QuestionForm2 from './QuestionForm2';
 import PracticeSummary from './PracticeSummary';
 import Question from './model/Question'
 import Evaluator from "./model/Evaluator";
@@ -69,7 +70,6 @@ const useStyles = makeStyles((theme) => ({
 
 const steps = ['Question', 'Question', 'Review your order'];
 
-
 function getGeneratorFor(operation) {
   console.log('getGeneratorFor' + operation);
   const min = mathOperation[operation].min , max = mathOperation[operation].max, excludes = mathOperation[operation].excludes;
@@ -88,28 +88,36 @@ function getGeneratorFor(operation) {
   }  else if ('division'.startsWith(operation)) {    
     randomNumbers.sort((a, b) => b - a);
     return [randomNumbers[1]*randomNumbers[0], randomNumbers[0]];
+  }  else if ('square'.startsWith(operation) ) {
+    return [mathOperation[operation].generator.getNext(), 2]
+  }  else if ('cube'.startsWith(operation) ) {
+    return [mathOperation[operation].generator.getNext(), 3]
   }
-
 
   return randomNumbers;        
 }
 
+let cubeGenerator = Generator.getStatefulShuffledGenerator(2,25, [5,10]);
+
+let squareGenerator = Generator.getStatefulShuffledGenerator(2,50, [5,10]);
+
 const mathOperation = {
-  'onesSumTo10' : { level: 50, name: 'One`s Sum To 10', operation: 'X',    min: 20,    max: 40, excludes: [5,10,15,11,20]  },
-  'sameTens' : { level: 70, name: 'SameTens', operation: 'X',    min: 11,    max: 100, excludes: [5,10,15,11,20] },
-  'getNumberEndsWith5' : { level: 60, name: 'Number 5`s (x)', operation: 'X',    min: 2,    max: 9, excludes: [0] },
-  'multiplication': { level: 40, name: 'Multiplication (x)', operation: 'X',    min: 9,    max: 21, excludes: [5,10] },
-  'multiplicationJr': { level: 30, name: 'Basics Multiplication (x)', operation: 'X',    min: 2,    max: 11, excludes: [5,10] },
-  'addition' : { level: 10, name: 'Addition (+)', operation: '+',    min: 20,    max: 40, excludes: [5,10] },
-  'division' : { level: 80, name: 'Division &divide;', operation: '/',    min: 2,    max: 20, excludes: [5,10] },
-  'subtraction' : { level: 20, name: 'Subtraction (-)', operation: '-',    min: 2,    max: 40, excludes: [5,10] },
+  'onesSumTo10' : { id:'onesSumTo10', level: 50, name: 'One`s Sum To 10', operation: 'X',    min: 20,    max: 40, excludes: [5,10,15,11,20]  },
+  'sameTens' : { id:'sameTens', level: 70, name: 'SameTens', operation: 'X',    min: 11,    max: 100, excludes: [5,10,15,11,20] },
+  'getNumberEndsWith5' : { id:'getNumberEndsWith5', level: 60, name: 'Number 5`s (x)', operation: 'X',    min: 2,    max: 9, excludes: [0] },
+  'multiplication': { id:'multiplication', level: 40, name: 'Multiplication (x)', operation: 'X',    min: 9,    max: 21, excludes: [5,10] },
+  'multiplicationJr': { id:'multiplicationJr', level: 30, name: 'Basics Multiplication (x)', operation: 'X',    min: 2,    max: 11, excludes: [5,10] },
+  'addition' : { id:'addition', level: 10, name: 'Addition (+)', operation: '+',    min: 20,    max: 40, excludes: [5,10] },
+  'division' : { id:'division', level: 80, name: 'Division &divide;', operation: '/',    min: 2,    max: 20, excludes: [5,10] },
+  'subtraction' : { id:'subtraction', level: 20, name: 'Subtraction (-)', operation: '-',    min: 2,    max: 40, excludes: [5,10] },
+  'square' : { id:'square', level: 90, name: 'Square (x^2)', operation: 'square',    min: 2,    max: 50, excludes: [5,10], generator: squareGenerator },
+  'cube' : { id:'cube', level: 100, name: 'Cube (x^3)', operation: 'cube',    min: 2,    max: 25, excludes: [5,10], generator: cubeGenerator },
 }
 
 export default function Checkout() {
   const initialSession = { name: "", sid: "", operation: "onesSumTo10" }
 
   const classes = useStyles();
-  const [activeStep, setActiveStep] = React.useState(1);
   const [questions, setQuestions] = React.useState([]);
   const [session, setSession] = React.useState(initialSession);
   
@@ -146,6 +154,14 @@ export default function Checkout() {
 
   const generatedNumbers = getGeneratorFor(session.operation);
 
+  let questionForm = null;
+  
+  if( session.operation === 'square' || session.operation === 'cube' ) {
+    questionForm = <QuestionForm2 submissionHandler={submissionHandler} firstInput={generatedNumbers[0]} secondInput={generatedNumbers[1]} operation={mathOperation[session.operation]} />
+  } else {
+    questionForm = <QuestionForm submissionHandler={submissionHandler} firstInput={generatedNumbers[0]} secondInput={generatedNumbers[1]} operation={mathOperation[session.operation]} />
+  }
+
   return (
     <React.Fragment>
       <CssBaseline />
@@ -167,29 +183,24 @@ export default function Checkout() {
                   <div className={classes.details}>
                     <CardContent className={classes.content}>
                     <Grid container spacing={3}>
-                            <Grid item xs={12} sm={4}>
-                              <Typography component="h3" variant="h3">
-                                {session.name} 
-                                </Typography>
-                              </Grid>
-                              <Grid item xs={12} sm={4}>
-                              <img src="/icon/1.png" alt="recipe thumbnail" height="50" width="50"/>
-                              </Grid>
-                              <Grid item xs={12} sm={4}>
-                              <Button
-                      label="End" size="small" variant="contained" color="secondary" onClick={onNameChange} style={{fontSize: 25,}}>
-                      End
-                    </Button>                  
-                              </Grid>
+                        <Grid item xs={12} sm={4}>
+                          <Typography component="h3" variant="h3">
+                            {session.name} 
+                            </Typography>
+                          </Grid>
+                          <Grid item xs={12} sm={4}>
+                            <img src="/icon/1.png" alt="recipe thumbnail" height="50" width="50"/>
+                          </Grid>
+                          <Grid item xs={12} sm={4}>
+                            <Button label="End" size="small" variant="contained" color="secondary" onClick={onNameChange} style={{fontSize: 25,}}>
+                              End
+                            </Button>
+                          </Grid>
                         </Grid>
                     </CardContent>
                   </div>
                 </Card>
-
-                      
-            
-              <QuestionForm submissionHandler={submissionHandler} firstInput={generatedNumbers[0]} 
-                secondInput={generatedNumbers[1]} operation={mathOperation[session.operation].operation} />              
+               {questionForm}
               <PracticeSummary questions={questions}/>
           </React.Fragment>
         }

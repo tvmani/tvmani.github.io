@@ -12,6 +12,23 @@ export default class Generator {
     return shuffle(generated);
   }
 
+  static getStatefulShuffledGenerator(min, max, excludes, steps) {
+    const range = max - min;
+    const generated = Array.from(Array(range).keys())
+    .filter(i => i+min)
+    .filter(i => excludes.indexOf(+i) < 0);
+    let shuffled =  shuffle(generated);
+    return {
+      getNext: function() {
+        let [head, ...tail] = shuffled;
+        shuffled = [...tail, head];
+        return head;
+      }
+    }
+  }
+
+  
+
 
   static getTwoNumbers(min, max, excludes) {
     const firstNum = Random.getRandomIntInclusiveWithExceptions(min, max, excludes);

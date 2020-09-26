@@ -51,7 +51,7 @@ const QuestionForm = React.forwardRef((props, ref) => {
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom={true}>
-        Question
+        {operation.name}
       </Typography>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={5}>
@@ -79,7 +79,7 @@ const QuestionForm = React.forwardRef((props, ref) => {
                 fontSize: 25,
               }}
             >
-              <span>{operation}</span>
+              <span>{operation.operation}</span>
             </Button>
             <Button
               label="Button"

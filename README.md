@@ -25,6 +25,11 @@ git diff origin/master  -- scripts/generator.js
 git diff origin/master  -- scripts/math_operation.js
 git diff origin/master  -- scripts/ui_tools.js
 ```
+### Latex
+
+* [Latex](https://www.latex4technics.com/)
+* [Technical Writing with LaTeX](https://gate.nmr.mgh.harvard.edu/wiki/whynhow/images/e/e6/LaTeX_Mahanand.pdf)
+
 
 ### Sample links
 * [Interactive Cube](https://github.com/tvmani/tvmani.github.io/blob/master/interactive_cube.html)

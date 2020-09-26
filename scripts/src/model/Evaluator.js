@@ -23,6 +23,8 @@ const operations = {
   },
   'x': (a, b) => a * b,
   'X': (a, b) => a * b,
+  'square': (a, b) => a * a,
+  'cube': (a, b) => a * a * a,
   '/': (a, b) => a / b,
   '-': (a, b) => a - b,
   junior_addition: (a, b) => a + b,
@@ -45,12 +47,18 @@ export default class Evaluator {
   }
 
   static answer(question) {
-    const func = operations[question.operation];
+    console.log(question);
+    debugger;
+    let func = operations[question.operation];
+    if(func == null)
+      func = operations[question.operation.operation];
     return func(question.firstNum, question.secondNum);
   }
 
   static evaluateQuestion(question) {
-    const func = operations[question.operation];
+    let func = operations[question.operation];
+    if(func == null)
+      func = operations[question.operation.operation];
     return Math.abs(func(question.firstNum, question.secondNum) - question.submittedAnswer) < 0.1;
   }
 
