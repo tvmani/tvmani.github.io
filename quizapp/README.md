@@ -36,7 +36,11 @@ We are tracking and organizing these questions in the issues on this repository.
 
 ## Todo list
 
+- [] Quiz generation from CSV/XLSX file
+- [] Quiz generation from CSV file, which has reference to image files path in local system?
+- [] Quiz generation from CSV file, which has reference to image files path in url?
 - [] Save the quiz result for the user in local storage
 - [] prompt user name?
   * There might be multiple users doing quiz from same system or mobile
 - [] quiz index page - school/programmer/developer/general/tamil/english categories?
+
