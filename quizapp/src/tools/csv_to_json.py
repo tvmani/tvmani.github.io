@@ -19,6 +19,7 @@ from pptx.enum.dml import MSO_THEME_COLOR
 from pptx import Presentation
 from pptx.util import Inches
 import os
+from os.path import basename, splitext
 
 # todo: filename should be passed in commandline for function
 filename = "12th_Bio_Botany_Tamil_U02_01.xlsx"
@@ -65,6 +66,41 @@ def getOptionAsString(optionInput):
         result = str(optionInput)
     return result
 
+def createQuizFile():
+    quizContent = """export default {
+	title: "Week 4 Quiz",
+	category: "JavaScript and Basic Data Structures",
+	challenges: [
+		{
+			title: `Which JavaScript type represents an "empty" or "absent" value?`,
+			subtitle: `JavaScript Data Types`,
+			choices: [
+				"none",
+				"empty",
+				"nonce",
+				"nothing",
+				"null/undefined",
+			],
+			solution: `4`,
+			explanation: `
+				In JavaScript <code>null</code> and <code>undefined</code> are both types to represent
+				values which are "absent" or "not defined yet". Each has a specific meaning and usage,
+				but in general they represent types where the value is missing or not present yet.`
+		},
+    ]
+    };
+    """
+    return quizContent
+
+def getQuizFilename(csvFilename):
+    filenameWithoutExtn = splitext(basename(csvFilename))[0]
+    return filenameWithoutExtn + "." + "js"
+
+def writeToFile(quizRecord, filename):
+    f = open(filename, "w")
+    f.write(createQuizFile())
+    f.close()
+
 print(getTotalRecords(table_cell_range))
 print(get_cell_identifier(table_cell_range))
 print(get_cell_indexes(table_cell_range))
@@ -94,7 +130,11 @@ for row in range(start_row_index, end_row_index + 1, 1):
                             )
     QuizRecordsDb.append(quizRecord)
 
+quizFilename = getQuizFilename(filename)
 for quizRecord in QuizRecordsDb:
-    print(quizRecord)
+    # print(quizRecord)
+    writeToFile(quizRecord, quizFilename)
 
 print("Completed creation of quiz js")
+
+
