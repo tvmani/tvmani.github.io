@@ -44,3 +44,11 @@ We are tracking and organizing these questions in the issues on this repository.
   * There might be multiple users doing quiz from same system or mobile
 - [] quiz index page - school/programmer/developer/general/tamil/english categories?
 
+
+### Quiz generation from CSV/XLSX file
+
+1. Input -> Process -> Output
+2. CSV/XLSX file -> Process -> javascript source code file
+3. Try with only one question and answer
+4. Try with two question and answer
+5. Try with full file
