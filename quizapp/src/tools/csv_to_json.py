@@ -63,30 +63,35 @@ def getOptionAsString(optionInput):
 def getQuizAsJSObject(quizRecord):
     print(quizRecord.question)
     quizAsJSObject = """{{
-title: "{0}",
-subtitle: `JavaScript Data Types`,
+title: "{question}",
+subtitle: "{question_no}",
 choices: [
-    "none",
-    "empty",
-    "nonce",
-    "nothing",
-    "null/undefined",
+    `{option_1}`,
+    `{option_2}`,
+    `{option_3}`,
+    `{option_4}`,
+    `{option_5}`,
 ],
-solution: `4`,
-explanation: `
-    In JavaScript <code>null</code> and <code>undefined</code> are both types to represent
-    values which are "absent" or "not defined yet". Each has a specific meaning and usage,
-    but in general they represent types where the value is missing or not present yet.`
+solution: `{correct_answer}`,
+explanation: `{topic_name}`
 }}
-""".format(quizRecord.question)
-
+""".format(question = quizRecord.question,
+            question_no = quizRecord.question_no,
+            option_1 = quizRecord.option_1,
+            option_2 = quizRecord.option_2,
+            option_3 = quizRecord.option_3,
+            option_4 = quizRecord.option_4,
+            option_5 = quizRecord.option_5,
+            correct_answer = quizRecord.correct_answer,
+            topic_name = quizRecord.topic_name,
+            )
     return quizAsJSObject
 
 
 def createQuizFile(quizRecord):
     quizContentHeader = """export default {
 	title: "Week 4 Quiz",
-	category: "JavaScript and Basic Data Structures",
+	category: "12th Biology Botany",
 	challenges: [
     """
 

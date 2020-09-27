@@ -1,5 +1,5 @@
 export default {
-	title: "Week 4 Quiz",
+	title: "12th Biology Botany மரபியல்",
 	category: "12th Biology Botany",
 	challenges: [
     {

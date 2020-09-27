@@ -8,11 +8,13 @@
 import week_1 from './01';
 import week_2 from './02';
 import week_3 from './03';
+import tm_12_biology_botany from './12th_Bio_Botany_Tamil_U02_01';
 
 const challenges = [
 	week_1,
 	week_2,
 	week_3,
+	tm_12_biology_botany,
 ];
 
 /* This doesn't cover everything but serves as a basic verification that
