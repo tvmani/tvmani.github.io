@@ -68,30 +68,29 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const steps = ['Question', 'Question', 'Review your order'];
 
-function getGeneratorFor(operation) {
-  console.log('getGeneratorFor' + operation);
-  const min = mathOperation[operation].min , max = mathOperation[operation].max, excludes = mathOperation[operation].excludes;
+function getGeneratorFor(exerciseId) {
+  console.log('getGeneratorFor' + exerciseId);
+  const min = mathOperations[exerciseId].min , max = mathOperations[exerciseId].max, excludes = mathOperations[exerciseId].excludes;
 
   const randomNumbers = Generator.getTwoNumbers(min, max, excludes);
 
-  if ('onesSumTo10'.startsWith(operation)) {
+  if ('onesSumTo10'.startsWith(exerciseId)) {
     return Generator.getCommonBase10sComplement(min, max, excludes)
-  } else if ('getNumberEndsWith5'.startsWith(operation)) {
+  } else if ('getNumberEndsWith5'.startsWith(exerciseId)) {
     return Generator.getNumberEndsWith5(min, max, excludes)
-  } else if ('sameTens'.startsWith(operation)) {
+  } else if ('sameTens'.startsWith(exerciseId)) {
     return  Generator.getSameTens(min, max, excludes)
-  } else if ('subtraction'.startsWith(operation)) {    
+  } else if ('subtraction'.startsWith(exerciseId)) {    
     randomNumbers.sort((a, b) => b - a);
     return randomNumbers;
-  }  else if ('division'.startsWith(operation)) {    
+  }  else if ('division'.startsWith(exerciseId)) {    
     randomNumbers.sort((a, b) => b - a);
     return [randomNumbers[1]*randomNumbers[0], randomNumbers[0]];
-  }  else if ('square'.startsWith(operation) ) {
-    return [mathOperation[operation].generator.getNext(), 2]
-  }  else if ('cube'.startsWith(operation) ) {
-    return [mathOperation[operation].generator.getNext(), 3]
+  }  else if ('square'.startsWith(exerciseId) ) {
+    return [squareGenerator.getNext(), 2]
+  }  else if ('cube'.startsWith(exerciseId) ) {
+    return [cubeGenerator.getNext(), 3]
   }
 
   return randomNumbers;        
@@ -101,21 +100,24 @@ let cubeGenerator = Generator.getStatefulShuffledGenerator(2,25, [5,10]);
 
 let squareGenerator = Generator.getStatefulShuffledGenerator(2,50, [5,10]);
 
-const mathOperation = {
-  'onesSumTo10' : { id:'onesSumTo10', level: 50, name: 'One`s Sum To 10', operation: 'X',    min: 20,    max: 40, excludes: [5,10,15,11,20]  },
-  'sameTens' : { id:'sameTens', level: 70, name: 'SameTens', operation: 'X',    min: 11,    max: 100, excludes: [5,10,15,11,20] },
-  'getNumberEndsWith5' : { id:'getNumberEndsWith5', level: 60, name: 'Number 5`s (x)', operation: 'X',    min: 2,    max: 9, excludes: [0] },
-  'multiplication': { id:'multiplication', level: 40, name: 'Multiplication (x)', operation: 'X',    min: 9,    max: 21, excludes: [5,10] },
-  'multiplicationJr': { id:'multiplicationJr', level: 30, name: 'Basics Multiplication (x)', operation: 'X',    min: 2,    max: 11, excludes: [5,10] },
-  'addition' : { id:'addition', level: 10, name: 'Addition (+)', operation: '+',    min: 20,    max: 40, excludes: [5,10] },
-  'division' : { id:'division', level: 80, name: 'Division &divide;', operation: '/',    min: 2,    max: 20, excludes: [5,10] },
-  'subtraction' : { id:'subtraction', level: 20, name: 'Subtraction (-)', operation: '-',    min: 2,    max: 40, excludes: [5,10] },
-  'square' : { id:'square', level: 90, name: 'Square (x^2)', operation: 'square',    min: 2,    max: 50, excludes: [5,10], generator: squareGenerator },
-  'cube' : { id:'cube', level: 100, name: 'Cube (x^3)', operation: 'cube',    min: 2,    max: 25, excludes: [5,10], generator: cubeGenerator },
-}
+const exercises = [
+  { id:'addition', level: 10, name: 'Addition (+)', mathFunction: '+',    min: 20,    max: 40, excludes: [5,10] },
+  { id:'subtraction', level: 20, name: 'Subtraction (-)', mathFunction: '-',    min: 2,    max: 40, excludes: [5,10] },
+  { id:'multiplicationJr', level: 30, name: 'Basics Multiplication (x)', mathFunction: 'X',    min: 2,    max: 11, excludes: [5,10] },
+  { id:'multiplication', level: 40, name: 'Multiplication (x)', mathFunction: 'X',    min: 9,    max: 21, excludes: [5,10] },
+  { id:'onesSumTo10', level: 50, name: 'One`s Sum To 10', mathFunction: 'X',    min: 20,    max: 40, excludes: [5,10,15,11,20]  },
+  { id:'getNumberEndsWith5', level: 60, name: 'Number 5`s (x)', mathFunction: 'X',    min: 2,    max: 9, excludes: [0] },
+  { id:'sameTens', level: 70, name: 'SameTens', mathFunction: 'X',    min: 11,    max: 100, excludes: [5,10,15,11,20] },
+  { id:'division', level: 80, name: 'Division &divide;', mathFunction: '/',    min: 2,    max: 20, excludes: [5,10] },
+  { id:'square', level: 90, name: 'Square (x^2)', mathFunction: 'square',    min: 2,    max: 50, excludes: [5,10]},
+  { id:'cube', level: 100, name: 'Cube (x^3)', mathFunction: 'cube',    min: 2,    max: 25, excludes: [5,10]},
+].sort((a, b) => a.level - b.level);
+
+const mathOperations = exercises.reduce( (accumulator, currentValue) => { accumulator[currentValue.id]=currentValue; return accumulator; } , {})
+
 
 export default function Checkout() {
-  const initialSession = { name: "", sid: "", operation: "onesSumTo10" }
+  const initialSession = { name: "", sid: "", exerciseId: "onesSumTo10" }
 
   const classes = useStyles();
   const [questions, setQuestions] = React.useState([]);
@@ -143,7 +145,7 @@ export default function Checkout() {
   
   const sessionHandler = (localSession) => {
     let sessionTime = (new Date()).toISOString();
-    const sid = `Practice_${localSession.name}@${sessionTime}~${localSession.operation}`;
+    const sid = `Practice_${localSession.name}@${sessionTime}~${localSession.exerciseId}`;
     console.dir(`Local session from session handler - ${localSession}`)
     setSession({
       ...localSession,
@@ -152,14 +154,14 @@ export default function Checkout() {
     setQuestions([])
   }
 
-  const generatedNumbers = getGeneratorFor(session.operation);
+  const generatedNumbers = getGeneratorFor(session.exerciseId);
 
   let questionForm = null;
   
-  if( session.operation === 'square' || session.operation === 'cube' ) {
-    questionForm = <QuestionForm2 submissionHandler={submissionHandler} firstInput={generatedNumbers[0]} secondInput={generatedNumbers[1]} operation={mathOperation[session.operation]} />
+  if( session.exerciseId === 'square' || session.exerciseId === 'cube' ) {
+    questionForm = <QuestionForm2 submissionHandler={submissionHandler} firstInput={generatedNumbers[0]} secondInput={generatedNumbers[1]} operation={mathOperations[session.exerciseId]} />
   } else {
-    questionForm = <QuestionForm submissionHandler={submissionHandler} firstInput={generatedNumbers[0]} secondInput={generatedNumbers[1]} operation={mathOperation[session.operation]} />
+    questionForm = <QuestionForm submissionHandler={submissionHandler} firstInput={generatedNumbers[0]} secondInput={generatedNumbers[1]} operation={mathOperations[session.exerciseId]} />
   }
 
   return (
@@ -174,7 +176,7 @@ export default function Checkout() {
       </AppBar>
       <main className={classes.layout}>
         <Paper className={classes.paper}>
-        { session.sid.length === 0  &&        <StudentSession operations={mathOperation} callback={sessionHandler} /> }
+        { session.sid.length === 0  &&   <StudentSession exercises={exercises} callback={sessionHandler} /> }
 
         { session.sid.length > 10  &&
           <React.Fragment>

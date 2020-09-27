@@ -48,17 +48,16 @@ export default class Evaluator {
 
   static answer(question) {
     console.log(question);
-    debugger;
     let func = operations[question.operation];
     if(func == null)
-      func = operations[question.operation.operation];
+      func = operations[question.operation.mathFunction];
     return func(question.firstNum, question.secondNum);
   }
 
   static evaluateQuestion(question) {
     let func = operations[question.operation];
     if(func == null)
-      func = operations[question.operation.operation];
+      func = operations[question.operation.mathFunction];
     return Math.abs(func(question.firstNum, question.secondNum) - question.submittedAnswer) < 0.1;
   }
 

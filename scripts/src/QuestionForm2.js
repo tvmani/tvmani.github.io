@@ -5,7 +5,8 @@ import { Button } from "@material-ui/core";
 import { ButtonGroup } from "@material-ui/core";
 import Question from "./model/Question";
 import NumberInput from "./NumberInput";
-
+import 'katex/dist/katex.min.css';
+import { InlineMath} from 'react-katex';
 
 const useFocus = () => {
   const htmlElRef = useRef(null)
@@ -14,7 +15,16 @@ const useFocus = () => {
   return [ htmlElRef, setFocus ] 
 }
 
-const QuestionForm = React.forwardRef((props, ref) => {
+function getMathRender(number, operation) {
+  if('square'.startsWith(operation)) {
+    return number + "^2";
+  } 
+  if('cube'.startsWith(operation)) {
+    return number + "^3";
+  } 
+}
+
+const QuestionForm2 = React.forwardRef((props, ref) => {
 
   const initialState = { numberformat: "" }
   const { firstInput, secondInput, operation, submissionHandler } = props;
@@ -45,20 +55,16 @@ const QuestionForm = React.forwardRef((props, ref) => {
   };
 
   const questionHandler = handleGo(submissionHandler);
-  console.log('QuestionForm - ReRender')
   window.requestAnimationFrame(setInputFocus);
+  let text = getMathRender(firstInput, operation.id);
 
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom={true}>
-        {operation.name}
+        Question
       </Typography>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={5}>
-          <ButtonGroup
-            color="primary"
-            aria-label="outlined primary button group"
-          >
             <Button
               label="Button"
               size="large"
@@ -68,31 +74,10 @@ const QuestionForm = React.forwardRef((props, ref) => {
                 fontSize: 30,
               }}
             >
-              <span>{firstInput}</span>
+              <InlineMath>{text}</InlineMath>
             </Button>
-            <Button
-              label="Button"
-              size="medium"
-              variant="outlined"
-              color="primary"
-              style={{
-                fontSize: 25,
-              }}
-            >
-              <span>{operation.mathFunction}</span>
-            </Button>
-            <Button
-              label="Button"
-              size="large"
-              variant="outlined"
-              color="primary"
-              style={{
-                fontSize: 30,
-              }}
-            >
-              <span>{secondInput}</span>
-            </Button>
-          </ButtonGroup>
+            
+            
         </Grid>
         <Grid item xs={12} sm={2}>
           <Button
@@ -133,4 +118,4 @@ const QuestionForm = React.forwardRef((props, ref) => {
   );
 })
 
-export default QuestionForm;
+export default QuestionForm2;

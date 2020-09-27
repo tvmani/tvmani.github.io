@@ -80,7 +80,7 @@ export default function PracticeSummary(props) {
               <TableCell align="right">{row.secondNum}</TableCell>
               <TableCell align="right">{row.submittedAnswer}</TableCell>
               <TableCell align="right">{row.expectedAnswer}</TableCell>
-              <TableCell align="right">{row.operation}</TableCell>
+              <TableCell align="right">{row.operation.operation}</TableCell>
               <TableCell align="right">{row.operation}</TableCell>
             </TableRow>
           ))}
