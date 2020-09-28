@@ -12,11 +12,11 @@ from os.path import basename, splitext
 from string import Template
 
 # todo: filename should be passed in commandline for function
-filename = "12th_Bio_Botany_Tamil_U02_01.xlsx"
+currentDirectory = "E:\\2020\\git\\quiz_app\\quizapp\\src\\tools"
+filename = "12_TM_Botany_U02.xlsx"
 # lessonTitle = "அலகு 5 - தாவர செயலியல் (Plant Physiology)"
-lessonTitle = "11th - தாவரவியல் நீட் போட்டி தேர்வு பயிற்சி"
-
-wb = load_workbook(filename)
+lessonTitle = "மரபியல்"
+wb = load_workbook(currentDirectory + "\\" + filename)
 
 sheet_ranges = wb.worksheets[0]
 
@@ -75,20 +75,20 @@ choices: [
 solution: `{correct_answer}`,
 explanation: `{topic_name}`
 }}
-""".format(question = quizRecord.question,
-            question_no = quizRecord.question_no,
-            option_1 = quizRecord.option_1,
-            option_2 = quizRecord.option_2,
-            option_3 = quizRecord.option_3,
-            option_4 = quizRecord.option_4,
-            option_5 = quizRecord.option_5,
-            correct_answer = quizRecord.correct_answer,
-            topic_name = quizRecord.topic_name,
-            )
+""".format(question=quizRecord.question,
+           question_no=quizRecord.question_no,
+           option_1=quizRecord.option_1,
+           option_2=quizRecord.option_2,
+           option_3=quizRecord.option_3,
+           option_4=quizRecord.option_4,
+           option_5=quizRecord.option_5,
+           correct_answer=quizRecord.correct_answer,
+           topic_name=quizRecord.topic_name,
+           )
     return quizAsJSObject
 
 
-def createQuizFile(quizRecord):
+def createQuizFile(allQuizRecords):
     quizContentHeader = """export default {
 	title: "Week 4 Quiz",
 	category: "12th Biology Botany",
@@ -100,7 +100,7 @@ def createQuizFile(quizRecord):
     """
 
     quizAsJSFileContent = quizContentHeader + \
-        getQuizAsJSObject(quizRecord) + \
+        allQuizRecords + \
         quizContentFooter
 
     return quizAsJSFileContent.encode('utf8')
@@ -111,9 +111,9 @@ def getQuizFilename(csvFilename):
     return filenameWithoutExtn + "." + "js"
 
 
-def writeToFile(quizRecord, filename):
+def writeToFile(allQuizRecords, filename):
     f = open(filename, "wb")
-    f.write(createQuizFile(quizRecord))
+    f.write(createQuizFile(allQuizRecords))
     f.close()
 
 
@@ -146,9 +146,20 @@ for row in range(start_row_index, end_row_index + 1, 1):
                             )
     QuizRecordsDb.append(quizRecord)
 
+print(len(QuizRecordsDb))
+
 quizFilename = getQuizFilename(filename)
+allQuizRecords = ""
+quiz_separator = ","
 for quizRecord in QuizRecordsDb:
     # print(quizRecord)
-    writeToFile(quizRecord, quizFilename)
+    #writeToFile(quizRecord, quizFilename)
+    if len(allQuizRecords) == 0:
+        quiz_separator = ""
+    else:
+        quiz_separator = ","
+    allQuizRecords = allQuizRecords + quiz_separator + getQuizAsJSObject(quizRecord)
 
+
+writeToFile(allQuizRecords, quizFilename)
 print("Completed creation of quiz js")

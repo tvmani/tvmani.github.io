@@ -5,16 +5,18 @@
  * the content of these challenges.
  */
 
-import week_1 from './01';
-import week_2 from './02';
-import week_3 from './03';
-import tm_12_biology_botany from './12th_Bio_Botany_Tamil_U02_01';
+// import week_1 from './01';
+// import week_2 from './02';
+// import week_3 from './03';
+// import tm_12_biology_botany from './12th_Bio_Botany_Tamil_U02_01';
+// import tm_12_biology_botany_02 from './12th_Bio_Botany_Tamil_U02_02';
+// import tm_12_biology_botany_L01_full from './12th_Bio_Botany_Tamil_U02_full';
+import _12_TM_Botany_U01 from './12_TM_Botany_U01.js';
+import _12_TM_Botany_U02 from './12_TM_Botany_U02.js';
 
 const challenges = [
-	week_1,
-	week_2,
-	week_3,
-	tm_12_biology_botany,
+	_12_TM_Botany_U01,
+	_12_TM_Botany_U02
 ];
 
 /* This doesn't cover everything but serves as a basic verification that
