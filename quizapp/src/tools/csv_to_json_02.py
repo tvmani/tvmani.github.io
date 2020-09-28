@@ -63,8 +63,8 @@ def getOptionAsString(optionInput):
 def getQuizAsJSObject(quizRecord):
     print(quizRecord.question)
     quizAsJSObject = """{{
-title: "{question}",
-subtitle: "{question_no}",
+title: `{question}`,
+subtitle: `{question_no}`,
 choices: [
     `{option_1}`,
     `{option_2}`,
@@ -90,7 +90,7 @@ explanation: `{topic_name}`
 
 def createQuizFile(allQuizRecords):
     quizContentHeader = """export default {
-	title: "Week 4 Quiz",
+	title: "12th Biology Botany",
 	category: "12th Biology Botany",
 	challenges: [
     """
