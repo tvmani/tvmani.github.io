@@ -37,12 +37,12 @@
 
 1. Git quiz?
 2. School quiz?
-    * English - Tamil - Synonym
-    * English word - tamil word - sentence - image
-    * common verbs
-    * common subjects
-    * common sentences
-    * if possible all with images3. 
+    - English - Tamil - Synonym
+    - English word - tamil word - sentence - image
+    - common verbs
+    - common subjects
+    - common sentences
+    - if possible all with images3. 
 
 ## tamil medium students - English - how to go about it
 
