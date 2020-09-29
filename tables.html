@@ -1,0 +1,202 @@
+<html><head>
+  <title>Square/Cube Table - Choose a Table and Practice</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="ui_styles.css">
+</head>
+
+<body class="vsc-initialized">
+  <div class="jumbotron text-center">
+    <h3>Ninja practioner - Square/Cube Level <img src="images/img_multiplication_01.png"> Practice</h3>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <label for="yourName">Name</label>&nbsp;&nbsp;&nbsp;
+        <input type="text" id="yourName" value="" class="input-name">
+        <input type="button" id="submit_name" class="btn btn-outline-primary btn-sm" onclick="App.uiOps.registerUser(document.getElementById('yourName').value)" value="Start">
+        <input type="button" id="end" class="btn btn-outline-primary btn-sm" onclick="App.uiOps.registerUser(document.getElementById('yourName').value)" value="Reset">
+        <br><br>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div id="main" style="visibility: visible;">
+          <form id="formPractice">
+            <div class="col-sm-6">
+              <div>
+                <label for="multipleOfN">Choose skill</label>
+                <input type="range" id="inputOperations" name="inputOperations" min="1" max="4" value="2" step="1" oninput="javascript:onSlideOperations('inputOperations', 'targetted');">
+                <output name="targetted" id="targetted">square</output>
+              </div>
+              <div>
+                <label for="maxRange">Choose random range</label>
+                <input type="range" id="maxRange" name="maxRange" min="3" max="48" value="20" step="1" oninput="javascript:onSlide('maxRange', 'maxInput');">
+                       [1 - 
+                <output name="maxInput" id="maxInput">48</output>
+                <label>]</label>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label id="firstNumGen" style="visibility: hidden;" class="label label-medium">38</label>
+              <p id="secondNumGen"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mn>3</mn><msup><mn>8</mn><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">38^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.864108em; vertical-align: 0em;"></span><span class="mord">3</span><span class="mord"><span class="mord">8</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.864108em;"><span class="" style="top: -3.113em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span></p>
+              <img id="equalTo" src="images/equal_symbol_01.png" class="img-symbols">&nbsp;&nbsp;
+              <input type="text" id="answer" value="" class="input-answer" onkeypress="return App.uiOps.isDecimalNumber(event);">
+              <input type="button" class="btn btn-outline-primary btn-sm" autofocus="" id="submitAnswer" onclick="App.uiOps.scoreMark(App.uiOps.ui.createQuestion());" value="Go">
+            </div>
+            <input type="hidden" id="operations" value="square">
+            <input type="hidden" id="generatorFunction" value="shuffledNumber">
+            <input type="hidden" id="shuffledNumber" value="34,42,5,9,26,35,37,20,41,13,2,36,16,21,25,3,10,32,33,27,39,30,14,7,46,6,40,17,45,31,18,28,19,43,22,29,15,12,23,44,24,4,11,8,38">
+            <input type="hidden" id="minInput" value="1">
+      			<input type="hidden" id="excludes" value="0">
+            <div id="studentPracticeSummary">
+              <label id="summary">(Total, Correct, Incorrect)  =&gt; (13, <b>12</b>, 1)&nbsp;&nbsp;<img src="images/tick_mark_svg.png" alt=""><br>(Speed, Error Ratio) =&gt;  (33, 7.69%). Lower the better!</label>&nbsp;&nbsp;&nbsp;
+            </div>
+
+            <!-- <input type="hidden" id="maxInput" value="11" /> -->
+          </form>
+          
+          <div>
+            <table id="practicedResults" border="1">
+              <tbody><tr>
+                <th>
+                  Number
+                </th>
+                <th>
+                  Number
+                </th>
+                <th>
+                  Your Answer
+                </th>
+                <th>
+                  Correct
+                </th>
+                <th>
+                  Clue
+                </th>
+                <th>
+                  Result
+                </th>
+              </tr>
+            <tr><td>8</td><td>NaN</td><td>64</td><td>64</td><td></td><td>true</td></tr><tr><td>11</td><td>NaN</td><td>121</td><td>121</td><td></td><td>true</td></tr><tr><td>4</td><td>NaN</td><td>16</td><td>16</td><td></td><td>true</td></tr><tr><td>24</td><td>NaN</td><td>576</td><td>576</td><td></td><td>true</td></tr><tr><td>44</td><td>NaN</td><td>1936</td><td>1936</td><td></td><td>true</td></tr><tr><td>23</td><td>NaN</td><td>469</td><td>529</td><td></td><td>false</td></tr><tr><td>12</td><td>NaN</td><td>144</td><td>144</td><td></td><td>true</td></tr><tr><td>15</td><td>NaN</td><td>225</td><td>225</td><td></td><td>true</td></tr><tr><td>29</td><td>NaN</td><td>841</td><td>841</td><td></td><td>true</td></tr><tr><td>22</td><td>NaN</td><td>484</td><td>484</td><td></td><td>true</td></tr><tr><td>43</td><td>NaN</td><td>1849</td><td>1849</td><td></td><td>true</td></tr><tr><td>19</td><td>NaN</td><td>361</td><td>361</td><td></td><td>true</td></tr><tr><td>28</td><td>NaN</td><td>784</td><td>784</td><td></td><td>true</td></tr></tbody></table>
+          </div>          
+        </div>
+      </div>
+
+
+    </div>
+    </div>
+    
+  
+    <div class="col-sm-12" style="border: 0;">
+      <table id="practicedResults" border="1">
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+
+    </div>
+<script src="scripts/bundle.js"></script>
+
+<script language="Javascript">
+  let ops = {
+    "1": "square", "2": "cube", "3": "squareroot", "4": "cuberoot"
+  }
+  function onSlide(input, output) {
+    document.getElementById(output).value = document.getElementById(input).value;
+    document.getElementById('shuffledNumber').value = '';
+    App.uiOps.replenish();
+  }  
+  function onSlideOperations(input, output) {
+    console.log(ops[document.getElementById(input).value]);
+    document.getElementById(output).value = ops[document.getElementById(input).value];
+    document.getElementById('operations').value = ops[document.getElementById(input).value];
+    document.getElementById('shuffledNumber').value = '';
+    App.uiOps.replenish();
+  }
+</script>
+
+</body></html>

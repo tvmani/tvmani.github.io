@@ -72,10 +72,19 @@ export default function StudentSession(props) {
               label="Start" size="small" variant="contained" color="primary"
               onClick={(e) => callback(localSession)}
               style={{
-                fontSize: 25,
+                fontSize: 14,
               }}
             >
               Start
+            </Button>
+            <Button
+              label="Start" size="small" variant="contained" color="primary"
+              onClick={(e) => callback(localSession)}
+              style={{
+                fontSize: 14,
+              }}
+            >
+              Analysis
             </Button>
           </form>
         </Grid>

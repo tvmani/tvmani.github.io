@@ -1,4 +1,4 @@
-import Evaluator from './model/Evaluator';
+import Evaluator from './src/model/Evaluator.js';
 
 const countBy = require('lodash/countBy');
 const sortBy = require('lodash/sortBy');

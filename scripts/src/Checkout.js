@@ -17,6 +17,7 @@ import StudentSession from './StudentSession';
 import Grid from "@material-ui/core/Grid";
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import GraphicalReport from './GraphicalReport';
 
 function Copyright() {
   return (
@@ -204,6 +205,7 @@ export default function Checkout() {
                 </Card>
                {questionForm}
               <PracticeSummary questions={questions}/>
+              <GraphicalReport />
           </React.Fragment>
         }
         </Paper>

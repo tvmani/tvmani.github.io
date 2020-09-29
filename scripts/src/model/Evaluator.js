@@ -35,8 +35,6 @@ const operations = {
   multiplication: (a, b) => a * b,
   subtraction: (a, b) => a - b,
   division: (a, b) => a / b,
-  square: (a) => a * a,
-  cube: (a) => a * a * a,
   squareroot: (a) => Math.sqrt(a),
   cuberoot: (a) => Math.cbrt(a),
 };
