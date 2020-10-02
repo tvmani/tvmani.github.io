@@ -11,12 +11,11 @@
 // import tm_12_biology_botany from './12th_Bio_Botany_Tamil_U02_01';
 // import tm_12_biology_botany_02 from './12th_Bio_Botany_Tamil_U02_02';
 // import tm_12_biology_botany_L01_full from './12th_Bio_Botany_Tamil_U02_full';
-import _12_TM_Botany_U01 from './12_TM_Botany_U01.js';
-import _12_TM_Botany_U02 from './12_TM_Botany_U02.js';
+import _10_tamil_U01_01 from './10_tamil_U01_01.js';
+
 
 const challenges = [
-	_12_TM_Botany_U01,
-	_12_TM_Botany_U02
+	_10_tamil_U01_01,
 ];
 
 /* This doesn't cover everything but serves as a basic verification that

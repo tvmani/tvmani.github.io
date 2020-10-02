@@ -271,14 +271,14 @@ export default class Quiz extends React.Component {
 							<Link className='finishBtn' to='/' onClick={() => this.props.finishQuiz()}>
 								<button>Return to Quiz Page</button>
 							</Link>
-							<button className='fbShare'>
+							{/* <button className='fbShare'>
 								<a
 									target="_blank"
 									rel="noopener noreferrer"
 									href="https://wa.me/?text=Hello%20world!" >
 									Share on whatsapp
 								</a>
-							</button>
+							</button> */}
 						</div>}
 
 						{!isMobile && <div id='infoBox'>

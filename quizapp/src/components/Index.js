@@ -8,7 +8,7 @@ import { mapScreenSizeToProps } from '../utils/helpers';
 /* Header Component */
 const renderHeader = (isDesktop) => (
 	<div className='header'>
-		<span>To Learn, Retrieve from your neuron (brain) network</span>
+		<span>தமிழ் 10ம் வகுப்பு</span>
 			{isDesktop && <a
 				target="_blank"
 				rel="noopener noreferrer"
@@ -138,7 +138,7 @@ class extends React.Component {
 						</div>
 					)
 				})}
-				<div className='quizContainer'>
+				{/* <div className='quizContainer'>
 					<Link to='practice/shuffle' className={renderClassName(maxOptions - 1)} onMouseEnter={this.onHover}>
 						Shuffle All Quizzes <span>({totalQuestions} questions)</span>
 					</Link>
@@ -147,7 +147,7 @@ class extends React.Component {
 					<Link to="/about" className={renderClassName(maxOptions)} onMouseEnter={this.onHover}>
 						Additional Information
 					</Link>
-				</div>
+				</div> */}
 			</div>
 		</div>
 	)}
