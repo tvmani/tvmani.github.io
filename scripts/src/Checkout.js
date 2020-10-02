@@ -168,7 +168,11 @@ export default function Checkout() {
   return (
     <React.Fragment>
       <CssBaseline />
-      <AppBar position="absolute" color="transparent" className={classes.appBar}>
+      <AppBar
+        position="absolute"
+        color="transparent"
+        className={classes.appBar}
+      >
         <Toolbar variant="dense">
           <Typography variant="h6" color="inherit" noWrap>
             Daily Practice
@@ -177,37 +181,50 @@ export default function Checkout() {
       </AppBar>
       <main className={classes.layout}>
         <Paper className={classes.paper}>
-        { session.sid.length === 0  &&   <StudentSession exercises={exercises} callback={sessionHandler} /> }
+          {session.sid.length === 0 && (
+            <StudentSession exercises={exercises} callback={sessionHandler} />
+          )}
 
-        { session.sid.length > 10  &&
-          <React.Fragment>
-
-                <Card className={classes.root}>
-                  <div className={classes.details}>
-                    <CardContent className={classes.content}>
+          {session.sid.length > 10 && (
+            <React.Fragment>
+              <Card className={classes.root}>
+                <div className={classes.details}>
+                  <CardContent className={classes.content}>
                     <Grid container spacing={3}>
-                        <Grid item xs={12} sm={4}>
-                          <Typography component="h3" variant="h3">
-                            {session.name} 
-                            </Typography>
-                          </Grid>
-                          <Grid item xs={12} sm={4}>
-                            <img src="/icon/1.png" alt="recipe thumbnail" height="50" width="50"/>
-                          </Grid>
-                          <Grid item xs={12} sm={4}>
-                            <Button label="End" size="small" variant="contained" color="secondary" onClick={onNameChange} style={{fontSize: 25,}}>
-                              End
-                            </Button>
-                          </Grid>
-                        </Grid>
-                    </CardContent>
-                  </div>
-                </Card>
-               {questionForm}
-              <PracticeSummary questions={questions}/>
-              <GraphicalReport />
-          </React.Fragment>
-        }
+                      <Grid item xs={12} sm={4}>
+                        <Typography component="h3" variant="h3">
+                          {session.name}
+                        </Typography>
+                      </Grid>
+                      <Grid item xs={12} sm={4}>
+                        <img
+                          src="/icon/1.png"
+                          alt="recipe thumbnail"
+                          height="50"
+                          width="50"
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={4}>
+                        <Button
+                          label="End"
+                          size="small"
+                          variant="contained"
+                          color="secondary"
+                          onClick={onNameChange}
+                          style={{ fontSize: 25 }}
+                        >
+                          End
+                        </Button>
+                      </Grid>
+                    </Grid>
+                  </CardContent>
+                </div>
+              </Card>
+              {questionForm}
+              <PracticeSummary questions={questions} />
+              <GraphicalReport name={session.name} />
+            </React.Fragment>
+          )}
         </Paper>
         <Copyright />
       </main>

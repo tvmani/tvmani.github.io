@@ -45,7 +45,6 @@ const QuestionForm = React.forwardRef((props, ref) => {
   };
 
   const questionHandler = handleGo(submissionHandler);
-  console.log('QuestionForm - ReRender')
   window.requestAnimationFrame(setInputFocus);
 
   return (

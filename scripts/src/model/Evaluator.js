@@ -16,11 +16,7 @@ function countBy(input) {
 
 
 const operations = {
-  '+': (a, b) => {
-  let answer =  a + b;
-    console.log(`Lambda answer ${answer}`)
-    return answer
-  },
+  '+': (a, b) => a + b,
   'x': (a, b) => a * b,
   'X': (a, b) => a * b,
   'square': (a, b) => a * a,

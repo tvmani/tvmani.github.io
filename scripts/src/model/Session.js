@@ -44,7 +44,7 @@ export default class  Session {
     const name = sessionKey.split("@")[0].split("_")[1];
     const datetimeString  = sessionKey.split("@")[1].split("~")[0];
     const dateTime = new Date(datetimeString)
-    const mathFunction  = sessionKey.split("@")[1].split("~")[0];
+    const mathFunction  = sessionKey.split("@")[1].split("~")[1];
     return new Session(sessionKey, name, dateTime, mathFunction);
   }  
 
