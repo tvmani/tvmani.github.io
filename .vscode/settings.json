@@ -2,5 +2,12 @@
   "eslint.codeAction.disableRuleComment": {
     "enable": false
   },
-  "liveServer.settings.port": 3001
+  "liveServer.settings.port": 3001,
+  "editor.formatOnPaste": true,
+  "liveServer.settings.host": "mohan-dreamcore",
+  "liveServer.settings.CustomBrowser": "chrome",
+  "go.liveErrors": {
+    "enabled": false,
+    "delay": 500
+  }
 }
