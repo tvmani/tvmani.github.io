@@ -53,6 +53,7 @@
 
 ## Images coding
 
+0. What is the simplest possible version with image?
 1. A question could contain one image
 2. A question could contain more than one image
 3. An answer could contain one image
