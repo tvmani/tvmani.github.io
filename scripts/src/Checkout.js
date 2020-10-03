@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 import QuestionForm from './QuestionForm';
-import QuestionForm2 from './QuestionForm2';
+import LatexQuestionForm from './LatexQuestionForm';
 import PracticeSummary from './PracticeSummary';
 import Question from './model/Question'
 import Evaluator from "./model/Evaluator";
@@ -160,7 +160,14 @@ export default function Checkout() {
   let questionForm = null;
   
   if( session.exerciseId === 'square' || session.exerciseId === 'cube' ) {
-    questionForm = <QuestionForm2 submissionHandler={submissionHandler} firstInput={generatedNumbers[0]} secondInput={generatedNumbers[1]} operation={mathOperations[session.exerciseId]} />
+    questionForm = (
+      <LatexQuestionForm
+        submissionHandler={submissionHandler}
+        firstInput={generatedNumbers[0]}
+        secondInput={generatedNumbers[1]}
+        operation={mathOperations[session.exerciseId]}
+      />
+    );
   } else {
     questionForm = <QuestionForm submissionHandler={submissionHandler} firstInput={generatedNumbers[0]} secondInput={generatedNumbers[1]} operation={mathOperations[session.exerciseId]} />
   }

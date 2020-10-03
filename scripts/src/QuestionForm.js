@@ -7,19 +7,12 @@ import Question from "./model/Question";
 import NumberInput from "./NumberInput";
 
 
-const useFocus = () => {
-  const htmlElRef = useRef(null)
-  const setFocus = () => {htmlElRef.current &&  htmlElRef.current.focus()}
-
-  return [ htmlElRef, setFocus ] 
-}
-
 const QuestionForm = React.forwardRef((props, ref) => {
 
   const initialState = { numberformat: "" }
   const { firstInput, secondInput, operation, submissionHandler } = props;
   const [values, setValues] = React.useState(initialState);
-  const [inputRef, setInputFocus] = useFocus()
+  // const [inputRef, setInputFocus] = useFocus()
 
   const onChange = (event) => {
     setValues({
@@ -40,12 +33,11 @@ const QuestionForm = React.forwardRef((props, ref) => {
     );
     setValues(initialState)
     callback(question)
-    setInputFocus()
+    // setInputFocus()
 
   };
 
   const questionHandler = handleGo(submissionHandler);
-  window.requestAnimationFrame(setInputFocus);
 
   return (
     <React.Fragment>
@@ -112,7 +104,7 @@ const QuestionForm = React.forwardRef((props, ref) => {
             color="primary"
             aria-label="outlined primary button group"
           >
-            <NumberInput value={values.numberformat} ref={inputRef} callback={questionHandler} handleChange={onChange}/>
+            <NumberInput autoFocus={true} value={values.numberformat} callback={questionHandler} handleChange={onChange}/>
             <Button
               label="Button"
               size="large"
