@@ -38,16 +38,6 @@ const NumberInput = React.forwardRef((props, ref) => {
 
   const { value, handleChange, callback, autoFocus } = props;
 
-  const setInputFocus = () => {
-    let el = document.getElementById("formatted-numberformat-input");
-    if(el!=null) {
-      el.focus()
-      el.select();  
-    }
-  }
-
-  window.requestAnimationFrame(setInputFocus);
-
   const handleTab = (e, callback) => {
     const KEYCODE_TAB = 9;
     const KEYCODE_ENTER = 13;
