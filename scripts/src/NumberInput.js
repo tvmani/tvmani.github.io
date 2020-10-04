@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import TextField from "@material-ui/core/TextField";
 import NumberFormat from "react-number-format";
 import PropTypes from "prop-types";
@@ -37,6 +37,13 @@ NumberFormatCustom.propTypes = {
 const NumberInput = React.forwardRef((props, ref) => {
 
   const { value, handleChange, callback, autoFocus } = props;
+  let textInput = useRef(null);
+
+  useEffect(() => {
+    setTimeout(() => {
+      textInput.current.focus();
+    }, 100);
+  })
 
   const handleTab = (e, callback) => {
     const KEYCODE_TAB = 9;
@@ -59,6 +66,7 @@ const NumberInput = React.forwardRef((props, ref) => {
         value={value}
         autoFocus={autoFocus}
         onKeyDown={(e) => handleTab(e, callback)}
+        inputRef={textInput}
         onChange={submit}
         name="numberformat"
         size="medium"
