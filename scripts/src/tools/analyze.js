@@ -74,8 +74,8 @@ export default function extractSessions(name, localStorage) {
   appreciation.operationsBy = countBy(allAttemptedQuestions, "operation");
   appreciation.sessions = sessions; // sessions.slice(0, recentDays);
   appreciation.studentId = name;
-  appreciation.latest = sessions[sessions.length - 1].dateInString;
-  appreciation.earilest = sessions[0].dateInString;
+  appreciation.latest = sessions[sessions.length - 1] && sessions[sessions.length - 1].dateInString;
+  appreciation.earilest = sessions[0] && sessions[0].dateInString;
   appreciation.getSessionsFor = function getSessionsFor(date) {
     return sessions.filter((session) => session.dateInString === date);
   };
