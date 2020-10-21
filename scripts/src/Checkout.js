@@ -112,6 +112,7 @@ const exercises = [
   { id:'division', level: 80, name: 'Division &divide;', mathFunction: '/',    min: 2,    max: 20, excludes: [5,10] },
   { id:'square', level: 90, name: 'Square (x^2)', mathFunction: 'square',    min: 2,    max: 50, excludes: [5,10]},
   { id:'cube', level: 100, name: 'Cube (x^3)', mathFunction: 'cube',    min: 2,    max: 25, excludes: [5,10]},
+  { id:'advMutliplication', level: 110, name: 'Adv Multiplication', mathFunction: 'X',    min: 22,    max: 99, excludes: [5,10,20,30,40,50,60,70,80,90]},
 ].sort((a, b) => a.level - b.level);
 
 const mathOperations = exercises.reduce( (accumulator, currentValue) => { accumulator[currentValue.id]=currentValue; return accumulator; } , {})
