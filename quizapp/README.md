@@ -34,6 +34,10 @@ We are tracking and organizing these questions in the issues on this repository.
     serve -s build
 ```
 
+http://192.168.99.1:5000  
+
+http://192.168.1.11:5000  
+
 ## Todo list
 
 - [] Quiz generation from CSV/XLSX file
@@ -52,3 +56,21 @@ We are tracking and organizing these questions in the issues on this repository.
 3. Try with only one question and answer
 4. Try with two question and answer
 5. Try with full file
+
+### Quiz Improvement 1 - adding images
+
+Requirement:
+
+ 1. Question could contain one image
+ 2. Answer could contain one or more images
+ 3. Question could contain one or more images
+
+
+Analysis:
+
+ 1. How to represent an image in an excel file?
+  * absolute path of the image?
+  * relative path of the image?
+  * reporting errors on the generation of json, if image file is not present?
+  * 
+

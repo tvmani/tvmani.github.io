@@ -1,5 +1,5 @@
 export default {
-	title: "பாடம்  1",
+	title: "பாடம்_1_Q1",
 	category: "தமிழ்ச்சொல் வளம் - இலை",
 	challenges: [
     {
@@ -79,20 +79,6 @@ choices: [
 ],
 solution: `3`,
 explanation: `தமிழ்ச்சொல் வளம் - இலை`
-}
-,{
-title: `What is Linear momentum`,
-subtitle: `7`,
-choices: [
-    `mass * velocity 
-p = mv`,
-    `mass * acceleration`,
-    `mass * voumn`,
-    `mass * voumn`,
-    `mass * voumn`,
-],
-solution: `0`,
-explanation: `science`
 }
 ]
     };
