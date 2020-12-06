@@ -53,7 +53,7 @@ def get_cell_identifier(tableRange):
     return (start_row_id, end_row_id)
 
 
-def get_cell_indexes(tableRange):
+def get_cell_indexes(tableRange):    
     # A1:C5
     (lower_cell, upper_cell) = tableRange.split(":")
     start_row_index = int(lower_cell[1:])
