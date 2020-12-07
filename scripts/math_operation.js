@@ -1,5 +1,4 @@
 import uiTools from './ui_tools';
-import Random from './random';
 import Generator from './generator';
 import extractSessions, {getResult}  from './analyze';
 import Evaluator from './model/Evaluator';
@@ -201,6 +200,9 @@ export function replenish() {
   if ('getNumberEndsWith5'.startsWith(generatorFunction)) {
     randomNumbers = Generator.getNumberEndsWith5(min, max, excludes)
   }
+  if ("twoDigitCommon9s".startsWith(generatorFunction)) {
+    randomNumbers = Generator.getNumberEndsWith9(min, max, excludes);
+  }  
   if ('getSameTens'.startsWith(generatorFunction)) {
     randomNumbers = Generator.getSameTens(min, max, excludes)
   }

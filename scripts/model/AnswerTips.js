@@ -50,6 +50,23 @@ function explainMultiplicationForSameTens(inputs) {
   }`;
   return total;
 }
+function explainNumberEndsWith9(inputs) {
+  const [firstNum, secondNum, ..._] = inputs;
+  let firstTens = Math.floor(firstNum / 10) + 1;
+  let secondTens = Math.floor(secondNum / 10)  + 1;
+  firstTens = firstTens*10;
+  secondTens = secondTens*10;
+  let majorNumber = firstTens * secondTens;
+  let minorNumber = firstTens + secondTens;
+  let nearestAnswer = majorNumber - minorNumber;
+  let supportString = "(major - minor) + 1<br/>"
+  supportString += `${firstTens} x ${secondTens} = ${majorNumber} is major number nearest to answer<br/>`;
+  supportString += `${firstTens} + ${secondTens} = ${minorNumber} is minor number that needs to be subtracted from Major number<br/>`;
+  supportString += `${majorNumber} - ${minorNumber} = ${nearestAnswer}<br/>`;
+  supportString += `${nearestAnswer} + 1`;
+  return supportString;
+
+}
 
 function explainNumberEndsWith5(inputs) {
   const [firstNum, secondNum, ..._] = inputs;
@@ -86,6 +103,9 @@ export default function explanation(mathOperations, inputs) {
     }
     if (Generator.isEndsIn5(inputs)) {
       return explainNumberEndsWith5(numbers);
+    }
+    if (Generator.isEndsIn9(inputs)) {
+      return explainNumberEndsWith9(numbers);
     }
     if (numbers[1] > 10 && numbers[0] < 10) {
       return explainMultiplication(numbers);

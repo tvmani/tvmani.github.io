@@ -44,7 +44,14 @@ export default class Generator {
     let firstOnes = firstNum % 10;
     let secondOnes = secondNum % 10;
     return (firstOnes === secondOnes) && (firstOnes === 5);
-  }  
+  }
+
+  static isEndsIn9(inputs) {
+    let [firstNum, secondNum, ..._] = inputs;
+    let firstOnes = firstNum % 10;
+    let secondOnes = secondNum % 10;
+    return (firstOnes === secondOnes) && (firstOnes === 9);
+  }
 
   static getCommonBase10sComplement(min, max, excludes) {
     let firstNum = Random.getRandomIntInclusiveWithExceptions(min, max, excludes);
@@ -69,13 +76,25 @@ export default class Generator {
   }
 
   
-
-  static getNumberEndsWith5(min, max, excludes) {
-    const firstNum = Random.getRandomIntInclusiveWithExceptions(min, max, excludes);
-    const secondNum = Random.getRandomIntInclusiveWithExceptions(min, max, [firstNum, ...excludes]);
-    return [(firstNum * 10) + 5, (secondNum * 10) + 5];
+  static getNumberEndsWith9(min, max, excludes) {
+    return this.getNumberEndsWith(min, max, excludes, 9);
   }
 
+  static getNumberEndsWith5(min, max, excludes) {
+    return this.getNumberEndsWith(min, max, excludes, 5);
+  }
 
+  static getNumberEndsWith(min, max, excludes, suffixDigit) {
+    const firstNum = Random.getRandomIntInclusiveWithExceptions(
+      min,
+      max,
+      excludes
+    );
+    const secondNum = Random.getRandomIntInclusiveWithExceptions(min, max, [
+      firstNum,
+      ...excludes,
+    ]);
+    return [firstNum * 10 + suffixDigit, secondNum * 10 + suffixDigit];
+  }
 
 }
