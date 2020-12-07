@@ -45,6 +45,22 @@ test("Stateful shuffled number generator", () => {
   , {verbose: true});
 });
 
+test("Number ends with 9 shuffled number generator", () => {
+  fc.assert(
+    fc.property(fc.tuple(fc.integer(1, 9), fc.integer(5, 9)), (inputs) => {
+
+      //min, max, excludes, steps
+      let [a, b] = Generator.getNumberEndsWith9(
+        inputs[0],
+        inputs[1] + inputs[0],
+        [15, 25]
+      );
+      expect(a % 10).toBe(9);
+      expect(b % 10).toBe(9);
+    }),
+    { verbose: true }
+  );
+});
 
 test("Random number should be within boundry of 3 and 7", () => {
   const answer = Random.getRandomIntInclusiveWithExceptions(3, 7, [6]);

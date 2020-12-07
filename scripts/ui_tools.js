@@ -30,9 +30,6 @@ function createQuestion() {
     parseFloat(formPractice.answer.value),
     new Date()
   );
-debugger;
-  console.log(" Question ---> " + JSON.stringify(question, null, 2));
-
   return question;
 }
 
@@ -172,7 +169,6 @@ export function renderMathExpression(value, elementId) {
 }
 
 export function populateNewQuestion(randomNumber, secondRandomNumber) {
-  debugger;
   if (
     document.getElementById("operations").value === "cube" ||
     document.getElementById("operations").value === "square" ||
