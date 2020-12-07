@@ -70,8 +70,8 @@ function explainNumberEndsWith9(inputs) {
 
 function explainNumberEndsWith1(inputs) {
   const [firstNum, secondNum, ..._] = inputs;
-  let firstTens = Math.floor(firstNum / 10) + 1;
-  let secondTens = Math.floor(secondNum / 10)  + 1;
+  let firstTens = Math.floor(firstNum / 10) ;
+  let secondTens = Math.floor(secondNum / 10);
   firstTens = firstTens*10;
   secondTens = secondTens*10;
   let majorNumber = firstTens * secondTens;
