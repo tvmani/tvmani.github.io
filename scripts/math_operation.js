@@ -200,6 +200,9 @@ export function replenish() {
   if ('getNumberEndsWith5'.startsWith(generatorFunction)) {
     randomNumbers = Generator.getNumberEndsWith5(min, max, excludes)
   }
+  if ("twoDigitCommon1s".startsWith(generatorFunction)) {
+    randomNumbers = Generator.getNumberEndsWith1(min, max, excludes);
+  }  
   if ("twoDigitCommon9s".startsWith(generatorFunction)) {
     randomNumbers = Generator.getNumberEndsWith9(min, max, excludes);
   }  

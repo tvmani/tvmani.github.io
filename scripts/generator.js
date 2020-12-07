@@ -39,6 +39,13 @@ export default class Generator {
   }
 
 
+  static isEndsIn1(inputs) {
+    let [firstNum, secondNum, ..._] = inputs;
+    let firstOnes = firstNum % 10;
+    let secondOnes = secondNum % 10;
+    return (firstOnes === secondOnes) && (firstOnes === 1);
+  }
+
   static isEndsIn5(inputs) {
     let [firstNum, secondNum, ..._] = inputs;
     let firstOnes = firstNum % 10;
@@ -73,6 +80,11 @@ export default class Generator {
     const base = Math.floor(firstNum / 10);
     const secondNum = (base * 10) + ones;
     return [firstNum, secondNum];
+  }
+
+
+  static getNumberEndsWith1(min, max, excludes) {
+    return this.getNumberEndsWith(min, max, excludes, 1);
   }
 
   
