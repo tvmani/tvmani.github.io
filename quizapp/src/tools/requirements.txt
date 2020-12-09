@@ -1,0 +1,8 @@
+###### Requirements without Version Specifiers ######`
+beautifulsoup4 
+plotly
+
+###### Requirements with Version Specifiers ######`
+openpyxl == 3.0.5             # Version Matching. Must be version 0.6.1
+numpy == 1.19.3
+pandas == 1.1.5
