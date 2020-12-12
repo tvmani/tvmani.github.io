@@ -45,6 +45,7 @@ function getRandomImage() {
     "pattampoochi_01",
     "puli_01",
     "vaaththu_01",
+    "yaanai_01"
   ];
   const selectedImage =
     images[Random.getRandomIntInclusive(0, images.length - 1)];
