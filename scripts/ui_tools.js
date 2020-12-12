@@ -52,6 +52,10 @@ function getRandomImage() {
   return selectedImage;
 }
 
+function isLessThan(number, upper) {
+  return number < upper;
+}
+
 function isLessThanOr3(number) {
   return number <= 3;
 }
@@ -64,27 +68,27 @@ function getChunkSize(number) {
   return isOddOrDivisibleBy3(number) ? 3 : 2;
 }
 
-function getFirstOperand(number, image, dimension = 50) {
+function getFirstOperand(number, image, img_style = 'kids', dimension = 50) {
   console.log(`input to partition ${number}`);
 
   if (number === 0) {
     return '<tr><td align="center" colspan="2" valign="top" width="10" height="10"></td></tr>';
   }
-  if (isLessThanOr3(number)) {
+  if (isLessThanOr3(number, 10)) {
     const rows = Array.from(Array(number).keys()).map(
       (i) =>
-        `<td align="center" valign="top"><img class="kids" src="media/svg/${image}.svg" width="${dimension}" height="${dimension}"  style="margin: 1px;"></td>`
+        `<td align="center" valign="top"><img class="${img_style}" src="media/svg/${image}.svg" width="${dimension}" height="${dimension}"  style="margin: 1px;"></td>`
     );
     return "<tr>" + rows.join("") + "</tr>";
   }
   const chunkSize = getChunkSize(number);
   const rows = Array.from(Array(number).keys()).map(
     (i) =>
-      `<td align="center" valign="top"><img class="kids" src="media/svg/${image}.svg" width="${dimension}" height="${dimension}"  style="margin: 1px;"></td>`
+      `<td align="center" valign="top"><img class="${img_style}" src="media/svg/${image}.svg" width="${dimension}" height="${dimension}"  style="margin: 1px;"></td>`
   );
   const partition = chunk(rows, chunkSize);
   return (
-    "<tr>" +
+  "<tr>" +
     partition.map((group) => group.join("")).join("</tr><tr>") +
     "</tr>"
   );
@@ -228,11 +232,32 @@ export function populateNewQuestion(randomNumber, secondRandomNumber) {
     document.getElementById("firstNumGraph").innerHTML = getFirstOperand(
       randomNumber,
       image,
+      'kids',
       75
     );
     document.getElementById("secondNumGraph").innerHTML = getFirstOperand(
       0,
       image
+    );
+    document.getElementById("firstNumGen").innerHTML = randomNumber;
+    document.getElementById("secondNumGen").innerHTML = 0;
+    return;
+  }
+  if (document.getElementById("operations").value === "super_junior_counting") {
+    const input = [randomNumber, secondRandomNumber];
+    input.sort((a, b) => a - b);
+    const image = getRandomImage();
+    document.getElementById("firstNumGraph").innerHTML = getFirstOperand(
+      randomNumber,
+      image,
+      'junior',
+      400
+    );
+    document.getElementById("secondNumGraph").innerHTML = getFirstOperand(
+      0,
+      image,
+      'junior',
+      400
     );
     document.getElementById("firstNumGen").innerHTML = randomNumber;
     document.getElementById("secondNumGen").innerHTML = 0;
