@@ -38,14 +38,15 @@
               <div>
                 <label for="multipleOfN">Choose skill</label>
                 <input type="range" id="inputOperations" name="inputOperations" 
-                       min="1" max="4" value="2" step="1" 
+                       min="1" max="5" value="2" step="1" 
                        oninput="javascript:onSlideOperations('inputOperations', 'targetted');">
                 <output name="targetted" id="targetted">cube</output>
               </div>
               <div>
                 <label for="maxRange">Choose random range</label>
                 <input type="range" id="maxRange" name="maxRange" 
-                       min="3" max="48" value="20" step="1" oninput="javascript:onSlide('maxRange', 'maxInput');">
+                       min="3" max="48" value="20" step="1" 
+                       oninput="javascript:onSlide('maxRange', 'maxInput');">
                        [1 - 
                 <output name="maxInput" id="maxInput">20</output>
                 <label>]</label>
@@ -109,7 +110,7 @@
 
 <script language="Javascript">
   let ops = {
-    "1": "square", "2": "cube", "3": "squareroot", "4": "cuberoot"
+    "1": "square", "2": "cube", "3": "squareroot", "4": "cuberoot", "5": "powerof-2"
   }
   function onSlide(input, output) {
     document.getElementById(output).value = document.getElementById(input).value;

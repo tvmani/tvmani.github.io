@@ -29,6 +29,7 @@ const operations = {
   cube: (a) => a * a * a,
   squareroot: (a) => Math.sqrt(a),
   cuberoot: (a) => Math.cbrt(a),
+  'powerof-2': (a, b) => a ** b
 };
 
 export default class Evaluator {
