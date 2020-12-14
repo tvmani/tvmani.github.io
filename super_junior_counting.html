@@ -31,6 +31,7 @@
           <form id="formPractice">
             <div><label id="welcomeMessage" /></div>
             <div class="form-group row">
+              <div id="kids_image">
                 <div class="col-sm-12">
 
 
@@ -82,6 +83,7 @@
                         </tbody>
                     </table>
             </div>
+          </div>
               <!-- <button id="equalTo" class="btn btn-sm" disabled>=</button> -->
               <img id="equalTo" src="images/equal_symbol_01.png" class="img-symbols-junior">&nbsp;&nbsp;
               <input type="text" id="answer" value="" class="input-answer" 
@@ -100,7 +102,7 @@
               <label id="summary">Summary</label>&nbsp;&nbsp;&nbsp;
             </div>
           </form>
-          <div>
+          <div id="practicedResultsDiv">
             <table id="practicedResults" border="1">
               <tr>
                 <th>
@@ -143,5 +145,36 @@
 
 </body>
 <script src="scripts/bundle.js"></script>
+<script language='Javascript'>
+  {
+    
+
+  }
+</script>
+
+<script type="text/javascript">
+  $(window).bind("load", function() { 
+    debugger;
+    let element = document.getElementById('practicedResultsDiv');
+    let images = [
+    'a001_cat_in_sea.jpg',
+    'a002_cat_in_space.jpg',
+    'a003_cat_in_earth.jpg',
+    'a004_cat_flying.jpg',
+    'a005_cat_sleeping.jpg'
+    ];
+    let rand = Math.floor(Math.random() * images.length)
+
+    let image = images[rand];
+    
+    let file = `images/digital_arts/${image}`;
+
+    element.style.backgroundImage = "url(" + file + ")";
+    element.style.backgroundSize="100% 100%";
+    element.style.opacity = "0.5";
+  
+  });
+  </script>
+
 
 </html>
