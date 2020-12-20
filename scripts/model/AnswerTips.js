@@ -76,7 +76,7 @@ function explainNumberEndsWith1(inputs) {
   secondTens = secondTens*10;
   let majorNumber = firstTens * secondTens;
   let minorNumber = firstTens + secondTens;
-  let nearestAnswer = majorNumber - minorNumber;
+  let nearestAnswer = majorNumber + minorNumber;
   let supportString = "(major + minor) + 1<br/>"
   supportString += `${firstTens} x ${secondTens} = ${majorNumber} is major number nearest to answer<br/>`;
   supportString += `${firstTens} + ${secondTens} = ${minorNumber} is minor number that needs to be added to Major number<br/>`;
