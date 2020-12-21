@@ -58,6 +58,21 @@
                 \({}\)
               </p>
             </th>
+            <th>
+              <p id="render_7">
+                \({}\)
+              </p>
+            </th>
+            <th>
+              <p id="render_8">
+                \({}\)
+              </p>
+            </th>
+            <th>
+              <p id="render_9">
+                \({}\)
+              </p>
+            </th>
           </tr>
         </table>
       </div></div></div>    
@@ -132,7 +147,7 @@
 
 <script language="Javascript">
 
-let table = Array.from(Array(25).keys()).splice(1);
+let table = Array.from(Array(33).keys()).splice(1);
 
 table.forEach(e =>  {
   const x = document.getElementById("practicedResults").insertRow(e);
@@ -142,7 +157,10 @@ table.forEach(e =>  {
   x.insertCell(3).innerHTML = e *e * e;
   x.insertCell(4).innerHTML = Math.sqrt(e).toFixed(3);
   x.insertCell(5).innerHTML = Math.cbrt(e).toFixed(3);
-  x.insertCell(6).innerHTML = Math.exp(e).toFixed(3);
+  x.insertCell(6).innerHTML = Math.pow(2, e).toFixed(0);
+  x.insertCell(7).innerHTML = Math.exp(e).toFixed(3);
+  x.insertCell(8).innerHTML = Math.log10(e).toFixed(3);
+  x.insertCell(9).innerHTML = Math.log2(e).toFixed(3);
 });
 
 function renderExpression(value, elementId) {
@@ -167,7 +185,10 @@ App.uiOps.ui.renderMathExpression(String.raw`x^2`, 'render_2');
 App.uiOps.ui.renderMathExpression(String.raw`x^3`, 'render_3');
 App.uiOps.ui.renderMathExpression(String.raw`\sqrt[2]{x}`, 'render_4');
 App.uiOps.ui.renderMathExpression(String.raw`\sqrt[3]{x}`, 'render_5');
-App.uiOps.ui.renderMathExpression(String.raw`e^x`, 'render_6');
+App.uiOps.ui.renderMathExpression(String.raw`2^x`, 'render_6');
+App.uiOps.ui.renderMathExpression(String.raw`e^x`, 'render_7');
+App.uiOps.ui.renderMathExpression(String.raw`log_{10} x`, 'render_8');
+App.uiOps.ui.renderMathExpression(String.raw`log_{2} x`, 'render_9');
 
 </script>
 
