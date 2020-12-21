@@ -153,7 +153,7 @@ table.push(100);
 table.push(1000);
 
 table.forEach(e =>  {
-  const x = document.getElementById("practicedResults").insertRow(e);
+  const x = document.getElementById("practicedResults").insertRow();
   x.insertCell(0).innerHTML = e;
   x.insertCell(1).innerHTML = e *2;
   x.insertCell(2).innerHTML = e *e;
