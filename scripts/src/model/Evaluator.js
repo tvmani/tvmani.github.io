@@ -16,15 +16,16 @@ function countBy(input) {
 
 
 const operations = {
-  '+': (a, b) => a + b,
-  'x': (a, b) => a * b,
-  'X': (a, b) => a * b,
-  'square': (a, b) => a * a,
-  'cube': (a, b) => a * a * a,
-  '/': (a, b) => a / b,
-  '-': (a, b) => a - b,
+  "+": (a, b) => a + b,
+  x: (a, b) => a * b,
+  X: (a, b) => a * b,
+  square: (a, b) => a * a,
+  cube: (a, b) => a * a * a,
+  "/": (a, b) => a / b,
+  "-": (a, b) => a - b,
   junior_addition: (a, b) => a + b,
   junior_counting: (a, b) => a,
+  super_junior_counting: (a, b) => a,
   junior_subtraction: (a, b) => a - b,
   junior_multiplication: (a, b) => a * b,
   addition: (a, b) => a + b,
