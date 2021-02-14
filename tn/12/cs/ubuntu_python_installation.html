@@ -1,51 +1,55 @@
 <html>
 
 <head>
-    <title>கவிஞர் கண்ணதாசன்</title>
+    <title>Ubuntu Python Installation Steps</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="ui_styles.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+    
 </head>
 
 
-<body>
+<body onload="hljs.initHighlightingOnLoad();">
     <div class="jumbotron text-center">
         <h3>Ubuntu Python Installation Steps</h3>
     </div>
     <div class="container">
         <div class="row row-content">
-            <div class="col-sm-12">                
+            <div class="col-sm-12">
                 <ol>
-                <li>
-                <p>Open <code>terminal</code>. run the below command</p>
-                <pre><code class="language-bash">sudo apt-get update
+                    <li>
+                        <p>Open <code>terminal</code>. run the below command</p>
+                        <pre><code class="language-bash">sudo apt-get update
                 </code></pre>
-                </li>
-                <li>
-                <p>Read the <code>output</code> displayed in the <code>terminal</code>.</p>
-                <ul>
-                <li>Are there any errors?</li>
-                <li>Did the command finish successfully?</li>
-                </ul>
-                </li>
-                <br/>
-                <li>
-                <p>If <code>no errors</code>, run the below command</p>
-                <pre><code class="language-bash">sudo apt-get install idle-python3.6
+                    </li>
+                    <li>
+                        <p>Read the <code>output</code> displayed in the <code>terminal</code>.</p>
+                        <ul>
+                            <li>Are there any errors?</li>
+                            <li>Did the command finish successfully?</li>
+                        </ul>
+                    </li>
+                    <br />
+                    <li>
+                        <p>If <code>no errors</code>, run the below command</p>
+                        <pre><code class="language-bash">sudo apt-get install idle-python3.6
                 </code></pre>
-                </li>
-                <li>
-                <p>On success of the above command, type the below <code>command</code> in <code>terminal</code></p>
-                <pre><code class="language-bash">idle
+                    </li>
+                    <li>
+                        <p>On success of the above command, type the below <code>command</code> in <code>terminal</code>
+                        </p>
+                        <pre><code class="language-shell">idle
                 </code></pre>
-                </li>
-                <li>
-                <p><code>Python IDE</code> - <code>IDLE - Integrated DeveLopment Environment</code> would open the GUI, where we could write python program.</p>
-                </li>
+                    </li>
+                    <li>
+                        <p><code>Python IDE</code> - <code>IDLE - Integrated DeveLopment Environment</code> would open
+                            the GUI, where we could write python program.</p>
+                    </li>
                 </ol>
             </div>
         </div>
