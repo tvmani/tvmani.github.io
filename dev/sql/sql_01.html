@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+ <head>
+  <meta charset="utf-8"/>
+  <title>
+   Basic SQL Questions
+  </title>
+  <link href="../style.css" rel="stylesheet"/>
+  <link href="../wickedcss.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata&amp;display=swap" rel="stylesheet"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <script src="../script.js">
+  </script>
+  <meta content="Manikandan V" name="author">
+   <meta content="2021-02-13" name="date"/>
+  </meta>
+ </head>
+ <body>
+  <h1>
+   Basic SQL Questions
+  </h1>
+  <div class="container">
+   <div id="buttons">
+    <p>
+     SQL questions and answers
+    </p>
+    <p id="top-buttons">
+     <button id="button-start">
+      start
+     </button>
+     <button id="button-reveal-all">
+      reveal all answers
+     </button>
+    </p>
+   </div>
+   <div class="row">
+    <div class="question">
+     <h3>
+      What is a DBMS?
+     </h3>
+    </div>
+    <div class="answer">
+     <p>
+      DBMS is a software that manages the storage and retrieval of data
+     </p>
+    </div>
+   </div>
+   <div class="row">
+    <div class="question">
+     <h3>
+      What is a RDBMS?
+     </h3>
+    </div>
+    <div class="answer">
+     <p>
+      RDBMS (relational database management system)
+     </p>
+     <p>
+      store data in a tabular form
+     </p>
+     <p>
+      The tables will have an identifier called primary key
+     </p>
+     <p>
+      RDBMS, everything is stored as table
+     </p>
+    </div>
+   </div>
+   <div class="row">
+    <div class="question">
+     <h3>
+      DBMS vs RDBMS
+     </h3>
+    </div>
+    <div class="answer">
+     <p>
+      The key difference is that RDBMS (relational database management system) store data in a tabular form, while DBMS applications store data as files.
+     </p>
+     <p>
+     </p>
+     <p>
+      In a RDBMS, the tables will have an identifier called primary key.  RDBMS, everything is stored as table
+     </p>
+    </div>
+   </div>
+   <div class="row">
+    <div class="question">
+     <h3>
+      Normalization
+     </h3>
+    </div>
+    <div class="answer">
+     <p>
+      The process of reducing data redundancy and improving data integrity is called normalization.
+     </p>
+     <p>
+     </p>
+     <p>
+      Data redundancy - Ensure data is kept only in one table. For example, in a Shopping cart application database, keep the customer information should be designed as follows
+     </p>
+     <p>
+     </p>
+     <p>
+      Data Integrity - the accuracy and consistency of data stored in a database. Refers to ACID property of the database
+     </p>
+     <p>
+      A - Atomic
+     </p>
+     <p>
+      C - Consistent
+     </p>
+     <p>
+      I - Isolation
+     </p>
+     <p>
+      D - Durability
+     </p>
+    </div>
+   </div>
+   <div class="row">
+    <div class="question">
+     <h3>
+      What is ACID property of database?
+     </h3>
+    </div>
+    <div class="answer">
+     <p>
+      ACID (atomicity, consistency, isolation, durability) is a set of properties of database transactions intended to guarantee data validity despite errors, power failures, and other mishaps
+     </p>
+    </div>
+   </div>
+   <div class="row">
+    <div class="question">
+     <h3>
+      What is a transaction in database?
+     </h3>
+    </div>
+    <div class="answer">
+     <p>
+      Sequence of database operations that satisfies the ACID properties (which can be perceived as a single logical operation on the data) is called a transaction.
+     </p>
+     <p>
+     </p>
+     <p>
+      Example - Withdrawing money from ATM is a transaction.
+     </p>
+     <p>
+      1. Customer account is debited
+     </p>
+     <p>
+      2. Customer has received the money from ATM machine
+     </p>
+     <p>
+      Either both should succeed or none should succeed to ensure the database transaction is ACID compliant
+     </p>
+    </div>
+   </div>
+   <div class="row">
+    <div class="question">
+     <h3>
+      What is a Clustered index?
+     </h3>
+    </div>
+    <div class="answer">
+     <p>
+      With a clustered index the rows are stored physically on the disk in the same order as the index.
+     </p>
+     <p>
+     </p>
+     <p>
+      Therefore, there can be only one clustered index. Why? As items can be arranged in only one specific order at a given point of time, there can be only one clustered index
+     </p>
+     <p>
+     </p>
+     <p>
+      It is generally faster to read from a clustered index if you want to get back all the columns.
+     </p>
+     <p>
+     </p>
+     <p>
+      You do not have to go first to the index and then to the table.
+     </p>
+     <p>
+     </p>
+     <p>
+      Writing to a table with a clustered index can be slower, if there is a need to rearrange the data.
+     </p>
+    </div>
+   </div>
+   <div class="row">
+    <div class="question">
+     <h3>
+      What is a non-clustered index?
+     </h3>
+    </div>
+    <div class="answer">
+     <p>
+      With a non clustered index there is a second list that has pointers to the physical rows. You can have many non clustered indices, although each new index will increase the time it takes to write new records.
+     </p>
+    </div>
+   </div>
+   <div class="row">
+    <div class="question">
+     <h3>
+      What is the advantage of Clustered index?
+     </h3>
+    </div>
+    <div class="answer">
+     <p>
+      Reading data from the table would be faster if the SELECT query has WHERE condition based on the column/columns through which clustered index is created
+     </p>
+    </div>
+   </div>
+   <div class="row">
+    <div class="question">
+     <h3>
+      What is the disadvantage of Clustered index?
+     </h3>
+    </div>
+    <div class="answer">
+     <p>
+      Writing to a table with a clustered index can be slower, if there is a need to rearrange the data, on insert/update/delete of data.
+     </p>
+    </div>
+   </div>
+   <script>
+    start()
+   </script>
+  </div>
+ </body>
+</html>
