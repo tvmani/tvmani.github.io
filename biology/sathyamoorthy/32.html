@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+
+<html class="no-js" prefix="og: http://ogp.me/ns#" xmlns:og="http://ogp.me/ns#"><!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>BIOLOGY BY ASAN DR SATHYAMOORTHY-Biology by Sathya Moorthy</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, target-densityDpi=device-dpi">
+    <meta property="description" content="">
+    <meta property="mobile-web-app-capable" content="yes">
+    <meta property="apple-mobile-web-app-capable" content="yes">
+    <meta property="apple-mobile-web-app-status-bar-style" content="black">
+    <meta property="author" content="">
+    <link href="./src/css" rel="stylesheet" type="text/css">
+    <link href="./src/font-awesome.css" rel="stylesheet">
+    <link href="./src/tailwind.min.css" rel="stylesheet">
+    <link href="./src/style.css" rel="stylesheet">
+    <link href="./src/all.min.css" rel="stylesheet">
+    <link href="./src/css2" rel="stylesheet">
+
+    <script src="./src/list.min.js.download"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            var options = {valueNames: ['title', 'keywords']};
+            var comics = new List('comics', options);
+
+            function customSearch(searchString, columns) {
+
+
+                var words = [],
+                    phrase,
+                    ss = searchString;
+                while ((phrase = ss.match(/"([^"]+)"/)) !== null) {
+                    words.push(phrase[1])
+                    ss = ss.substring(0, phrase.index) + ss.substring(phrase.index + phrase[0].length)
+                }
+
+                ss = ss.trim()
+                if (ss.length) words = words.concat(ss.split(/\s+/))
+                for (var k = 0, kl = comics.items.length; k < kl; k++) {
+                    var item = comics.items[k]
+                    item.found = false
+                    if (!words.length) continue
+                    for (var i = 0, il = words.length; i < il; i++) {
+                        var word_found = false
+                        for (var j = 0, jl = columns.length; j < jl; j++) {
+                            var values = item.values(),
+                                column = columns[j]
+                            if (values.hasOwnProperty(column) && values[column] !== undefined && values[column] !== null) {
+                                var text = typeof values[column] !== 'string' ? values[column].toString() : values[column]
+                                text = text.replace(/[^\w\s\'\"]/gi, ' ')
+                                var index = text.toLowerCase().indexOf(words[i]);
+                                if (index != -1 && (index == 0 || text[index - 1] == " ")) {
+
+                                    word_found = true
+                                    break
+                                }
+                            }
+                        }
+
+                        if (!word_found) break
+                    }
+                    item.found = word_found
+                }
+            }
+
+            document.querySelector('#search').addEventListener('keyup', function () {
+                var searchString = this.value;
+                console.log(this);
+                comics.search(searchString, customSearch);
+            });
+        });
+
+    </script>
+</head>
+
+
+<body class="vsc-initialized">
+<!--[if lt IE 7]><p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a
+        href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chrome/‎">install
+    Google Chrome</a> to experience this site.</p><![endif]-->
+
+
+<span id="top"></span>
+<span id="content"></span>
+
+<section id="welcome">
+    <div class="container text-center mx-auto px-8 md:w-4/5 lg:w-3/5 xl:w-2/3 p-6">
+        <h3 class="text-3xl lg:text-4xl">
+            <a href="https://www.youtube.com/channel/UCekc5pjyJsc1wXYPItsmJqQ">Biology by Sathya Moorthy</a>
+        </h3>
+        <h2 class="text-3xl lg:text-4xl">
+            BIOLOGY BY ASAN DR SATHYAMOORTHY
+        </h2>
+        <br>
+        <h5>
+            
+        </h5>
+        <div class="flex">
+            <div class="m-auto">
+                <input placeholder="🔎 Search" type="search" id="search"
+                       class="border-black border-2 rounded-lg p-1 pl-2 ml-2">
+            </div>
+        </div>
+    </div>
+</section>
+<section class="pb-8   comic" id="comics">
+    <div class="container mx-auto px-8 md:w-4/5 lg:w-3/5 xl:w-2/3 p-6">
+        <div class="grid xl:grid-cols-4 md:grid-cols-3 grid-cols-2 comic-pages list">
+                <a href="https://www.youtube.com/watch?v=WIXFqlfAXqI">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">NEET 11th STANDARD SYLLABUS |NUMBER OF QUESTIONS FROM EACH CHAPTER | brief intro about each chapter</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=WIXFqlfAXqI">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">NEET 11th STANDARD SYLLABUS |NUMBER OF QUESTIONS FROM EACH CHAPTER | brief intro about each chapter</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=UxWySS7YFMM">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">KALVI TV OFFICIAL | வாகை சூடவா | CELL DIVISION | EXPLANATION AND MODEL QUESTION</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=84rDR0Loa_c">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Biology Class:Types of Eggs and Cleavages</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=sW1bsg_B0CA">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Biology Class:Cleavage www.tech4thepeople.in</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=jtso0iAF-gs">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Biology Class:RNA Types www.tech4thepeople.in</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=kAbPxt-_pJk">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Biology Class:Contraception www.tech4thepeople.in</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=ajRBlrIxaBw">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">12th biotechnology part2 by Dr.Sathiyamoorthy, ER School, Trichy.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=c6sY8IgPRjI">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">12th biotechnology part-1  by Dr.Sathiyamoorthy, ER School, Trichy</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=Cz014YuJgXw">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">12th bio Immun 5m sathya</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=Cz014YuJgXw">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">12th bio Immun 5m sathya</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=q6E9QuSzsPM">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">12th bio score high part6 sathya</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=_hyq3inDdiE">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">12th bio score high part5 sathya</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=_hyq3inDdiE">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">12th bio score high part5 sathya</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=rpgYtJkQSfA">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">12th bio score high part2 sathya</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=rpgYtJkQSfA">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">12th bio score high part2 sathya</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=xld2M2sF34c">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">bio Dr sathyamoorthy apple tv live 20022013</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=cslV177GpwA">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Bio Dr. Sathya moorthy TAXONOMY apple tv live</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=AqgoOjKGuAs">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Biology Class:Aestivation www.tech4thepeople.in</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=_zBJSA7Z9hA">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Biology Class:Placentation www.tech4thepeople.in</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=5nC1dHIyg4g">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Biology Class:Morphology www.tech4thepeople.in</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=vg9jiH9rcB8">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Biology Class:Morphology(Leaf Modification) www.tech4thepeople.in</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=Hu_x95fxQKw">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Biology Class:Morphology(Venation) www.tech4thepeople.in</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=XUvDIAtn-os">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Insertion of Floral Leaves on Thalamus www.tech4thepeople.in</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=OI2-dF-dJVA">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Biology Class:Inflorescence www.tech4thepeople.in</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=M4FAHw2r7DA">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Dr.Sathya moorthi Modern Genetics Apple TV Live 19022013</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=xd1cTtae1Es">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Botany Video Lesson VOl - 02 Chapter 13 - Photosynthesis - Photorespiration or C2 Cycle or PCO Cycle</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=-kLH7a0A6Jk">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Botany Video Lesson - Chapter 13 HILL'S REACTION</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=FF3nzsojcLQ">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Botany Video Lesson - Chapter 13 EMERSON'S EXPERIMENT</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=SIzkpGkB-Gc">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Botany Video Lesson VOl - 02 Chapter 13 - Photosynthesis - Modern concept of photosynthesis</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=_PcUp3RvRJU">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Botany Video Lesson - PHOTOSYNTHESIS - Fluorescence and Phosphorescence</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=FK2VZwUem6k">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Botany Video Lesson - Vol - 02 Chapter 13 - Photosynthesis - Chlorophyll A</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=vttDQa5Vq-E">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Botany Video Lesson - Chapter 13 - Vol - 02 Photosynthesis - Photosynthetic pigments</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=u08vwLeVHFM">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Botany Video Lesson VOl - 02 Chapter 13 - Photosynthesis - Site of photosynthesis</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=1RAWCc_hpuU">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Botany Video Lesson VOl - 02 Chapter 13 - Photosynthesis - Introduction</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=ZjE8JOeql2Q">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Botany Video Lesson - Chapter 12 MINERAL NUTRITION - NITROGEN CYCLE 3</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=TckkNtve87M">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Botany Video Lesson - Chapter 12 MINERAL FUNCTION - NITROGEN CYCLE 2</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=YscUqUp5oo0">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Botany Video Lesson - Chapter 12 MINERAL NUTRITION -NITROGEN CYCLE 1</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=RW28vTis3gk">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Botany Video Lesson - TRANSPORT IN PLANTS - Potato Osmoscope</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=pG0_bnQTpdk">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Botany Video Lesson - Transpiration and Guttation</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=kA8YVyBxKao">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Botany Video Lesson - Tyloses,sap and heart wood</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=-qRaWzkHDh4">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Botany Video Lesson - Annual Rings</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=lDTCqW79dEc">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Botany Video Lesson - Secondary Xylem</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=VE1DHm2d8xk">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Botany Video Lesson - Periderm</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=qQqxMnatANg">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Botany Video Lesson - Secondary Growth</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=wWzA7_zEfUo">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Botany Video Lesson - Anatomical Differences</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=so3goKjPr40">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Botany Video Lesson -UNIT 4 INTERNAL STRUCTURE OF LEAF</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=HznbCg_zNQ8">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Botany Video Lesson -UNIT 4 INTERNAL STRUCTURE OF STEM</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=HznbCg_zNQ8">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Botany Video Lesson -UNIT 4 INTERNAL STRUCTURE OF STEM</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=WoL2gEjoUSw">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Botany Video Lesson -UNIT 4 INTERNAL STRUCTURE OF ROOT</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=dDFYRg9-io8">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Botany Video Lesson -UNIT 4 VASCULAR TISSUE SYSTEM</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=ko07K5tzOW8">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Botany Video Lesson - Tissue System 2</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=ox9dzKgkLvw">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Botany Video Lesson -UNIT 4 THE TISSUE SYSTEM</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=J2QmCePjDrM">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Botany Video Lesson -UNIT 4 COMPLEX TISSUES PHLOEM</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=tAdiBXYJprc">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Botany Video Lesson -UNIT 4 COMPLEX TISSUES XYLEM</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=X6o3E-qZ2zg">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Botany Video Lesson -UNIT 4 COLLENCHYMA & SCLERENCHYMA</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=0Tn1XqlZGvs">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Botany Video Lesson -UNIT 4 PERMANENT TISSUES</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=Z7-3x-13Wl8">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Botany Video Lesson -UNIT 4 CLASSIFICATION OF MERISTEMS</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=VrQeRBO3650">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Botany Video Lesson -UNIT 4 THEORIES OF MERISTEMS</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=aS3p2_dIgDE">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Botany Video Lesson -UNIT 4 INTRODUCTION TO PLANT ANATOMY- bilingual</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=Ta7gt3bemyA">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Botany Video Lesson - BIOMOLECULES - Proteins</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=Ta7gt3bemyA">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Botany Video Lesson - BIOMOLECULES - Proteins</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=d_mgDaJvIhI">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Botany Video Lesson - Chapter 7 CELL CYCLE - CELL DIVISION MITOSIS</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=4csy7QvlaRQ">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Botany Video Lesson - Chapter 7 CELL CYCLE - CELL DIVISION MEIOSIS</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=ZDjyit6VZY0">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Botany Video Lesson - Chapter 7 CELL CYCLE - CELL DIVISION INTRODUCTION</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=Dap3gtt1L9o">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Botany Video Lesson - Chapter 4 FLORAL FORMULA</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=zK4QqKvI0OY">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Botany Video Lesson - Chapter 4 PLACENTATION</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=CFpYHiikXN0">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Botany Video Lesson - Chapter 4 AESTIVATION</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=_TdVUnizuwc">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Botany Video Lesson - Chapter 4 INSERTION OF FLORAL PARTS ON THALAMAS</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=C19ojxMPO78">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Botany Video Lesson - Chapter 4 FLOWER INTRODUCTION</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=CxLy9AEvrJk">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Botany Video Lesson - Chapter 3 VENATION</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=EYg4YVzsLPE">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Botany Video Lesson - Chapter 3 LEAF</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=kAGrIH_LO0I">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Zoology Video Lesson - Hormones of Heart,Kidney and Gastro intestinal tract</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=lK3xAfDflLU">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Zoology Video Lesson - CHEMICAL COORDINATION AND INTEGRATION - Gonads</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=tji849HgGJE">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Zoology Video Lesson - CHEMICAL COORDINATION AND INTEGRATION - Adrenal gland</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=JeXebS8nVS4">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Zoology Video Lesson - CHEMICAL COORDINATION AND INTEGRATION - Islets of Langerhans</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=7OIzLC2NgfQ">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Zoology Video Lesson - CHEMICAL COORDINATION AND INTEGRATION - Parathyroid gland</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=NXN64zWY1Rs">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Zoology Video Lesson - CHEMICAL COORDINATION AND INTEGRATION - Thyroid gland</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=kdR9emWfvTU">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Zoology Video Lesson - CHEMICAL COORDINATION AND INTEGRATION - Pituitary Gland</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=ltuZ-Re6Uf0">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Zoology Video Lesson - CHEMICAL COORDINATION AND INTEGRATION - Hypothalamus</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=ltuZ-Re6Uf0">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Zoology Video Lesson - CHEMICAL COORDINATION AND INTEGRATION - Hypothalamus</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=tc5prKktnpw">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Zoology Video Lesson - CHEMICAL COORDINATION AND INTEGRATION - Introduction</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=taN7VkEbYBw">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Zoology Video Lesson - EXCRETION - Kidney Transplantation</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=2J0sfe-t3O8">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Zoology Video Lesson - EXCRETION - Renal Calculi or Kidney stone</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=dOJiANFWXIg">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Zoology Video Lesson - EXCRETION - Structure of Nephron</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=dcN1B8BPm4s">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Zoology Video Lesson - EXCRETION - Ornithine Cycle</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=lTsZkDGU5Jg">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Zoology Video Lesson - EXCRETION - Structure of Kidney</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=WfRdt-gp88w">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Sex linked inheritance-Colour blindness</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=8j-A9xspAzY">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Biology Sathyamoorthy's water management ideas</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=1o5hU0zxeeU">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Kolaaru pathigam-Sambanthar Devarum</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=Yu539ik8RZw">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">KAILAYA  KAATCHI  by aDr.N. Sathyamoorthy</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=IxXfhFzn_LA">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">12th bio muscles1 sathya</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=gub9aqH4q0E">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">12th bio muscles2 sathya</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=mSUyEvMs9sY">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">12th bio plant anatomy2 sathya</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=wsWUG-Xufsc">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">12th bio score high part3 sathya</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=iA6Q3e50Nzk">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Biology Class:Human Blood Groups www.tech4thepeople.in</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=VCk0nMC0nrY">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Biology Class:Protein www.tech4thepeople.in</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=Gsq9qLW8uAc">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">12th botony1 sathya1</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=ieweA2Jixs4">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">12th bio plant anatomy3 sathya</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=6wF2UiqsUNU">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">12th bio plant anatomy5 sathya</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=5ue313LyuHk">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">12th bio plant anatomy4 sathya</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=5ue313LyuHk">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">12th bio plant anatomy4 sathya</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=Z46E1UalN9s">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">12th bio eye defects sathya</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=WUjMdKM4cxI">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">12th botony2 sathya</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=WUjMdKM4cxI">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">12th botony2 sathya</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=AobpaBv4b98">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">12th bio Immun 5m 2 sathiya</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=AobpaBv4b98">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">12th bio Immun 5m 2 sathiya</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=2zCl5MAKTlk">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">12th bio plant anatomy1 sathya</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=QLKfC7UWwNQ">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">12th bio score high part1 sathya</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=QLKfC7UWwNQ">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">12th bio score high part1 sathya</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=QLKfC7UWwNQ">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">12th bio score high part1 sathya</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=BZEvYxlyNqE">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">BIO TECH 2)</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=4aVLey98xJQ">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">BIO TECH</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=rFLXo2onPH8">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">BIO TECH 3)</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=7O-cntz8LYw">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Trichy Appletv 10 Bio Vetrinichayam live 09032013</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=A4SrUZoDMPU">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Apple tv vetri nichayam bio web</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=TJEzwwbFKWA">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">natural immunityby asan sathiyamoorthy</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=V-wC85rPh7Q">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">microbiology and immunology 2 by asan sathiyamoorthy</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=f9iJEU8NTqQ">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Biology-Biotechnology, By Dr.N. Sathyamoorthy</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=Ue8K_fv_VWE">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">microbiology and immunology 1 by asan sathiyamoorthy</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=ZWjTpiXOcfU">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">hiv by asan sathiyamoorthy</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+
+        </div>
+    </div>
+</section>
+
+<div class="container mx-auto lg:w-3/5 px-4 pt-8 mb-4">
+    © <a href="https://www.youtube.com/channel/UCekc5pjyJsc1wXYPItsmJqQ">Biology by Sathya Moorthy</a> 2021 | All rights reserved
+</div>
+
+
+</body>
+</html>

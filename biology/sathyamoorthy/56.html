@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html class="no-js" prefix="og: http://ogp.me/ns#" xmlns:og="http://ogp.me/ns#"><!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>XII.BOTANY Chapter-1.Asexual and Sexual reproduction in plants.-Biology by Sathya Moorthy</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, target-densityDpi=device-dpi">
+    <meta property="description" content="">
+    <meta property="mobile-web-app-capable" content="yes">
+    <meta property="apple-mobile-web-app-capable" content="yes">
+    <meta property="apple-mobile-web-app-status-bar-style" content="black">
+    <meta property="author" content="">
+    <link href="./src/css" rel="stylesheet" type="text/css">
+    <link href="./src/font-awesome.css" rel="stylesheet">
+    <link href="./src/tailwind.min.css" rel="stylesheet">
+    <link href="./src/style.css" rel="stylesheet">
+    <link href="./src/all.min.css" rel="stylesheet">
+    <link href="./src/css2" rel="stylesheet">
+
+    <script src="./src/list.min.js.download"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            var options = {valueNames: ['title', 'keywords']};
+            var comics = new List('comics', options);
+
+            function customSearch(searchString, columns) {
+
+
+                var words = [],
+                    phrase,
+                    ss = searchString;
+                while ((phrase = ss.match(/"([^"]+)"/)) !== null) {
+                    words.push(phrase[1])
+                    ss = ss.substring(0, phrase.index) + ss.substring(phrase.index + phrase[0].length)
+                }
+
+                ss = ss.trim()
+                if (ss.length) words = words.concat(ss.split(/\s+/))
+                for (var k = 0, kl = comics.items.length; k < kl; k++) {
+                    var item = comics.items[k]
+                    item.found = false
+                    if (!words.length) continue
+                    for (var i = 0, il = words.length; i < il; i++) {
+                        var word_found = false
+                        for (var j = 0, jl = columns.length; j < jl; j++) {
+                            var values = item.values(),
+                                column = columns[j]
+                            if (values.hasOwnProperty(column) && values[column] !== undefined && values[column] !== null) {
+                                var text = typeof values[column] !== 'string' ? values[column].toString() : values[column]
+                                text = text.replace(/[^\w\s\'\"]/gi, ' ')
+                                var index = text.toLowerCase().indexOf(words[i]);
+                                if (index != -1 && (index == 0 || text[index - 1] == " ")) {
+
+                                    word_found = true
+                                    break
+                                }
+                            }
+                        }
+
+                        if (!word_found) break
+                    }
+                    item.found = word_found
+                }
+            }
+
+            document.querySelector('#search').addEventListener('keyup', function () {
+                var searchString = this.value;
+                console.log(this);
+                comics.search(searchString, customSearch);
+            });
+        });
+
+    </script>
+</head>
+
+
+<body class="vsc-initialized">
+<!--[if lt IE 7]><p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a
+        href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chrome/‎">install
+    Google Chrome</a> to experience this site.</p><![endif]-->
+
+
+<span id="top"></span>
+<span id="content"></span>
+
+<section id="welcome">
+    <div class="container text-center mx-auto px-8 md:w-4/5 lg:w-3/5 xl:w-2/3 p-6">
+        <h3 class="text-3xl lg:text-4xl">
+            <a href="https://www.youtube.com/channel/UCekc5pjyJsc1wXYPItsmJqQ">Biology by Sathya Moorthy</a>
+        </h3>
+        <h2 class="text-3xl lg:text-4xl">
+            XII.BOTANY Chapter-1.Asexual and Sexual reproduction in plants.
+        </h2>
+        <br>
+        <h5>
+            
+        </h5>
+        <div class="flex">
+            <div class="m-auto">
+                <input placeholder="🔎 Search" type="search" id="search"
+                       class="border-black border-2 rounded-lg p-1 pl-2 ml-2">
+            </div>
+        </div>
+    </div>
+</section>
+<section class="pb-8   comic" id="comics">
+    <div class="container mx-auto px-8 md:w-4/5 lg:w-3/5 xl:w-2/3 p-6">
+        <div class="grid xl:grid-cols-4 md:grid-cols-3 grid-cols-2 comic-pages list">
+                <a href="https://www.youtube.com/watch?v=yBsYzAV_hOA">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">MICROSPOROGENESIS AND POLLINIUM-மைக்ரோஸ்போர் உருவாக்கம் மற்றும் பொலினியம்.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=fCwWae931h8">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">DEVELOPMENT OF ANTHER மகரந்தப்பையின் வளர்ச்சி.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=bsy_WuDzMxc">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">ANDROECIUM-மகரந்தத்தாள் வட்டம்-ஆண் இனப்பெருக்க உறுப்பு.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=mRKhFBy7GVM">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">FLOWER-மலர் ஒரு அறிமுகம்</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=a-8CvgSpT-c">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">SEXUAL REPRODUCTION IN PLANTS-உயர் தாவரங்களில் பாலினப் பெருக்கம் ஒரு முன்னுரை.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=BmPMeWFnSV4">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">PLANT REPRODUCTION-NATURAL METHOD PART-2 தாவரங்களில் இனப்பெருக்கம்-இயற்கை முறை பாகம் 2</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=q2i5AVSJ66E">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">MICROPROPAGATION-ADVANTAGES AND DISADVANTAGES-நுண் பெருக்கம்-நிறைகள் மற்றும் குறைகள்.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=1l1PYB03IVM">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Advantages, disadvantages conventional methods. பாரம்பரிய இனப்பெருக்க முறை நிறைகள் குறைகள்</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=-h-q7alZorc">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">PLANT REPRODUCTION-NATURAL METHODS-PART-1 தாவரங்களில் இனப்பெருக்கம் பாகம் 1-இயற்கை முறைகள்</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=iWo7KDHz8sI">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">SEXUAL REPRODUCTION IN FLOWERING PLANTS-QUESTION PAPER DISCUSSION mind map for NEET.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=rOfzy3G_bBM">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">SEXUAL REPRODUCTION IN FLOWERING PLANTS=A mind  map for NEET-மலரும் தாவரங்களில் பாலினப் பெருக்கம்.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=Zu3irYVC7Pw">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">REPRODUCTION IN ORGANISMS-A MIND MAP FOR NEET-உயிரினங்களின் இனப்பெருக்கம்-நீட் தேர்வுக்கான வரைபடம்.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=7B651BvihQ0">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">NEET | BIO BOTANY | தாவரவியல் | தாவரங்களில் இனப்பெருக்கம் | Kalvi TV</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=f2KpGDxlnAA">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">NEET | BIO BOTANY | REPRODUCTION IN PLANTS | Kalvi TV</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=PdJpxGDCtEE">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">NEET | BIO BOTANY | தாவரங்களின் இனப்பெருக்கம் | Kalvi TV</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=aFAX462cu8Q">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">NEET | BOTANY | REPRODUCTION IN PLANTS POLLINATION | Kalvi TV</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=gv9Kq29jPMQ">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">POLYEMBRYONY, PARTHINOCARPY - REPRODUCTION IN PLANTS |NEET BIOLOGY|</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=d10e_FD0aCs">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">APOMIXIS-REPRODUCTION |NEET BOLOGY| *IN TAMIL AND ENGLISH*</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=eGsVe6WUb6U">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">FRUIT A BRIEF INTRODUCTION FOR NEET,NCERT AND STATE BOARD</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=j8KqfniDakk">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">SEED-FERTILIZED OVULE  -12th NEET ,NCERT AND STATE BOARD</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=cB2h1cY1Jcw">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">REPRODUCTION IN ORGANISMS-NEET QUESTIONS FOR TAMIL AND ENGLISH MEDIUM</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=s--qZSeaLgI">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">ENDOSPERM AND ITS TYPES  IN TAMIL AND ENGLISH</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=v3FFvXnsG-A">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">POST FERTILIZATION CHANGES IN TAMIL AND ENGLISH</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=k0nNYO8Xisk">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">DOUBLE FERTILIZATION  AND  TRIPLE FUSION,POLLEN-STIGMA INTERACTION</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=9YOp7NUeG14">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Malarum thavarangalil palinapperukum(Reproduction in flowering plants)   NEET QUESTION AND ANSWER</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=R6Cy__cgtlE">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">ZOOPHILY-POLLINATION BY ANIMALS-IN TAMIL AND ENGLISH</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=tZWaZEKuUmA">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">HYDROPHILY-POLLINATION BY WATER</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=uyDry2NDhZw">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">ANEMOPHILOUS POLLINATION IN TAMIL AND ENGLISH</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=VOgkqclgOVE">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">POLLINATION IN ANGIOSPERMS-LECTURE IN TAMIL AND ENGLISH</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=SjrMnFj65cY">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">GYNOECIUM, L.S OF OVULE AND STRUCTURE OF FEMALE GAMETOPHYTE</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=a2MH5d5z7Nc">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Anther structure and pollengrain</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+
+        </div>
+    </div>
+</section>
+
+<div class="container mx-auto lg:w-3/5 px-4 pt-8 mb-4">
+    © <a href="https://www.youtube.com/channel/UCekc5pjyJsc1wXYPItsmJqQ">Biology by Sathya Moorthy</a> 2021 | All rights reserved
+</div>
+
+
+</body>
+</html>

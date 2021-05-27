@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<html class="no-js" prefix="og: http://ogp.me/ns#" xmlns:og="http://ogp.me/ns#"><!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>XII Botany  . Chapter-3-Chromosomal basis of inheritance.-Biology by Sathya Moorthy</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, target-densityDpi=device-dpi">
+    <meta property="description" content="">
+    <meta property="mobile-web-app-capable" content="yes">
+    <meta property="apple-mobile-web-app-capable" content="yes">
+    <meta property="apple-mobile-web-app-status-bar-style" content="black">
+    <meta property="author" content="">
+    <link href="./src/css" rel="stylesheet" type="text/css">
+    <link href="./src/font-awesome.css" rel="stylesheet">
+    <link href="./src/tailwind.min.css" rel="stylesheet">
+    <link href="./src/style.css" rel="stylesheet">
+    <link href="./src/all.min.css" rel="stylesheet">
+    <link href="./src/css2" rel="stylesheet">
+
+    <script src="./src/list.min.js.download"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            var options = {valueNames: ['title', 'keywords']};
+            var comics = new List('comics', options);
+
+            function customSearch(searchString, columns) {
+
+
+                var words = [],
+                    phrase,
+                    ss = searchString;
+                while ((phrase = ss.match(/"([^"]+)"/)) !== null) {
+                    words.push(phrase[1])
+                    ss = ss.substring(0, phrase.index) + ss.substring(phrase.index + phrase[0].length)
+                }
+
+                ss = ss.trim()
+                if (ss.length) words = words.concat(ss.split(/\s+/))
+                for (var k = 0, kl = comics.items.length; k < kl; k++) {
+                    var item = comics.items[k]
+                    item.found = false
+                    if (!words.length) continue
+                    for (var i = 0, il = words.length; i < il; i++) {
+                        var word_found = false
+                        for (var j = 0, jl = columns.length; j < jl; j++) {
+                            var values = item.values(),
+                                column = columns[j]
+                            if (values.hasOwnProperty(column) && values[column] !== undefined && values[column] !== null) {
+                                var text = typeof values[column] !== 'string' ? values[column].toString() : values[column]
+                                text = text.replace(/[^\w\s\'\"]/gi, ' ')
+                                var index = text.toLowerCase().indexOf(words[i]);
+                                if (index != -1 && (index == 0 || text[index - 1] == " ")) {
+
+                                    word_found = true
+                                    break
+                                }
+                            }
+                        }
+
+                        if (!word_found) break
+                    }
+                    item.found = word_found
+                }
+            }
+
+            document.querySelector('#search').addEventListener('keyup', function () {
+                var searchString = this.value;
+                console.log(this);
+                comics.search(searchString, customSearch);
+            });
+        });
+
+    </script>
+</head>
+
+
+<body class="vsc-initialized">
+<!--[if lt IE 7]><p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a
+        href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chrome/‎">install
+    Google Chrome</a> to experience this site.</p><![endif]-->
+
+
+<span id="top"></span>
+<span id="content"></span>
+
+<section id="welcome">
+    <div class="container text-center mx-auto px-8 md:w-4/5 lg:w-3/5 xl:w-2/3 p-6">
+        <h3 class="text-3xl lg:text-4xl">
+            <a href="https://www.youtube.com/channel/UCekc5pjyJsc1wXYPItsmJqQ">Biology by Sathya Moorthy</a>
+        </h3>
+        <h2 class="text-3xl lg:text-4xl">
+            XII Botany  . Chapter-3-Chromosomal basis of inheritance.
+        </h2>
+        <br>
+        <h5>
+            
+        </h5>
+        <div class="flex">
+            <div class="m-auto">
+                <input placeholder="🔎 Search" type="search" id="search"
+                       class="border-black border-2 rounded-lg p-1 pl-2 ml-2">
+            </div>
+        </div>
+    </div>
+</section>
+<section class="pb-8   comic" id="comics">
+    <div class="container mx-auto px-8 md:w-4/5 lg:w-3/5 xl:w-2/3 p-6">
+        <div class="grid xl:grid-cols-4 md:grid-cols-3 grid-cols-2 comic-pages list">
+                <a href="https://www.youtube.com/watch?v=H_vOW_gMijk">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">STRUCTURAL CHROMOSOMAL ABNORMALITY குரோமோசோம் அமைப்பில் ஏற்படும் ஒழுங்கு மாற்றம்/சடுதி மாற்றம்</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=66RuNvk0KVY">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">ANEUPLOIDY AND ITS TYPES மெய்யிலா மடியம் மற்றும் அதன் வகைகள்.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=erWesfOD3Es">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">CHROMOSOMAL MUTATION-INTRODUCTION குரோமோசோம்களின் சடுதி மாற்றம் அல்லது குரோமோசோம் ஒழுங்கு மாற்றம்.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=XbCxTZKMebA">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">MUTATION PART-3 -EFFECTS ON TRANSLATION  சடுதி மாற்றம் பாகம் 3.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=Y8evecU4UWY">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">MUTATION PART-2 GENE MUTATION. மரபணு அல்லது புள்ளி திடீர் மாற்றம்</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=5hUbHo-VYng">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">MAJOR TYPES OF MUTATION PART-1 சடுதி மாற்றத்தின் முக்கிய வகைகள் பாகம்-1.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=-FKM7cW58HM">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">CHEMICAL MUTAGENS AND COMUTAGENS-வேதிய சடுதி மாற்றிகள் மற்றும் இணை சடுதி மாற்றிகள்.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=R25PWmwcq24">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">MUTAGENIC AGENTS-PHYSICAL MUTAGENS -சடுதி மாற்றக் காரணிகள்-இயற்பிய சடுதி மாற்றிகள்</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=OaHa6sNEQaI">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">MUTATION -INTRODUCTION சடுதி மாற்றம் அல்லது திடீர் மாற்றம் முன்னுரை.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=yb9-VazYHz0">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">STRUCTURAL CHROMOSOMAL ABERRATIONS-குரோமோசோம் அமைப்பில் ஏற்படும் மாற்றங்கள்</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=iB_I5Rdbf2A">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">SIGNIFICANCE OF PLOIDY-பன்மயத்தின்  முக்கியத்துவம்</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=dguqGsTM1jU">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">ALLOPOLYPLOIDY-அயல் பன்மயம்</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=SHhRF51FI9Y">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">நீட் தேர்விற்கான மரபியல்-மரபு கடத்தல் கொள்கைகள் மற்றும் மாறுபாடுகள்-MCQ DISCUSSION</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=mK5hudKrC-0">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">PRINCIPLES OF INHERITANCE AND VARIATION-QUESTION PAPER DISCUSSION FOR NEET</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=YhtX6P0yDxU">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">GENETIC DISORDERS -A BRIEF INTRODUCTION FOR NCERT ,STATE BOARD AND NEET</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=iL94xfdcxyQ">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">NEET | BIO BOTANY | தாவரவியல் | மரபியல் பகுதி 01 & 02 | Kalvi TV</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=y8afVVOHOX8">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">NEET | BIO BOTANY | GENETICS PART 02 | Kalvi TV</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=1bP95qbCJ10">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">GENETICS-NEETQUESTION AND ANAWERS  IN TAMILAND ENGLISH MEDIUM</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=sCNo0xg0pVI">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Crossing over -Meiosis</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=82LdFySSlMw">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Incomplete Linkage -Botany</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=A9PQ2bpHtYo">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Linkage -co existence of genes in the same chrosome during inheritance</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=2VACRgh53D8">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Repulsion Experiment in Sweet pea</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=isngLt-hz_k">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Coupling Experiment in sweet peas</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=8LGq-7TbIos">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Drosophila -Monohybrid cross</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=y5K2Uv8m-AQ">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Gene and Chromosomal behavior</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=Pt5SfbI1FsY">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Chromosomal basis of inheritance (Botany)</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+
+        </div>
+    </div>
+</section>
+
+<div class="container mx-auto lg:w-3/5 px-4 pt-8 mb-4">
+    © <a href="https://www.youtube.com/channel/UCekc5pjyJsc1wXYPItsmJqQ">Biology by Sathya Moorthy</a> 2021 | All rights reserved
+</div>
+
+
+</body>
+</html>

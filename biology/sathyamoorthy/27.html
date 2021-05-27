@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+
+<html class="no-js" prefix="og: http://ogp.me/ns#" xmlns:og="http://ogp.me/ns#"><!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Biological classification and Plant Kingdom---1-Biology by Sathya Moorthy</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, target-densityDpi=device-dpi">
+    <meta property="description" content="">
+    <meta property="mobile-web-app-capable" content="yes">
+    <meta property="apple-mobile-web-app-capable" content="yes">
+    <meta property="apple-mobile-web-app-status-bar-style" content="black">
+    <meta property="author" content="">
+    <link href="./src/css" rel="stylesheet" type="text/css">
+    <link href="./src/font-awesome.css" rel="stylesheet">
+    <link href="./src/tailwind.min.css" rel="stylesheet">
+    <link href="./src/style.css" rel="stylesheet">
+    <link href="./src/all.min.css" rel="stylesheet">
+    <link href="./src/css2" rel="stylesheet">
+
+    <script src="./src/list.min.js.download"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            var options = {valueNames: ['title', 'keywords']};
+            var comics = new List('comics', options);
+
+            function customSearch(searchString, columns) {
+
+
+                var words = [],
+                    phrase,
+                    ss = searchString;
+                while ((phrase = ss.match(/"([^"]+)"/)) !== null) {
+                    words.push(phrase[1])
+                    ss = ss.substring(0, phrase.index) + ss.substring(phrase.index + phrase[0].length)
+                }
+
+                ss = ss.trim()
+                if (ss.length) words = words.concat(ss.split(/\s+/))
+                for (var k = 0, kl = comics.items.length; k < kl; k++) {
+                    var item = comics.items[k]
+                    item.found = false
+                    if (!words.length) continue
+                    for (var i = 0, il = words.length; i < il; i++) {
+                        var word_found = false
+                        for (var j = 0, jl = columns.length; j < jl; j++) {
+                            var values = item.values(),
+                                column = columns[j]
+                            if (values.hasOwnProperty(column) && values[column] !== undefined && values[column] !== null) {
+                                var text = typeof values[column] !== 'string' ? values[column].toString() : values[column]
+                                text = text.replace(/[^\w\s\'\"]/gi, ' ')
+                                var index = text.toLowerCase().indexOf(words[i]);
+                                if (index != -1 && (index == 0 || text[index - 1] == " ")) {
+
+                                    word_found = true
+                                    break
+                                }
+                            }
+                        }
+
+                        if (!word_found) break
+                    }
+                    item.found = word_found
+                }
+            }
+
+            document.querySelector('#search').addEventListener('keyup', function () {
+                var searchString = this.value;
+                console.log(this);
+                comics.search(searchString, customSearch);
+            });
+        });
+
+    </script>
+</head>
+
+
+<body class="vsc-initialized">
+<!--[if lt IE 7]><p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a
+        href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chrome/‎">install
+    Google Chrome</a> to experience this site.</p><![endif]-->
+
+
+<span id="top"></span>
+<span id="content"></span>
+
+<section id="welcome">
+    <div class="container text-center mx-auto px-8 md:w-4/5 lg:w-3/5 xl:w-2/3 p-6">
+        <h3 class="text-3xl lg:text-4xl">
+            <a href="https://www.youtube.com/channel/UCekc5pjyJsc1wXYPItsmJqQ">Biology by Sathya Moorthy</a>
+        </h3>
+        <h2 class="text-3xl lg:text-4xl">
+            Biological classification and Plant Kingdom---1
+        </h2>
+        <br>
+        <h5>
+            2,3,4,5 and6 Kingdom System of Classification
+Algae, Bryophytes, Pteridophytes, Gymnosperms and Angiosperms description
+        </h5>
+        <div class="flex">
+            <div class="m-auto">
+                <input placeholder="🔎 Search" type="search" id="search"
+                       class="border-black border-2 rounded-lg p-1 pl-2 ml-2">
+            </div>
+        </div>
+    </div>
+</section>
+<section class="pb-8   comic" id="comics">
+    <div class="container mx-auto px-8 md:w-4/5 lg:w-3/5 xl:w-2/3 p-6">
+        <div class="grid xl:grid-cols-4 md:grid-cols-3 grid-cols-2 comic-pages list">
+                <a href="https://www.youtube.com/watch?v=utUFkJoEdLA">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">KINGDOM PLANTAE ,ANIMALIA AND VIRUSES-Dr.N.S-தாவர, விலங்குலகம் மற்றும் வைரஸ்கள்</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=7FfwYkOv67k">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">KINGDOM-FUNGI PART-2 பூஞ்சைகள் வகைப்பாடு பாகம் 2</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=ffEjVJ6mhF0">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">FUNGI PART-1 பூஞ்சைகள் பாகம்-1 தமிழ் மற்றும் ஆங்கில வழி</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=A-KQY3IB0r8">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">KINGDOM PROTISTA PART-2 புரோட்டிஸ்டா பாகம் 2</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=ZQ_lv_gmeqQ">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">KINGDOM -PROTISTA-CLASSIFICATION -புரோட்டிஸ்டா வகைப்பாடு தமிழ் மற்றும் ஆங்கில வழி</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=Lio-_6ZcARo">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">KINGDOM -MONERA CLASSIFICATION-Dr.N.S-மொனிரா-தமிழ் மற்றும் ஆங்கில வழி மாணவர்களுக்கான சிறு அறிமுகம்</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=dZHxUGfbJeQ">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">BIOLOGICAL CLASSIFICATON PART-2-FOR NEET,NCERT AND STATE BOARD</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=msDZ4b3xnd0">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">BIOLOGICAL CLASSIFICATION INTRODUCTION-FOR NEET,NCERT AND STATE BOARD.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=jvhIPBXwZQM">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">THE LIVING WORLD PART-3.FOR NCERT, NEET AND STATE BOARD</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=599l1G8uQzs">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">ELECTRON MICROSCOPIC STRUCTURE OF BACTERIA -NCERT 11 TH STD,State board and NEET</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=IITNBt_6J5w">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">BACTERIA-INTRODUCTION |NCERT AND STATEBOARD|</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=6wxl4dhl95A">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">NEET | BOTANY | BIOLOGICAL CLASSIFICATION | Kalvi TV</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=c_d1V2rksZw">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Introduction to Angiosperms</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=77UMOWwebMA">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Alternation of generations in plants</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=nHB0s04593I">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Gymnosperms -2</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=j7Uv41XR-Ew">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Gymnosperms -1</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=UEqF05KTZxU">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Pterdophytes</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=DVLvB9rexFc">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Bryophytes</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=tZG1K0saReI">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Economic Importance of Algae</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=xPuf3r7IWmc">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Classification of Algae</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=JA_q858BttY">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Algae -Introduction</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=N-cLOskUpYg">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Kingdom Plantae -Introduction</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=Bd8EJ3vq1W8">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Viroids,Priyons and Satillite</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=O1KJhKwuxzk">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Viruses</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=cM4_9Ah_-xo">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Lichens</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=NXGZQfdSyf4">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Economic Importance of Fungi</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=rZjOVUk8W18">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Classification of Fungi</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=RQwpC_Mdidc">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Kingdom Fungi -Introduction</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=ui4cm8-u7qU">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Kingdom  - Protista.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=9KoaYIoGCMo">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Kingdom-Monera</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=YSBgfwGVEfM">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Five Kingdom System of classification by R.H.Whittaker</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=oUCdGx-klWA">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Biological Classification -Introduction</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+
+        </div>
+    </div>
+</section>
+
+<div class="container mx-auto lg:w-3/5 px-4 pt-8 mb-4">
+    © <a href="https://www.youtube.com/channel/UCekc5pjyJsc1wXYPItsmJqQ">Biology by Sathya Moorthy</a> 2021 | All rights reserved
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+
+<html class="no-js" prefix="og: http://ogp.me/ns#" xmlns:og="http://ogp.me/ns#"><!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>GENERAL-Biology by Sathya Moorthy</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, target-densityDpi=device-dpi">
+    <meta property="description" content="">
+    <meta property="mobile-web-app-capable" content="yes">
+    <meta property="apple-mobile-web-app-capable" content="yes">
+    <meta property="apple-mobile-web-app-status-bar-style" content="black">
+    <meta property="author" content="">
+    <link href="./src/css" rel="stylesheet" type="text/css">
+    <link href="./src/font-awesome.css" rel="stylesheet">
+    <link href="./src/tailwind.min.css" rel="stylesheet">
+    <link href="./src/style.css" rel="stylesheet">
+    <link href="./src/all.min.css" rel="stylesheet">
+    <link href="./src/css2" rel="stylesheet">
+
+    <script src="./src/list.min.js.download"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            var options = {valueNames: ['title', 'keywords']};
+            var comics = new List('comics', options);
+
+            function customSearch(searchString, columns) {
+
+
+                var words = [],
+                    phrase,
+                    ss = searchString;
+                while ((phrase = ss.match(/"([^"]+)"/)) !== null) {
+                    words.push(phrase[1])
+                    ss = ss.substring(0, phrase.index) + ss.substring(phrase.index + phrase[0].length)
+                }
+
+                ss = ss.trim()
+                if (ss.length) words = words.concat(ss.split(/\s+/))
+                for (var k = 0, kl = comics.items.length; k < kl; k++) {
+                    var item = comics.items[k]
+                    item.found = false
+                    if (!words.length) continue
+                    for (var i = 0, il = words.length; i < il; i++) {
+                        var word_found = false
+                        for (var j = 0, jl = columns.length; j < jl; j++) {
+                            var values = item.values(),
+                                column = columns[j]
+                            if (values.hasOwnProperty(column) && values[column] !== undefined && values[column] !== null) {
+                                var text = typeof values[column] !== 'string' ? values[column].toString() : values[column]
+                                text = text.replace(/[^\w\s\'\"]/gi, ' ')
+                                var index = text.toLowerCase().indexOf(words[i]);
+                                if (index != -1 && (index == 0 || text[index - 1] == " ")) {
+
+                                    word_found = true
+                                    break
+                                }
+                            }
+                        }
+
+                        if (!word_found) break
+                    }
+                    item.found = word_found
+                }
+            }
+
+            document.querySelector('#search').addEventListener('keyup', function () {
+                var searchString = this.value;
+                console.log(this);
+                comics.search(searchString, customSearch);
+            });
+        });
+
+    </script>
+</head>
+
+
+<body class="vsc-initialized">
+<!--[if lt IE 7]><p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a
+        href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chrome/‎">install
+    Google Chrome</a> to experience this site.</p><![endif]-->
+
+
+<span id="top"></span>
+<span id="content"></span>
+
+<section id="welcome">
+    <div class="container text-center mx-auto px-8 md:w-4/5 lg:w-3/5 xl:w-2/3 p-6">
+        <h3 class="text-3xl lg:text-4xl">
+            <a href="https://www.youtube.com/channel/UCekc5pjyJsc1wXYPItsmJqQ">Biology by Sathya Moorthy</a>
+        </h3>
+        <h2 class="text-3xl lg:text-4xl">
+            GENERAL
+        </h2>
+        <br>
+        <h5>
+            
+        </h5>
+        <div class="flex">
+            <div class="m-auto">
+                <input placeholder="🔎 Search" type="search" id="search"
+                       class="border-black border-2 rounded-lg p-1 pl-2 ml-2">
+            </div>
+        </div>
+    </div>
+</section>
+<section class="pb-8   comic" id="comics">
+    <div class="container mx-auto px-8 md:w-4/5 lg:w-3/5 xl:w-2/3 p-6">
+        <div class="grid xl:grid-cols-4 md:grid-cols-3 grid-cols-2 comic-pages list">
+                <a href="https://www.youtube.com/watch?v=Z27uhKD8Jt8">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">எங்கள் ஊரின் போதிமரம்.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=KSmKOcKBZOw">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">coconut inflorescence  அறிந்து கொள்வோம் தென்னம்பாளை. #erhighersecondaryschool</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=8unsRCA_vHU">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">STRESS BUSTER-2 #erhss மன அழுத்தத்தை போக்க குழந்தையாக இருப்போம்.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=crcYiK3_tyM">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">உங்கள் வாழ்க்கையினை தீர்மானிப்பவர்கள் நீங்கள். காலம் பொன் போன்றது.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=7_L9mpU4oa8">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">STRESS BUSTER-1  மன அழுத்தத்தை போக்க உதவும் பாடல்.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=4PBqjYDX0Ks">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">நினைவாற்றலை அதிகரிக்க செய்யும் பாடல்.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=A2T5eHhsqiY">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">நம்முடைய எலும்புகளை எண்ணிப் பார்க்கலாமா.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=-2wV4Iworh0">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">திருச்சி வண்ணத்துப்பூச்சி பூங்காவில் உள்ள தாவரங்கள்.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=qb5hiNyWgNA">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">வண்ணத்துப்பூச்சி உயிர் பன்மை திருச்சி.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=-h10koin-rg">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">NEET,NCERT,STATE BOARD -GENETICS PROBLEMS மரபியல் கணக்கீடுகள். #erhss</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=5F0avHeFZ5I">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">CLAT-COMMON LAW APTITUDE TEST பொதுவான சட்ட திறனாய்வு சோதனை மற்றும் தேசிய சட்டப் பள்ளிகள் #erhss</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=FFM8JmedLlw">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">மகிழ்ச்சியான ஆசிரியர் #erhighersecondaryschool</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=qMaxJ3ah15o">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">தேர்வினை மகிழ்வோடு எதிர்கொள்வோம் #erhighersecondaryschool</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=-9x0t1r0CwE">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">திருச்சியின் பெருமை-வண்ணத்துப்பூச்சி பாதுகாப்பகம்.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=rHlhdI0BQUo">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">மதுவினால் மனித உறுப்பு மண்டலத்தில் ஏற்படும் பாதிப்புகள்.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=y0K3WvgASTw">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">வீட்டிற்கான உயிரியல் நீட் தேர்வுக்கு அல்ல-பாகம் 2</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=K-lqcuy_DZc">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">வீட்டிற்கான உயிரியல், நீட் தேர்வுக்கு அல்ல-பாகம் 1-பாலினை பற்றிய ஒரு அறிமுகம்</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=unQ05VFbQM8">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">BUD TO FLOWER மொட்டிலிருந்து மலராக</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=Or7USyISpug">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Memory enhancing food நினைவாற்றலை அதிகரிக்கும் உணவுகள்.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=gXGYulcIIIc">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">GOOD HABITS-மாணவ மாணவிகளுக்கான நல்ல பழக்கவழக்கங்கள்.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=NjI4VGkXPro">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">ROLE OF STUDENTS IN EDUCATION SYSTEM மாணவ -மாணவிகளின் பங்கு</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=uKdlihfgrm0">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">ஏன் நன்றாகப் படிக்க வேண்டும்?</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=Cywof9WeRpU">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">பள்ளியில் மாணவ மாணவியரின் கடமைகள்.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=CJ04wtwwdNc">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">நல்ல பழக்க வழக்கங்கள்.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=1dioP5tbsos">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">TECHNIQUES TO IMPROVE MEMORY நினைவாற்றலை மேம்படுத்துவதற்கான நுட்பங்கள்.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=MOYRmkLEGdY">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">கிராமத்து தோப்பில் உள்ள பறவைகள். தேசிய குழந்தைகள் அறிவியல் மாநாட்டிற்கான ஆய்வு.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=W3O8TNZwHBk">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">கரும்புத் தோட்டம் ஒரு சூழல் மண்டலம். தேசிய குழந்தைகள் அறிவியல் மாநாட்டிற்கான ஆய்வு.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=Xj6aEnJ8KUo">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">நெல் வயல் ஒரு சூழல் மண்டலம் தேசிய குழந்தைகள் அறிவியல் மாநாட்டிற்கான ஆய்வு.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=poq-Pcl6-HU">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">ஆறு ஒரு சூழல் மண்டலம்-தேசிய குழந்தைகள் அறிவியல் மாநாட்டிற்கான ஆய்வு-ஒரு அறிமுகம்.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=J0Oel5_Xy0M">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">வீட்டுத்தோட்டம் ஒரு சூழல் மண்டலம்-தேசிய குழந்தைகள் அறிவியல் மாநாட்டிற்கான  ஒரு ஆய்வு.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=heYMtSy1O38">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">வாழை  சூழல் மண்டலம்-தேசிய குழந்தைகள் அறிவியல் மாநாட்டிற்கான ஆய்வு-பயன்தரு விவசாயம்.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=NzMKvVk4mL0">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">தேசிய குழந்தைகள் அறிவியல் மாநாட்டிற்கான நிலச்சூழ்மண்டல ஆய்வுகள் ஒரு அறிமுகம்</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=JM4Cs3ChtiY">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Agro Ecosystem-Piper nigrum garden for NCSC PROJECT விவசாய சூழல் மண்டலம் மிளகு தோட்டம்</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=hVPGSN-MDDY">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Ecosystem a brief introduction for NCSC சூழல் மண்டலம் ஒரு அறிமுகம் FOR NCSC</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=pSqIhYboN30">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">பயன் தரும் விவசாயம் - மாணவ- மாணவிகள் ஆய்வு செய்வதற்கு.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=l1RRRQo2AJY">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">கிணறுகளை காப்போம். நீரினை சேமிப்போம். வருங்காலத்திற்கு கிணறுகளை மீட்டு தருவோம்.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=F1M8A8eIlOI">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">கொல்லிமலையின் எழில் மிகு தோற்றம் மூன்று</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=lSZyofGls7M">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">கொல்லி மலையின் எழில் மிகு தோற்றம்-2</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=NYMP9fS6FsY">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">கொல்லி மலையின் எழில் மிகு தோற்றம்-1</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=VE_JIo94mas">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Biodiversity of Kolli hills. கொல்லிமலையின் உயிர்ப் பன்மை.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=kqnmc58EGIc">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Manihot esculenta -Tapioca மரவள்ளிக்கிழங்கு</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=hUafO86Oy3Y">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Coffea arabica -Coffee plant</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=hUafO86Oy3Y">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Coffea arabica -Coffee plant</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=3stGJXf9Kuk">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Elettaria cardamomum -ஏலக்காய் மசாலா பொருட்களின் அரசி.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=maeSidVmMmA">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">Ananas comosus-Pineapple-Multiple fruit. அன்னாசிப் பழம்-கூட்டுக் கனி.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=zegxlXwSYKg">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">NCSC -PROJECTS-A BRIEF IDEA தேசிய குழந்தைகள் அறிவியல் மாநாட்டிற்கான  சில ஆய்வுத் தலைப்புகள்.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=h40776F8Svw">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">NUTRITION AND ADULT இளமைப்பருவ உணவூட்டம் மற்றும் குறைபாட்டு நோய்கள்.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=VIf0qLlfFzc">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">HOW TO CRACK NEET ? நீட் தேர்வில் எளிதில் அதிக மதிப்பெண் பெறுவது எப்படி?</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=EbTSA75PdtY">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">எங்கள் வீட்டு நவராத்திரி விழா கொலு</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=wgBBj9Z7OSU">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">ABOUT NAVARATHRI FESTIVAL  நவராத்திரி பண்டிகை குறித்த ஒரு அறிமுகம்.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=yKf8XDVg74w">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">THANKS A LOT STUDENTS என் இனிய மாணவ-மாணவிகளே உங்கள் அனைவருக்கும் மிக்க நன்றி.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=4BZyhejM67I">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">உன்னை அறிந்தால் பாகம் 10 நீட் தேர்விற்கு முதல் நாள்-BE CALM-YOU ARE BORN TO WIN.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=aU0mDyBYGo0">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">FLOWERS OF INDIA-இந்தியாவின் தேசிய, மாநில மற்றும் யூனியன் பிரதேசங்களின் மலர்கள்</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=S9btIi-hw1M">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">TREES OF INDIA-இந்தியாவின்  தேசிய, மாநில மற்றும் யூனியன் பிரதேச மரங்கள்</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=Sj9QF9q7gbs">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">உன்னை அறிந்தால்-9-தேர்வுக்கு தயாராவது எப்படி</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=KzIyGqr4nq0">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">உன்னை அறிந்தால்-6. எதற்கும் கவலைப்படாதீர்கள்.No stress-Be free-நல்லதே நடக்கும்.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=DDRB7EczOHw">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">உன்னை அறிந்தால்-8 -MEMORY CATALOGUE-நினைவாற்றல் அட்டவணை.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=5GCVnBIfIpk">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">உன்னை அறிந்தால்-7. தேர்வுக்கு தயாராக இருக்கிறோம்.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=nqsabBlnyv4">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">உன்னை அறிந்தால்-5. Memory mechanism-நினைவாற்றலின் செயல்பாடு</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=nDv6Q_Xy9k8">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">உன்னை அறிந்தால்-4-Break for Speed-வேகத்தடை</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=Dlft7Pf3r_k">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">உன்னை அறிந்தால்-திரும்பி படித்தல் என்ற கசப்பான அவசியம்.</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=ynYCCa-7Fos">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">உன்னை அறிந்தால் பாகம்-2</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=AaAYehSjfT4">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">உன்னை அறிந்தால்-1-உயிரியலில் உச்சத்தை தொட</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=yP-wXf8AbwI">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">நீட் தேர்விற்கு எளிமையாக படிப்பது எப்படி</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=rsUzBmElvCs">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">திருப்பூந்துருத்தி திருஅங்கமாலை</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=SEB-qF8s7lk">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">திருக்கயிலாயக் காட்சி-திருவையாறு</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=bwDtB2ll6XU">
+                    <figure class="p-4 m-4">
+                        <figcaption class="flex">
+                            <span class="m-auto block title text-sm md:text-base">பிளஸ் 2 விற்கு பின் என்ன படிக்கலாம்-உயிரியல் மாணவர்களுக்கான ஒரு காணொளி</span>
+                        </figcaption>
+                    </figure>
+                    <div class="hidden keywords"></div>
+                </a>
+
+        </div>
+    </div>
+</section>
+
+<div class="container mx-auto lg:w-3/5 px-4 pt-8 mb-4">
+    © <a href="https://www.youtube.com/channel/UCekc5pjyJsc1wXYPItsmJqQ">Biology by Sathya Moorthy</a> 2021 | All rights reserved
+</div>
+
+
+</body>
+</html>
