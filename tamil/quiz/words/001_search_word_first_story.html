@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en-US">
  <head>
-  <meta charset="utf-8"/>
   <title>
    Lookup word Tamil English
   </title>
-  <link href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css" rel="stylesheet" type="text/css"/>
-  <script crossorigin="anonymous" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" src="https://code.jquery.com/jquery-3.6.0.slim.min.js">
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <link href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" rel="stylesheet"/>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
   </script>
-  <script charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js" type="text/javascript">
+  <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js">
   </script>
-  <meta content="Manikandan V" name="author"/>
-  <meta content="2021-02-13" name="date"/>
+  <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap5.min.js">
+  </script>
+  <meta content="Manikandan V" name="author">
+   <meta content="2021-02-13" name="date">
+   </meta>
+  </meta>
  </head>
  <body>
   <table class="display" id="example" style="width:100%">
@@ -436,10 +442,9 @@
   </table>
   <script>
    $(document).ready(function() {
-                $('#example').DataTable( {
-                    "paging":   false,
-                    "ordering": false,
-                    "info":     false
+         $('#example').DataTable( {
+            "paging":   false,
+            "order": [[ 0, "asc" ]]
                 } );
             } );
   </script>
